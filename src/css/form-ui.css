@@ -1,0 +1,78 @@
+.wrapper-form {
+	padding: 10px;
+}
+
+.form-inline {
+	display: inline-block;
+    width: 40px;
+    /*vertical-align: middle;*/
+}
+
+.form-inline > input {
+	height: 35px !important;
+}
+
+.form-inline > .caret {
+	line-height: 1;
+}
+
+.ss-scalerow {
+    text-align: center;
+    color: #666;
+    /*border: 1px solid #d3d8d3;*/
+    border-left: 0;
+    border-right: 0;
+    padding: .5em .25em;
+}
+
+.ss-scalenumbers {
+    text-align: center;
+    font-family: "Roboto";
+    color: rgb(80,80,80);
+    font-weight: 400;
+    font-size: 1.000rem;
+    font-style: normal;
+    padding-bottom: 0px;
+}
+
+td.ss-scalenumbers > label {
+	cursor: pointer;
+}
+
+.ss-form-input {
+    vertical-align: middle;
+    margin-left: 0;
+    margin-top: 0;
+}
+
+.ss-scalerow > label {
+	padding-right: 23px;
+	padding-left: 0px !important;
+}
+
+.scale-left-label {
+	text-align: right;
+}
+
+.scale-right-label {
+	text-align: left;
+}
+
+.slider-left-label, .slider-right-label {
+	line-height: 1.2;
+	width: 40px !important;
+}
+
+.slider-initial-state {
+	background: #FAFAFA !important;
+    box-shadow: inset 0 1px 1px #f0f0f0 !important;
+}
+
+#slider-scoring *:hover {
+	cursor: pointer;
+}
+
+.slider-score {
+	font-weight: bold;
+	font-size: 1.05em;
+}

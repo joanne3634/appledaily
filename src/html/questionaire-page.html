@@ -1,0 +1,134 @@
+<div class="section no-pad-bot">
+	<div class="container">
+		<br>
+		<h2 class="header center orange-text">
+			請讓我們更瞭解您 :)
+		</h2>
+		<div class="section no-pad-top hoverable tabs-wrapper">
+			<div class='wrapper-form'>
+				<h5 class="header">
+					性別
+				</h5>
+				<form id='questionaire-gender'>
+				</form>
+			</div>
+		</div>
+		<div class="section no-pad-top hoverable tabs-wrapper">
+			<div class='wrapper-form'>
+				<h5 class="header">
+					年齡
+				</h5>
+				<form id='questionaire-age'>
+				</form>
+			</div>
+		</div>
+		<div class="section no-pad-top hoverable tabs-wrapper">
+			<div class='wrapper-form'>
+				<h5 class="header">
+					學歷
+				</h5>
+				<form id='questionaire-education'>
+				</form>
+			</div>
+		</div>
+		<div class="section no-pad-top hoverable tabs-wrapper">
+			<div class='wrapper-form'>
+				<h5 class="header">
+					婚姻狀況
+				</h5>
+				<form id='questionaire-marriage'>
+				</form>
+			</div>
+		</div>
+		<div class="section no-pad-top hoverable tabs-wrapper">
+			<div class='wrapper-form'>
+				<h5 class="header">
+					宗教信仰
+				</h5>
+				<form id='questionaire-religion'>
+				</form>
+			</div>
+		</div>
+		<div class="section no-pad-top hoverable tabs-wrapper">
+			<div class='wrapper-form'>
+				<h5 class="header">
+					從事行業
+				</h5>
+				<form id='questionaire-career'>
+				</form>
+			</div>
+		</div>
+		<div class="section no-pad-top hoverable tabs-wrapper">
+			<div class='wrapper-form'>
+				<h5 class="header">
+					年收入區間
+				</h5>
+				<form id='questionaire-income'>
+				</form>
+			</div>
+		</div>
+		<div class="section no-pad-top hoverable tabs-wrapper">
+			<div class='wrapper-form'>
+				<h5 class="header">
+					最近兩年的公益捐款行為
+				</h5>
+				<form id='questionaire-charityHistory'>
+				</form>
+			</div>
+		</div>
+		<div class="section no-pad-top hoverable tabs-wrapper">
+			<div class='wrapper-form'>
+				<h5 class="header">
+					請問您的捐款意向為何?（可複選）
+				</h5>
+				<form id='questionaire-charityTendency'>
+				</form>
+			</div>
+		</div>
+		<div class="section no-pad-top hoverable tabs-wrapper">
+			<div class='wrapper-form'>
+				<h5 class="header">
+					除了公益捐款，請問您最近兩年還參與哪些類型的公益活動?（可複選）
+				</h5>
+				<form id='questionaire-charityActivity'>
+				</form>
+			</div>
+		</div>
+		<div class="section no-pad-top hoverable tabs-wrapper">
+			<div class='wrapper-form'>
+				<h5 class="header">
+					請問您樂意在社群網站 (例如 Facebook 或 Plurk) 分享公益募款文章給朋友嗎?（可複選）
+				</h5>
+				<form id='questionaire-charityWilling'>
+				</form>
+			</div>
+		</div>
+		<br>
+		<div class="section no-pad-top">
+			<div class="wrapper-form">
+				<a id="after-questionaire-button" class="btn-large waves-effect waves-light orange">Next</a>
+			</div>
+		</div>
+		<br>
+		<br>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		CreateRadio (QUESTIONAIRE_FORM_TEXTS.genderOpts, 'questionaire-gender');
+		CreateSelect (QUESTIONAIRE_FORM_TEXTS.ageOpts, 'questionaire-age');
+		CreateSelect (QUESTIONAIRE_FORM_TEXTS.educationOpts, 'questionaire-education');
+		CreateSelect (QUESTIONAIRE_FORM_TEXTS.marriageOpts, 'questionaire-marriage');
+		CreateSelect (QUESTIONAIRE_FORM_TEXTS.religionOpts, 'questionaire-religion');
+		CreateSelect (QUESTIONAIRE_FORM_TEXTS.careerOpts, 'questionaire-career');
+		CreateSelect (QUESTIONAIRE_FORM_TEXTS.incomeOpts, 'questionaire-income');
+		CreateSelect (QUESTIONAIRE_FORM_TEXTS.charityHistoryOpts, 'questionaire-charityHistory');
+		CreateMultiSelect (QUESTIONAIRE_FORM_TEXTS.charityTendencyOpts, 'questionaire-charityTendency');
+		CreateMultiSelect (QUESTIONAIRE_FORM_TEXTS.charityActivityOpts, 'questionaire-charityActivity');
+		CreateScaleForm ('非常不樂意', '非常樂意', 10, 'charityWilling', 'questionaire-charityWilling');
+		// AddPushpin ();
+
+		$('#after-questionaire-button').click(ClickAfterQuestionaireBtn);
+	});
+</script>
