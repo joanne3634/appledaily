@@ -71,10 +71,26 @@ a#check-login-button {
     padding-right: 9px;
     background-color: #3FB8AF;
 }
-.collection .collection-item{
+
+.collection .collection-item {
     padding: 15px 20px;
     font-size: 1.2em;
 }
+
+#old-member a {
+    width: 190px;
+}
+
+h1.header {
+    font-size: 3.5rem;
+}
+
+@media (max-width: 768px) {
+    h1.header {
+        font-size: 3rem;
+    }
+}
+
 .cd-top {
     display: inline-block;
     height: 40px;

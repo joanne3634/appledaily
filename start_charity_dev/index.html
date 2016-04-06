@@ -17,7 +17,6 @@
     <meta content="280" property="og:image:width">
     <meta content="280" property="og:image:height">
     <meta content="急難家庭曙光再現計劃" property="og:site_name">
-   
     <!-- CSS  -->
     <link rel="shortcut icon" type="image/x-icon" sizes="16x16" href="src/img/ico/favicon.ico?v=3">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -66,9 +65,15 @@
                     </div>
                     <div class="row center">
                         <div id="old-member" class="row center" style="display:none;">
-                            <a id="re-ques-button" class="btn-large waves-effect waves-light teal">重填問券及測驗</a>
-                            <a id="update-subscribe-button" class="btn-large waves-effect waves-light teal">更新訂閱頻率</a>
-                            <a id="replay-button" class="btn-large waves-effect waves-light teal">多評一回文章<i class="right material-icons">replay</i></a>
+                            <div class="col s12 m12 l4">
+                                <a id="re-ques-button" class="btn-large waves-effect waves-light teal">重填問券及測驗</a>
+                            </div>
+                            <div class="col s12 m12 l4">
+                                <a id="update-subscribe-button" class="btn-large waves-effect waves-light teal">更新訂閱頻率</a>
+                            </div>
+                            <div class="col s12 m12 l4">
+                                <a id="replay-button" class="btn-large waves-effect waves-light teal">多評一回文章<i class="right material-icons">replay</i></a>
+                            </div>
                         </div>
                         <div id="new-member" class="row center" style="display:none;">
                             <a id="start-button" class="btn-large waves-effect waves-light teal">開始填基本資料</a>
@@ -239,7 +244,7 @@
             js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.2&appId=342086465999475";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
-            
+
 
     });
     </script>
