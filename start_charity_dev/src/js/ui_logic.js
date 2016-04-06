@@ -20,46 +20,43 @@ function ClickAfterSubscribingBtn() {
 }
 
 function ClickAfterQuestionaireBtn() {
-    // TODO 測試階段先關掉必填
-
     var msg = saveQuestionaire();
-    // if (msg != 'success') {
-    //     Materialize.toast('欄位是空的 請完成', 3000);
-    //     $('html, body').animate({
-    //         scrollTop: $("#questionaire-"+msg).offset().top - 120
-    //     }, 1000);
-    //     return false;
-    // }
+    if (!BOOL_VARS.isTesting) {
+        if (msg != 'success') {
+            Materialize.toast('欄位是空的 請完成', 3000);
+            $('html, body').animate({
+                scrollTop: $("#questionaire-" + msg).offset().top - 120
+            }, 1000);
+            return false;
+        }
+    }
     LoadSurveyPage();
 }
 
 function ClickAfterSurveyBtn() {
     var msg = checkSurvey();
-    // if (msg != 'success') {
-    //     Materialize.toast('第' + (parseInt(msg) + 1) + '回還沒完成 請完成', 3000);
-    //     return false;
-    // } else {
-  
-
+    if (!BOOL_VARS.isTesting) {
+        if (msg != 'success') {
+            Materialize.toast('第' + (parseInt(msg) + 1) + '回還沒完成 請完成', 3000);
+            return false;
+        }
+    }
     if (checkMemberStatus()) {
-    	LoadThankPage();
+        LoadThankPage();
     } else {
         LoadSubscribingPage();
     }
     RecordLibfm();
-    // }
 }
 
-function ClickReRound(){
-	ResetUserProfile();
-	ResetRoundTitle();
-	SetupHash();
-    // RandomAssignCases();
-	LoadSurveyPage();
+function ClickReRound() {
+    ResetUserProfile();
+    ResetRoundTitle();
+    SetupHash();
+    LoadSurveyPage();
 }
 
 function BeforeLoadLanding() {
-    /* charity index.phtml */
     GetIp();
     SetShortcuts();
     TitleListLoading();
@@ -81,7 +78,6 @@ function AfterLoadSubscribing() {
 function AfterLoadQuestionaire() {
     USER_PROFILE.timeRecording.startQuestionaire = GetCurrentTimeMilli();
     RecordTimeStart();
-    RandomAssignCases();
 }
 
 function AfterLoadSurvey() {
@@ -139,9 +135,11 @@ function SliderOnChange() {
 }
 
 function ClickNavigateBefore() {
-    // if ($('#navigate-before').hasClass('disabled')) {
-    //     return false;
-    // }
+    if (!BOOL_VARS.isTesting) {
+        if ($('#navigate-before').hasClass('disabled')) {
+            return false;
+        }
+    }
     var currentIdx = ROUND_PROFILE.caseIndex;
     if (currentIdx > 0) {
         ROUND_PROFILE.caseIndex = ROUND_PROFILE.caseIndex - 1;
@@ -151,15 +149,15 @@ function ClickNavigateBefore() {
     BeforeRoundStart();
     ResetSlider();
     setProgress();
-
-    //TODO 有沒有要限制做完才能到下一題
     EnableNaviationBtn();
 }
 
 function ClickNavigateNext() {
-    // if ($('#navigate-next').hasClass('disabled')) {
-    //     return false;
-    // }
+    if (!BOOL_VARS.isTesting) {
+        if ($('#navigate-next').hasClass('disabled')) {
+            return false;
+        }
+    }
     var currentIdx = ROUND_PROFILE.caseIndex;
     if (currentIdx == EXPERIMENT_PROFILE.numCases - 1) {
         ClickAfterSurveyBtn();
@@ -172,9 +170,6 @@ function ClickNavigateNext() {
     BeforeRoundStart();
     ResetSlider();
     setProgress();
-
-
-    //TODO 有沒有要限制做完才能到下一題
     EnableNaviationBtn();
 }
 
@@ -190,11 +185,11 @@ function CheckLoginState() {
 function checkMemberStatus() {
     var req = new XMLHttpRequest();
     var url = 'www-data/libfm_objects/' + USER_PROFILE.fbId + '_libfm.json';
-        req.open('GET', url, false);
+    req.open('GET', url, false);
     req.send();
     return req.status == 200;
 }
-//old-member new-member before-login 
+
 function showStartButton() {
     if (checkMemberStatus()) {
         $('#old-member').show();
@@ -225,27 +220,27 @@ function StatusChangeCallback(response) {
             var str_response = JSON.stringify(response);
 
             if (str_response.indexOf('declined') == -1) {
-                // TODO 登入成功 登入前button 換成 進去填表單
                 RecordFbInfo();
                 showStartButton();
             } else if (str_response.indexOf('error') > -1) {
 
                 EXPERIMENT_PROFILE.exceptionMsg = 'fail in FB connect: ' + str_response;
                 RecordException();
-
-                // TODO 處理fb登入失敗 換回登入前button
                 showLoginButton();
             } else {
-                // TODO 換回登入前button
                 showLoginButton();
             }
         });
     } else if (response.status === 'not_authorized') {
         showLoginButton();
-        console.log('[fail] fb connected : fb not authorized');
+        if (BOOL_VARS.isTesting) {
+            console.log('[fail] fb connected : fb not authorized');
+        }
     } else {
         showLoginButton();
-        console.log('[fail] fb connected : fb not logged in');
+        if (BOOL_VARS.isTesting) {
+            console.log('[fail] fb connected : fb not logged in');
+        }
     }
 }
 
@@ -264,12 +259,12 @@ function RecordFbInfo() {
                     FACEBOOK_TOKEN: USER_PROFILE.fbToken
                 },
                 success: function(data, textStatus, jqXHR) {
-                    console.log('[success] record fb info');
+                    if (BOOL_VARS.isTesting) { console.log('[success] record fb info'); }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     EXPERIMENT_PROFILE.exceptionMsg = '[fail] record fb info :' + textStatus + ' : ' + errorThrown;
                     RecordException();
-                    console.log(EXPERIMENT_PROFILE.exceptionMsg);
+                    if (BOOL_VARS.isTesting) { console.log(EXPERIMENT_PROFILE.exceptionMsg); }
                 }
             });
         }, 10);
