@@ -19,12 +19,13 @@
 .ss-scalerow {
     text-align: center;
     color: #666;
-    /*border: 1px solid #d3d8d3;*/
     border-left: 0;
     border-right: 0;
-    padding: .5em .25em;
+    /*padding: .5em .25em;*/
 }
-
+td, th {
+    padding: 0 0;
+}
 .ss-scalenumbers {
     text-align: center;
     font-family: "Roboto";

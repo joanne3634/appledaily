@@ -1,0 +1,71 @@
+{
+    "id": "10208714434367191",
+    "favorite_athletes": [
+        {
+            "id": "293657874005920",
+            "name": "黃帥賢"
+        },
+        {
+            "id": "761011520678167",
+            "name": "黃培閎 HUANG Pei-Hung"
+        },
+        {
+            "id": "1082665051748450",
+            "name": "陳建禎 CHEN Chien-Chen"
+        },
+        {
+            "id": "520342134777713",
+            "name": "Sarina Koga - 古賀 紗理那"
+        },
+        {
+            "id": "148456285190063",
+            "name": "Neymar Jr."
+        },
+        {
+            "id": "189956894367877",
+            "name": "Iker Casillas"
+        },
+        {
+            "id": "107595392604000",
+            "name": "Saori Kimura"
+        },
+        {
+            "id": "271512719538380",
+            "name": "神乎其技 巫劍俠"
+        }
+    ],
+    "favorite_teams": [
+        {
+            "id": "1508292482807756",
+            "name": "2016北資盃"
+        },
+        {
+            "id": "427267000775355",
+            "name": "️中山女高校友排球小藍盃"
+        },
+        {
+            "id": "745875645467630",
+            "name": "Volleyball Generation 排球新世代"
+        },
+        {
+            "id": "168580286525547",
+            "name": "中華女排 Chinese Taipei Women's National Volleyball Team"
+        }
+    ],
+    "first_name": "庭安",
+    "gender": "female",
+    "last_name": "周",
+    "link": "https://www.facebook.com/app_scoped_user_id/10208714434367191/",
+    "locale": "zh_TW",
+    "name": "周庭安",
+    "sports": [
+        {
+            "id": "109446562415595",
+            "name": "Volleyball"
+        }
+    ],
+    "quotes": "只想著以後永遠不會開始",
+    "timezone": 8,
+    "updated_time": "2016-03-30T04:37:12+0000",
+    "verified": true
+}
