@@ -1,0 +1,33 @@
+- src/php/record_fb_objects.php # fb 使用者授權或是登入之後都會重新存取該使用者的資料 
+
+	www-data/facebook_objects/ # fb_objects_json ( original )
+		$FBID_friends.json
+		$FBID_likes.json
+		$FBID_me.json
+
+
+- src/php/record_libfm_objects.php # 每次做完測驗都會存檔 
+
+	www-data/libfm_objects/ # user_record_json 
+		$FBID_libfm.json 
+
+
+- src/php/transform_libfm_csv.php # *_libfm.json => libfm 的 input 
+
+	db_libfm/ 
+		$UNIQID_data.txt 
+		$UNIQID_rating.txt 
+
+- src/mysql/appledaily.sql # database structure ( x data )
+
+
+- src/php/build_mapping_table.php # 刪除/建立 feature mapping mysql 指令 
+
+
+- src/php/dump_database_to_csv.php # mapping mysql => csv 
+
+	db_mapping/
+		$TABLE.csv
+
+
+

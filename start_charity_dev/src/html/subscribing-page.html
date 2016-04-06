@@ -1,44 +1,67 @@
 <div class="section no-pad-bot">
-	<div class="container">
-		<br>
-		<h2 class="header center orange-text">
+    <div class="container">
+        <br>
+        <h2 class="header center teal-text">
 			文章訂閱
 		</h2>
-		<div class="section no-pad-top hoverable tabs-wrapper">
-			<div class='wrapper-form'>
-				<h5 class="header">
-					訂閱方式
-				</h5>
-				<form id='subscribing-method'>
-				</form>
-			</div>
-		</div>
-		<div class="section no-pad-top hoverable tabs-wrapper">
-			<div class='wrapper-form'>
-				<h5 class="header">
+        <div class="section no-pad-top tabs-wrapper">
+            <div class='wrapper-form'>
+                <h5 class="header">
 					訂閱頻率
 				</h5>
-				<form id='subscribing-freq'>
-				</form>
-			</div>
-		</div>
-		<br>
-		<div class="section no-pad-top">
-			<div class="wrapper-form">
-				<a id="after-subscribing-button" class="btn-large waves-effect waves-light orange">Next</a>
-			</div>
-		</div>
-		<br>
-		<br>
-	</div>
+                <form id="subscribing-frequency">
+                    <select name="subscribing-frequency">   
+                        <option disabled="disabled" selected="selected"></option>
+                        <optgroup label="每天">
+                            <option value="1">每天一次</option>
+                        </optgroup>
+                        <optgroup label="每週">
+                            <option value="2">每週一次</option>
+                            <option value="3">每週二次</option>
+                            <option value="4">每週三次</option>
+                            <option value="5">每週四次</option>
+                            <option value="6">每週五次</option>
+                            <option value="7">每週六次</option>
+                        </optgroup>
+                        <optgroup label="每月">
+                            <option value="8">每月一次</option>
+                            <option value="9">每月二次</option>
+                            <option value="10">每月三次</option>
+                            <option value="11">每月四次</option>
+                        </optgroup>
+                        <optgroup label="每年">
+                            <option value="12">每年一次</option>
+                            <option value="13">每年二次</option>
+                            <option value="14">每年三次</option>
+                            <option value="15">每年四次</option>
+                            <option value="16">每年五次</option>
+                            <option value="17">每年六次</option>
+                            <option value="18">每年七次</option>
+                            <option value="19">每年八次</option>
+                            <option value="20">每年九次</option>
+                            <option value="21">每年十次</option>
+                            <option value="22">每年十一次</option>
+                            <option value="23">每年十二次</option>
+                        </optgroup>
+                    </select>
+                </form>
+            </div>
+        </div>
+        <br>
+        <div class="section no-pad-top">
+            <div class="wrapper-form right-align">
+                <a id="after-subscribing-button" class="btn-large waves-effect waves-light teal">Next</a>
+            </div>
+        </div>
+        <br>
+        <br>
+    </div>
 </div>
-
 <script type="text/javascript">
-	$(document).ready(function() {
-		CreateCheckbox (SUBSCRIBING_FORM_TEXTS.methondOpts, 'subscribing-method');
-		CreateRadio (SUBSCRIBING_FORM_TEXTS.freqOpts, 'subscribing-freq');
-		AddPushpin ();
-
-		$('#after-subscribing-button').click(ClickAfterSubscribingBtn);
-	});
+$(document).ready(function() {
+    // CreateCheckbox (SUBSCRIBING_FORM_TEXTS.methondOpts, 'subscribing-method');
+    // CreateRadio(SUBSCRIBING_FORM_TEXTS.freqOpts, 'subscribing-freq');
+    IniSelect();
+    $('#after-subscribing-button').click(ClickAfterSubscribingBtn);
+});
 </script>

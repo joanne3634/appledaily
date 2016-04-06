@@ -1,10 +1,10 @@
 <div class="section no-pad-bot">
 	<div class="container">
 		<br>
-		<h2 class="header center orange-text">
+		<h2 class="header center teal-text">
 			請讓我們更瞭解您 :)
 		</h2>
-		<div class="section no-pad-top hoverable tabs-wrapper">
+		<div class="section no-pad-top  tabs-wrapper">
 			<div class='wrapper-form'>
 				<h5 class="header">
 					性別
@@ -13,7 +13,7 @@
 				</form>
 			</div>
 		</div>
-		<div class="section no-pad-top hoverable tabs-wrapper">
+		<div class="section no-pad-top  tabs-wrapper">
 			<div class='wrapper-form'>
 				<h5 class="header">
 					年齡
@@ -22,7 +22,7 @@
 				</form>
 			</div>
 		</div>
-		<div class="section no-pad-top hoverable tabs-wrapper">
+		<div class="section no-pad-top  tabs-wrapper">
 			<div class='wrapper-form'>
 				<h5 class="header">
 					學歷
@@ -31,7 +31,7 @@
 				</form>
 			</div>
 		</div>
-		<div class="section no-pad-top hoverable tabs-wrapper">
+		<div class="section no-pad-top  tabs-wrapper">
 			<div class='wrapper-form'>
 				<h5 class="header">
 					婚姻狀況
@@ -40,7 +40,7 @@
 				</form>
 			</div>
 		</div>
-		<div class="section no-pad-top hoverable tabs-wrapper">
+		<div class="section no-pad-top  tabs-wrapper">
 			<div class='wrapper-form'>
 				<h5 class="header">
 					宗教信仰
@@ -49,7 +49,7 @@
 				</form>
 			</div>
 		</div>
-		<div class="section no-pad-top hoverable tabs-wrapper">
+		<div class="section no-pad-top  tabs-wrapper">
 			<div class='wrapper-form'>
 				<h5 class="header">
 					從事行業
@@ -58,7 +58,7 @@
 				</form>
 			</div>
 		</div>
-		<div class="section no-pad-top hoverable tabs-wrapper">
+		<div class="section no-pad-top  tabs-wrapper">
 			<div class='wrapper-form'>
 				<h5 class="header">
 					年收入區間
@@ -67,7 +67,7 @@
 				</form>
 			</div>
 		</div>
-		<div class="section no-pad-top hoverable tabs-wrapper">
+		<div class="section no-pad-top  tabs-wrapper">
 			<div class='wrapper-form'>
 				<h5 class="header">
 					最近兩年的公益捐款行為
@@ -76,7 +76,7 @@
 				</form>
 			</div>
 		</div>
-		<div class="section no-pad-top hoverable tabs-wrapper">
+		<div class="section no-pad-top  tabs-wrapper">
 			<div class='wrapper-form'>
 				<h5 class="header">
 					請問您的捐款意向為何?（可複選）
@@ -85,7 +85,7 @@
 				</form>
 			</div>
 		</div>
-		<div class="section no-pad-top hoverable tabs-wrapper">
+		<div class="section no-pad-top  tabs-wrapper">
 			<div class='wrapper-form'>
 				<h5 class="header">
 					除了公益捐款，請問您最近兩年還參與哪些類型的公益活動?（可複選）
@@ -94,10 +94,10 @@
 				</form>
 			</div>
 		</div>
-		<div class="section no-pad-top hoverable tabs-wrapper">
+		<div class="section no-pad-top  tabs-wrapper">
 			<div class='wrapper-form'>
 				<h5 class="header">
-					請問您樂意在社群網站 (例如 Facebook 或 Plurk) 分享公益募款文章給朋友嗎?（可複選）
+					請問您樂意在社群網站 (例如 Facebook 或 Plurk) 分享公益募款文章給朋友嗎?
 				</h5>
 				<form id='questionaire-charityWilling'>
 				</form>
@@ -105,8 +105,8 @@
 		</div>
 		<br>
 		<div class="section no-pad-top">
-			<div class="wrapper-form">
-				<a id="after-questionaire-button" class="btn-large waves-effect waves-light orange">Next</a>
+			<div class="wrapper-form right-align">
+				<a id="after-questionaire-button" class="btn-large waves-effect waves-light teal">Next</a>
 			</div>
 		</div>
 		<br>
@@ -116,7 +116,9 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
+		//$("#questionaire-gender input[type='radio']:checked").val();
 		CreateRadio (QUESTIONAIRE_FORM_TEXTS.genderOpts, 'questionaire-gender');
+		//$('#questionaire-age').serializeArray() name: "questionaire-age"  value:"1"
 		CreateSelect (QUESTIONAIRE_FORM_TEXTS.ageOpts, 'questionaire-age');
 		CreateSelect (QUESTIONAIRE_FORM_TEXTS.educationOpts, 'questionaire-education');
 		CreateSelect (QUESTIONAIRE_FORM_TEXTS.marriageOpts, 'questionaire-marriage');
@@ -124,10 +126,15 @@
 		CreateSelect (QUESTIONAIRE_FORM_TEXTS.careerOpts, 'questionaire-career');
 		CreateSelect (QUESTIONAIRE_FORM_TEXTS.incomeOpts, 'questionaire-income');
 		CreateSelect (QUESTIONAIRE_FORM_TEXTS.charityHistoryOpts, 'questionaire-charityHistory');
+
+		//$('#questionaire-charityTendency').serializeArray()
+		// "questionaire-charityTendency=0&questionaire-charityTendency=1&questionaire-charityTendency=3"
 		CreateMultiSelect (QUESTIONAIRE_FORM_TEXTS.charityTendencyOpts, 'questionaire-charityTendency');
 		CreateMultiSelect (QUESTIONAIRE_FORM_TEXTS.charityActivityOpts, 'questionaire-charityActivity');
+		
+		//$("#questionaire-charityWilling input[type='radio']:checked").val();
 		CreateScaleForm ('非常不樂意', '非常樂意', 10, 'charityWilling', 'questionaire-charityWilling');
-		// AddPushpin ();
+		
 
 		$('#after-questionaire-button').click(ClickAfterQuestionaireBtn);
 	});

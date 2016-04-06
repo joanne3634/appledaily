@@ -1,135 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-	<title id='html-title-text'>曙光再現計劃</title>
-
-	<!-- CSS  -->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link href="src/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-	<link href="src/css/nouislider.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-	<link href="src/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-	<link href="src/css/form-ui.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-	<link href="src/css/main-ui.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <title>曙光再現計劃</title>
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <![endif]-->
+    <meta content="急難家庭曙光再現計劃" property="og:title">
+    <meta content="website" property="og:type">
+    <meta content="那些遭逢巨變且急需幫助的家庭，不僅需要您的愛心，也需要更多人共同建構社會的這張保護網。我們希望，為每個捐款人找到最適合且最需要捐助的弱勢家庭，除了能為他們帶來一場及時雨，也藉由這個平台，讓我們更了解捐款者的意願以及行為。" property="og:description">
+    <meta content="http://mmnet.iis.sinica.edu.tw/~joanne3634/start_charity_dev/" property="og:url">
+    <meta content="http://mmnet.iis.sinica.edu.tw/~joanne3634/start_charity_dev/src/img/ico/favicon.ico" property="og:image">
+    <meta content="image/png" property="og:image:type">
+    <meta content="280" property="og:image:width">
+    <meta content="280" property="og:image:height">
+    <meta content="急難家庭曙光再現計劃" property="og:site_name">
+   
+    <!-- CSS  -->
+    <link rel="shortcut icon" type="image/x-icon" sizes="16x16" href="src/img/ico/favicon.ico?v=3">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="src/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="src/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="src/css/nouislider.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="src/css/form-ui.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="src/css/main-ui.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="//cdn.jsdelivr.net/fontawesome/4.5.0/css/font-awesome.min.css" />
+    <link type="text/css" rel="stylesheet" href="//cdn.jsdelivr.net/jquery.jssocials/1.1.0/jssocials.css" />
+    <link type="text/css" rel="stylesheet" href="//cdn.jsdelivr.net/jquery.jssocials/1.1.0/jssocials-theme-flat.css" />
+    <!-- <link rel="manifest" href="src/img/ico/manifest.json"> -->
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 </head>
-<body style="visibility: hidden;">
-	<div class="navbar-fixed">
-		<nav class="light-blue lighten-1" role="navigation">
-			<div class="nav-wrapper container">
-				<a id="logo-container" href="#" class="brand-logo">急難家庭曙光再現計劃</a>
-				<ul class="right hide-on-med-and-down">
-					<li>
-						<a href="#" id='about-project'>關於此計劃</a>
-					</li>
-					<li>
-						<a href="#" id='about-us'>關於我們</a>
-					</li>
-				</ul>
 
-				<ul id="nav-mobile" class="side-nav">
-					<li>
-						<a href="#" id='about-project-mobile'>關於此計劃</a>
-					</li>
-					<li>
-						<a href="#" id='about-us-mobile'>關於我們</a>
-					</li>
-				</ul>
-				<a href="#" data-activates="nav-mobile" class="button-collapse"> <i class="material-icons">menu</i>
-				</a>
-			</div>
-		</nav>
-	</div>
+<body>
+    <nav class="white" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="" class="brand-logo">曙光再現計劃</a>
+            <!-- <ul class="right hide-on-med-and-down">
+                <li><a href="#">Navbar Link</a></li>
+            </ul>
+            <ul id="nav-mobile" class="side-nav">
+                <li><a href="#">Navbar Link</a></li>
+            </ul> -->
+            <!-- <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a> -->
+        </div>
+    </nav>
+    <main>
+        <div id="subscribingPage" style="display:none;"></div>
+        <div id="questionairePage" style="display:none;"></div>
+        <div id="surveyPage" style="display:none;"></div>
+        <div id="thankPage" style="display:none;"></div>
+    </main>
+    <div id="landingPage">
+        <div id="index-banner" class="parallax-container">
+            <div class="section no-pad-bot">
+                <div class="container">
+                    <br>
+                    <br>
+                    <h1 class="header center teal-text text-lighten-2">急難家庭曙光再現計劃</h1>
+                    <div class="row center">
+                        <h5 class="header col s12 light"></h5>
+                    </div>
+                    <div class="row center">
+                        <div id="old-member" class="row center" style="display:none;">
+                            <a id="re-ques-button" class="btn-large waves-effect waves-light teal">重填問券及測驗</a>
+                            <a id="update-subscribe-button" class="btn-large waves-effect waves-light teal">更新訂閱頻率</a>
+                            <a id="replay-button" class="btn-large waves-effect waves-light teal">再玩一次<i class="right material-icons">replay</i></a>
+                        </div>
+                        <div id="new-member" class="row center" style="display:none;">
+                            <a id="start-button" class="btn-large waves-effect waves-light teal">開始填基本資料</a>
+                            <!-- <div id="login-status"></div> -->
+                        </div>
+                        <div id="before-login" class="row center" style="display:none;">
+                            <a id="before-login-button" class="btn-large waves-effect waves-light teal">請登入才能開始測驗</a>
+                            <!-- <div id="login-status"></div> -->
+                        </div>
+                        <div id="check-login" class="row center">
+                            <a id="check-login-button" class="btn-large disabled">檢查登入狀態...
+                                <div id="preloader" class="preloader-wrapper small active">
+                                    <div class="spinner-layer spinner-blue-only">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="gap-patch">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <!-- <div id="login-status"></div> -->
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                </div>
+            </div>
+            <div class="parallax"><img src="src/img/background1.jpg" alt="Unsplashed background img 1"></div>
+        </div>
+        <div class="container">
+            <div class="section">
+                <!--   Icon Section   -->
+                <div class="row">
+                    <div class="col s12 m4">
+                        <div class="icon-block">
+                            <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
+                            <h5 class="center">Speeds up development</h5>
+                            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+                        </div>
+                    </div>
+                    <div class="col s12 m4">
+                        <div class="icon-block">
+                            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+                            <h5 class="center">User Experience Focused</h5>
+                            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+                        </div>
+                    </div>
+                    <div class="col s12 m4">
+                        <div class="icon-block">
+                            <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
+                            <h5 class="center">Easy to work with</h5>
+                            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="parallax-container valign-wrapper">
+            <div class="section no-pad-bot">
+                <div class="container">
+                    <div class="row center">
+                        <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="parallax"><img src="src/img/background2.jpg" alt="Unsplashed background img 2"></div>
+        </div>
+        <div class="container">
+            <div class="section">
+                <div class="row">
+                    <div class="col s12 center">
+                        <h3><i class="mdi-content-send brown-text"></i></h3>
+                        <h4>Contact Us</h4>
+                        <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="parallax-container valign-wrapper">
+            <div class="section no-pad-bot">
+                <div class="container">
+                    <div class="row center">
+                        <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="parallax"><img src="src/img/background3.jpg" alt="Unsplashed background img 3"></div>
+        </div>
+    </div>
+    <footer class="page-footer teal">
+        <!--  <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Company Bio</h5>
+                    <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Settings</h5>
+                    <ul>
+                        <li><a class="white-text" href="#!">Link 1</a></li>
+                        <li><a class="white-text" href="#!">Link 2</a></li>
+                        <li><a class="white-text" href="#!">Link 3</a></li>
+                        <li><a class="white-text" href="#!">Link 4</a></li>
+                    </ul>
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Connect</h5>
+                    <ul>
+                        <li><a class="white-text" href="#!">Link 1</a></li>
+                        <li><a class="white-text" href="#!">Link 2</a></li>
+                        <li><a class="white-text" href="#!">Link 3</a></li>
+                        <li><a class="white-text" href="#!">Link 4</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div> -->
+        <div class="footer-copyright">
+            <div class="center-align container">
+                Made by 曙光再現計劃
+            </div>
+        </div>
+    </footer>
+    <a href="#0" class="cd-top">Top</a>
+    <!--  Scripts-->
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="src/js/materialize.js"></script>
+    <script src="src/js/init.js"></script>
+    <script src="src/js/nouislider.min.js"></script>
+    <script src="src/js/hashids.min.js"></script>
+    <script src="src/js/backtotop.js"></script>
+    <script src="src/js/ui_texts.js"></script>
+    <script src="src/js/ui_logic.js"></script>
+    <script src="src/js/common_var.js"></script>
+    <script src="src/js/common_func.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/1.1.0/jssocials.min.js"></script>
+    <!-- my script -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        BeforeLoadLanding();
+        $('#landingPage').show();
+        AfterLoadLanding();
 
-	<main>
-	    <div id="landing-page"></div>
-	    <div id="subscribing-page" style="visibility: hidden;"></div>
-		<div id="questionaire-page" style="visibility: hidden;"></div>
-		<div id="survey-page" style="visibility: hidden;"></div>
-		<div id="recommendation-page" style="visibility: hidden;"></div>
-	</main>
+        $('#before-login-button').click(ClickLoginBtn);
+        $('#start-button,#re-ques-button').click(ClickStartBtn);
+        $('#replay-button').click(LoadSurveyPage);
+        $('#update-subscribe-button').click(LoadSubscribingPage);
 
-	<footer class="page-footer orange">
-		<div class="container">
-			<div class="row">
-				<div class="col l6 s12">
-					<h5 class="white-text">Company Bio</h5>
-					<p class="grey-text text-lighten-4">
-						We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.
-					</p>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: '342086465999475',
+                cookie: true,
+                xfbml: true,
+                version: 'v2.2'
+            });
+            FB.getLoginStatus(function(response) {
+                StatusChangeCallback(response);
+            });
+        };
 
-				</div>
-				<div class="col l3 s12">
-					<h5 class="white-text">Settings</h5>
-					<ul>
-						<li>
-							<a class="white-text" href="#!">Link 1</a>
-						</li>
-						<li>
-							<a class="white-text" href="#!">Link 2</a>
-						</li>
-						<li>
-							<a class="white-text" href="#!">Link 3</a>
-						</li>
-						<li>
-							<a class="white-text" href="#!">Link 4</a>
-						</li>
-					</ul>
-				</div>
-				<div class="col l3 s12">
-					<h5 class="white-text">Connect</h5>
-					<ul>
-						<li>
-							<a class="white-text" href="#!">Link 1</a>
-						</li>
-						<li>
-							<a class="white-text" href="#!">Link 2</a>
-						</li>
-						<li>
-							<a class="white-text" href="#!">Link 3</a>
-						</li>
-						<li>
-							<a class="white-text" href="#!">Link 4</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="footer-copyright">
-			<div class="container">
-				Made by
-				<a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-			</div>
-		</div>
-	</footer>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.2&appId=342086465999475";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+            
 
-	<!--  Scripts-->
-	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script src="src/js/materialize.min.js"></script>
-	<script src="src/js/nouislider.min.js"></script>
-	<script src="src/js/hashids.min.js"></script>
-	<script src="src/js/init.js"></script>
-	<script src="src/js/ui_texts.js"></script>
-	<script src="src/js/ui_logic.js"></script>
-	<script src="src/js/common_var.js"></script>
-	<script src="src/js/common_func.js"></script>
-
-	<!-- my script -->
-	<script type="text/javascript">
-		$(document).ready(function() {
-			BeforeLoadLanding ();
-
-			$.get(MY_PAGES.landingPage, function(data) {
-				$('#landing-page').append(data);
-				SetTexts ();
-			});
-
-			// MakeBodyVisible ();
-			// LoadSubscribingPage ();
-			// LoadQuestionairePage ();
-			// LoadSurveyPage ();
-		});
-	</script>
-
+    });
+    </script>
 </body>
+
 </html>

@@ -1,26 +1,136 @@
 .iframe-style {
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
 .no-margin-bot {
-	margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 .no-margin-top {
-	margin-top: 0px !important;
+    margin-top: 0px !important;
 }
 
 .no-padding-top {
-	padding-top: 0px !important;
+    padding-top: 0px !important;
 }
 
 .text-underline {
-	color: black;
-	text-decoration: none;
-	border-bottom: 1px solid red;
+    color: black;
+    text-decoration: none;
+    border-bottom: 1px solid red;
 }
 
 .chinese-fonts {
     font-family: "微軟正黑體", "黑體-繁";
+}
+
+.jssocials-share-link {
+    border-radius: 50%;
+}
+
+.share-panel {
+    margin: 0.5rem 0 1rem 0;
+    padding: 5px 0px;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.collection {
+    border: 0;
+}
+
+.preloader-wrapper {
+    bottom: 86%;
+}
+
+a#check-login-button {
+    width: 170px;
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+    margin: 10px;
+}
+
+.center {
+    margin: 5px 0px;
+}
+
+.progress {
+    height: 16px;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.progress .determinate {
+    color: white;
+    padding-right: 9px;
+    background-color: #3FB8AF;
+}
+.collection .collection-item{
+    padding: 15px 20px;
+    font-size: 1.2em;
+}
+.cd-top {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    position: fixed;
+    bottom: 40px;
+    right: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    /* image replacement properties */
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+    background: rgba(8, 10, 10, 0.69) url(../img/cd-top-arrow.svg) no-repeat center 50%;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: opacity .3s 0s, visibility 0s .3s;
+    -moz-transition: opacity .3s 0s, visibility 0s .3s;
+    transition: opacity .3s 0s, visibility 0s .3s;
+}
+
+.cd-top.cd-is-visible,
+.cd-top.cd-fade-out,
+.no-touch .cd-top:hover {
+    -webkit-transition: opacity .3s 0s, visibility 0s 0s;
+    -moz-transition: opacity .3s 0s, visibility 0s 0s;
+    transition: opacity .3s 0s, visibility 0s 0s;
+}
+
+.cd-top.cd-is-visible {
+    /* the button becomes visible */
+    visibility: visible;
+    opacity: 1;
+}
+
+.cd-top.cd-fade-out {
+    /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+    opacity: .5;
+}
+
+.cd-top:hover {
+    background-color: #52BF57;
+    opacity: 1;
+}
+
+@media only screen and (min-width: 768px) {
+    .cd-top {
+        right: 20px;
+        bottom: 20px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .cd-top {
+        height: 60px;
+        width: 60px;
+        right: 30px;
+        bottom: 30px;
+    }
 }

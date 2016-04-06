@@ -6,7 +6,7 @@
 
 	if (isset($_POST['uniqId'])) {
 		/*==========  pages' start time  ==========*/
-		$head = array('startLanding', 'startSubscribing', 'startQuestionaire', 'startSurvey', 'startRecommendation', 'startThanks');
+		$head = array('startLanding', 'startSubscribing', 'startQuestionaire', 'startSurvey', 'startThanks');
 		$body = array();
 
 		$decoded = json_decode($_POST['timeRecording'], true);
@@ -15,7 +15,7 @@
 		$body['startSubscribing'] = $decoded['startSubscribing'];
 		$body['startQuestionaire'] = $decoded['startQuestionaire'];
 		$body['startSurvey'] = $decoded['startSurvey'];
-		$body['startRecommendation'] = $decoded['startRecommendation'];
+		// $body['startRecommendation'] = $decoded['startRecommendation'];
 		$body['startThanks'] = $decoded['startThanks'];
 
 		$expr_index = '_' . $_POST['hashKey'];

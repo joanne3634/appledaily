@@ -2,8 +2,8 @@
 	require_once 'lib/common.php';
 	require_once 'lib/log.php';
 
+	$msg = 'FROM CLIENT: ' . $_POST['exceptionMsg'];
 	if (isset($_POST['uniqId'])) {
-		$msg = 'FROM CLIENT: ' . $_POST['exceptionMsg'];
 		EXCEPTION_RECORDING($msg, $_POST['uniqId']);
 		echo json_encode(array('status'=>'success'));
 	} else {

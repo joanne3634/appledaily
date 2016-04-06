@@ -5,6 +5,7 @@ var GET_CHECK_OPTS = function (arg, questionId) {
 	for (var i=1; i<=arg.length; i++) {
 		var opt = {};
 		opt['id'] = 'qi-' + questionId + '-' + String(i);
+		opt['index'] = i-1;
 		opt['css'] = 'filled-in';
 		opt['label'] = arg[i-1];
 		opts.push(opt);
@@ -16,11 +17,13 @@ var GET_SELECT_OPTS = function (arg) {
 	var opts = [];
 	var opt = {};
 
+	// for 第一個空值
 	opt['value'] = '';
 	opts.push (opt);
 
 	for (var i=1; i<=arg.length; i++) {
 		var opt = {};
+		opt['index'] = i-1;
 		opt['label'] = arg[i-1];
 		opts.push(opt);
 	}
@@ -34,6 +37,7 @@ var GET_RADIO_OPTS = function (arg, questionId) {
 	for (var i=1; i<=arg.length; i++) {
 		var opt = {};
 		opt['id'] = 'qi-' + questionId + '-' + String(i);
+		opt['index'] = i-1;
 		opt['label'] = arg[i-1];
 		opt['group'] = questionId;
 		opts.push(opt);
