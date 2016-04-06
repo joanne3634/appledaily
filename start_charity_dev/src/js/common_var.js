@@ -34,6 +34,7 @@ var USER_PROFILE = {
         'marriage': 'na',
         'religion': 'na',
         'career': 'na',
+        'careerUsed': 'na',
         'income': 'na',
         'charityHistory': 'na',
         'charityTendency': 'na',

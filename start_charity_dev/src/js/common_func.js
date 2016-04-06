@@ -1,10 +1,8 @@
 function LoadQuestionairePage() {
     $(document).ready(function() {
         $.get(MY_PAGES.questionairePage, function(data) {
-            /*optional stuff to do after success */
             $('#questionairePage').html(data);
             hideAllPage();
-            // $('#subscribingPage').hide();
             $('#questionairePage').show();
             $(document).scrollTop(0);
 
@@ -17,7 +15,6 @@ function LoadSurveyPage() {
 	RandomAssignCases();
 
     $.get(MY_PAGES.surveyPage, function(data) {
-        /*optional stuff to do after success */
         $('#surveyPage').html(data);
         hideAllPage();
         $('#surveyPage').show();
@@ -30,7 +27,6 @@ function LoadSurveyPage() {
 function LoadThankPage() {
     $(document).ready(function() {
         $.get(MY_PAGES.thankPage, function(data) {
-            /*optional stuff to do after success */
             $('#thankPage').html(data);
             hideAllPage();
             $('#thankPage').show();
@@ -44,7 +40,6 @@ function LoadThankPage() {
 function LoadSubscribingPage() {
     $(document).ready(function() {
         $.get(MY_PAGES.subscribingPage, function(data) {
-            /*optional stuff to do after success */
             $('#subscribingPage').html(data);
             hideAllPage();
             $('#subscribingPage').show();
@@ -60,8 +55,6 @@ function hideAllPage() {
         $('#' + i).hide();
     })
 }
-
-
 
 function AddPushpin() {
     $('.tabs-wrapper').pushpin({
@@ -473,7 +466,6 @@ function EnableNaviationBtn() {
         $('#navigate-next').removeClass('disabled');
     }
 
-    // var currentIdx = ROUND_PROFILE.caseIndex;
     var myScore = EXPERIMENT_PROFILE.cases[currentIdx]['score'];
     if (myScore == 'na') {
         $('#navigate-next').addClass('disabled');
@@ -485,7 +477,6 @@ function EnableNaviationBtn() {
 function checkSurvey() {
     var msg = 'success';
     $.each(EXPERIMENT_PROFILE.cases, function(i, v) {
-        // console.log(i, v.score)
         if (v.score == 'na') {
             msg = i;
             return false;
