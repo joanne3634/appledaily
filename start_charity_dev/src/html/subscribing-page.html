@@ -2,16 +2,21 @@
     <div class="container">
         <br>
         <h2 class="header center teal-text">
-			文章訂閱
-		</h2>
+            文章訂閱
+        </h2>
         <div class="section no-pad-top tabs-wrapper">
             <div class='wrapper-form'>
-                <h5 class="header">
-					訂閱頻率
-				</h5>
                 <form id="subscribing-frequency">
-                    <select name="subscribing-frequency">   
-                        <option disabled="disabled" selected="selected"></option>
+                    <h5 class="header">
+                        訂閱信箱
+                    </h5>
+                    <input id="email" type="email" class="validate" required>
+                    <label for="email"></label>
+                    <h5 class="header">
+                        訂閱頻率
+                    </h5>
+                    <select name="subscribing-frequency">
+                        <option value="0" disabled selected></option>
                         <optgroup label="每天">
                             <option value="1">每天一次</option>
                         </optgroup>
@@ -59,8 +64,7 @@
 </div>
 <script type="text/javascript">
 $(document).ready(function() {
-    // CreateCheckbox (SUBSCRIBING_FORM_TEXTS.methondOpts, 'subscribing-method');
-    // CreateRadio(SUBSCRIBING_FORM_TEXTS.freqOpts, 'subscribing-freq');
+
     IniSelect();
     $('#after-subscribing-button').click(ClickAfterSubscribingBtn);
 });

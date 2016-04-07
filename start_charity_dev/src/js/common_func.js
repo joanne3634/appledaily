@@ -12,7 +12,7 @@ function LoadQuestionairePage() {
 }
 
 function LoadSurveyPage() {
-	RandomAssignCases();
+    RandomAssignCases();
 
     $.get(MY_PAGES.surveyPage, function(data) {
         $('#surveyPage').html(data);
@@ -42,6 +42,12 @@ function LoadSubscribingPage() {
         $.get(MY_PAGES.subscribingPage, function(data) {
             $('#subscribingPage').html(data);
             hideAllPage();
+            if ( USER_PROFILE.subscribe != 0 ) {
+                $('#email').val(USER_PROFILE.email);
+                $("#subscribing-frequency select option[value='0']").attr('selected', false);
+                $("#subscribing-frequency select option[value='" + USER_PROFILE.subscribe + "']").attr('selected', true);
+                $('select').material_select();
+            }
             $('#subscribingPage').show();
             $(document).scrollTop(0);
 
@@ -241,7 +247,7 @@ function SetShortcuts() {
                 if (event.target.tagName.search(/(input|TEXTAREA)/i) == -1) return false;
                 break;
             case 81: // q -> ctrl or alt
-                if (MY_IP.indexOf("140.109.") !== -1) {
+                if (USER_PROFILE.ip.indexOf("140.109.") !== -1) {
                     if (event.altKey) {
                         return false;
                     }
@@ -509,10 +515,12 @@ function saveQuestionaire() {
 
 function saveSubscribe() {
     var subscribe = getFormData('subscribing-frequency');
-    if (!subscribe.length) {
+    var email = $('#email').val();
+    if (!subscribe.length || !$('#subscribing-frequency')[0].checkValidity()) {
         return false;
     } else {
         USER_PROFILE.subscribe = parseInt(subscribe[0]);
+        USER_PROFILE.email = email;
         return true;
     }
 }
@@ -526,6 +534,15 @@ function getFormData(form) {
     return a;
 }
 
+function SetSubscribe() {
+    setTimeout(function() {
+        $.getJSON('www-data/libfm_objects/' + USER_PROFILE.fbId + '_libfm.json', function(json) {
+            USER_PROFILE.subscribe = json['SUBSCRIBING'];
+            USER_PROFILE.email = json['EMAIL'];
+        });
+    }, 10);
+}
+
 function RecordSubscribeInLibfm() {
     setTimeout(function() {
         $.ajax({
@@ -534,7 +551,8 @@ function RecordSubscribeInLibfm() {
             dataType: 'json',
             data: {
                 FB_ID: USER_PROFILE.fbId,
-                SUBSCRIBING: USER_PROFILE.subscribe
+                SUBSCRIBING: USER_PROFILE.subscribe,
+                EMAIL: USER_PROFILE.email
             },
             success: function(data, textStatus, jqXHR) {
                 if (BOOL_VARS.isTesting) {

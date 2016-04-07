@@ -12,7 +12,7 @@ function ClickLoginBtn() {
 function ClickAfterSubscribingBtn() {
 
     if (!saveSubscribe()) {
-        Materialize.toast('請選擇訂閱頻率', 3000);
+        Materialize.toast('欄位有錯或是空的', 3000);
         return false;
     }
     RecordSubscribeInLibfm();
@@ -187,6 +187,7 @@ function checkMemberStatus() {
     var url = 'www-data/libfm_objects/' + USER_PROFILE.fbId + '_libfm.json';
     req.open('GET', url, false);
     req.send();
+
     return req.status == 200;
 }
 
@@ -222,6 +223,7 @@ function StatusChangeCallback(response) {
             if (str_response.indexOf('declined') == -1) {
                 RecordFbInfo();
                 showStartButton();
+                SetSubscribe();
             } else if (str_response.indexOf('error') > -1) {
 
                 EXPERIMENT_PROFILE.exceptionMsg = 'fail in FB connect: ' + str_response;

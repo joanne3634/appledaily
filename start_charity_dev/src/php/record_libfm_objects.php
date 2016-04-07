@@ -19,12 +19,14 @@
 
 		if( !isset( $libfm['FB_ID'] )){ $libfm['FB_ID'] = $_POST['FB_ID']; }
 		if( !isset( $libfm['SUBSCRIBING'] )){ $libfm['SUBSCRIBING'] = 0; }
+		if( !isset( $libfm['EMAIL'] )){ $libfm['EMAIL'] = ''; }
 		if( !isset($libfm['DATA'] )){ $libfm['DATA'] = array(); }
 		if( !isset($libfm['USER'] )){ $libfm['USER'] = array(); }
 		if( !isset($libfm['FB'] )){ $libfm['FB'] = array(); }
 
 		// RecordSubscribeInLibfm
 		if( isset( $_POST['SUBSCRIBING'] )){ $libfm['SUBSCRIBING'] = intval($_POST['SUBSCRIBING']); }
+		if( isset( $libfm['EMAIL'] )){ $libfm['EMAIL'] = $_POST['EMAIL']; }
 
 		// RecordLibfm 有更新問卷或是重新做測驗
 		if( !isset( $libfm['DATA'][$_POST['UNIQ_ID']] ) && isset($_POST['UNIQ_ID']) ){
@@ -71,6 +73,7 @@
 							$data['USER']['charityWilling'] = intval($value[0]);
 						}else{
 							foreach( $value as $question_item ){
+								// echo "$question_item\n";
 								if( $question_item != ''){
 									$data['USER'][$key.'-'.$question_item] = 1;
 								}
@@ -79,6 +82,7 @@
 					}
 				}
 			$libfm['USER'] = $data['USER'];
+			// print_r( $libfm['USER'] );
 
 			/*==========  facebook saving  ==========*/
 

@@ -44,6 +44,7 @@ if ($__INIT__ || $__ALL__) {
 if ($__UPDATE__ || $__ALL__) {
 	echo "update\n";
 	$fb_id_array = findMember($createMember = true, $DIR_LOGS_ROOT . '/libfm_objects', $dba);
+	// print_r($fb_id_array);
 	foreach ($fb_id_array as $fb_id) {
 		createFbRelateTable($fav = true, $like = true, $cat = true, $catlist = true, $DIR_LOGS_ROOT . '/facebook_objects', $fb_id, $dba);
 	}
@@ -183,13 +184,17 @@ function findMember($CREATE_MEMBER_STATUS = false, $libfm_filename, $dba) {
 	if ($handle = opendir($libfm_filename)) {
 		while (false !== ($entry = readdir($handle))) {
 			if ($entry != "." && $entry != "..") {
+				// echo "$entry\n";
 				$libfm_objects = json_decode(file_get_contents($libfm_filename . '/' . $entry), true);
 				$fb_id = $libfm_objects['FB_ID'];
+				$email = $libfm_objects['EMAIL'];
+				$subscribe = $libfm_objects['SUBSCRIBING'];
+
 				array_push($fb_id_array, $fb_id);
 
 				/*=====  create fb_id, uniq_id table  =====*/
 				if ($CREATE_MEMBER_STATUS) {
-					createMemberTable($dba, $libfm_objects['DATA'], $fb_id);
+					createMemberTable($dba, $libfm_objects['DATA'], $fb_id, $email, $subscribe);
 				}
 			}
 		}
@@ -198,11 +203,13 @@ function findMember($CREATE_MEMBER_STATUS = false, $libfm_filename, $dba) {
 	return $fb_id_array;
 }
 
-function createMemberTable($dba, $data, $fb_id) {
+function createMemberTable($dba, $data, $fb_id, $email, $subscribe) {
 	$dba->_execute(
-		'INSERT INTO fb_id VALUE (0,:fbId)',
+		'INSERT INTO fb_id VALUE (0,:fbId,:email,:subscribe)',
 		array(
 			':fbId' => $fb_id,
+			':email' => $email,
+			':subscribe' => $subscribe,
 		)
 	);
 	foreach ($data as $uniqId => $item) {

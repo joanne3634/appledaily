@@ -19,6 +19,7 @@ var USER_PROFILE = {
     'fbId': 'na',
     'fbToken': 'na',
     'subscribe': 0,
+    'email': 'na',
     'timeRecording': {
         'timingType': 0, // 0->start, 1->end
         'startLanding': 0,
