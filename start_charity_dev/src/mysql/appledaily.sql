@@ -3,12 +3,18 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: localhost:8889
--- 產生時間： 2016 年 04 月 01 日 00:25
+-- 產生時間： 2016 年 04 月 07 日 05:13
 -- 伺服器版本: 5.5.38
 -- PHP 版本： 5.6.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- 資料庫： `appledaily`
@@ -86,7 +92,9 @@ CREATE TABLE `fb_gender` (
 
 CREATE TABLE `fb_id` (
 `id` int(11) NOT NULL,
-  `fb_id` varchar(100) NOT NULL
+  `fb_id` varchar(100) NOT NULL,
+  `email` varchar(288) NOT NULL,
+  `subscribe` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -255,3 +263,6 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 ALTER TABLE `user`
 MODIFY `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '流水號';
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

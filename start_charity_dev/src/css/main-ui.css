@@ -1,3 +1,7 @@
+nav {
+    z-index: 10;
+}
+
 .iframe-style {
     width: 100%;
     height: 500px;
@@ -78,17 +82,241 @@ a#check-login-button {
 }
 
 #old-member a {
-    width: 190px;
+    width: 100%;
+    ;
+    margin-bottom: 5px;
+}
+
+section#why {
+    color: #5C5C5C;
+    padding: 20px 0px;
+}
+
+section#why h2 {
+    padding: 30px 0px 10px 0px;
+    font-size: 3em;
+    font-weight: 300;
+}
+
+section#why blockquote {
+    font-size: 1.2em;
+    border-left: 5px solid #26A69A;
+    font-weight: 300;
+}
+
+section#why .btn-large {
+    color: #5c5c5c;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+section {
+    background-color: #fff;
+}
+
+section#how,
+section#who {
+    background-color: #EDEDED;
+}
+
+section#how .content {
+    font-size: 17px;
+    padding: 19px 40px;
+    color: #5C5C5C;
+}
+
+section#how .step-button {
+    display: inline-block;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    width: 37px;
+    height: 37px;
+    line-height: 37px;
+    padding: 0;
+    background-color: #26a69a;
+    border-radius: 50%;
+    transition: .3s;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+section#how .center {
+    right: 21px;
+    bottom: 10px;
+}
+
+section#how h5 {
+    font-size: 25px;
+}
+
+section h2.header {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 300;
+    padding-top: 10px;
+    margin-bottom: 0px;
+}
+
+section#how .section {
+    border-left: 4px dashed #009688;
+}
+
+section#how .container,
+section#who .container,
+section#FQ .container,
+section#famous {
+    padding: 20px 5px 50px 5px;
+}
+
+section#how .third .content {
+    padding-bottom: 0px;
+}
+
+section#how .section {
+    margin-top: 2rem;
+    padding: 0px;
 }
 
 h1.header {
     font-size: 3.5rem;
 }
 
+.who-content {
+    margin: 10px 0px;
+    color: #5C5C5C;
+    font-size: 1.2em;
+}
+
+#who .partner img {
+    width: 100px;
+    margin: 0px 5px;
+}
+
+.img-container {
+    padding-top: 10px;
+    float: none;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .row .col .face {
+        float: none;
+        text-align: center;
+    }
+}
+
 @media (max-width: 768px) {
     h1.header {
         font-size: 3rem;
     }
+}
+
+hr {
+    border: #26A69A solid 2px;
+    margin-bottom: 30px;
+}
+
+.partner {
+    padding: 10px 0px;
+}
+
+.partner hr {
+    border: #5C5C5C solid 1px;
+    margin-bottom: 10px;
+}
+
+ul li {
+    color: #5C5C5C;
+}
+
+.testimonials .testimionals-avatar {
+    border-radius: 1000px;
+    height: 100px;
+    width: 100px;
+}
+
+.testimonials .testimionals-content:before,
+.testimonials .testimionals-content:after {
+    content: '“';
+    font-size: 20px;
+    line-height: 16px;
+}
+
+.testimonials .testimionals-content:after {
+    content: '”';
+}
+
+.testimionals-content,
+.testimionals-author {
+    padding: 5px 0px 0px 20px;
+    color: #5C5C5C;
+}
+
+.col.l6.testimionals-testimional {
+    padding-top: 10px;
+}
+
+
+/* ---- reset ---- */
+
+canvas {
+    display: block;
+    vertical-align: bottom;
+}
+
+
+/* ---- particles.js container ---- */
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    background-image: url("");
+    background-repeat: no-repeat;
+    background-size: 2%;
+    background-position: 50% 50%;
+}
+
+
+/* ---- stats.js ---- */
+
+.count-particles {
+    background: #000022;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    width: 80px;
+    color: #13E8E9;
+    font-size: .8em;
+    text-align: left;
+    text-indent: 4px;
+    line-height: 14px;
+    padding-bottom: 2px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+
+.js-count-particles {
+    font-size: 1.1em;
+}
+
+#stats,
+.count-particles {
+    -webkit-user-select: none;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+#stats {
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+}
+
+.count-particles {
+    border-radius: 0 0 3px 3px;
 }
 
 .cd-top {

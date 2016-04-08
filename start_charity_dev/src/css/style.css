@@ -9,6 +9,7 @@
  */
 
 body {
+    background: #048E81;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -16,6 +17,7 @@ body {
 
 main {
     flex: 1 0 auto;
+    background-color: #fff;
 }
 
 nav ul a,
