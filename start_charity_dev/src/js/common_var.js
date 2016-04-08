@@ -75,7 +75,8 @@ var MY_URLS = {
     'recordTimeStart': 'src/php/record_time_start.php',
     'recordException': 'src/php/record_exception.php',
     'recordFbObject': 'src/php/record_fb_objects.php',
-    'recordLibfm': 'src/php/record_libfm_objects.php'
+    'recordLibfm': 'src/php/record_libfm_objects.php',
+    'recordOther': 'src/php/record_other.php'
 };
 
 var MY_FORMS = {

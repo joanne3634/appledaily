@@ -23,6 +23,7 @@ function ClickAfterQuestionaireBtn() {
     var msg = saveQuestionaire();
     if (!BOOL_VARS.isTesting) {
         if (msg != 'success') {
+            console.log(msg);
             Materialize.toast('欄位是空的 請完成', 3000);
             $('html, body').animate({
                 scrollTop: $("#questionaire-" + msg).offset().top - 120

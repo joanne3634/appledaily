@@ -42,7 +42,7 @@ function LoadSubscribingPage() {
         $.get(MY_PAGES.subscribingPage, function(data) {
             $('#subscribingPage').html(data);
             hideAllPage();
-            if ( USER_PROFILE.subscribe != 0 ) {
+            if (USER_PROFILE.subscribe != 0) {
                 $('#email').val(USER_PROFILE.email);
                 $("#subscribing-frequency select option[value='0']").attr('selected', false);
                 $("#subscribing-frequency select option[value='" + USER_PROFILE.subscribe + "']").attr('selected', true);
@@ -495,13 +495,36 @@ function saveQuestionaire() {
     var msg = 'success';
     $.each(USER_PROFILE.questionaire, function(i, v) {
         var check_value = [];
+        console.log( i );
         if (i == ('gender' || 'charityWilling')) {
-            check_value[0] = $("#questionaire-" + i + " input[type='radio']:checked").val();
-            if (!check_value || check_value == null) {
+            tmp = $("#questionaire-" + i + " input[type='radio']:checked").val();
+            console.log( tmp );
+            if (!tmp || tmp == null) {
                 msg = i;
                 return false;
+            }else{
+                check_value[0] = tmp;
             }
         } else {
+
+            if (i == 'charityTendency') {
+                var otherCheck = getFormData('questionaire-charityTendency');
+                var otherIndex = $.map(QUESTIONAIRE_FORM_TEXTS['charityTendencyOpts'], function(val, key) {
+                    if (val['label'] == '其他') {
+                        return (val['index']);
+                    }
+                })
+                var other = $('#charityTendencyOther').val();
+                if ($.inArray(otherIndex + '', otherCheck) != -1) { // 選了其他 
+                    if ( other.length ) { // 有填其他
+                        SaveOther('charityTendencyOther', $('#charityTendencyOther').val());
+                    } else { // 沒填
+                        msg = 'charityTendencyOther';
+                        return false;
+                    }
+                }
+            }
+
             check_value = getFormData('questionaire-' + i);
             if (!check_value.length) {
                 msg = i;
@@ -539,6 +562,35 @@ function SetSubscribe() {
         $.getJSON('www-data/libfm_objects/' + USER_PROFILE.fbId + '_libfm.json', function(json) {
             USER_PROFILE.subscribe = json['SUBSCRIBING'];
             USER_PROFILE.email = json['EMAIL'];
+        });
+    }, 10);
+}
+
+function SaveOther(name, value) {
+    setTimeout(function() {
+        $.ajax({
+            url: MY_URLS.recordOther,
+            type: 'post',
+            dataType: 'json',
+            data: {
+                name: name,
+                value: value,
+                uid: USER_PROFILE.uniqId,
+                fbid: USER_PROFILE.fbId
+            },
+            success: function(data, textStatus, jqXHR) {
+                if (BOOL_VARS.isTesting) {
+                    console.log('[success] SaveOther');
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                if (BOOL_VARS.isTesting) {
+                    console.log('[fail] SaveOther');
+                }
+                console.log(jqXHR);
+                EXPERIMENT_PROFILE.exceptionMsg = ' [fail] SaveOther: ' + textStatus + ' : ' + errorThrown;
+                RecordException();
+            }
         });
     }, 10);
 }
