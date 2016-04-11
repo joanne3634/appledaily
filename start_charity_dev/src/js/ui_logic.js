@@ -153,6 +153,15 @@ function ClickNavigateBefore() {
     EnableNaviationBtn();
 }
 
+function promptSurveyOver() {
+    $('#modal1').openModal({
+        dismissible: true,
+        opacity: .6,
+        in_duration: 300,
+        out_duration: 500
+    });
+}
+
 function ClickNavigateNext() {
     if (!BOOL_VARS.isTesting) {
         if ($('#navigate-next').hasClass('disabled')) {
@@ -161,7 +170,7 @@ function ClickNavigateNext() {
     }
     var currentIdx = ROUND_PROFILE.caseIndex;
     if (currentIdx == EXPERIMENT_PROFILE.numCases - 1) {
-        ClickAfterSurveyBtn();
+        promptSurveyOver();
     }
     if (currentIdx < (EXPERIMENT_PROFILE.numCases - 1)) {
         ROUND_PROFILE.caseIndex = ROUND_PROFILE.caseIndex + 1;

@@ -99,7 +99,7 @@ section#why h2 {
 }
 
 section#why blockquote {
-    font-size: 1.2em;
+    font-size: 1.1em;
     border-left: 5px solid #26A69A;
     font-weight: 300;
 }
@@ -115,12 +115,13 @@ section {
 }
 
 section#how,
-section#who {
+section#who,
+section#FQ {
     background-color: #EDEDED;
 }
 
 section#how .content {
-    font-size: 17px;
+    font-size: 1.1em;
     padding: 19px 40px;
     color: #5C5C5C;
 }
@@ -165,6 +166,7 @@ section#how .section {
 
 section#how .container,
 section#who .container,
+section#partner .container,
 section#FQ .container,
 section#famous {
     padding: 20px 5px 50px 5px;
@@ -186,11 +188,12 @@ h1.header {
 .who-content {
     margin: 10px 0px;
     color: #5C5C5C;
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 
-#who .partner img {
-    width: 100px;
+#partner img {
+    max-height: 70px;
+    max-width: 220px;
     margin: 0px 5px;
 }
 
@@ -198,6 +201,10 @@ h1.header {
     padding-top: 10px;
     float: none;
     text-align: center;
+}
+
+#FQ ul li {
+    font-size: 1.1em;
 }
 
 @media (max-width: 600px) {
@@ -216,15 +223,6 @@ h1.header {
 hr {
     border: #26A69A solid 2px;
     margin-bottom: 30px;
-}
-
-.partner {
-    padding: 10px 0px;
-}
-
-.partner hr {
-    border: #5C5C5C solid 1px;
-    margin-bottom: 10px;
 }
 
 ul li {
@@ -250,6 +248,7 @@ ul li {
 
 .testimionals-content,
 .testimionals-author {
+    font-size: 1.1em;
     padding: 5px 0px 0px 20px;
     color: #5C5C5C;
 }

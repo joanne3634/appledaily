@@ -52,24 +52,23 @@
         </div>
     </div>
 </div>
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content center" style="padding: 24px 24px 0 24px">
+        <h4>提交確認</h4>
+        <p>請問您確定不再修改測驗內容?</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" id="disagree-submit" class="modal-action modal-close waves-effect waves-red btn-flat">取消</a>
+        <a href="#!" id="agree-submit" class="modal-action modal-close waves-effect waves-green btn-flat">確認</a>
+    </div>
+</div>
 <script type="text/javascript">
 $(document).ready(function() {
 
     $('#navigate-before').click(ClickNavigateBefore);
     $('#navigate-next').click(ClickNavigateNext);
-    
-    // $('.modal-trigger').leanModal({
-    //     dismissible: false, // Modal can be dismissed by clicking outside of the modal
-    //     opacity: .5, // Opacity of modal background
-    //     in_duration: 300, // Transition in duration
-    //     out_duration: 200, // Transition out duration
-    //     ready: function() {
-    //         alert('Ready');
-    //     }, // Callback for Modal open
-    //     complete: function() {
-    //             alert('Closed');
-    //         } // Callback for Modal close
-    // });
+    $('#agree-submit').click(ClickAfterSurveyBtn);
 
 });
 </script>

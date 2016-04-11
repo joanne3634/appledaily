@@ -55,7 +55,7 @@
 
 			$data['USER'] = array();
 
-				/*=============== 初始化問券內容(儲存所有題目包含0) ==================*/
+				/*=============== 初始化問卷內容(儲存所有題目包含0) ==================*/
 				foreach( $QUESTIONAIRE_DATASET as $key => $value ){
 					foreach( $value as $keyOfvalue => $item ){
 						$data['USER'][$key.'-'.$keyOfvalue] = 0;
@@ -63,7 +63,7 @@
 				}
 				$data['USER']['charityWilling'] = -1;
 
-				/*=============== 儲存問券內容 ==================*/
+				/*=============== 儲存問卷內容 ==================*/
 				$USER_QUESTIONAIRE = json_decode($_POST['USER_QUESTIONAIRE'],true);
 				if( $USER_QUESTIONAIRE['gender'] == 'na'){ // 沒有做問卷從舊資料抓
 					$data['USER'] = $libfm['USER'];
