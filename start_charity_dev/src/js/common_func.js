@@ -376,19 +376,19 @@ function RecordTimeStart() {
 function SetupCases() {
     var ret = [];
     var aid = '',
-        cover = '',
+        // cover = '',
         title = '',
         article = '';
     for (var i = 0; i < EXPERIMENT_PROFILE.numCases; i++) {
-        aid = 'A1472';
-        cover = 'db_covers_1590/A1472.jpg';
-        title = '夫猝逝 婦扛20萬債茫然';
-        article = 'db_articles_1590/A1472.htm';
+        aid = 'A3565';
+        // cover = 'db_covers_1590/A1472.jpg';
+        title = '孝女喝湯果腹 打工養家';
+        article = 'db_articles/A3565.htm';
 
         var myObj = {};
         myObj['id'] = 'case_' + (i + 1).toString();
         myObj['aid'] = aid;
-        myObj['cover'] = cover;
+        // myObj['cover'] = cover;
         myObj['title'] = title;
         myObj['article'] = article;
         myObj['score'] = 'na';
@@ -405,7 +405,7 @@ function RandomAssignCases() {
         indexPoped = Math.floor(Math.random() * EXPERIMENT_PROFILE.aidList.length);
         aidPoped = EXPERIMENT_PROFILE.aidList.splice(indexPoped, 1);
         EXPERIMENT_PROFILE.cases[i]['aid'] = EXPERIMENT_PROFILE.titleList[aidPoped]['aid'];
-        EXPERIMENT_PROFILE.cases[i]['cover'] = EXPERIMENT_PROFILE.titleList[aidPoped]['cover'];
+        // EXPERIMENT_PROFILE.cases[i]['cover'] = EXPERIMENT_PROFILE.titleList[aidPoped]['cover'];
         EXPERIMENT_PROFILE.cases[i]['title'] = EXPERIMENT_PROFILE.titleList[aidPoped]['title'];
         EXPERIMENT_PROFILE.cases[i]['article'] = EXPERIMENT_PROFILE.titleList[aidPoped]['article'];
         EXPERIMENT_PROFILE.cases[i]['score'] = 'na';

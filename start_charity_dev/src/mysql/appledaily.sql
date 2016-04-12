@@ -23,7 +23,6 @@ SET time_zone = "+00:00";
 CREATE TABLE `article` (
 `id` int(11) NOT NULL,
   `aid` varchar(20) NOT NULL,
-  `cover` varchar(288) NOT NULL,
   `article` varchar(288) NOT NULL,
   `title` varchar(288) NOT NULL,
   `url` varchar(288) NOT NULL

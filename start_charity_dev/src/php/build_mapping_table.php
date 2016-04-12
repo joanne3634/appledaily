@@ -119,7 +119,7 @@ function createFbRelateTable($CREATE_FB_FAVORITE_STATUS = false, $CREATE_FB_LIKE
 }
 
 function createArticleTable($dba) {
-	$article_filename = '../../db_lists/titles_1590.json';
+	$article_filename = '../../db_lists/titles.json';
 	$article_objects = json_decode(file_get_contents($article_filename), true);
 
 	foreach ($article_objects as $index => $value) {
