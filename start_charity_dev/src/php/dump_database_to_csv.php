@@ -15,7 +15,7 @@ $database = array(
 	"fb_favorite" => array('id', 'fav_id', 'fav_name', 'fav_type'),
 	"fb_category_list" => array('id', 'cl_name', 'cl_id', 'c_name'),
 	"fb_category" => array('id', 'c_name'),
-	"article" => array('id', 'aid', 'article', 'cover', 'title', 'url'),
+	"article" => array('id', 'aid', 'article', 'title', 'url'),
 );
 
 foreach ($database as $table => $column) {

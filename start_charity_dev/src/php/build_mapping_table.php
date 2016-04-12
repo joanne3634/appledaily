@@ -124,11 +124,10 @@ function createArticleTable($dba) {
 
 	foreach ($article_objects as $index => $value) {
 		$dba->_execute(
-			'INSERT INTO article VALUE (0,:aid,:article,:cover,:title,:url)',
+			'INSERT INTO article VALUE (0,:aid,:article,:title,:url)',
 			array(
 				':aid' => $value['aid'],
 				':article' => $value['article'],
-				':cover' => $value['cover'],
 				':title' => str_replace(' ', '_', $value['title']),
 				':url' => $value['url'],
 			)

@@ -50,7 +50,7 @@ nav {
     bottom: 86%;
 }
 
-a#check-login-button {
+a[id^='check-login-button'] {
     width: 170px;
 }
 
@@ -81,9 +81,8 @@ a#check-login-button {
     font-size: 1.2em;
 }
 
-#old-member a {
+div[id^='old-member'] a {
     width: 100%;
-    ;
     margin-bottom: 5px;
 }
 
@@ -126,6 +125,9 @@ section#how .content {
     color: #5C5C5C;
 }
 
+section#how .how-login-container{
+    padding-top: 30px;
+}
 section#how .step-button {
     display: inline-block;
     color: #fff;
@@ -197,6 +199,10 @@ h1.header {
     margin: 0px 5px;
 }
 
+#partner-container {
+    text-align: center;
+}
+
 .img-container {
     padding-top: 10px;
     float: none;
@@ -205,6 +211,10 @@ h1.header {
 
 #FQ ul li {
     font-size: 1.1em;
+}
+
+#FQ .collapsible-body {
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 @media (max-width: 600px) {

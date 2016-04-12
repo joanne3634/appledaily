@@ -264,27 +264,28 @@ function SetShortcuts() {
 function TitleListLoading() {
     $.get(MY_URLS.titleList, function(data) {
         EXPERIMENT_PROFILE.titleList = data;
-        AidListLoading();
+        EXPERIMENT_PROFILE.aidList = Object.keys(data).sort().reverse().splice(0,EXPERIMENT_PROFILE.totalArticles);
     });
 }
 
-function AidListLoading() {
-    $.get(MY_URLS.aidListHighOrder, function(data) { // article id 由高排到低 
-        if (data.length != 0) {
-            EXPERIMENT_PROFILE.aidList = data.split('\n');
-            EXPERIMENT_PROFILE.aidList = EXPERIMENT_PROFILE.aidList.filter(function(value) {
-                return value != '';
-            });
-        } else {
-            $.get(MY_URLS.aidList, function(data2) {
-                EXPERIMENT_PROFILE.aidList = data2.split('\n');
-                EXPERIMENT_PROFILE.aidList = EXPERIMENT_PROFILE.aidList.filter(function(value) {
-                    return value != '';
-                });
-            });
-        }
-    });
-}
+
+// function AidListLoading() {
+//     $.get(MY_URLS.aidListHighOrder, function(data) { // article id 由高排到低 
+//         if (data.length != 0) {
+//             EXPERIMENT_PROFILE.aidList = data.split('\n');
+//             EXPERIMENT_PROFILE.aidList = EXPERIMENT_PROFILE.aidList.filter(function(value) {
+//                 return value != '';
+//             });
+//         } else {
+//             $.get(MY_URLS.aidList, function(data2) {
+//                 EXPERIMENT_PROFILE.aidList = data2.split('\n');
+//                 EXPERIMENT_PROFILE.aidList = EXPERIMENT_PROFILE.aidList.filter(function(value) {
+//                     return value != '';
+//                 });
+//             });
+//         }
+//     });
+// }
 
 function GetRandomCharacter() {
     var text = "";

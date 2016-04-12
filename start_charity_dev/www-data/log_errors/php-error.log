@@ -1,10 +1,13 @@
-[04-Jan-2016 14:47:51 Asia/Chongqing] PHP Notice:  Undefined index: type in /home/cslin/public_html/start_charity_dev/src/php/record_time_start.php on line 37
-[04-Jan-2016 14:49:08 Asia/Chongqing] PHP Notice:  Undefined index: type in /home/cslin/public_html/start_charity_dev/src/php/record_time_start.php on line 37
-[04-Jan-2016 14:49:10 Asia/Chongqing] PHP Notice:  Undefined index: type in /home/cslin/public_html/start_charity_dev/src/php/record_time_start.php on line 37
-[04-Jan-2016 15:07:58 Asia/Chongqing] PHP Notice:  Undefined index: type in /home/cslin/public_html/start_charity_dev/src/php/record_time_start.php on line 37
-[04-Jan-2016 15:07:59 Asia/Chongqing] PHP Notice:  Undefined index: type in /home/cslin/public_html/start_charity_dev/src/php/record_time_start.php on line 37
-[04-Jan-2016 15:11:23 Asia/Chongqing] PHP Notice:  Undefined index: type in /home/cslin/public_html/start_charity_dev/src/php/record_time_start.php on line 37
-[04-Jan-2016 15:11:25 Asia/Chongqing] PHP Notice:  Undefined index: type in /home/cslin/public_html/start_charity_dev/src/php/record_time_start.php on line 37
-[04-Jan-2016 15:17:39 Asia/Chongqing] PHP Notice:  Undefined index: type in /home/cslin/public_html/start_charity_dev/src/php/record_time_start.php on line 37
-[04-Jan-2016 15:20:13 Asia/Chongqing] PHP Notice:  Undefined index: type in /home/cslin/public_html/start_charity_dev/src/php/record_time_start.php on line 37
-[04-Jan-2016 15:21:25 Asia/Chongqing] PHP Notice:  Undefined index: type in /home/cslin/public_html/start_charity_dev/src/php/record_time_start.php on line 37
+[12-Apr-2016 08:59:41 Europe/Berlin] PHP Warning:  file_get_contents(../../www-data/libfm_objects/10208714434367191_libfm.json): failed to open stream: No such file or directory in /Applications/MAMP/htdocs/appledaily/start_charity_dev/src/php/record_libfm_objects.php on line 18
+[12-Apr-2016 08:59:41 Europe/Berlin] PHP Notice:  Undefined index: EMAIL in /Applications/MAMP/htdocs/appledaily/start_charity_dev/src/php/record_libfm_objects.php on line 29
+[12-Apr-2016 08:59:41 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /Applications/MAMP/htdocs/appledaily/start_charity_dev/src/php/record_libfm_objects.php on line 160
+[12-Apr-2016 08:59:41 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /Applications/MAMP/htdocs/appledaily/start_charity_dev/src/php/record_libfm_objects.php on line 160
+[12-Apr-2016 08:59:41 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /Applications/MAMP/htdocs/appledaily/start_charity_dev/src/php/record_libfm_objects.php on line 160
+[12-Apr-2016 08:59:41 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /Applications/MAMP/htdocs/appledaily/start_charity_dev/src/php/record_libfm_objects.php on line 160
+[12-Apr-2016 08:59:41 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /Applications/MAMP/htdocs/appledaily/start_charity_dev/src/php/record_libfm_objects.php on line 160
+[12-Apr-2016 08:59:41 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /Applications/MAMP/htdocs/appledaily/start_charity_dev/src/php/record_libfm_objects.php on line 160
+[12-Apr-2016 08:59:41 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /Applications/MAMP/htdocs/appledaily/start_charity_dev/src/php/record_libfm_objects.php on line 160
+[12-Apr-2016 08:59:41 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /Applications/MAMP/htdocs/appledaily/start_charity_dev/src/php/record_libfm_objects.php on line 160
+[12-Apr-2016 08:59:41 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /Applications/MAMP/htdocs/appledaily/start_charity_dev/src/php/record_libfm_objects.php on line 160
+[12-Apr-2016 08:59:41 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /Applications/MAMP/htdocs/appledaily/start_charity_dev/src/php/record_libfm_objects.php on line 160
+[12-Apr-2016 08:59:41 Europe/Berlin] PHP Warning:  Invalid argument supplied for foreach() in /Applications/MAMP/htdocs/appledaily/start_charity_dev/src/php/record_libfm_objects.php on line 160

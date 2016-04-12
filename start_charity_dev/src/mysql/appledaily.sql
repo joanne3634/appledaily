@@ -3,18 +3,12 @@
 -- http://www.phpmyadmin.net
 --
 -- 主機: localhost:8889
--- 產生時間： 2016 年 04 月 07 日 05:13
+-- 產生時間： 2016 年 04 月 12 日 09:49
 -- 伺服器版本: 5.5.38
 -- PHP 版本： 5.6.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
 --
 -- 資料庫： `appledaily`
@@ -29,8 +23,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `article` (
 `id` int(11) NOT NULL,
   `aid` varchar(20) NOT NULL,
-  `article` varchar(288) NOT NULL,
   `cover` varchar(288) NOT NULL,
+  `article` varchar(288) NOT NULL,
   `title` varchar(288) NOT NULL,
   `url` varchar(288) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -131,7 +125,14 @@ CREATE TABLE `uniq_id` (
 `id` int(11) NOT NULL,
   `uniq_id` varchar(30) NOT NULL,
   `fb_id` varchar(200) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- 資料表的匯出資料 `uniq_id`
+--
+
+INSERT INTO `uniq_id` (`id`, `uniq_id`, `fb_id`) VALUES
+(1, '1460444363403Xgg', '10208714434367191');
 
 -- --------------------------------------------------------
 
@@ -257,12 +258,9 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- 使用資料表 AUTO_INCREMENT `uniq_id`
 --
 ALTER TABLE `uniq_id`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- 使用資料表 AUTO_INCREMENT `user`
 --
 ALTER TABLE `user`
 MODIFY `id` int(10) NOT NULL AUTO_INCREMENT COMMENT '流水號';
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -109,7 +109,7 @@ function BeforeRoundStart() {
     ROUND_PROFILE.caseStart = GetCurrentTimeMilli();
     ROUND_PROFILE.caseRound = currentIdx + 1;
 
-    $('#round-text').text('第 ' + String(ROUND_PROFILE.caseRound) + ' 回合 (共 ' + String(EXPERIMENT_PROFILE.numCases) + ' 回合)');
+    // $('#round-text').text('第 ' + String(ROUND_PROFILE.caseRound) + ' 回合 (共 ' + String(EXPERIMENT_PROFILE.numCases) + ' 回合)');
     $('#case-title-text').text(ROUND_PROFILE.caseTitle);
     $('#article-iframe').attr('src', ROUND_PROFILE.caseArticle);
 }
@@ -203,21 +203,21 @@ function checkMemberStatus() {
 
 function showStartButton() {
     if (checkMemberStatus()) {
-        $('#old-member').show();
-        $('#new-member').hide();
+        $("div[id^='old-member']").show();
+        $("div[id^='new-member']").hide();
     } else {
-        $('#old-member').hide();
-        $('#new-member').show();
+        $("div[id^='old-member']").hide();
+        $("div[id^='new-member']").show();
     }
-    $('#before-login').hide();
-    $('#check-login').hide();
+    $("div[id^='before-login']").hide();
+    $("div[id^='check-login']").hide();
 }
 
 function showLoginButton() {
-    $('#old-member').hide();
-    $('#before-login').show();
-    $('#new-member').hide();
-    $('#check-login').hide();
+    $("div[id^='old-member']").hide();
+    $("div[id^='before-login']").show();
+    $("div[id^='new-member']").hide();
+    $("div[id^='check-login']").hide();
 }
 
 function StatusChangeCallback(response) {

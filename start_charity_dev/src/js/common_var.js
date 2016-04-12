@@ -1,5 +1,5 @@
 var BOOL_VARS = {
-    'isTesting': false,
+    'isTesting': true,
     'turnOffLogin': true
 };
 
@@ -11,8 +11,6 @@ var MY_PAGES = {
     'thankPage': 'src/html/thank-page.html'
 };
 
-// var FACEBOOK_TOKEN = 'na';
-// var FACEBOOK_UID = 'na';
 var USER_PROFILE = {
     'ip': 'na',
     'uniqId': 'na',
@@ -53,6 +51,7 @@ var EXPERIMENT_PROFILE = {
     'hashKey': 'na',
     'exceptionMsg': 'na',
     'numCases': 10,
+    'totalArticles': 200,
     'cases': null // charity common_var var TITLES 
 };
 
@@ -70,13 +69,13 @@ var ROUND_PROFILE = {
 var MY_URLS = {
     'getIp': 'src/php/get_ip.php',
     'titleList': 'db_lists/titles_1590.json',
-    'aidList': 'db_lists/aids.csv',
-    'aidListHighOrder': 'db_lists/aids_high_order.csv',
+    // 'aidList': 'db_lists/aids.csv',
+    // 'aidListHighOrder': 'db_lists/aids_high_order.csv', //需要優先出現在實驗中的 ID 列表
     'recordTimeStart': 'src/php/record_time_start.php',
     'recordException': 'src/php/record_exception.php',
     'recordFbObject': 'src/php/record_fb_objects.php',
     'recordLibfm': 'src/php/record_libfm_objects.php',
-    'recordOther': 'src/php/record_other.php'
+    'recordOther': 'src/php/record_other.php' // 問卷紀錄其他使用者自填 
 };
 
 var MY_FORMS = {

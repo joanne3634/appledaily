@@ -1,0 +1,30 @@
+{
+    "data": [
+        {
+            "name": "Sheng-Wei Kuan-Ta Chen",
+            "id": "10204854160448430"
+        },
+        {
+            "name": "Chih-Fan Hsu",
+            "id": "10205655672929596"
+        },
+        {
+            "name": "Erin Tu",
+            "id": "1146605115358719"
+        },
+        {
+            "name": "Helen Afterglow",
+            "id": "1108512335842134"
+        },
+        {
+            "name": "張鈞閔",
+            "id": "1221003141262257"
+        }
+    ],
+    "paging": {
+        "next": "https://graph.facebook.com/v2.3/10208714434367191/friends?access_token=EAAE3IDZAJ0nMBAKnZC2RwO6P4ZA4wGgAQKJQdMA5TFZArdEIfNnF2ioncSRbKYZBPocZAu6toWguID1AWw4nP7VEGqflHNTw0SZB2wUZBMuQZBL3PbaSc8BOFNfMhNZBZAXqz3O2qoeBpuaMdNnwE0nzSKoZAer0relsB2OFdGesgRl26AZDZD&limit=25&offset=25&__after_id=enc_AdDtHILwsRbrmdlka0Qr0ioK9QRSMCOdfuaaZAB6O1GsAAnxtkP7Je7hPwsOIxxAGXOuvyXPXiVPCsFsUIZCkCRmL4"
+    },
+    "summary": {
+        "total_count": 807
+    }
+}

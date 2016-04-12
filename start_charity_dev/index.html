@@ -28,7 +28,6 @@
     <link type="text/css" rel="stylesheet" href="//cdn.jsdelivr.net/fontawesome/4.5.0/css/font-awesome.min.css" />
     <link type="text/css" rel="stylesheet" href="//cdn.jsdelivr.net/jquery.jssocials/1.1.0/jssocials.css" />
     <link type="text/css" rel="stylesheet" href="//cdn.jsdelivr.net/jquery.jssocials/1.1.0/jssocials-theme-flat.css" />
-    <!-- <link rel="manifest" href="src/img/ico/manifest.json"> -->
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
@@ -111,7 +110,6 @@
         <section id="why">
             <div class="container">
                 <div class="section">
-                    <!--   Icon Section   -->
                     <!-- <h2 class="center">WHY?</h2> -->
                     <blockquote>那些遭逢巨變且急需幫助的家庭，不僅需要您的愛心，也需要更多人共同建構社會的這張保護網。我們希望，為每個捐款人找到最適合且最需要捐助的弱勢家庭，除了能為他們帶來一場及時雨，也藉由這個平台，讓我們更了解捐款者的意願以及行為。</blockquote>
                     <div class="row center">
@@ -158,11 +156,47 @@
                         </div> -->
                     </div>
                 </div>
+                <div class="row center how-login-container">
+                    <div id="old-member-in-how" class="row center" style="display:none;">
+                        <div class="col s12 m12 l4">
+                            <a id="re-ques-button-in-how" class="btn-large waves-effect waves-light teal">重填問卷及測驗</a>
+                        </div>
+                        <div class="col s12 m12 l4">
+                            <a id="update-subscribe-button-in-how" class="btn-large waves-effect waves-light teal">更新訂閱頻率</a>
+                        </div>
+                        <div class="col s12 m12 l4">
+                            <a id="replay-button-in-how" class="btn-large waves-effect waves-light teal">多評一回文章<i class="right material-icons">replay</i></a>
+                        </div>
+                    </div>
+                    <div id="new-member-in-how" class="row center" style="display:none;">
+                        <a id="start-button-in-how" class="btn-large waves-effect waves-light teal">開始填基本資料</a>
+                    </div>
+                    <div id="before-login-in-how" class="row center" style="display:none;">
+                        <a id="before-login-button-in-how" class="btn-large waves-effect waves-light teal">請登入才能開始測驗</a>
+                    </div>
+                    <div id="check-login-in-how" class="row center">
+                        <a id="check-login-button-in-how" class="btn-large disabled">檢查登入狀態...
+                            <div id="preloader" class="preloader-wrapper small active">
+                                <div class="spinner-layer spinner-blue-only">
+                                    <div class="circle-clipper left">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="gap-patch">
+                                        <div class="circle"></div>
+                                    </div>
+                                    <div class="circle-clipper right">
+                                        <div class="circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
         <section id="famous">
             <div class="container testimonials">
-                <h2 class="header">名人捐款</h2>
+                <h2 class="header">Celebrity devotion</h2>
                 <hr align="center" width="80px">
                 <div class="row">
                     <div class="col l6 testimionals-testimional">
@@ -196,149 +230,100 @@
         </section>
         <section id="partner">
             <div class="container">
-                <h2 class="header">協力夥伴</h2>
+                <h2 class="header">Our partners</h2>
                 <hr align="center" width="80px">
-                <a href="http://npost.tw/" target="_blank">
-                    <img src="src/img/partner/NPOst.png">
-                    <!-- height="360" width="640"  -->
-                </a>
-                <a href="http://ocf.tw/" target="_blank">
-                    <img src="src/img/partner/ocf.png">
-                </a>
-                <a href="http://www.appledaily.com.tw/charity" target="_blank">
-                    <img src="src/img/partner/applecharity.jpg">
-                </a>
-                <a href="http://www.twnpos.org.tw/" target="_blank">
-                    <img src="src/img/partner/npo-self-reg.jpg">
-                </a>
+                <div id="partner-container">
+                    <a href="http://npost.tw/" target="_blank">
+                        <img src="src/img/partner/NPOst.png">
+                    </a>
+                    <a href="http://ocf.tw/" target="_blank">
+                        <img src="src/img/partner/ocf.png">
+                    </a>
+                    <a href="http://www.appledaily.com.tw/charity" target="_blank">
+                        <img src="src/img/partner/applecharity.jpg">
+                    </a>
+                    <a href="http://www.twnpos.org.tw/" target="_blank">
+                        <img src="src/img/partner/npo-self-reg.jpg">
+                    </a>
+                </div>
             </div>
         </section>
         <section id="FQ">
             <div class="container">
                 <h2 class="header">FAQ</h2>
                 <hr align="center" width="80px">
-                <ul class="collapsible popout" data-collapsible="accordion">
+                <ul class="collapsible" data-collapsible="accordion">
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">add</i> <!-- Q1 : --> 如何透過蘋果日報慈善基金會捐款？</div>
-                        <div class="collapsible-body white">
+                        <div class="collapsible-header"><i class="material-icons">add</i>
+                            <!-- Q1 : -->如何透過蘋果日報慈善基金會捐款？</div>
+                        <div class="collapsible-body">
                             <p>
                                 <!-- A1 :  -->連結至《蘋果日報慈善基金會》首頁， 您可以下載捐款表格，進行信用卡或郵政劃撥、現金及支票……等任何形式的捐款。若要指定捐助對象，請填上「捐款編號」，即每篇個案報導最後所附的號碼。或致電 - (02) 6601-6999 - (02) 6601-6999、0809-008585、0809-008585 或電郵至 hope85@appledaily.com.tw 與蘋果日報慈善基金聯絡。
                             </p>
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">add</i><!--  Q2 :  -->蘋果基金會會開立發票嗎？</div>
-                        <div class="collapsible-body white">
+                        <div class="collapsible-header"><i class="material-icons">add</i>
+                            <!--  Q2 :  -->蘋果基金會會開立發票嗎？</div>
+                        <div class="collapsible-body">
                             <p>
                                 <!-- A2 :  -->對於捐款人的支持皆製發收據，每次捐款立開收據者，在您捐款入帳後15日內寄發；採「年度合開一張」者，基金會統一於每年2-3月間寄發，以利報稅扣繳列舉憑証。
                             </p>
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">add</i> <!-- Q3 : --> 若指定捐款個案，錢會全數轉交給個案嗎？</div>
-                        <div class="collapsible-body white">
+                        <div class="collapsible-header"><i class="material-icons">add</i>
+                            <!-- Q3 : -->若指定捐款個案，錢會全數轉交給個案嗎？</div>
+                        <div class="collapsible-body">
                             <p>
-                               <!--  A3 :  -->是的，基金會均全數轉交指定對象。
+                                <!--  A3 :  -->是的，基金會均全數轉交指定對象。
                             </p>
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">add</i> <!-- Q4 :  -->若不指定捐款對象，透過基金會轉贈的捐款將會作為何種用途？</div>
-                        <div class="collapsible-body white">
+                        <div class="collapsible-header"><i class="material-icons">add</i>
+                            <!-- Q4 :  -->若不指定捐款對象，透過基金會轉贈的捐款將會作為何種用途？</div>
+                        <div class="collapsible-body">
                             <p>
                                 <!-- A4 :  -->如蒙您「不指定」捐款，即共同匯入「急難救助金」，支持本會服務個案第一時間紓困及弱勢社福團體服務計畫。所有相關捐助手續費皆由《蘋果日報》支付。
                             </p>
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">add</i> <!-- Q5 :  -->請問如何查看基金會的帳務或是財報？</div>
-                        <div class="collapsible-body white">
+                        <div class="collapsible-header"><i class="material-icons">add</i>
+                            <!-- Q5 :  -->請問如何查看基金會的帳務或是財報？</div>
+                        <div class="collapsible-body">
                             <p>
                                 <!-- A5 :  -->基金會每年由會計師進行查帳，並將財報暨會務報告公告於《蘋果日報》，及基金會網頁之<a href="http://www.appledaily.com.tw/charity/finreport/" target="_blank">「財務報告」</a>，基金會免付費電話是0809008585。
                             </p>
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">add</i> <!-- Q6 :  -->基金會董事成員組成</div>
-                        <div class="collapsible-body white">
+                        <div class="collapsible-header"><i class="material-icons">add</i>
+                            <!-- Q6 :  -->基金會董事成員組成</div>
+                        <div class="collapsible-body">
                             <p>
-                             <!--    A6 :  -->蘋果日報慈善基金會的董事成員包括了社福界及財會法律背景之專業人士。
+                                <!--    A6 :  -->蘋果日報慈善基金會的董事成員包括了社福界及財會法律背景之專業人士。
                             </p>
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">add</i><!--  Q7 :  -->若捐款會全數捐出，如何支付工作人員薪水與行政支出？</div>
-                        <div class="collapsible-body white">
+                        <div class="collapsible-header"><i class="material-icons">add</i>
+                            <!--  Q7 :  -->若捐款會全數捐出，如何支付工作人員薪水與行政支出？</div>
+                        <div class="collapsible-body">
                             <p>
-                            <!--     A7 :  -->基金會工作人員及行政支出皆由蘋果日報支付，大眾捐助皆全數用於弱勢服務。
+                                <!--     A7 :  -->基金會工作人員及行政支出皆由蘋果日報支付，大眾捐助皆全數用於弱勢服務。
                     </li>
                 </ul>
                 <br>
                 <br>
-                <h5 class="center">Any more questions?<br><br><a href="mailto:swc@iis.sinica.edu.tw"class="btn-large waves-effect waves-light teal">Contact Us
+                <h5 class="center">Any more question?<br><br><a href="mailto:swc@iis.sinica.edu.tw"class="btn-large waves-effect waves-light teal">Contact Us
                         <i class="material-icons right">email</i>
                     </a></h5>
                 </div>
         </section>
-        <!--         <div class="parallax-container valign-wrapper">
-            <div class="section no-pad-bot">
-                <div class="container">
-                    <div class="row center">
-                        <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="parallax"><img src="src/img/background2.jpg" alt="Unsplashed background img 2"></div>
-        </div>
-        <div class="container">
-            <div class="section">
-                <div class="row">
-                    <div class="col s12 center">
-                        <h3><i class="mdi-content-send brown-text"></i></h3>
-                        <h4>Contact Us</h4>
-                        <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="parallax-container valign-wrapper">
-            <div class="section no-pad-bot">
-                <div class="container">
-                    <div class="row center">
-                        <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="parallax"><img src="src/img/background3.jpg" alt="Unsplashed background img 3"></div>
-        </div> -->
         </div>
         <footer class="page-footer teal">
-            <!--  <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">Company Bio</h5>
-                    <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-                </div>
-                <div class="col l3 s12">
-                    <h5 class="white-text">Settings</h5>
-                    <ul>
-                        <li><a class="white-text" href="#!">Link 1</a></li>
-                        <li><a class="white-text" href="#!">Link 2</a></li>
-                        <li><a class="white-text" href="#!">Link 3</a></li>
-                        <li><a class="white-text" href="#!">Link 4</a></li>
-                    </ul>
-                </div>
-                <div class="col l3 s12">
-                    <h5 class="white-text">Connect</h5>
-                    <ul>
-                        <li><a class="white-text" href="#!">Link 1</a></li>
-                        <li><a class="white-text" href="#!">Link 2</a></li>
-                        <li><a class="white-text" href="#!">Link 3</a></li>
-                        <li><a class="white-text" href="#!">Link 4</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div> -->
             <div class="footer-copyright">
                 <div class="center-align container">
                     Made by 曙光再現計劃
@@ -346,7 +331,6 @@
             </div>
         </footer>
         <a href="#0" class="cd-top">Top</a>
-        <!--  Scripts-->
         <!--  Scripts-->
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="src/js/materialize.js"></script>
@@ -361,8 +345,6 @@
         <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/1.1.0/jssocials.min.js"></script>
         <!-- particles.js lib - https://github.com/VincentGarreau/particles.js -->
         <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-        <!-- stats.js lib -->
-        <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
         <script src="src/js/particle_style.js"></script>
         <!-- my script -->
         <script type="text/javascript">
@@ -370,14 +352,15 @@
             BeforeLoadLanding();
             $('#landingPage').show();
             AfterLoadLanding();
+
             $('.collapsible').collapsible({
                 accordion: false
             });
 
-            $('#before-login-button').click(ClickLoginBtn);
-            $('#start-button,#re-ques-button').click(ClickStartBtn);
-            $('#replay-button').click(LoadSurveyPage);
-            $('#update-subscribe-button').click(LoadSubscribingPage);
+            $("a[id^='before-login-button']").click(ClickLoginBtn);
+            $("a[id^='start-button'],a[id^='re-ques-button']").click(ClickStartBtn);
+            $("a[id^='replay-button']").click(LoadSurveyPage);
+            $("a[id^='update-subscribe-button']").click(LoadSubscribingPage);
 
             window.fbAsyncInit = function() {
                 FB.init({
