@@ -10,12 +10,11 @@ function ClickLoginBtn() {
 }
 
 function ClickAfterSubscribingBtn() {
-
     if (!saveSubscribe()) {
         Materialize.toast('欄位有錯或是空的', 3000);
         return false;
     }
-    RecordSubscribeInLibfm();
+    // RecordSubscribeInLibfm();
     LoadThankPage();
 }
 
@@ -23,8 +22,8 @@ function ClickAfterQuestionaireBtn() {
     var msg = saveQuestionaire();
     if (!BOOL_VARS.isTesting) {
         if (msg != 'success') {
-            console.log(msg);
-            Materialize.toast('欄位是空的 請完成', 3000);
+            console.log(QUESTIONAIRE_FORM_TEXTS[msg + 'Title']);
+            Materialize.toast('請完成欄位: ' + QUESTIONAIRE_FORM_TEXTS[msg + 'Title'], 3000);
             $('html, body').animate({
                 scrollTop: $("#questionaire-" + msg).offset().top - 120
             }, 1000);
@@ -85,6 +84,7 @@ function AfterLoadSurvey() {
     USER_PROFILE.timeRecording.startSurvey = GetCurrentTimeMilli();
 
     RecordTimeStart();
+
     BeforeRoundStart();
 
     CreateSlider();
@@ -95,6 +95,7 @@ function AfterLoadThank() {
     USER_PROFILE.timeRecording.startThanks = GetCurrentTimeMilli();
     USER_PROFILE.timeRecording.timingType = 1;
     RecordTimeStart();
+    RecordSubscribeInLibfm();
 }
 
 function BeforeRoundStart() {
@@ -108,14 +109,19 @@ function BeforeRoundStart() {
     // ROUND_PROFILE.caseCover = EXPERIMENT_PROFILE.cases[currentIdx]['cover'];
     ROUND_PROFILE.caseStart = GetCurrentTimeMilli();
     ROUND_PROFILE.caseRound = currentIdx + 1;
-
     // $('#round-text').text('第 ' + String(ROUND_PROFILE.caseRound) + ' 回合 (共 ' + String(EXPERIMENT_PROFILE.numCases) + ' 回合)');
     $('#case-title-text').text(ROUND_PROFILE.caseTitle);
-    $('#article-iframe').attr('src', ROUND_PROFILE.caseArticle);
+    $('#article-iframe').attr('src', ROUND_PROFILE.caseArticle)
+        .css({ width: $('body').width() > 768 ? $('body').width() * 0.7 : $('body').width(), height: 0 })
+        .load(function() {
+            $(this).contents().find('.mpatc').css("padding", $('.fix-slider').height() + 60 + "px 20px");
+            $(this).css("height", $(this).contents().find('.mpatc').height() + 260 + 'px');
+        });
 }
 
 function AfterRoundEnd() {
     ROUND_PROFILE.caseEnd = GetCurrentTimeMilli();
+    RecordArticleTime(ROUND_PROFILE.caseStart, ROUND_PROFILE.caseEnd, ROUND_PROFILE.caseId, ROUND_PROFILE.caseRound);
 }
 
 function SliderOnSlide() {
@@ -131,6 +137,7 @@ function SliderOnChange() {
 
     var currentIdx = ROUND_PROFILE.caseIndex;
     EXPERIMENT_PROFILE.cases[currentIdx]['score'] = sliderValue;
+    EXPERIMENT_PROFILE.cases[currentIdx]['change'] = GetCurrentTimeMilli();
 
     EnableNaviationBtn();
 }
@@ -153,15 +160,6 @@ function ClickNavigateBefore() {
     EnableNaviationBtn();
 }
 
-function promptSurveyOver() {
-    $('#modal1').openModal({
-        dismissible: true,
-        opacity: .6,
-        in_duration: 300,
-        out_duration: 500
-    });
-}
-
 function ClickNavigateNext() {
     if (!BOOL_VARS.isTesting) {
         if ($('#navigate-next').hasClass('disabled')) {
@@ -170,7 +168,7 @@ function ClickNavigateNext() {
     }
     var currentIdx = ROUND_PROFILE.caseIndex;
     if (currentIdx == EXPERIMENT_PROFILE.numCases - 1) {
-        promptSurveyOver();
+        promptMaterial('modal1');
     }
     if (currentIdx < (EXPERIMENT_PROFILE.numCases - 1)) {
         ROUND_PROFILE.caseIndex = ROUND_PROFILE.caseIndex + 1;
@@ -183,18 +181,26 @@ function ClickNavigateNext() {
     EnableNaviationBtn();
 }
 
+function promptMaterial(id) {
+    $('#' + id).openModal({
+        dismissible: true,
+        opacity: .6,
+        in_duration: 300,
+        out_duration: 500
+    });
+}
 
 
 function CheckLoginState() {
     FB.getLoginStatus(function(response) {
-        console.log('checklogin');
+        // console.log('checklogin');
         StatusChangeCallback(response);
     });
 }
 
 function checkMemberStatus() {
     var req = new XMLHttpRequest();
-    var url = 'www-data/libfm_objects/' + USER_PROFILE.fbId + '_libfm.json';
+    var url = 'www-data/libfm_objects/' + USER_PROFILE.fbId + '_libfm.json?nocache=' + (new Date()).getTime();
     req.open('GET', url, false);
     req.send();
 
@@ -222,27 +228,34 @@ function showLoginButton() {
 
 function StatusChangeCallback(response) {
     if (response.status === 'connected') {
-        console.log('[success] fb connected');
-
-        USER_PROFILE.fbToken = response.authResponse.accessToken;
-        USER_PROFILE.fbId = response.authResponse.userID;
-
-        FB.api('/me/permissions', function(response) {
-            var str_response = JSON.stringify(response);
-
-            if (str_response.indexOf('declined') == -1) {
-                RecordFbInfo();
-                showStartButton();
-                SetSubscribe();
-            } else if (str_response.indexOf('error') > -1) {
-
-                EXPERIMENT_PROFILE.exceptionMsg = 'fail in FB connect: ' + str_response;
-                RecordException();
-                showLoginButton();
-            } else {
-                showLoginButton();
-            }
+        // console.log('[success] fb connected');
+        FB.api('/me', function(res) {
+            USER_PROFILE.fbToken = response.authResponse.accessToken;
+            USER_PROFILE.fbId = res.id;
+            console.log(res.id);
+            SetUserData();
+            FB.api('/me/permissions', function(response) {
+                var str_response = JSON.stringify(response);
+                // console.log( response );
+                if (str_response.indexOf('declined') == -1) {
+                    RecordFbInfo();
+                    showStartButton();
+                } else if (str_response.indexOf('error') > -1) {
+                    EXPERIMENT_PROFILE.exceptionMsg = 'fail in FB connect: ' + str_response;
+                    RecordException();
+                    showLoginButton();
+                } else {
+                    showLoginButton();
+                }
+            });
         });
+        // console.log( response );
+
+        // USER_PROFILE.fbToken = response.authResponse.accessToken;
+        // USER_PROFILE.fbId = response.authResponse.userID;
+        // SetUserData();
+
+
     } else if (response.status === 'not_authorized') {
         showLoginButton();
         if (BOOL_VARS.isTesting) {
@@ -258,6 +271,8 @@ function StatusChangeCallback(response) {
 
 function RecordFbInfo() {
     FB.api('/me', function(response) {
+        console.log(response);
+        // console.log( USER_PROFILE.fbId );
         console.log('[success] login facebook for: ' + response.name + ' ... start record info');
         setTimeout(function() {
             $.ajax({

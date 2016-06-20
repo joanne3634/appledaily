@@ -38,7 +38,6 @@ if ($handle = opendir($libfm_filename)) {
 				foreach ($item['FB']['like_category_list'] as $fb_id => $fb_name) {
 					$dataset .= addSpace('fb_like_category_list' . str_replace(' ', '_', $fb_id) . ':' . $fb_name);
 				}
-
 				foreach ($item['ROUND'] as $aid => $score) {
 					$rating .= addChangeLine(addSpace($score) . addSpace('#' . $libfm_objects['FB_ID']) . addSpace($aid));
 				}

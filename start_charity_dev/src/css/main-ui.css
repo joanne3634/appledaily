@@ -1,10 +1,11 @@
 nav {
     z-index: 10;
+    height: 56px;
 }
 
 .iframe-style {
     width: 100%;
-    height: 500px;
+    height: 100%;
     border: none;
 }
 
@@ -68,12 +69,13 @@ a[id^='check-login-button'] {
     height: 16px;
     font-size: 12px;
     border-radius: 4px;
+    background-color: rgb(251, 242, 209);
 }
 
 .progress .determinate {
-    color: white;
+    color: #5A4F27;
     padding-right: 9px;
-    background-color: #3FB8AF;
+    background-color: #FFE279;
 }
 
 .collection .collection-item {
@@ -99,7 +101,8 @@ section#why h2 {
 
 section#why blockquote {
     font-size: 1.1em;
-    border-left: 5px solid #26A69A;
+    border-left: 5px solid #ff8042;
+    /*26A69A*/
     font-weight: 300;
 }
 
@@ -116,7 +119,8 @@ section {
 section#how,
 section#who,
 section#FQ {
-    background-color: #EDEDED;
+    background-color: #FFF8DA;
+    /*#EDEDED*/
 }
 
 section#how .content {
@@ -125,9 +129,10 @@ section#how .content {
     color: #5C5C5C;
 }
 
-section#how .how-login-container{
+section#how .how-login-container {
     padding-top: 30px;
 }
+
 section#how .step-button {
     display: inline-block;
     color: #fff;
@@ -138,7 +143,8 @@ section#how .step-button {
     height: 37px;
     line-height: 37px;
     padding: 0;
-    background-color: #26a69a;
+    background-color: #ff8042;
+    /*26a69a*/
     border-radius: 50%;
     transition: .3s;
     cursor: pointer;
@@ -163,7 +169,8 @@ section h2.header {
 }
 
 section#how .section {
-    border-left: 4px dashed #009688;
+    border-left: 4px dashed #ffb814;
+    /*dotted #009688 4px*/
 }
 
 section#how .container,
@@ -218,9 +225,20 @@ h1.header {
 }
 
 @media (max-width: 600px) {
+    .valign-wrapper .col {
+        padding: 0 0.2rem;
+    }
     .row .col .face {
         float: none;
         text-align: center;
+    }
+    .btn-floating.btn-large {
+        width: 40px;
+        height: 40px;
+        margin: 2px;
+    }
+    .btn-floating.btn-large i {
+        line-height: 40px;
     }
 }
 
@@ -231,7 +249,7 @@ h1.header {
 }
 
 hr {
-    border: #26A69A solid 2px;
+    border: #ff8042 solid 2px;
     margin-bottom: 30px;
 }
 
@@ -329,6 +347,7 @@ canvas {
 }
 
 .cd-top {
+    z-index: 100;
     display: inline-block;
     height: 40px;
     width: 40px;
@@ -368,7 +387,7 @@ canvas {
 }
 
 .cd-top:hover {
-    background-color: #52BF57;
+    background-color: #ffb814;
     opacity: 1;
 }
 
@@ -386,4 +405,97 @@ canvas {
         right: 30px;
         bottom: 30px;
     }
+}
+
+.amber-text.text-lighten-2 {
+    color: rgb(255, 248, 218) !important;
+}
+
+.teal {
+    background-color: #ff8042 !important;
+}
+
+.teal-text {
+    color: #444 !important;
+}
+
+div#old-member a {
+    background-color: rgba(255, 0, 0, 0) !important;
+    /* color: rgba(0, 0, 0, 0.87); */
+    border: 1px solid;
+}
+
+nav ul a,
+nav .brand-logo {
+    color: #444;
+    line-height: 57px;
+}
+
+nav.white {
+    position: fixed;
+    border-top: 5px solid #ff9d54;
+    /*background-color: #FFF8DA !important;*/
+}
+
+.collection a.collection-item {
+    color: #444;
+}
+
+.dropdown-content li > a,
+.dropdown-content li > span {
+    color: #444;
+}
+
+.blue-grey.lighten-3 {
+    background-color: #FFF8DA !important;
+}
+
+[type="checkbox"]:checked + label:before {
+    border-right: 2px solid #FBD465;
+    border-bottom: 2px solid #FBD465;
+}
+
+[type="radio"]:checked + label:after {
+    border: 2px solid #FBD465;
+    background-color: #FBD465;
+}
+
+.btn-floating {
+    background-color: #FFCD43;
+}
+
+.btn-floating:hover {
+    background-color: #FFCD43;
+}
+
+.container.fix-slider {
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    top: 45px;
+    left: 0;
+    right: 0;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    z-index: 2;
+    /* box-shadow: 0 2px 3px rgba(0,0,0,.1); */
+    /* -webkit-box-shadow: 0 2px 3px rgba(0,0,0,.1); */
+    /*-moz-box-shadow: 0 2px 3px rgba(0,0,0,.1);*/
+}
+
+.row.slider-row {
+    margin: 0px .5em 4px .5em;
+}
+
+@media only screen and (min-width: 768px) {
+    .row.slider-row {
+        margin: 0px 15% 4px 15%;
+    }
+}
+
+#landingPage,
+#subscribingPage,
+#questionairePage,
+#thankPage {
+    padding-top: 56px;
 }

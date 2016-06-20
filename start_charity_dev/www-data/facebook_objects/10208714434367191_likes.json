@@ -1,5 +1,345 @@
 [
     {
+        "name": "吳宗軒 Wu Tsung-Hsuan",
+        "category": "Athlete",
+        "id": "920378754698458",
+        "created_time": "2016-06-19T18:31:12+0000"
+    },
+    {
+        "name": "研達 Toy Friend",
+        "category": "Retail and Consumer Merchandise",
+        "category_list": [
+            {
+                "id": "2239",
+                "name": "Retail and Consumer Merchandise"
+            }
+        ],
+        "id": "779012488847375",
+        "created_time": "2016-06-16T14:15:51+0000"
+    },
+    {
+        "name": "vonvon.me",
+        "category": "Entertainment Website",
+        "id": "716004461855197",
+        "created_time": "2016-06-14T15:43:45+0000"
+    },
+    {
+        "name": "Liz Climo",
+        "category": "Artist",
+        "id": "264970223567940",
+        "created_time": "2016-06-13T15:51:42+0000"
+    },
+    {
+        "name": "蔣夫人Mrs.Jiang",
+        "category": "Artist",
+        "id": "1728061930743658",
+        "created_time": "2016-06-12T07:34:42+0000"
+    },
+    {
+        "name": "瀏海星人巴逆逆",
+        "category": "Blogger",
+        "id": "888216101229008",
+        "created_time": "2016-06-11T10:32:35+0000"
+    },
+    {
+        "name": "Nic教練的奇耙學生",
+        "category": "Author",
+        "id": "645985528886438",
+        "created_time": "2016-06-11T07:24:11+0000"
+    },
+    {
+        "name": "Peach Aviation[Taiwan]",
+        "category": "Transport/Freight",
+        "id": "382284711832027",
+        "created_time": "2016-06-06T09:34:22+0000"
+    },
+    {
+        "name": "Klook",
+        "category": "Travel/Leisure",
+        "id": "608852012585487",
+        "created_time": "2016-06-06T06:40:39+0000"
+    },
+    {
+        "name": "G-Dragon official",
+        "category": "Musician/Band",
+        "id": "553681014688915",
+        "created_time": "2016-05-26T07:16:31+0000"
+    },
+    {
+        "name": "Addweup",
+        "category": "Cause",
+        "id": "1682965745251231",
+        "created_time": "2016-05-22T17:11:51+0000"
+    },
+    {
+        "name": "Voxel+",
+        "category": "Software",
+        "id": "238195266540315",
+        "created_time": "2016-05-22T16:36:14+0000"
+    },
+    {
+        "name": "I do girls 瑄&靜",
+        "category": "Public Figure",
+        "id": "128160614248889",
+        "created_time": "2016-05-22T16:26:11+0000"
+    },
+    {
+        "name": "唐立淇占星幫",
+        "category": "Author",
+        "id": "337007633116",
+        "created_time": "2016-05-22T14:55:17+0000"
+    },
+    {
+        "name": "陳嘉樺 Ella",
+        "category": "Musician/Band",
+        "id": "322372034467971",
+        "created_time": "2016-05-21T08:40:34+0000"
+    },
+    {
+        "name": "engVid",
+        "category": "App Page",
+        "id": "227608180331",
+        "created_time": "2016-05-20T17:17:29+0000"
+    },
+    {
+        "name": "韓星網 - Korea Star Daily",
+        "category": "Media/News/Publishing",
+        "id": "150836420761",
+        "created_time": "2016-05-20T14:09:58+0000"
+    },
+    {
+        "name": "徐康俊台灣首站｜Seo Kang Joon 서강준 1st Taiwan Fans Club",
+        "category": "Actor/Director",
+        "id": "278962388930534",
+        "created_time": "2016-05-20T12:49:12+0000"
+    },
+    {
+        "name": "Art of Ramón de la Cuesta",
+        "category": "Artist",
+        "id": "1832654840206419",
+        "created_time": "2016-05-19T06:54:06+0000"
+    },
+    {
+        "name": "Striped Designs",
+        "category": "Artist",
+        "id": "158890500832166",
+        "created_time": "2016-05-19T05:00:30+0000"
+    },
+    {
+        "name": "Wallace Academic Editing",
+        "category": "Education",
+        "category_list": [
+            {
+                "id": "151676848220295",
+                "name": "Education"
+            }
+        ],
+        "id": "135811504175",
+        "created_time": "2016-05-18T17:40:57+0000"
+    },
+    {
+        "name": "L.Dope / 生活興奮劑",
+        "category": "News/Media Website",
+        "id": "337595052992358",
+        "created_time": "2016-05-18T17:23:44+0000"
+    },
+    {
+        "name": "Jserv與他愉快的小夥伴",
+        "category": "Teacher",
+        "id": "638604962932508",
+        "created_time": "2016-05-14T01:50:21+0000"
+    },
+    {
+        "name": "拉拉靠北女友",
+        "category": "Just For Fun",
+        "id": "706851022694800",
+        "created_time": "2016-05-11T16:49:27+0000"
+    },
+    {
+        "name": "KKday",
+        "category": "Travel/Leisure",
+        "id": "285962404893848",
+        "created_time": "2016-05-08T03:24:24+0000"
+    },
+    {
+        "name": "我是居米",
+        "category": "Fictional Character",
+        "id": "616767541810555",
+        "created_time": "2016-05-04T13:23:04+0000"
+    },
+    {
+        "name": "Crystal Kung Art",
+        "category": "Artist",
+        "id": "238698122996473",
+        "created_time": "2016-05-03T14:20:02+0000"
+    },
+    {
+        "name": "A&Y Moda",
+        "category": "Clothing",
+        "id": "444363592438446",
+        "created_time": "2016-05-03T14:01:54+0000"
+    },
+    {
+        "name": "台大現代舞社",
+        "category": "Artist",
+        "id": "1394308107475011",
+        "created_time": "2016-04-28T01:56:40+0000"
+    },
+    {
+        "name": "臺大畢業盃排球賽",
+        "category": "Sports League",
+        "id": "1593795144268440",
+        "created_time": "2016-04-26T13:57:20+0000"
+    },
+    {
+        "name": "Taipei Smart City PMO 臺北智慧城市專案辦公室",
+        "category": "Organization",
+        "category_list": [
+            {
+                "id": "2600",
+                "name": "Organization"
+            }
+        ],
+        "id": "482569558594257",
+        "created_time": "2016-04-26T01:21:28+0000"
+    },
+    {
+        "name": "UXabc",
+        "category": "Consulting/Business Services",
+        "category_list": [
+            {
+                "id": "108557642554592",
+                "name": "Educational Service"
+            },
+            {
+                "id": "176831012360626",
+                "name": "Professional Services"
+            }
+        ],
+        "id": "475961342609483",
+        "created_time": "2016-04-24T13:05:56+0000"
+    },
+    {
+        "name": "Wheee－新一代展場導航",
+        "category": "Product/Service",
+        "id": "948622251895414",
+        "created_time": "2016-04-22T17:38:25+0000"
+    },
+    {
+        "name": "台北市政府資訊局",
+        "category": "Government Organization",
+        "category_list": [
+            {
+                "id": "161422927240513",
+                "name": "Government Organization"
+            }
+        ],
+        "id": "580695085402795",
+        "created_time": "2016-04-18T17:56:04+0000"
+    },
+    {
+        "name": "倫倫的小部落格",
+        "category": "Blogger",
+        "id": "942065692492736",
+        "created_time": "2016-04-18T16:53:13+0000"
+    },
+    {
+        "name": "IxDA Taiwan",
+        "category": "Non-Profit Organization",
+        "category_list": [
+            {
+                "id": "2603",
+                "name": "Non-Profit Organization"
+            }
+        ],
+        "id": "205438172807968",
+        "created_time": "2016-04-18T13:55:45+0000"
+    },
+    {
+        "name": "皮特森產品成長研究室",
+        "category": "Product/Service",
+        "id": "1716681118549249",
+        "created_time": "2016-04-18T13:55:43+0000"
+    },
+    {
+        "name": "CCDM 深擊設計管理",
+        "category": "Consulting/Business Services",
+        "category_list": [
+            {
+                "id": "2248",
+                "name": "Consulting/Business Services"
+            }
+        ],
+        "id": "682705011835722",
+        "created_time": "2016-04-18T13:55:35+0000"
+    },
+    {
+        "name": "應用劇本實驗室 Scenario Lab",
+        "category": "Consulting/Business Services",
+        "id": "136223243064604",
+        "created_time": "2016-04-18T13:55:30+0000"
+    },
+    {
+        "name": "Intersection 設計翻譯",
+        "category": "Magazine",
+        "id": "195019950868347",
+        "created_time": "2016-04-18T13:55:27+0000"
+    },
+    {
+        "name": "uigathering",
+        "category": "Non-Profit Organization",
+        "id": "348584893381",
+        "created_time": "2016-04-18T13:55:25+0000"
+    },
+    {
+        "name": "Akane Lee",
+        "category": "Designer",
+        "id": "1681509928749814",
+        "created_time": "2016-04-18T13:55:21+0000"
+    },
+    {
+        "name": "Primax UX 使用者經驗團隊",
+        "category": "Product/Service",
+        "id": "129509183772711",
+        "created_time": "2016-04-18T13:55:20+0000"
+    },
+    {
+        "name": "UI/介面/視覺/設計",
+        "category": "Community",
+        "id": "154763161255070",
+        "created_time": "2016-04-18T13:55:18+0000"
+    },
+    {
+        "name": "快轉創意設計 Forward Design",
+        "category": "Professional Services",
+        "category_list": [
+            {
+                "id": "162183907165552",
+                "name": "Graphic Design"
+            }
+        ],
+        "id": "507072609453310",
+        "created_time": "2016-04-18T13:55:16+0000"
+    },
+    {
+        "name": "VIDE 看見創新設計",
+        "category": "Media/News/Publishing",
+        "id": "878286208896228",
+        "created_time": "2016-04-18T13:55:01+0000"
+    },
+    {
+        "name": "Conversion Lab",
+        "category": "Computers/Internet Website",
+        "id": "868916159809872",
+        "created_time": "2016-04-18T13:54:57+0000"
+    },
+    {
+        "name": "黃國昌質詢逐字稿",
+        "category": "Reference Website",
+        "id": "776964002358118",
+        "created_time": "2016-04-15T08:51:02+0000"
+    },
+    {
         "name": "天滋中醫診所",
         "category": "Doctor",
         "category_list": [
@@ -294,12 +634,12 @@
                 "name": "Cafe"
             },
             {
-                "id": "133436743388217",
-                "name": "Arts & Entertainment"
-            },
-            {
                 "id": "153635828025130",
                 "name": "Arts & Crafts Supply Store"
+            },
+            {
+                "id": "133436743388217",
+                "name": "Arts & Entertainment"
             }
         ],
         "id": "454449961398793",
@@ -310,12 +650,12 @@
         "category": "Education",
         "category_list": [
             {
-                "id": "108051929285833",
-                "name": "College & University"
-            },
-            {
                 "id": "365182493518892",
                 "name": "School"
+            },
+            {
+                "id": "108051929285833",
+                "name": "College & University"
             }
         ],
         "id": "659604384063427",
@@ -383,7 +723,7 @@
     },
     {
         "name": "Awwwards",
-        "category": "Computers/Internet Website",
+        "category": "Computers/Technology",
         "id": "172362442800189",
         "created_time": "2015-12-21T15:52:11+0000"
     },
@@ -484,7 +824,7 @@
         "created_time": "2015-12-04T03:41:25+0000"
     },
     {
-        "name": "Gto小商人靠北幹古股份有限公司",
+        "name": "Gtokevin小商人靠北幹古股份有限公司",
         "category": "Business Person",
         "id": "860988563979099",
         "created_time": "2015-12-03T11:44:17+0000"
@@ -683,7 +1023,7 @@
     },
     {
         "name": "聶永真 Aaron Nieh",
-        "category": "Public Figure",
+        "category": "Designer",
         "id": "114982431900107",
         "created_time": "2015-10-30T16:42:09+0000"
     },
@@ -707,7 +1047,13 @@
     },
     {
         "name": "Up And Coming",
-        "category": "Community",
+        "category": "Shopping/Retail",
+        "category_list": [
+            {
+                "id": "2521",
+                "name": "Shopping/Retail"
+            }
+        ],
         "id": "566494160155106",
         "created_time": "2015-10-20T01:56:14+0000"
     },
@@ -780,7 +1126,7 @@
         "created_time": "2015-10-06T14:16:18+0000"
     },
     {
-        "name": "小豹兒",
+        "name": "豹豹vs米妮的",
         "category": "Personal Blog",
         "id": "742152412489650",
         "created_time": "2015-10-04T01:16:10+0000"
@@ -822,7 +1168,7 @@
         "created_time": "2015-09-13T10:39:25+0000"
     },
     {
-        "name": "鐘浩緯",
+        "name": "Haowei Chung 鐘浩緯",
         "category": "Personal Website",
         "id": "180397598763647",
         "created_time": "2015-09-04T15:01:54+0000"
@@ -964,12 +1310,12 @@
         "category": "Professional Services",
         "category_list": [
             {
-                "id": "177721448951559",
-                "name": "Workplace & Office"
-            },
-            {
                 "id": "176831012360626",
                 "name": "Professional Services"
+            },
+            {
+                "id": "177721448951559",
+                "name": "Workplace & Office"
             }
         ],
         "id": "1436715936555000",
@@ -1039,7 +1385,7 @@
     },
     {
         "name": "排球筆記",
-        "category": "Media/News/Publishing",
+        "category": "Recreation/Sports Website",
         "id": "1449552725366476",
         "created_time": "2015-07-01T15:33:31+0000"
     },
@@ -1432,7 +1778,7 @@
         "created_time": "2015-05-09T15:09:55+0000"
     },
     {
-        "name": "Hana 花水木",
+        "name": "花水木 Hana",
         "category": "Artist",
         "id": "161855883867885",
         "created_time": "2015-05-09T08:50:38+0000"
@@ -1456,7 +1802,7 @@
         "created_time": "2015-05-08T15:41:28+0000"
     },
     {
-        "name": "lalamove - Taiwan",
+        "name": "Lalamove - Taiwan",
         "category": "Transport/Freight",
         "category_list": [
             {
@@ -1484,12 +1830,12 @@
         "category": "Local Business",
         "category_list": [
             {
-                "id": "181069735261656",
-                "name": "Sportswear"
-            },
-            {
                 "id": "214668188548441",
                 "name": "Clothing Supply & Distribution"
+            },
+            {
+                "id": "181069735261656",
+                "name": "Sportswear"
             },
             {
                 "id": "191647907538150",
@@ -1626,12 +1972,6 @@
         "created_time": "2015-04-30T01:48:00+0000"
     },
     {
-        "name": "mBlock",
-        "category": "Website",
-        "id": "953734557988528",
-        "created_time": "2015-04-29T00:14:59+0000"
-    },
-    {
         "name": "行銷小鮮肉",
         "category": "Personal Blog",
         "id": "628964467234683",
@@ -1742,6 +2082,12 @@
     {
         "name": "寵毛網 Petsmao 寵物資訊平台",
         "category": "Pet Services",
+        "category_list": [
+            {
+                "id": "2516",
+                "name": "Pet Services"
+            }
+        ],
         "id": "533291463428464",
         "created_time": "2015-03-30T10:47:07+0000"
     },
@@ -1876,12 +2222,12 @@
         "category": "Internet/Software",
         "category_list": [
             {
-                "id": "187133811318958",
-                "name": "Business Services"
+                "id": "133436743388217",
+                "name": "Arts & Entertainment"
             },
             {
-                "id": "367960506579477",
-                "name": "Arts & Marketing"
+                "id": "199732070036794",
+                "name": "Artistic Services"
             }
         ],
         "id": "125449937509587",
@@ -1984,8 +2330,8 @@
         "category": "Local Business",
         "category_list": [
             {
-                "id": "2500",
-                "name": "Local Business"
+                "id": "176831012360626",
+                "name": "Professional Services"
             }
         ],
         "id": "185354221513595",
@@ -2046,7 +2392,7 @@
         "created_time": "2015-03-12T14:30:15+0000"
     },
     {
-        "name": "點子研創Ideai",
+        "name": "IDEAi 點子研創",
         "category": "Local Business",
         "category_list": [
             {
@@ -2062,12 +2408,12 @@
         "category": "Internet/Software",
         "category_list": [
             {
-                "id": "164886566892249",
-                "name": "Advertising Agency"
-            },
-            {
                 "id": "187215161312096",
                 "name": "Internet Service Provider"
+            },
+            {
+                "id": "164886566892249",
+                "name": "Advertising Agency"
             }
         ],
         "id": "93780434274",
@@ -2140,12 +2486,12 @@
         "created_time": "2015-03-06T07:53:42+0000"
     },
     {
-        "name": "UNFOLD Group 展開集合",
+        "name": "Unfold",
         "category": "Internet/Software",
         "category_list": [
             {
-                "id": "198503866828628",
-                "name": "Organization"
+                "id": "176831012360626",
+                "name": "Professional Services"
             }
         ],
         "id": "894310973932306",
@@ -2159,12 +2505,18 @@
     },
     {
         "name": "臺灣科大設計系畢業展",
-        "category": "Cause",
+        "category": "Professional Services",
+        "category_list": [
+            {
+                "id": "176831012360626",
+                "name": "Professional Services"
+            }
+        ],
         "id": "535792029793956",
         "created_time": "2015-03-06T00:14:05+0000"
     },
     {
-        "name": "FLUX 3D Printer Taiwan",
+        "name": "FLUX Inc. Taiwan",
         "category": "Electronics",
         "id": "588276477973147",
         "created_time": "2015-03-05T18:09:45+0000"
@@ -2210,8 +2562,8 @@
         "category": "Company",
         "category_list": [
             {
-                "id": "133436743388217",
-                "name": "Arts & Entertainment"
+                "id": "162183907165552",
+                "name": "Graphic Design"
             }
         ],
         "id": "177678992387289",
@@ -2246,12 +2598,12 @@
         "category": "Local Business",
         "category_list": [
             {
-                "id": "199797140033948",
-                "name": "Educational Consultant"
-            },
-            {
                 "id": "191921914160604",
                 "name": "Educational Research"
+            },
+            {
+                "id": "199797140033948",
+                "name": "Educational Consultant"
             },
             {
                 "id": "292231357479999",
@@ -2323,13 +2675,7 @@
     },
     {
         "name": "八隻貓水果店",
-        "category": "Local Business",
-        "category_list": [
-            {
-                "id": "176831012360626",
-                "name": "Professional Services"
-            }
-        ],
+        "category": "Other",
         "id": "304311856290864",
         "created_time": "2015-02-16T07:29:30+0000"
     },
@@ -2342,12 +2688,12 @@
                 "name": "Sushi Restaurant"
             },
             {
-                "id": "174483852595760",
-                "name": "Chinese Restaurant"
-            },
-            {
                 "id": "144362285623268",
                 "name": "Food Stand"
+            },
+            {
+                "id": "174483852595760",
+                "name": "Chinese Restaurant"
             }
         ],
         "id": "337713166839",
@@ -2446,8 +2792,8 @@
         "category": "Food/Beverages",
         "category_list": [
             {
-                "id": "2252",
-                "name": "Food/Beverages"
+                "id": "192803624072087",
+                "name": "Fast Food Restaurant"
             }
         ],
         "id": "188649651332169",
@@ -2655,6 +3001,10 @@
         "name": "貓空閒 cat's cafe",
         "category": "Restaurant/Cafe",
         "category_list": [
+            {
+                "id": "128673187201735",
+                "name": "Coffee Shop"
+            },
             {
                 "id": "197871390225897",
                 "name": "Cafe"
@@ -2904,12 +3254,12 @@
         "category": "Arts/Entertainment/Nightlife",
         "category_list": [
             {
-                "id": "133436743388217",
-                "name": "Arts & Entertainment"
-            },
-            {
                 "id": "187301137968148",
                 "name": "Performing Arts Education"
+            },
+            {
+                "id": "133436743388217",
+                "name": "Arts & Entertainment"
             }
         ],
         "id": "117785276360",
@@ -2926,12 +3276,6 @@
         "category": "Book",
         "id": "195312493826324",
         "created_time": "2014-10-27T10:21:52+0000"
-    },
-    {
-        "name": "黑白配，男生女生配",
-        "category": "Community",
-        "id": "508881189214447",
-        "created_time": "2014-10-21T14:55:08+0000"
     },
     {
         "name": "德華口腔外科牙醫診所",
@@ -3026,6 +3370,12 @@
     {
         "name": "臺灣大學開源社",
         "category": "Organization",
+        "category_list": [
+            {
+                "id": "198503866828628",
+                "name": "Organization"
+            }
+        ],
         "id": "262486007243695",
         "created_time": "2014-09-27T08:10:02+0000"
     },
@@ -3062,14 +3412,14 @@
     {
         "name": "狗一下居酒食堂",
         "category": "Restaurant/Cafe",
+        "category_list": [
+            {
+                "id": "199035016778342",
+                "name": "Japanese Restaurant"
+            }
+        ],
         "id": "385488598246996",
         "created_time": "2014-09-24T14:52:24+0000"
-    },
-    {
-        "name": "NTU MOOC",
-        "category": "Education",
-        "id": "224015984436229",
-        "created_time": "2014-09-24T04:23:12+0000"
     },
     {
         "name": "NTUDrama\"Woyzeck\"",
@@ -3206,8 +3556,20 @@
         "created_time": "2014-09-07T12:33:31+0000"
     },
     {
+        "name": "雖然媽媽說不要太早結婚，兩位劉太太日記",
+        "category": "Personal Blog",
+        "id": "482415891778874",
+        "created_time": "2014-09-07T05:08:09+0000"
+    },
+    {
         "name": "TW ‧ Fashion",
-        "category": "Product/Service",
+        "category": "Professional Services",
+        "category_list": [
+            {
+                "id": "176831012360626",
+                "name": "Professional Services"
+            }
+        ],
         "id": "211255352287933",
         "created_time": "2014-09-07T03:02:25+0000"
     },
@@ -3216,12 +3578,6 @@
         "category": "TV Show",
         "id": "419217714880192",
         "created_time": "2014-09-07T03:00:46+0000"
-    },
-    {
-        "name": "姚愛寗",
-        "category": "Actor/Director",
-        "id": "187477828070920",
-        "created_time": "2014-09-06T14:56:53+0000"
     },
     {
         "name": "道歉台大 Apologizentu",
@@ -3237,7 +3593,7 @@
     },
     {
         "name": "Weekend Fever 週末狂潮",
-        "category": "Cause",
+        "category": "Event",
         "id": "203094423038251",
         "created_time": "2014-09-06T10:31:52+0000"
     },
@@ -3245,6 +3601,10 @@
         "name": "宣德炭燒羊肉爐",
         "category": "Restaurant/Cafe",
         "category_list": [
+            {
+                "id": "167116956674095",
+                "name": "Fondue Restaurant"
+            },
             {
                 "id": "199146280116687",
                 "name": "Taiwanese Restaurant"
@@ -3255,7 +3615,7 @@
     },
     {
         "name": "Wildlife of Goska",
-        "category": "Community",
+        "category": "Blogger",
         "id": "683621898360855",
         "created_time": "2014-09-05T12:10:47+0000"
     },
@@ -3278,7 +3638,7 @@
         "created_time": "2014-09-03T16:10:11+0000"
     },
     {
-        "name": "FLUX 3D Printer",
+        "name": "FLUX Inc.",
         "category": "Electronics",
         "id": "1456257474653703",
         "created_time": "2014-08-29T17:09:37+0000"
@@ -3420,12 +3780,12 @@
         "category": "Organization",
         "category_list": [
             {
-                "id": "177721448951559",
-                "name": "Workplace & Office"
-            },
-            {
                 "id": "186004504854452",
                 "name": "Clubhouse"
+            },
+            {
+                "id": "177721448951559",
+                "name": "Workplace & Office"
             },
             {
                 "id": "151969488199865",
@@ -3436,7 +3796,7 @@
         "created_time": "2014-07-24T14:17:50+0000"
     },
     {
-        "name": "臺大智齡 T型人才",
+        "name": "智齡設計 T型人才",
         "category": "Education",
         "id": "427506627313897",
         "created_time": "2014-07-19T18:48:57+0000"
@@ -3747,7 +4107,7 @@
     },
     {
         "name": "紀老師電腦教學網",
-        "category": "Computers/Internet Website",
+        "category": "Education Website",
         "id": "133665993321331",
         "created_time": "2014-06-13T07:22:28+0000"
     },
@@ -3782,8 +4142,8 @@
         "created_time": "2014-05-30T01:26:59+0000"
     },
     {
-        "name": "停班停課最新通知/typhoon.tw",
-        "category": "Blogger",
+        "name": "停班停課最新通知",
+        "category": "Media/News/Publishing",
         "id": "357040454374177",
         "created_time": "2014-05-21T02:17:28+0000"
     },
@@ -4217,7 +4577,7 @@
     },
     {
         "name": "JPTT",
-        "category": "Software",
+        "category": "App Page",
         "id": "1532385653654044",
         "created_time": "2014-02-18T13:44:55+0000"
     },
@@ -4472,12 +4832,6 @@
         "created_time": "2013-12-17T16:08:21+0000"
     },
     {
-        "name": "Loving tower",
-        "category": "Shopping/Retail",
-        "id": "616612301724248",
-        "created_time": "2013-12-17T15:52:49+0000"
-    },
-    {
         "name": "手_手",
         "category": "Non-Governmental Organization (NGO)",
         "id": "163529130412432",
@@ -4521,7 +4875,17 @@
     },
     {
         "name": "政大金旋獎GoldenMelody",
-        "category": "Music Award",
+        "category": "Concert Venue",
+        "category_list": [
+            {
+                "id": "179943432047564",
+                "name": "Concert Venue"
+            },
+            {
+                "id": "192119584190796",
+                "name": "Event"
+            }
+        ],
         "id": "116377375090926",
         "created_time": "2013-12-11T18:45:27+0000"
     },
@@ -4584,6 +4948,10 @@
         "category": "Restaurant/Cafe",
         "category_list": [
             {
+                "id": "233804719972590",
+                "name": "Bar & Grill"
+            },
+            {
                 "id": "150534008338515",
                 "name": "Barbecue Restaurant"
             }
@@ -4614,12 +4982,12 @@
         "category": "Non-Profit Organization",
         "category_list": [
             {
-                "id": "139495282781502",
-                "name": "Athletic Education"
-            },
-            {
                 "id": "124584130946507",
                 "name": "Sports Promoter"
+            },
+            {
+                "id": "139495282781502",
+                "name": "Athletic Education"
             }
         ],
         "id": "409411089145899",
@@ -4639,7 +5007,7 @@
     },
     {
         "name": "Dorothy",
-        "category": "Artist",
+        "category": "Author",
         "id": "103421033173254",
         "created_time": "2013-11-26T14:44:29+0000"
     },
@@ -4724,16 +5092,16 @@
         "category": "Event Planning/Event Services",
         "category_list": [
             {
+                "id": "436846369665656",
+                "name": "Public Utility"
+            },
+            {
                 "id": "152880021441864",
                 "name": "Community Organization"
             },
             {
                 "id": "187443774619522",
                 "name": "Event Planner"
-            },
-            {
-                "id": "436846369665656",
-                "name": "Public Utility"
             }
         ],
         "id": "555997497776676",
@@ -4790,12 +5158,12 @@
                 "name": "New American Restaurant"
             },
             {
-                "id": "188296324525457",
-                "name": "Sandwich Shop"
-            },
-            {
                 "id": "192108214153222",
                 "name": "Breakfast & Brunch Restaurant"
+            },
+            {
+                "id": "188296324525457",
+                "name": "Sandwich Shop"
             }
         ],
         "id": "107545349265239",
@@ -4923,7 +5291,7 @@
     },
     {
         "name": "包大山",
-        "category": "Artist",
+        "category": "Comedian",
         "id": "222706701077715",
         "created_time": "2013-09-20T12:55:36+0000"
     },
@@ -5316,16 +5684,16 @@
         "category": "Travel/Leisure",
         "category_list": [
             {
-                "id": "213629078651577",
-                "name": "Cabin"
+                "id": "205483332814878",
+                "name": "Camp"
             },
             {
                 "id": "164243073639257",
                 "name": "Hotel"
             },
             {
-                "id": "205483332814878",
-                "name": "Camp"
+                "id": "213629078651577",
+                "name": "Cabin"
             }
         ],
         "id": "159293340792271",
@@ -5369,7 +5737,7 @@
     },
     {
         "name": "排球部落 DA VILLAGE",
-        "category": "Product/Service",
+        "category": "Media/News/Publishing",
         "id": "110919058931995",
         "created_time": "2013-03-19T17:32:32+0000"
     },
@@ -5402,8 +5770,8 @@
         "category": "Organization",
         "category_list": [
             {
-                "id": "144982405562750",
-                "name": "Pet Service"
+                "id": "189702521054390",
+                "name": "Kennel"
             },
             {
                 "id": "215343825145859",
@@ -5433,7 +5801,7 @@
     },
     {
         "name": "VoiceTube 看影片學英語",
-        "category": "App Page",
+        "category": "Internet/Software",
         "id": "515316421821497",
         "created_time": "2013-02-20T13:44:45+0000"
     },
@@ -5456,28 +5824,10 @@
         "created_time": "2013-02-16T12:51:51+0000"
     },
     {
-        "name": "大登陸演唱會 & 小空降音樂節 & 光合作用2.0",
-        "category": "Concert Tour",
-        "id": "553505634667393",
-        "created_time": "2013-02-15T10:25:31+0000"
-    },
-    {
         "name": "Kyss mig",
         "category": "Movie",
         "id": "184423711593636",
         "created_time": "2013-02-12T21:57:48+0000"
-    },
-    {
-        "name": "鳳城燒臘百合店",
-        "category": "Restaurant/Cafe",
-        "category_list": [
-            {
-                "id": "174483852595760",
-                "name": "Chinese Restaurant"
-            }
-        ],
-        "id": "128663470570465",
-        "created_time": "2013-01-10T03:28:41+0000"
     },
     {
         "name": "美妝雜誌網",
@@ -5564,7 +5914,7 @@
         "created_time": "2012-10-04T08:23:27+0000"
     },
     {
-        "name": "富二代李穆竺",
+        "name": "穆二代李富竺",
         "category": "News Personality",
         "id": "463539723666865",
         "created_time": "2012-09-13T04:09:54+0000"
@@ -5664,7 +6014,7 @@
         "created_time": "2012-05-06T17:00:22+0000"
     },
     {
-        "name": "你救了我們, 我們永遠感謝你",
+        "name": "You Should Be Here",
         "category": "Community",
         "id": "211667888899757",
         "created_time": "2012-04-27T17:38:33+0000"
@@ -5692,16 +6042,16 @@
         "category": "Media/News/Publishing",
         "category_list": [
             {
+                "id": "161467220570897",
+                "name": "Book & Magazine Distribution"
+            },
+            {
                 "id": "191684877517919",
                 "name": "Publisher"
             },
             {
                 "id": "133436743388217",
                 "name": "Arts & Entertainment"
-            },
-            {
-                "id": "161467220570897",
-                "name": "Book & Magazine Distribution"
             }
         ],
         "id": "178101642242841",
@@ -5716,12 +6066,12 @@
                 "name": "Convention Center"
             },
             {
-                "id": "128673187201735",
-                "name": "Coffee Shop"
-            },
-            {
                 "id": "197097220301977",
                 "name": "Historical Place"
+            },
+            {
+                "id": "128673187201735",
+                "name": "Coffee Shop"
             }
         ],
         "id": "199673020046227",
@@ -5807,7 +6157,7 @@
     },
     {
         "name": "笑彈發射站",
-        "category": "Community",
+        "category": "Product/Service",
         "id": "297102930302510",
         "created_time": "2012-03-06T08:07:06+0000"
     },
@@ -5818,14 +6168,14 @@
         "created_time": "2012-03-04T12:00:46+0000"
     },
     {
-        "name": "分享特惠王",
+        "name": "分享王",
         "category": "Business/Economy Website",
         "id": "256588361064966",
         "created_time": "2012-03-03T18:39:57+0000"
     },
     {
         "name": "爆笑博物館",
-        "category": "Community",
+        "category": "Product/Service",
         "id": "215992388478759",
         "created_time": "2012-02-29T16:45:34+0000"
     },
@@ -5852,12 +6202,12 @@
         "category": "Retail and Consumer Merchandise",
         "category_list": [
             {
-                "id": "150108431712141",
-                "name": "Food & Grocery"
-            },
-            {
                 "id": "182923418412354",
                 "name": "Franchising Service"
+            },
+            {
+                "id": "150108431712141",
+                "name": "Food & Grocery"
             }
         ],
         "id": "134004310003557",
@@ -5925,7 +6275,7 @@
     },
     {
         "name": "喔是喔",
-        "category": "Community",
+        "category": "Comedian",
         "id": "226455007405398",
         "created_time": "2011-12-16T17:40:59+0000"
     },
@@ -6186,12 +6536,12 @@
         "category": "Book Store",
         "category_list": [
             {
-                "id": "133436743388217",
-                "name": "Arts & Entertainment"
-            },
-            {
                 "id": "197048876974331",
                 "name": "Book Store"
+            },
+            {
+                "id": "150432221681325",
+                "name": "DVD & Video Store"
             },
             {
                 "id": "133510666716809",

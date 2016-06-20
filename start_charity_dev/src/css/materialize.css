@@ -7520,7 +7520,7 @@ a {
 
 html {
   line-height: 1.5;
-  font-family: "Roboto", sans-serif;
+  font-family: "微軟正黑體","黑體-繁",ubuntu, "Roboto", sans-serif;
   font-weight: normal;
   color: rgba(0, 0, 0, 0.87);
 }
@@ -7801,7 +7801,7 @@ small {
 }
 
 .card.large {
-  height: 500px;
+  height: 59vh;
 }
 
 .card .card-image {
@@ -8408,10 +8408,10 @@ a.waves-effect .waves-ripple {
   background-color: #fafafa;
   padding: 0;
   max-height: 70%;
-  width: 55%;
+  width: 45%;
   margin: auto;
   overflow-y: auto;
-  border-radius: 2px;
+  border-radius: 4px;
   will-change: top, opacity;
 }
 

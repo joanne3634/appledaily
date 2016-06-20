@@ -5,6 +5,10 @@
             "id": "10204854160448430"
         },
         {
+            "name": "Jheng Ting Justin Chen",
+            "id": "10207737803060817"
+        },
+        {
             "name": "Chih-Fan Hsu",
             "id": "10205655672929596"
         },
@@ -17,14 +21,29 @@
             "id": "1108512335842134"
         },
         {
+            "name": "Wanying Lin",
+            "id": "1283845871644234"
+        },
+        {
             "name": "張鈞閔",
             "id": "1221003141262257"
+        },
+        {
+            "name": "蔡宗翰",
+            "id": "1091306420944436"
+        },
+        {
+            "name": "杜宜蓓",
+            "id": "1023644737726711"
         }
     ],
     "paging": {
-        "next": "https://graph.facebook.com/v2.3/10208714434367191/friends?access_token=EAAE3IDZAJ0nMBAKnZC2RwO6P4ZA4wGgAQKJQdMA5TFZArdEIfNnF2ioncSRbKYZBPocZAu6toWguID1AWw4nP7VEGqflHNTw0SZB2wUZBMuQZBL3PbaSc8BOFNfMhNZBZAXqz3O2qoeBpuaMdNnwE0nzSKoZAer0relsB2OFdGesgRl26AZDZD&limit=25&offset=25&__after_id=enc_AdDtHILwsRbrmdlka0Qr0ioK9QRSMCOdfuaaZAB6O1GsAAnxtkP7Je7hPwsOIxxAGXOuvyXPXiVPCsFsUIZCkCRmL4"
+        "cursors": {
+            "before": "QVFIUlpvWlVCMDJjRy1tX1gwd1VhZAmw0V05teTQ0WmY2S2daVlB0ajh2YlNjSU5rZAWpWSkhFanJpSks1Mmt2dUlLbkkZD",
+            "after": "QVFIUlA5dFBJMzFYRzRnQlhWU1BIa2QwZA0dWU0ZASdi1KanB0MEkzcldZAejJlSl9mcjJwb2hBMEFITTNLT2stVUF4X0R2WnMzckJGWWNEU0YtbTZAzVTltY1Vn"
+        }
     },
     "summary": {
-        "total_count": 807
+        "total_count": 820
     }
 }

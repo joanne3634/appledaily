@@ -1,0 +1,36 @@
+{
+    "id": "1319083634773100",
+    "favorite_athletes": [
+        {
+            "id": "266501026725817",
+            "name": "艾佛森-蔣淯安"
+        },
+        {
+            "id": "1456505354584068",
+            "name": "Jeremy Lin 林書豪"
+        },
+        {
+            "id": "114179191927941",
+            "name": "Manshu Jian"
+        }
+    ],
+    "favorite_teams": [
+        {
+            "id": "197235936972277",
+            "name": "台灣啤酒籃球隊粉絲團"
+        },
+        {
+            "id": "570474722979203",
+            "name": "小人"
+        }
+    ],
+    "first_name": "Mei-Tso",
+    "gender": "female",
+    "last_name": "Chen",
+    "link": "https://www.facebook.com/app_scoped_user_id/1319083634773100/",
+    "locale": "zh_TW",
+    "name": "Mei-Tso Chen",
+    "timezone": 8,
+    "updated_time": "2015-12-20T08:29:27+0000",
+    "verified": true
+}

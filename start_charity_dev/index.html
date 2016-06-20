@@ -32,8 +32,8 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 </head>
-
-<body>
+<body oncontextmenu="return false;">  
+<body >
     <nav class="white" role="navigation">
         <div class="nav-wrapper container">
             <a id="logo-container" href="" class="brand-logo">曙光再現計劃</a>
@@ -58,7 +58,7 @@
                 <div class="container">
                     <br>
                     <br>
-                    <h1 class="header center teal-text text-lighten-2">急難家庭曙光再現計劃</h1>
+                    <h1 class="header center amber-text text-lighten-2">急難家庭曙光再現計劃</h1>
                     <div class="row center">
                         <h5 class="header col s12 light">幫您找出您的捐款偏好</h5>
                     </div>
@@ -68,7 +68,7 @@
                                 <a id="re-ques-button" class="btn-large waves-effect waves-light teal">重填問卷及測驗</a>
                             </div>
                             <div class="col s12 m12 l4">
-                                <a id="update-subscribe-button" class="btn-large waves-effect waves-light teal">更新訂閱頻率</a>
+                                <a id="update-subscribe-button" class="btn-large waves-effect waves-light teal">更新推薦頻率</a>
                             </div>
                             <div class="col s12 m12 l4">
                                 <a id="replay-button" class="btn-large waves-effect waves-light teal">多評一回文章<i class="right material-icons">replay</i></a>
@@ -147,9 +147,9 @@
                     </div>
                     <div class="step third">
                         <a class="step-button left center">3</a>
-                        <h5>訂閱未來的暖流版文章</h5>
+                        <h5>推薦未來的暖流版文章</h5>
                         <div class="content">
-                            邀請您一同加入關心台灣各個角落的弱勢家庭，我們將依您選擇的訂閱頻率，定期將您可能較有意願捐款的報導發送給您；若您有意幫助，請您回覆對該篇文章的捐款意願，或直接按下「前往捐款」按鈕，透過蘋果日報慈善基金會捐助急難家庭。
+                            邀請您一同加入關心台灣各個角落的弱勢家庭，我們將依您選擇的收信頻率，定期將您可能較有意願捐款的報導發送給您；若您有意幫助，請您回覆對該篇文章的捐款意願，或直接按下「前往捐款」按鈕，透過蘋果日報慈善基金會捐助急難家庭。
                         </div>
                         <!--  <div class="img-container">
                             <img src="src/img/3.png" height="auto" width="40%">
@@ -162,7 +162,7 @@
                             <a id="re-ques-button-in-how" class="btn-large waves-effect waves-light teal">重填問卷及測驗</a>
                         </div>
                         <div class="col s12 m12 l4">
-                            <a id="update-subscribe-button-in-how" class="btn-large waves-effect waves-light teal">更新訂閱頻率</a>
+                            <a id="update-subscribe-button-in-how" class="btn-large waves-effect waves-light teal">更新推薦頻率</a>
                         </div>
                         <div class="col s12 m12 l4">
                             <a id="replay-button-in-how" class="btn-large waves-effect waves-light teal">多評一回文章<i class="right material-icons">replay</i></a>
@@ -334,6 +334,40 @@
             </div>
         </footer>
         <a href="#0" class="cd-top">Top</a>
+        
+        <!-- Modal Structure -->
+        <div id="promptLogin" class="modal">
+            <div class="modal-content" style="padding: 24px 24px 0 24px">
+                <h4 class="center">登入提示</h4>
+                <p>我們需要您的識別資料，但不會將您的資料散佈或做其他用途、或任意貼文。 往後可以以您的 FB 帳號登入檢視或修改您的資料。</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">取消</a>
+                <a href="#!" id="agree-login" class="modal-action modal-close waves-effect waves-green btn-flat">確認</a>
+            </div>
+        </div>
+<!--         <div id="promptQuestion" class="modal">
+            <div class="modal-content" style="padding: 24px 24px 0 24px">
+                <h4 class="center">問卷提示</h4>
+                <p>您的個人屬性和平時參與的公益行為，可以讓我們更了解捐款人的特質和關注的議題。</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">取消</a>
+                <a href="#!" id="agree-question" class="modal-action modal-close waves-effect waves-green btn-flat">確認</a>
+            </div>
+        </div> -->
+
+        <div id="promptSurvey" class="modal">
+            <div class="modal-content center" style="padding: 24px 24px 0 24px">
+                <h4 class="center">評分提示</h4>
+                <p>看了這篇文章，若您有能力捐款，請問您的捐款意願如何？<br>每回合共閱讀 10 篇文章，我們將據此推薦未來的暖流版報導給您。</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" id="agree-survey" class="modal-action modal-close waves-effect waves-green btn-flat">確認</a>
+            </div>
+        </div>
+        
+
         <!--  Scripts-->
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="src/js/materialize.js"></script>
@@ -359,10 +393,15 @@
             $('.collapsible').collapsible({
                 accordion: false
             });
+            $("a[id^='before-login-button']").click( function(){ 
+                promptMaterial('promptLogin');
+            });
+            $('#agree-login').click(ClickLoginBtn);
 
-            $("a[id^='before-login-button']").click(ClickLoginBtn);
             $("a[id^='start-button'],a[id^='re-ques-button']").click(ClickStartBtn);
+            
             $("a[id^='replay-button']").click(LoadSurveyPage);
+
             $("a[id^='update-subscribe-button']").click(LoadSubscribingPage);
 
             window.fbAsyncInit = function() {

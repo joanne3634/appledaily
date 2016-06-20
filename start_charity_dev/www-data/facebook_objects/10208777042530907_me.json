@@ -1,0 +1,36 @@
+{
+    "id": "10208777042530907",
+    "first_name": "Wei-Hsiang",
+    "gender": "male",
+    "inspirational_people": [
+        {
+            "id": "139791032770712",
+            "name": "及第師傅"
+        },
+        {
+            "id": "108070619213995",
+            "name": "Bruce Lee"
+        },
+        {
+            "id": "108122042542744",
+            "name": "Yip Man"
+        }
+    ],
+    "languages": [
+        {
+            "id": "111892298827520",
+            "name": "Chinese"
+        },
+        {
+            "id": "106059522759137",
+            "name": "English"
+        }
+    ],
+    "last_name": "Yu",
+    "link": "https://www.facebook.com/app_scoped_user_id/10208777042530907/",
+    "locale": "zh_TW",
+    "name": "Yu Wei-Hsiang",
+    "timezone": 8,
+    "updated_time": "2016-05-20T01:44:56+0000",
+    "verified": true
+}

@@ -2,13 +2,14 @@
     <div class="container">
         <br>
         <h2 class="header center teal-text">
-			請讓我們更瞭解您 :)
-		</h2>
+            請讓我們更瞭解您 :)
+            <span class="center">您的個人屬性和平時參與的公益行為，可以讓我們更了解捐款人的特質和關注的議題。</span>
+        </h2>
         <div class="section no-pad-top  tabs-wrapper">
             <div class='wrapper-form'>
                 <h5 class="header">
-					性別
-				</h5>
+                    性別
+                </h5>
                 <form id='questionaire-gender'>
                 </form>
             </div>
@@ -16,8 +17,8 @@
         <div class="section no-pad-top  tabs-wrapper">
             <div class='wrapper-form'>
                 <h5 class="header">
-					年齡
-				</h5>
+                    年齡
+                </h5>
                 <form id='questionaire-age'>
                 </form>
             </div>
@@ -25,8 +26,8 @@
         <div class="section no-pad-top  tabs-wrapper">
             <div class='wrapper-form'>
                 <h5 class="header">
-					學歷
-				</h5>
+                    學歷
+                </h5>
                 <form id='questionaire-education'>
                 </form>
             </div>
@@ -34,8 +35,8 @@
         <div class="section no-pad-top  tabs-wrapper">
             <div class='wrapper-form'>
                 <h5 class="header">
-					婚姻狀況
-				</h5>
+                    婚姻狀況
+                </h5>
                 <form id='questionaire-marriage'>
                 </form>
             </div>
@@ -43,8 +44,8 @@
         <div class="section no-pad-top  tabs-wrapper">
             <div class='wrapper-form'>
                 <h5 class="header">
-					宗教信仰
-				</h5>
+                    宗教信仰
+                </h5>
                 <form id='questionaire-religion'>
                 </form>
             </div>
@@ -52,8 +53,8 @@
         <div class="section no-pad-top  tabs-wrapper">
             <div class='wrapper-form'>
                 <h5 class="header">
-					目前就職狀態
-				</h5>
+                    目前就職狀態
+                </h5>
                 <form id='questionaire-career'>
                 </form>
             </div>
@@ -61,8 +62,8 @@
         <div class="section no-pad-top  tabs-wrapper">
             <div class='wrapper-form'>
                 <h5 class="header">
-					從事過行業類別 (可複選)
-				</h5>
+                    從事過行業類別 (可複選)
+                </h5>
                 <form id='questionaire-careerUsed'>
                 </form>
             </div>
@@ -70,8 +71,8 @@
         <div class="section no-pad-top  tabs-wrapper">
             <div class='wrapper-form'>
                 <h5 class="header">
-					年收入區間
-				</h5>
+                    年收入區間
+                </h5>
                 <form id='questionaire-income'>
                 </form>
             </div>
@@ -79,8 +80,8 @@
         <div class="section no-pad-top  tabs-wrapper">
             <div class='wrapper-form'>
                 <h5 class="header">
-					最近兩年的公益捐款行為
-				</h5>
+                    最近兩年的公益捐款行為
+                </h5>
                 <form id='questionaire-charityHistory'>
                 </form>
             </div>
@@ -88,8 +89,8 @@
         <div class="section no-pad-top  tabs-wrapper">
             <div class='wrapper-form'>
                 <h5 class="header">
-					請問您的捐款意向為何?（可複選）
-				</h5>
+                    請問您的捐款意向為何?（可複選）
+                </h5>
                 <form id='questionaire-charityTendency'>
                 </form>
             </div>
@@ -97,8 +98,8 @@
         <div id="other-input" class="section no-pad-top  tabs-wrapper " style='display:none'>
             <div class='wrapper-form'>
                 <h5 class="header">
-					請填寫"其他"捐款意向 
-				</h5>
+                    請填寫"其他"捐款意向 
+                </h5>
                 <form id='questionaire-charityTendencyOther'>
                     <input id="charityTendencyOther" type="text" class="validate">
                     <label for="charityTendencyOther"></label>
@@ -108,8 +109,8 @@
         <div class="section no-pad-top  tabs-wrapper">
             <div class='wrapper-form'>
                 <h5 class="header">
-					除了公益捐款，請問您最近兩年還參與哪些類型的公益活動?（可複選）
-				</h5>
+                    除了公益捐款，請問您最近兩年還參與哪些類型的公益活動?（可複選）
+                </h5>
                 <form id='questionaire-charityActivity'>
                 </form>
             </div>
@@ -117,8 +118,8 @@
         <div class="section no-pad-top  tabs-wrapper">
             <div class='wrapper-form'>
                 <h5 class="header">
-					請問您樂意在社群網站 (例如 Facebook 或 Plurk) 分享公益募款文章給朋友嗎?
-				</h5>
+                    請問您樂意在社群網站 (例如 Facebook 或 Plurk) 分享公益募款文章給朋友嗎?
+                </h5>
                 <form id='questionaire-charityWilling'>
                 </form>
             </div>
@@ -131,6 +132,16 @@
         </div>
         <br>
         <br>
+    </div>
+    <div id="modalQuestion" class="modal">
+        <div class="modal-content center" style="padding: 24px 24px 0 24px">
+            <h4>問卷提交確認</h4>
+            <p>請問您確定不再修改問卷內容?</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">取消</a>
+            <a href="#!" id="agree-question-submit" class="modal-action modal-close waves-effect waves-green btn-flat">確認</a>
+        </div>
     </div>
 </div>
 <script type="text/javascript">
@@ -148,7 +159,10 @@ $(document).ready(function() {
     CreateMultiSelect(QUESTIONAIRE_FORM_TEXTS.charityActivityOpts, 'questionaire-charityActivity');
     CreateScaleForm('非常不樂意', '非常樂意', 10, 'charityWilling', 'questionaire-charityWilling');
 
-    $('#after-questionaire-button').click(ClickAfterQuestionaireBtn);
+    $('#after-questionaire-button').click( function(){
+        promptMaterial('modalQuestion');
+    });
+    $('#agree-question-submit').click(ClickAfterQuestionaireBtn);
 
     $("#questionaire-charityTendency").change(function() {
         var otherCheck = getFormData('questionaire-charityTendency');

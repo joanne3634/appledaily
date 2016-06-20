@@ -1,0 +1,32 @@
+{
+    "id": "1221003141262257",
+    "favorite_athletes": [
+        {
+            "id": "122632351246436",
+            "name": "田壘"
+        },
+        {
+            "id": "69025400418",
+            "name": "Kobe Bryant"
+        },
+        {
+            "id": "110688685618379",
+            "name": "Kobe Bryant"
+        }
+    ],
+    "favorite_teams": [
+        {
+            "id": "144917055340",
+            "name": "LA Lakers"
+        }
+    ],
+    "first_name": "鈞閔",
+    "gender": "male",
+    "last_name": "張",
+    "link": "https://www.facebook.com/app_scoped_user_id/1221003141262257/",
+    "locale": "zh_TW",
+    "name": "張鈞閔",
+    "timezone": 8,
+    "updated_time": "2016-04-27T03:10:46+0000",
+    "verified": true
+}

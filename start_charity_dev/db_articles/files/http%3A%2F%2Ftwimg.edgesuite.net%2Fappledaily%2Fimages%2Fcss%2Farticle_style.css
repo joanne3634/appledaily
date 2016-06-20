@@ -1,0 +1,778 @@
+﻿/* Abdominis */
+thoracis {
+	width: 640px;
+	overflow-x: hidden;
+}
+
+.abdominis {
+	width: 640px;
+	padding: 0 10px 0 0;
+}
+
+.vertebrae {
+	overflow: hidden;
+}
+
+/* Media Box */
+.mediabox {
+	position: relative;
+	width: 640px;
+	padding-top: 10px;
+	text-align: center;
+}
+
+.novideo .mediabox {
+	text-align: center;
+	padding-top: 0;
+}
+
+#unImage,
+#newimglayer {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#newimglayer .yes {
+	position: absolute;
+	top: 310px;
+	left: 100px;
+}
+
+#newimglayer .no {
+	position: absolute;
+	top: 310px;
+	left: 340px;
+}
+
+#videobox {
+	width: 640px;
+	height: 380px;
+	margin-top: -10px;
+}
+
+/* Toolbar */
+.tlb {
+	position: relative;
+	width: 640px;
+}
+
+.tlb h2,
+.tlb div,
+.tlb a {
+	position: relative;
+	float: left;
+}
+
+.tlb div {
+	top: -9px;
+}
+
+.tlb div,
+.tlb h2 {
+	font-size: 1em;
+	font-weight: lighter;
+}
+
+.fntss {
+	padding-right: 10px;
+}
+
+h2.shrst,
+div.shrs {
+	/*position: absolute;*/
+}/*lpt312*/
+
+h2.shrst {
+	left: 430px;
+}
+
+div.shrs {
+	/*left: 480px;*/
+	width: 550px;
+	height:32px;
+	/*margin-right: -10px;*/
+	margin: 0px 0px 10px 0px;
+}/*lpt312*/
+
+.fntss a {
+	background-image: url(/appledaily/images/core/iconset.png);
+	background-repeat: no-repeat;
+	display: block;
+	width: 32px;
+	height: 32px;
+	margin-right: 10px;
+}/*lpt312*/
+
+.shrs a {
+	/*background-image: url(../core/iconset.png);
+	background-repeat: no-repeat;*/
+	/*display: block;*/
+	float:left;
+	width: 130px;
+	height: 32px;
+	margin-right: 3px;
+}/*lpt312*/
+
+
+.clicked,
+.forward,
+.quote {margin-right: 10px;}
+
+.clicked:hover,
+.forward:hover,
+.quote:hover {text-decoration: underline;}
+.headline a.bigger {background-position: 0 -235px; margin-right: 0;}
+.headline .middle {background-position: -32px -235px;}
+.headline .smaller {background-position: -64px -235px;}
+.entertainment a.bigger {background-position: 0 -267px; margin-right: 0;}
+.entertainment .middle {background-position: -32px -267px;}
+.entertainment .smaller {background-position: -64px -267px;}
+.international a.bigger {background-position: 0 -363px; margin-right: 0;}
+.international .middle {background-position: -32px -363px;}
+.international .smaller {background-position: -64px -363px;}
+.sports a.bigger {background-position: 0 -331px; margin-right: 0;}
+.sports .middle {background-position: -32px -331px;}
+.sports .smaller {background-position: -64px -331px;}
+.finance a.bigger {background-position: 0 -299px; margin-right: 0;}
+.finance .middle {background-position: -32px -299px;}
+.finance .smaller {background-position: -64px -299px;}
+.property a.bigger {background-position: 0 -395px; margin-right: 0;}
+.property .middle {background-position: -32px -395px;}
+.property .smaller {background-position: -64px -395px;}
+.supplement a.bigger {background-position: 0 -427px; margin-right: 0;}
+.supplement .middle {background-position: -32px -427px;}
+.supplement .smaller {background-position: -64px -427px;}
+.forum a.bigger {background-position: 0 -459px; margin-right: 0;}
+.forum .middle {background-position: -32px -459px;}
+.forum .smaller {background-position: -64px -459px;}
+.headline .btsl {background-color: #3371c2; background-position: 6px -10px;}
+.entertainment .btsl {background-color: #e48316; background-position: 6px -70px;}
+.international .btsl {background-color: #3371c2; background-position: 6px -250px;}
+.sports .btsl {background-color: #a31313; background-position: 6px -190px;}
+.finance .btsl {background-color: #1f3e6e; background-position: 6px -130px;}
+.property .btsl {background-color: #5699a8; background-position: 6px -310px;}
+.supplement .btsl {background-color: #582a97; background-position: 6px -370px;}
+.forum .btsl {background-color: #86a84a; background-position: 20px -430px;}
+.fntss a.bigger:hover, .fntss a.bion {background-position: 0 -491px;}
+.fntss a.middle:hover, .fntss a.mion {background-position: -32px -491px;}
+.fntss a.smaller:hover, .fntss a.smon {background-position: -64px -491px;}
+a.plurk {background-image: url(/appledaily/images/dw130_p.png);
+	background-repeat: no-repeat;
+	display: block;
+	width: 130px;
+	height: 32px;
+	margin-right: 3px;
+	}/*lpt312*/
+	
+a.facebook {background-image: url(/appledaily/images/dw130_f.png);
+	background-repeat: no-repeat;
+	display: block;
+	width: 130px;
+	height: 32px;
+	margin-right: 3px;
+	}/*lpt312*/
+	
+a.twitter {background-image: url(/appledaily/images/dw130_t.png);
+	background-repeat: no-repeat;
+	display: block;
+	width: 130px;
+	height: 32px;
+	margin-right: 3px;
+	}/*lpt312*/
+	
+a.gpls {background-image: url(/appledaily/images/dw130_g.png);
+	background-repeat: no-repeat;
+	display: block;
+	width: 130px;
+	height: 32px;
+	margin-right: 3px;
+	}/*lpt312*/
+
+
+.headline .tlb,
+.headline .tlb a {color: #3371c2;}
+.headline .mpatc {border-top: 4px solid #3371c2;}
+.entertainment .tlb,
+.entertainment .tlb a {color: #e48316;}
+.entertainment .mpatc {border-top: 4px solid #e48316;}
+
+.international .tlb,
+.international .tlb a {color: #3371c2;}
+.international .mpatc {border-top: 4px solid #3371c2;}
+.finance .tlb,
+.finance .tlb a {color: #1f3e6e;}
+.finance .mpatc {border-top: 4px solid #1f3e6e;}
+.sports .tlb,
+.sports .tlb a {color: #a31313;}
+.sports .mpatc {border-top: 4px solid #a31313;}
+.property .tlb,
+.property .tlb a {color: #5699a8;}
+.property .mpatc {border-top: 4px solid #5699a8;}
+.supplement .tlb,
+.supplement .tlb a {color: #582a97;}
+.supplement .mpatc {border-top: 4px solid #582a97;}
+.forum .tlb,
+.forum .tlb a {color: #86a84a;}
+.forum .mpatc {border-top: 4px solid #86a84a;}
+
+/* Main Article Field */
+/* Single Large Image */
+.mediabox figure {
+	padding-bottom: 18px;
+}
+
+.slimg {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+}
+
+.slimg a {
+	position: relative;
+	display: block;
+	zoom: 1;
+}
+
+.mpatc {
+	background-color: white;
+	padding: 10px 55px 20px;
+	border-bottom: 1px solid #cccccc;
+	zoom: 1;
+}
+
+.mpatc label,
+.mpatc label a {
+	color: #76777a;
+}
+
+.mpatc select {
+	width: 424px;
+}
+
+.mpatc header {
+	margin-top: 0.625em;
+	padding-top: 0.7em;
+	border-top: 1px dashed #9c9ea6;
+}
+
+.mpatc h1 {
+	color: #3f3f41;
+	font-size: 1.5em;
+	line-height: 1.3em;
+}
+
+.mpatc header h2 {
+	color: #3f3f41;
+	font-size: 1em;
+	line-height: 1.3em;
+	font-weight: lighter;
+}
+
+.gggs {
+	position: relative;
+	padding: 10px 0 16px;
+	zoom: 1;
+}
+
+.gggs * {
+	display: inline;
+	color: #616161;
+	vertical-align: middle !important;
+}
+
+.gggs a {
+
+}
+
+.mcat {
+	background-color: #86a84a;
+	position: absolute;
+	top: 10px;
+	right: 0;
+	color: white;
+	padding: 4px 8px;
+}
+
+.donate {
+	position: absolute;
+	top: 10px;
+	right: 120px;
+}
+
+.articulum {
+	clear: both;
+}
+
+.articulum h2 {
+	position: relative;
+	top: -4px;
+	color: #000000;
+	font-size: 1.25em;
+	line-height: 1em;
+}
+
+.articulum p {
+	line-height: 1.5em;
+	margin-bottom: 1.5em;
+}
+
+.sgimg {
+	position: relative;
+	width: 160px;
+	color: #505050;
+	font-size: 15px;
+	line-height: 1.2em;
+	padding-bottom: 0.75em;
+}
+
+.sgimg img,
+.sgimg a {
+	display: block;
+}
+
+.sgimg a {
+	position: relative;
+	width: 160px;
+	height: 160px;
+	overflow: hidden;
+}
+
+.sgimg .cpt {
+	display: block;
+	font-size: 15px;
+	line-height: 1.3em;
+	padding: 0.5em 0;
+	border-bottom: 1px solid #9d9ea6;
+}
+
+.slimg span,
+.sgimg a span {
+	background: transparent url(/appledaily/images/core/mggi.png) top left no-repeat;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	display: block;
+	width: 46px;
+	height: 46px;
+}
+
+.sglft {
+	float: left;
+	margin-right: 1.5em;
+	margin-bottom: 1em;
+}
+
+.mlibx .sgth:last-child,
+.mlibx .sgth:nth-child(3) {
+	margin-right: 0;
+}
+
+.sgrgt {
+	float: right;
+	margin-left: 1.5em;
+	margin-bottom: 1em;
+}
+
+.mlibx {
+	width: 530px;
+	clear: both;
+	overflow: hidden;
+}
+
+.whol {
+	width: 560px;
+}
+
+
+
+.twimg {
+
+	width: 440px;
+
+	margin: 0 auto;
+
+}
+
+
+
+.sgtw {
+	float: left;
+	margin: 0 1.5em;
+}
+
+.sgth {
+	float: left;
+	margin-right: 25px;
+}
+
+.articulum p a {
+	color: #4688b3;
+	border-bottom: 1px dotted #4688b3;
+}
+
+.articulum a:hover {
+	color: #4688b3;
+	border-bottom: 0px dotted #4688b3;
+}
+
+.arttl {
+	color: #3f3f41;
+	line-height: 1.5em;
+	margin-bottom: 0.5em;
+}
+
+.arttl li {
+	margin-bottom: 0.5em;
+}
+
+/* NExt and Previous */
+.artiswer a {
+	background-image: url(/appledaily/images/article/pvnx.png);
+	background-color: #ccc;
+	background-repeat: no-repeat;
+	display: block;
+	color: #141414;
+	width: 240px;
+	overflow: hidden;
+	white-space: nowrap;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+.artiswer a:hover {
+	background-color: #141414;
+	color: white;
+}
+
+.swpv {
+	background-position: -30px 50%;
+	float: left;
+	text-align: left;
+	padding-left: 40px;
+	padding-right: 20px;
+}
+
+.swnx {
+	background-position: 268px 50%;
+	float: right;
+	text-align: right;
+	padding-left: 20px;
+	padding-right: 40px;
+}
+
+/* bottom speedlist */
+.btsl {
+	background-image: url(/appledaily/images/core/btslbg.png);
+	background-repeat: no-repeat;
+	color: white;
+	padding: 9px;*padding:5px 9px;
+	padding-left: 10px;
+	clear:both;
+}
+.btsl label a {
+	color: white;
+	margin-right: 20px;
+	position:relative;
+	top:3px;*top:-3px;
+}
+
+.btsl  select {
+	width: 512px;
+}
+
+/* Forum Author Intro Page */
+
+.aubx {
+	background: #457d4b url(/appledaily/images/article/atfmhdbg.png) top left repeat-x;
+	position: relative;
+	width: 304px;
+	padding: 40px 20px 0 316px;
+	margin-bottom: 18px;
+	zoom: 1;
+}
+
+.auw,
+.aut,
+.aubx ol {
+	position: relative;
+	z-index: 4;
+}
+
+.aupig {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	display: block;
+	width: 390px;
+	z-index: 3;
+	behavior: url(/appledaily/images/core/iepngfix.htc);
+}
+
+.auw {
+	font-size: 1.125em;
+	line-height: 1em;
+	margin-bottom: 0.7em;
+}
+
+.auw a {
+	color: #516b12;
+}
+
+.aut {
+	font-size: 1.875em;
+	line-height: 1.2em;
+	padding: 0.1em 0;
+	border-color: #c2d5b7;
+	border-style: dashed;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+}
+
+.aut a {
+	color: white;
+}
+
+.auit {
+	color: #e0eadb;
+	font-size: 0.8125em;
+	line-height: 1.3em;
+	padding: 10px 0;
+	border-bottom: 1px dashed #c2d5b7;
+}
+
+.aubx ol {
+	color: #c8e467;
+	padding: 10px 0;
+}
+
+.aumm {
+	padding: 0.25em 0;
+}
+
+.aumm a {
+	color: #c8e467;
+	line-height: 1em;
+	padding-left: 1.4375em;
+}
+
+.aumm a:hover {
+	text-decoration: underline;
+}
+
+.auallt li {
+	position: relative;
+	height: 1%;
+	overflow: hidden;
+	padding: 0.75em 0;
+	border-bottom: 1px dashed #87b502;
+	clear: both;
+	zoom: 1;
+}
+
+.auallt a {
+	float: left;
+	width: 78%;
+	color: #6b981f;
+	vertical-align: middle;
+}
+
+.auallt a:hover {
+	text-decoration: underline;
+}
+
+.auallt time {
+	float: right;
+	width: 20%;
+	color: #696d70;
+	font-size: 0.8125em;
+	text-align: right;
+}
+
+.pppct {
+	color: #616161;
+	padding: 1em 0;
+}
+
+.lisw {
+	margin-top: 1em;
+	text-align: center;
+}
+
+.lisw b,
+.lisw a {
+	padding: 0.25em;
+	margin: 0 0.4em;
+	line-height: 1.2em;
+}
+
+.lisw b,
+.lisw a:hover {
+	background-color: #595a5b;
+	color: white;
+}
+
+.lisw a {
+	color: #595a5b;
+}
+
+/* User Message Board */
+.adusmb {
+    position: relative;
+    margin-top: 20px;
+}
+
+.adbb {
+	background-color: white;
+	width: 600px;
+	padding: 20px;
+	border-top: 1px solid #d4d4d4;
+}
+
+.adusmb header {
+	position: relative;
+	color: #5b5b5b;
+    padding: 5px 0;
+    zoom: 1;
+}
+
+.adusmb h1 {
+    color: #373737;
+    font-size: 1.5em;
+    line-height: 1.2em;
+}
+
+.adusmb header a {
+	display: block;
+	position: absolute;
+	top: 12px;
+	left: 102px;
+	height: 1.2em;
+	color: #4c8bb5;
+	font-size: 0.9375em;
+	line-height: 1.2em;
+}
+
+.polss {
+	display: none;
+	padding: 0.75em 0;
+	border-top: 1px solid #d4d4d4;
+}
+
+.polss h3 {
+	color: #333;
+	line-height: 2em;
+	margin-bottom: 0.5em;
+}
+
+.polss ul {
+	list-style-type: decimal;
+	padding-left: 1em;
+	margin-left: 1em;
+}
+
+.polss li {
+	margin-bottom: 1em;
+}
+
+.adusmb header a img {
+	margin-right: 4px;
+}
+
+.adusmb label {
+	float: left;
+	font-size: 1em;
+	line-height: 1.2em;
+	padding-top: 0.375em;
+}
+
+.adusmb input {
+	font-size: 1em;
+	padding: 0.375em;
+	margin-bottom: 0.625em;
+	border: 1px solid #d4d4d4;
+}
+
+.adusmb textarea {
+	background-color: #f1eeeb;
+	display: block;
+	width: 566px;
+	height: 5em;
+	font-size: 1em;
+	padding: 1em;
+	margin-bottom: 0.625em;
+	border: 1px solid #d4d4d4;
+}
+
+.adusmb button {
+	background: #e6932c url(/appledaily/images/core/adusmbbt.png) top left repeat-x;
+	display: block;
+	width: 5em;
+	height: 1.625em;
+	color: white;
+	font-size: 1em;
+	line-height: 1.2em;
+	text-align: center;
+	border: 1px solid #48216;
+	border-radius: 4px;
+}
+
+.adusmb button:hover {
+	background-image: none;
+}
+
+.adusmb button:active {
+	background-image: none;
+	background-color: #e48216;
+}
+
+.adusmb article {
+	padding-top: 3em;
+}
+
+.usecm {
+	background: transparent url(/appledaily/images/article/aduaw.png) 477px 0 no-repeat;
+	font-size: 1em;
+	margin-bottom: 2em;
+	clear: both;
+	zoom: 1;
+}
+
+.usecm h2 {
+	float: left;
+	width: 60%;
+	color: #989694;
+	font-size: 1em;
+	line-height: 1.2em;
+}
+
+.usecm time {
+	float: right;
+	width: 26%;
+	color: #5b5b5b;
+	font-size: 0.8125em;
+	line-height: 1.2em;
+	text-align: right;
+}
+
+.usecm p {
+	background-color: #f1eeeb;
+	line-height: 1.3em;
+	padding: 0.75em 1em;
+	clear: both;
+}
+
+.usecm p span {
+	display: block;
+	color: #f1eeeb;
+	font-size: 0.625em;
+	text-align: right;
+}
+
+/* Home Aside */
+.manu {
+	float: right;
+	width: 300px;
+}

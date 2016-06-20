@@ -1,0 +1,33 @@
+{
+    "id": "10205655672929596",
+    "email": "silverwind100@hotmail.com",
+    "favorite_athletes": [
+        {
+            "id": "220938741250230",
+            "name": "Sasha DiGiulian"
+        }
+    ],
+    "first_name": "Chih-Fan",
+    "gender": "male",
+    "languages": [
+        {
+            "id": "107475249281640",
+            "name": "Hakka Chinese"
+        },
+        {
+            "id": "108315482533697",
+            "name": "Southern Min"
+        },
+        {
+            "id": "111892298827520",
+            "name": "Chinese"
+        }
+    ],
+    "last_name": "Hsu",
+    "link": "https://www.facebook.com/app_scoped_user_id/10205655672929596/",
+    "locale": "en_US",
+    "name": "Chih-Fan Hsu",
+    "timezone": 8,
+    "updated_time": "2016-04-27T06:14:53+0000",
+    "verified": true
+}

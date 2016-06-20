@@ -1,0 +1,32 @@
+{
+    "id": "10209379787713179",
+    "favorite_athletes": [
+        {
+            "id": "191527017564654",
+            "name": "Xavier Chen〡Official 夏維耶官方頁"
+        },
+        {
+            "id": "102879319796341",
+            "name": "陳柏良 Chen Po-Liang"
+        },
+        {
+            "id": "176063032413299",
+            "name": "Leo Messi"
+        }
+    ],
+    "first_name": "Chia-Ching",
+    "gender": "male",
+    "last_name": "Lin",
+    "link": "https://www.facebook.com/app_scoped_user_id/10209379787713179/",
+    "locale": "en_US",
+    "name": "Chia-Ching Lin",
+    "sports": [
+        {
+            "id": "108501195841933",
+            "name": "Association football"
+        }
+    ],
+    "timezone": 8,
+    "updated_time": "2016-01-27T08:02:43+0000",
+    "verified": true
+}

@@ -22,14 +22,18 @@
 		if( !isset( $libfm['EMAIL'] )){ $libfm['EMAIL'] = ''; }
 		if( !isset($libfm['DATA'] )){ $libfm['DATA'] = array(); }
 		if( !isset($libfm['USER'] )){ $libfm['USER'] = array(); }
+
+		if( !isset($libfm['USER_RAW'] )){ $libfm['USER_RAW'] = array(); }
+		if( !isset($libfm['USER_CharityTendencyOther'] )){ $libfm['USER_CharityTendencyOther'] = ''; }
+
 		if( !isset($libfm['FB'] )){ $libfm['FB'] = array(); }
 
 		// RecordSubscribeInLibfm
 		if( isset( $_POST['SUBSCRIBING'] )){ $libfm['SUBSCRIBING'] = intval($_POST['SUBSCRIBING']); }
-		if( isset( $libfm['EMAIL'] )){ $libfm['EMAIL'] = $_POST['EMAIL']; }
+		if( isset( $_POST['EMAIL'] )){ $libfm['EMAIL'] = $_POST['EMAIL']; }
 
 		// RecordLibfm 有更新問卷或是重新做測驗
-		if( !isset( $libfm['DATA'][$_POST['UNIQ_ID']] ) && isset($_POST['UNIQ_ID']) ){
+		if( isset($_POST['UNIQ_ID']) && !isset( $libfm['DATA'][$_POST['UNIQ_ID']] ) ){
 
 			$data = array();
 			$data['UNIQ_ID'] = $_POST['UNIQ_ID'];
@@ -67,6 +71,7 @@
 				$USER_QUESTIONAIRE = json_decode($_POST['USER_QUESTIONAIRE'],true);
 				if( $USER_QUESTIONAIRE['gender'] == 'na'){ // 沒有做問卷從舊資料抓
 					$data['USER'] = $libfm['USER'];
+					$USER_QUESTIONAIRE = $libfm['USER_RAW'];
 				}else{
 					foreach ( $USER_QUESTIONAIRE as $key => $value ) {
 						if( $key == 'charityWilling' ){
@@ -81,7 +86,11 @@
 						}
 					}
 				}
+			if( $_POST['USER_CharityTendencyOther'] != 'na' && $data['USER']['charityTendency-6'] == 1 ){  // 其他
+				$libfm['USER_CharityTendencyOther'] = $_POST['USER_CharityTendencyOther']; 
+			}
 			$libfm['USER'] = $data['USER'];
+			$libfm['USER_RAW'] = $USER_QUESTIONAIRE;
 			// print_r( $libfm['USER'] );
 
 			/*==========  facebook saving  ==========*/
@@ -139,7 +148,8 @@
 			$ROUND_RESULT = json_decode($_POST['ROUND_RESULT'],true);
 
 			foreach ( $ROUND_RESULT as $key => $value ) {
-				$data['ROUND']['#'.$value['aid']] = $value['score'];
+				$data['ROUND']['#'.$value['aid']]['score'] = $value['score'];
+				$data['ROUND']['#'.$value['aid']]['time'] = $value['change'];
 			}
 
 			$libfm['DATA'][$_POST['UNIQ_ID']] = $data;

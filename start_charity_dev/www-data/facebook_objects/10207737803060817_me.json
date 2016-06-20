@@ -1,0 +1,37 @@
+{
+    "id": "10207737803060817",
+    "favorite_athletes": [
+        {
+            "id": "131854390218883",
+            "name": "輔大金剛狼邱柏學"
+        },
+        {
+            "id": "26581708030",
+            "name": "David Lama"
+        },
+        {
+            "id": "127973220585939",
+            "name": "朱恩樂(Onur Dogan)粉絲團"
+        },
+        {
+            "id": "184768945032568",
+            "name": "Toyz & Stanley 2013/08/04 粉絲見面會"
+        }
+    ],
+    "favorite_teams": [
+        {
+            "id": "241409359265075",
+            "name": "Taipei Assassins (台北暗殺星)"
+        }
+    ],
+    "first_name": "Jheng Ting",
+    "gender": "male",
+    "last_name": "Chen",
+    "link": "https://www.facebook.com/app_scoped_user_id/10207737803060817/",
+    "locale": "zh_TW",
+    "middle_name": "Justin",
+    "name": "Jheng Ting Justin Chen",
+    "timezone": 8,
+    "updated_time": "2016-05-19T18:39:41+0000",
+    "verified": true
+}

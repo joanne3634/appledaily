@@ -1,13 +1,13 @@
 <div class="section no-pad-bot">
-    <div class="container">
-        <div class="row">
+    <div class="container fix-slider">
+        <div class="row slider-row">
             <!-- <div class="col s12 center"><span class="flow-text" id="round-text">第 ? 回合 (共 ? 回合)</span></div> -->
             <div class="col s12 center progress">
                 <div id="progress" class="right-align determinate"></div>
             </div>
             <div class="col s12 center">
                 <div class="row valign-wrapper no-margin-bot">
-                    <div class="col s1">
+                    <div class="col">
                         <a class="btn-floating btn-large waves-effect waves-light disabled" id="navigate-before">
                             <i class="material-icons">navigate_before</i>
                         </a>
@@ -33,30 +33,29 @@
                                     強烈意願
                                 </div>
                             </div>
-                            <div class="center-align" id="slider-score-text"><span>請拖曳上方按紐，往<span class="text-underline">左拖曳</span>表示捐款<span class="text-underline">意願低</span>，往<span class="text-underline">右拖曳</span>表示捐款<span class="text-underline">意願高</span></span>
-                            </div>
+                            
                         </div>
                     </div>
-                    <div class="col s1">
+                    <div class="col">
                         <a class="btn-floating btn-large waves-effect waves-light right disabled" id="navigate-next">
                             <i class="material-icons">navigate_next</i>
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="col s12 center">
-                <div class="card large">
-                    <iframe src="db_articles/A3565.htm" class="iframe-style" id="article-iframe"></iframe>
-                </div>
-            </div>
         </div>
+        <div class="center-align" id="slider-score-text"><span>拖曳上方按紐，往<span class="text-underline">左</span>表示捐款<span class="text-underline">意願低</span>，往<span class="text-underline">右</span>表示<span class="text-underline">意願高</span></span></div>
+    </div>
+
+    <div class="center">
+        <iframe src="db_articles/A3914.htm" frameBorder=0 scrolling=no class="iframe-style" id="article-iframe"></iframe>
     </div>
 </div>
 <!-- Modal Structure -->
 <div id="modal1" class="modal">
     <div class="modal-content center" style="padding: 24px 24px 0 24px">
-        <h4>提交確認</h4>
-        <p>請問您確定不再修改測驗內容?</p>
+        <h4>評分提交確認</h4>
+        <p>請問您確定不再修改評分內容?</p>
     </div>
     <div class="modal-footer">
         <a href="#!" id="disagree-submit" class="modal-action modal-close waves-effect waves-red btn-flat">取消</a>

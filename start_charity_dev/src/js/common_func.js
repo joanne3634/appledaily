@@ -3,9 +3,34 @@ function LoadQuestionairePage() {
         $.get(MY_PAGES.questionairePage, function(data) {
             $('#questionairePage').html(data);
             hideAllPage();
+            if( USER_PROFILE.questionaire.gender != 'na'){
+                $.each(USER_PROFILE.questionaire, function(i, v) {
+                    if (i == 'gender' || i =='charityWilling') {
+                        $("#questionaire-"+ i + " input[value='"+ USER_PROFILE.questionaire[i][0]+"'] ").prop("checked", true); 
+                    } else {
+                        if (i == 'charityTendency') {
+                            var otherCheck = USER_PROFILE.questionaire['charityTendency'];
+                            var otherIndex = $.map(QUESTIONAIRE_FORM_TEXTS['charityTendencyOpts'], function(val, key) {
+                                if (val['label'] == '其他') {
+                                    return (val['index']);
+                                }
+                            })
+                            if ($.inArray(otherIndex + '', otherCheck) != -1) { // 資料裡有其他 
+                                $('#other-input').show();
+                                $('#charityTendencyOther').val( USER_PROFILE.charityTendencyOther );
+                            } else {
+                                $('#other-input').hide();
+                            }
+                        }
+                        $.each(v, function(v_index, v_value) {
+                            $("#questionaire-"+i+" select option[value='"+ v_value +"']").attr('selected', true);
+                        })
+                    }
+                });
+                $('select').material_select();
+            }
             $('#questionairePage').show();
             $(document).scrollTop(0);
-
             AfterLoadQuestionaire();
         });
     });
@@ -13,20 +38,20 @@ function LoadQuestionairePage() {
 
 function LoadSurveyPage() {
     RandomAssignCases();
-
     $.get(MY_PAGES.surveyPage, function(data) {
         $('#surveyPage').html(data);
         hideAllPage();
         $('#surveyPage').show();
         $(document).scrollTop(0);
-
         AfterLoadSurvey();
+        promptMaterial('promptSurvey');
     });
 }
 
 function LoadThankPage() {
     $(document).ready(function() {
         $.get(MY_PAGES.thankPage, function(data) {
+            TitleListLoading();
             $('#thankPage').html(data);
             hideAllPage();
             $('#thankPage').show();
@@ -38,11 +63,14 @@ function LoadThankPage() {
 }
 
 function LoadSubscribingPage() {
+
     $(document).ready(function() {
         $.get(MY_PAGES.subscribingPage, function(data) {
             $('#subscribingPage').html(data);
             hideAllPage();
             if (USER_PROFILE.subscribe != 0) {
+                $("#subscribing-frequency input[type='checkbox']").attr('checked', true);
+                $('.subscribe-info-container').show();
                 $('#email').val(USER_PROFILE.email);
                 $("#subscribing-frequency select option[value='0']").attr('selected', false);
                 $("#subscribing-frequency select option[value='" + USER_PROFILE.subscribe + "']").attr('selected', true);
@@ -79,6 +107,12 @@ function IniSelect() {
     $(document).ready(function() {
         $('select').material_select();
     });
+}
+
+function ArticleIframeCss(selector, css) {
+    var head = $(selector).contents().find("head"); //#article-iframe
+    var css = '<style type="text/css">' + css + '</style>'; //'article.mpatc.clearmen { padding: 0 20px !important; }'
+    $(head).append(css);
 }
 
 function CreateCheckbox(myOptions, myContianer) {
@@ -264,7 +298,7 @@ function SetShortcuts() {
 function TitleListLoading() {
     $.get(MY_URLS.titleList, function(data) {
         EXPERIMENT_PROFILE.titleList = data;
-        EXPERIMENT_PROFILE.aidList = Object.keys(data).sort().reverse().splice(0,EXPERIMENT_PROFILE.totalArticles);
+        EXPERIMENT_PROFILE.aidList = Object.keys(data).sort().reverse().splice(10, EXPERIMENT_PROFILE.totalArticles);
     });
 }
 
@@ -373,6 +407,38 @@ function RecordTimeStart() {
     }, 10);
 }
 
+function RecordArticleTime(start, end, id, round) {
+    setTimeout(function() {
+        $.ajax({
+            url: MY_URLS.recordArticleTime,
+            type: 'post',
+            dataType: 'json',
+            data: {
+                uniqId: USER_PROFILE.uniqId,
+                start: start,
+                end: end,
+                id: id,
+                round: round,
+                hashKey: EXPERIMENT_PROFILE.hashKey,
+                ip: USER_PROFILE.ip
+            },
+            success: function(data, textStatus, jqXHR) {
+                if (BOOL_VARS.isTesting) {
+                    console.log('[success] RecordArticleTime');
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                if (BOOL_VARS.isTesting) {
+                    console.log('[fail] RecordArticleTime');
+                }
+                EXPERIMENT_PROFILE.exceptionMsg = ' [fail] RecordArticleTime: ' + textStatus + ' : ' + errorThrown;
+                RecordException();
+            }
+        });
+
+    }, 10);
+}
+
 function SetupCases() {
     var ret = [];
     var aid = '',
@@ -402,13 +468,14 @@ function SetupCases() {
 function RandomAssignCases() {
     var indexPoped, aidPoped;
     for (var i = 0; i < EXPERIMENT_PROFILE.cases.length; i++) {
-        indexPoped = Math.floor(Math.random() * EXPERIMENT_PROFILE.aidList.length);
-        aidPoped = EXPERIMENT_PROFILE.aidList.splice(indexPoped, 1);
+        // indexPoped = Math.floor(Math.random() * EXPERIMENT_PROFILE.aidList.length);
+        aidPoped = EXPERIMENT_PROFILE.aidList.splice(0, 1);
         EXPERIMENT_PROFILE.cases[i]['aid'] = EXPERIMENT_PROFILE.titleList[aidPoped]['aid'];
         // EXPERIMENT_PROFILE.cases[i]['cover'] = EXPERIMENT_PROFILE.titleList[aidPoped]['cover'];
         EXPERIMENT_PROFILE.cases[i]['title'] = EXPERIMENT_PROFILE.titleList[aidPoped]['title'];
         EXPERIMENT_PROFILE.cases[i]['article'] = EXPERIMENT_PROFILE.titleList[aidPoped]['article'];
         EXPERIMENT_PROFILE.cases[i]['score'] = 'na';
+        EXPERIMENT_PROFILE.cases[i]['change'] = 0;
     }
 }
 
@@ -417,7 +484,7 @@ function ResetSlider() {
     if (ROUND_PROFILE.caseResult == 'na') {
         MY_FORMS.slider.noUiSlider.set(50);
         $('#slider-scoring').addClass('slider-initial-state');
-        $('#slider-score-text').html('<span>請拖曳上方按紐，往<span class="text-underline">左拖曳</span>表示捐款<span class="text-underline">意願低</span>，往<span class="text-underline">右拖曳</span>表示捐款<span class="text-underline">意願高</span></span>');
+        $('#slider-score-text').html('<span>拖曳上方按紐，往<span class="text-underline">左</span>表示捐款<span class="text-underline">意願低</span>，往<span class="text-underline">右</span>表示<span class="text-underline">意願高</span></span>');
     } else {
         MY_FORMS.slider.noUiSlider.set(ROUND_PROFILE.caseResult);
         $('#slider-scoring').removeClass('slider-initial-state');
@@ -444,7 +511,7 @@ function ResetUserProfile() {
     USER_PROFILE.timeRecording.startQuestionaire = 0;
     USER_PROFILE.timeRecording.startSurvey = 0;
     USER_PROFILE.timeRecording.startSubscribing = 0;
-    USER_PROFILE.timeRecording.startThank = 0;
+    USER_PROFILE.timeRecording.startThanks = 0;
     USER_PROFILE.questionaire.gender = 'na';
     USER_PROFILE.questionaire.age = 'na';
     USER_PROFILE.questionaire.education = 'na';
@@ -496,14 +563,14 @@ function saveQuestionaire() {
     var msg = 'success';
     $.each(USER_PROFILE.questionaire, function(i, v) {
         var check_value = [];
-        console.log( i );
-        if (i == ('gender' || 'charityWilling')) {
+        // console.log( i );
+        if (i == 'gender' || i =='charityWilling') {
             tmp = $("#questionaire-" + i + " input[type='radio']:checked").val();
-            console.log( tmp );
+            // console.log( tmp );
             if (!tmp || tmp == null) {
                 msg = i;
                 return false;
-            }else{
+            } else {
                 check_value[0] = tmp;
             }
         } else {
@@ -517,8 +584,9 @@ function saveQuestionaire() {
                 })
                 var other = $('#charityTendencyOther').val();
                 if ($.inArray(otherIndex + '', otherCheck) != -1) { // 選了其他 
-                    if ( other.length ) { // 有填其他
+                    if (other.length) { // 有填其他
                         SaveOther('charityTendencyOther', $('#charityTendencyOther').val());
+                        USER_PROFILE.charityTendencyOther = $('#charityTendencyOther').val();
                     } else { // 沒填
                         msg = 'charityTendencyOther';
                         return false;
@@ -538,14 +606,21 @@ function saveQuestionaire() {
 }
 
 function saveSubscribe() {
-    var subscribe = getFormData('subscribing-frequency');
-    var email = $('#email').val();
-    if (!subscribe.length || !$('#subscribing-frequency')[0].checkValidity()) {
-        return false;
-    } else {
-        USER_PROFILE.subscribe = parseInt(subscribe[0]);
-        USER_PROFILE.email = email;
+    var subscribe_freq = !$("#subscribing-frequency input[type='checkbox']:checked").val() ? 0 : 1;
+
+    if (subscribe_freq == 0) {
+        USER_PROFILE.subscribe = parseInt(subscribe_freq);
         return true;
+    } else {
+        var subscribe = getFormData('subscribing-frequency');
+        var email = $('#email').val();
+        if (!subscribe.length || !$('#subscribing-frequency')[0].checkValidity()) {
+            return false;
+        } else {
+            USER_PROFILE.subscribe = parseInt(subscribe[0]);
+            USER_PROFILE.email = email;
+            return true;
+        }
     }
 }
 
@@ -558,11 +633,16 @@ function getFormData(form) {
     return a;
 }
 
-function SetSubscribe() {
+function SetUserData() {
     setTimeout(function() {
-        $.getJSON('www-data/libfm_objects/' + USER_PROFILE.fbId + '_libfm.json', function(json) {
+        $.getJSON('www-data/libfm_objects/' + USER_PROFILE.fbId + '_libfm.json?nocache=' + (new Date()).getTime(), function(json) {
+            // console.log(json);
             USER_PROFILE.subscribe = json['SUBSCRIBING'];
             USER_PROFILE.email = json['EMAIL'];
+            USER_PROFILE.questionaire = json['USER_RAW'];
+            if( json['USER_CharityTendencyOther'] != '' ){
+                USER_PROFILE.charityTendencyOther = json['USER_CharityTendencyOther'];
+            }
         });
     }, 10);
 }
@@ -605,7 +685,8 @@ function RecordSubscribeInLibfm() {
             data: {
                 FB_ID: USER_PROFILE.fbId,
                 SUBSCRIBING: USER_PROFILE.subscribe,
-                EMAIL: USER_PROFILE.email
+                EMAIL: USER_PROFILE.email,
+                timeRecording: JSON.stringify(USER_PROFILE.timeRecording)
             },
             success: function(data, textStatus, jqXHR) {
                 if (BOOL_VARS.isTesting) {
@@ -635,7 +716,8 @@ function RecordLibfm() {
                 FB_ID: USER_PROFILE.fbId,
                 USER_QUESTIONAIRE: JSON.stringify(USER_PROFILE.questionaire),
                 ROUND_RESULT: JSON.stringify(EXPERIMENT_PROFILE.cases),
-                timeRecording: JSON.stringify(USER_PROFILE.timeRecording)
+                timeRecording: JSON.stringify(USER_PROFILE.timeRecording),
+                USER_CharityTendencyOther: USER_PROFILE.charityTendencyOther
             },
             success: function(data, textStatus, jqXHR) {
                 if (BOOL_VARS.isTesting) {
