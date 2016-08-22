@@ -32,7 +32,7 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 </head>
-<body oncontextmenu="return false;">  
+<!-- <body oncontextmenu="return false;">   -->
 <body >
     <nav class="white" role="navigation">
         <div class="nav-wrapper container">
@@ -316,22 +316,68 @@
                         <div class="collapsible-body">
                             <p>
                                 <!--     A7 :  -->基金會工作人員及行政支出皆由蘋果日報支付，大眾捐助皆全數用於弱勢服務。
+                            </p>
                     </li>
                 </ul>
-                <br>
-                <br>
-                <h5 class="center">Any more question?<br><br><a href="mailto:swc@iis.sinica.edu.tw"class="btn-large waves-effect waves-light teal">Contact Us
-                        <i class="material-icons right">email</i>
-                    </a></h5>
+            </div>
+        </section>
+        <section id="contact">
+            <div class="container">
+                <h2 class="header">Contact Us</h2>
+                <hr align="center" width="80px">
+                <div id="loader"></div>
+                <div id="formMsg"></div>
+            <form id="contactForm" method="post" action="contact-us/"> <!-- src/php/lib/PHPMailer/send_mail.php -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="contact_name" name="contact_name" type="text" class="validate" value="">
+                        <label for="contact_name">Your name</label>
+                    </div>
+
+                    <div class="input-field col s12">
+                        <input id="contact_email" name="contact_email" type="email" class="validate" value="">
+                        <label for="contact_email">Your email</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <select id="contact_category" name="contact_category" class="validate">
+                            <option value="" disabled selected>Choose a category ...</option>
+                            <option value="1">問題回報</option>
+                            <option value="2"></option>
+                        </select>
+                        <label>Category</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="contact_subject" name="contact_subject" type="text" class="validate" value="">
+                        <label for="contact_subject">Subject</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="contact_message" name="contact_message" class="materialize-textarea"></textarea>
+                        <label for="contact_message">Message</label>
+                    </div>
                 </div>
+
+                <div class="row no-margin">
+                    <div class="col s12">
+                        <button class="btn-large waves-effect waves-light teal right" type="submit">Send<i class="material-icons right">send</i></button>
+                    </div>
+                </div>  
+            </form>
+            </div>
         </section>
         </div>
         <footer class="page-footer teal">
             <div class="footer-copyright">
                 <div class="center-align container">
-                    Made by 曙光再現計劃
+                    © 2016 曙光再現計劃
                 </div>
             </div>
+           <!--  <div class="container">
+                <div class="row">
+                    <div class="col s12 copyright">
+                        <p>© 2016 曙光再現計劃. All rights reserved. <a href="info/terms-of-service">Terms of Service</a> | <a href="info/privacy-policy">Privacy Policy</a></p>
+                    </div>
+                </div>
+            </div> -->
         </footer>
         <a href="#0" class="cd-top">Top</a>
         
@@ -367,6 +413,9 @@
             </div>
         </div>
         
+        <div class="preloader"> 
+            <div class="preloader_image"></div>             
+        </div>         
 
         <!--  Scripts-->
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -386,10 +435,11 @@
         <!-- my script -->
         <script type="text/javascript">
         $(document).ready(function() {
+            
             BeforeLoadLanding();
             $('#landingPage').show();
             AfterLoadLanding();
-
+            IniSelect();
             $('.collapsible').collapsible({
                 accordion: false
             });
@@ -403,6 +453,32 @@
             $("a[id^='replay-button']").click(LoadSurveyPage);
 
             $("a[id^='update-subscribe-button']").click(LoadSubscribingPage);
+
+            $('#contactForm').on('submit', function(e) {
+                e.preventDefault(); //Prevents default submit
+                var form = $(this); 
+                var post_url = form.attr('action'); 
+                var post_data = form.serialize(); //Serialized the form data for process.php
+                $('#loader').html('<img src="../img/preloader.svg" /> Please Wait...');
+                $.ajax({
+                    type: 'POST',
+                    url: 'contact-us/', // Your form script
+                    data: post_data,
+                    success: function(msg) {
+                        $('#loader').fadeOut();
+                        $('#formMsg').html(msg).fadeIn();
+                        // $(form).fadeOut(500, function(){
+                        //     form.html(msg).fadeIn();
+                        // });
+                    }
+                });
+            });
+
+            //preloader
+            $(".preloaderimg").fadeOut();
+            $(".preloader").delay(200).fadeOut("slow").delay(200, function() {
+                $(this).remove();
+            });
 
             window.fbAsyncInit = function() {
                 FB.init({

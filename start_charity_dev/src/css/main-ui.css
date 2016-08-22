@@ -177,7 +177,8 @@ section#how .container,
 section#who .container,
 section#partner .container,
 section#FQ .container,
-section#famous {
+section#famous .container,
+section#contact .container {
     padding: 20px 5px 50px 5px;
 }
 
@@ -498,4 +499,27 @@ nav.white {
 #questionairePage,
 #thankPage {
     padding-top: 56px;
+}
+
+/*page preloader*/
+
+.preloader , .preloader_button{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ffffff;
+    z-index: 13000;
+    height: 100%;
+}
+
+.preloader_image, .preloader_button_image {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: url(../img/preloader.svg) no-repeat 50% 50% transparent;
+    margin: -40px 0 0 -40px;
 }
