@@ -6,8 +6,29 @@ mb_internal_encoding('UTF-8');
 function encoding($msg) {
 	return mb_encode_mimeheader($msg, 'UTF-8', 'B', "\r\n", strlen('Subject: '));
 }
+function category( $category_value ){
+	switch ( $category_value ) {
+		case '1':
+			return '問題回報';
+			break;
+		case '2':
+			return '合作洽談';
+			break;
+		default:
+			return '其他';
+	}
+} 
 
-print_r( $_POST );
+if( !$_POST['contact_email'] ){ 
+	echo json_encode( array('status'=>'error','msg'=> 'The email cannot be empty.') );
+	return false; 
+}else if( !$_POST['contact_category'] ){ 
+	echo json_encode( array('status'=>'error','msg'=> 'The category cannot be empty.') );
+	return false; 
+}else if( !$_POST['contact_message'] ){ 
+	echo json_encode( array('status'=>'error','msg'=> 'The message cannot be empty.') );
+	return false; 
+}
 
 $mail = new PHPMailer;
 $mail->CharSet = 'utf-8';
@@ -25,21 +46,34 @@ $mail->IsHTML(true);
 $mail->addReplyTo($_POST['contact_email'], $_POST['contact_name']);
 
 $mail->From = 'joanne3634@iis.sinica.edu.tw';
-$mail->FromName = 'Appledaily Contact Us';
+$mail->FromName = 'Appledaily Support';
 
 $mail->addAddress('prj.appledaily@gmail.com', encoding('主要信箱'));     // Add a recipient
-$mail->addCC('b00902007@ntu.edu.tw', encoding('CC信箱'));     // Add a recipient
+$mail->addBCC('b00902007@ntu.edu.tw', encoding('CC信箱'));     // Add a recipient
 $mail->WordWrap = 50;                                 // Set word wrap to 50 characters
 $mail->isHTML(true);                                  // Set email format to HTML
 
-$mail->Subject = encoding('Appledaily Contact Us');
-$mail->Body    = $_POST['contact_message'];
+$mail->Subject = encoding('訪客訊息');
+$mail->Body = '   
+<div style="line-height: 20px;">
+
+聯絡姓名: '. (!$_POST['contact_name'] ? "匿名": $_POST['contact_name']) .'<br>
+聯絡信箱: '. $_POST['contact_email'] .'<br>
+問題分類: '. category($_POST['contact_category']) .'<br>
+訊息主旨: '. $_POST['contact_subject'] .'<br>
+訊息內容: '. $_POST['contact_message'].'<br>
+</div>
+';
+
+
 // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
 if(!$mail->send()) {
-    echo 'Message could not be sent.';
-    echo 'Mailer Error: ' . $mail->ErrorInfo;
+	echo json_encode( array('status'=>'error','msg'=> $mail->ErrorInfo) );
+	return false;
 } else {
-    echo 'Message has been sent';
+    echo json_encode( array('status'=>'success','msg'=> 'Message has been sent'));
+    return true;
 }
+
 ?>

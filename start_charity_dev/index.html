@@ -325,8 +325,8 @@
             <div class="container">
                 <h2 class="header">Contact Us</h2>
                 <hr align="center" width="80px">
-                <div id="loader"></div>
-                <div id="formMsg"></div>
+                <div class="wrap"></div>
+                <div class="info-badge"></div>
             <form id="contactForm" method="post" action="contact-us/"> <!-- src/php/lib/PHPMailer/send_mail.php -->
                 <div class="row">
                     <div class="input-field col s12">
@@ -342,7 +342,7 @@
                         <select id="contact_category" name="contact_category" class="validate">
                             <option value="" disabled selected>Choose a category ...</option>
                             <option value="1">問題回報</option>
-                            <option value="2"></option>
+                            <option value="2">合作洽談</option> 
                         </select>
                         <label>Category</label>
                     </div>
@@ -459,14 +459,22 @@
                 var form = $(this); 
                 var post_url = form.attr('action'); 
                 var post_data = form.serialize(); //Serialized the form data for process.php
-                $('#loader').html('<img src="../img/preloader.svg" /> Please Wait...');
+                // $('.wrap').html('<div class="loading"><div class="bounceball"></div><div class="text">NOW LOADING</div></div>');
                 $.ajax({
                     type: 'POST',
                     url: 'contact-us/', // Your form script
                     data: post_data,
-                    success: function(msg) {
-                        $('#loader').fadeOut();
-                        $('#formMsg').html(msg).fadeIn();
+                    success: function(result) {
+                        // $('.wrap').fadeOut();
+                        result = $.parseJSON(result);
+                        // console.log( result.status );
+                        if( result.status != 'success'){
+                            $('.info-badge').removeClass('green').addClass('red').html('<i class="material-icons left">error</i>'+ result.msg).fadeIn();
+                        }else{
+                            $('.info-badge').removeClass('red').addClass('green').html('<i class="material-icons left">done</i>Thank you for contacting us. We will answer you back as soon as possible.').fadeIn();
+                        }
+                        
+                        
                         // $(form).fadeOut(500, function(){
                         //     form.html(msg).fadeIn();
                         // });
