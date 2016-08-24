@@ -29,7 +29,7 @@
 		if( isset( $libfm['EMAIL'] )){ $libfm['EMAIL'] = $_POST['EMAIL']; }
 
 		// RecordLibfm 有更新問卷或是重新做測驗
-		if( !isset( $libfm['DATA'][$_POST['UNIQ_ID']] ) && isset($_POST['UNIQ_ID']) ){
+		if( isset($_POST['UNIQ_ID']) && !isset( $libfm['DATA'][$_POST['UNIQ_ID']] ) ){
 
 			$data = array();
 			$data['UNIQ_ID'] = $_POST['UNIQ_ID'];

@@ -51,16 +51,16 @@ var EXPERIMENT_PROFILE = {
     'hashKey': 'na',
     'exceptionMsg': 'na',
     'numCases': 10,
-    'totalArticles': 200,
+    'totalArticles': 10,
     'cases': null // charity common_var var TITLES 
 };
 
 var ROUND_PROFILE = {
     'caseIndex': 0,
     'caseRound': 0,
-    'caseAction': null,
-    'caseResult': null,
-    'caseId': 'na',
+    'caseAction': null, 
+    'caseResult': null, //score
+    'caseId': 'na', // aid
     'caseTitle': 'na',
     'caseStart': 0,
     'caseEnd': 0
@@ -72,6 +72,7 @@ var MY_URLS = {
     // 'aidList': 'db_lists/aids.csv',
     // 'aidListHighOrder': 'db_lists/aids_high_order.csv', //需要優先出現在實驗中的 ID 列表
     'recordTimeStart': 'src/php/record_time_start.php',
+    'recordArticleTime': 'src/php/record_article_time.php',
     'recordException': 'src/php/record_exception.php',
     'recordFbObject': 'src/php/record_fb_objects.php',
     'recordLibfm': 'src/php/record_libfm_objects.php',

@@ -21,6 +21,7 @@ function LoadSurveyPage() {
         $(document).scrollTop(0);
 
         AfterLoadSurvey();
+        promptMaterial('promptSurvey');
     });
 }
 
@@ -43,6 +44,8 @@ function LoadSubscribingPage() {
             $('#subscribingPage').html(data);
             hideAllPage();
             if (USER_PROFILE.subscribe != 0) {
+                $("#subscribing-frequency input[type='checkbox']").attr('checked',true);
+                $('.subscribe-info-container').show();
                 $('#email').val(USER_PROFILE.email);
                 $("#subscribing-frequency select option[value='0']").attr('selected', false);
                 $("#subscribing-frequency select option[value='" + USER_PROFILE.subscribe + "']").attr('selected', true);
@@ -373,6 +376,38 @@ function RecordTimeStart() {
     }, 10);
 }
 
+function RecordArticleTime(start,end,id,round) {
+    setTimeout(function() {
+        $.ajax({
+            url: MY_URLS.recordArticleTime,
+            type: 'post',
+            dataType: 'json',
+            data: {
+                uniqId: USER_PROFILE.uniqId,
+                start: start,
+                end: end,
+                id: id,
+                round: round,
+                hashKey: EXPERIMENT_PROFILE.hashKey,
+                ip: USER_PROFILE.ip
+            },
+            success: function(data, textStatus, jqXHR) {
+                if (BOOL_VARS.isTesting) {
+                    console.log('[success] RecordArticleTime');
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                if (BOOL_VARS.isTesting) {
+                    console.log('[fail] RecordArticleTime');
+                }
+                EXPERIMENT_PROFILE.exceptionMsg = ' [fail] RecordArticleTime: ' + textStatus + ' : ' + errorThrown;
+                RecordException();
+            }
+        });
+
+    }, 10);
+}
+
 function SetupCases() {
     var ret = [];
     var aid = '',
@@ -402,8 +437,8 @@ function SetupCases() {
 function RandomAssignCases() {
     var indexPoped, aidPoped;
     for (var i = 0; i < EXPERIMENT_PROFILE.cases.length; i++) {
-        indexPoped = Math.floor(Math.random() * EXPERIMENT_PROFILE.aidList.length);
-        aidPoped = EXPERIMENT_PROFILE.aidList.splice(indexPoped, 1);
+        // indexPoped = Math.floor(Math.random() * EXPERIMENT_PROFILE.aidList.length);
+        aidPoped = EXPERIMENT_PROFILE.aidList.splice(0, 1);
         EXPERIMENT_PROFILE.cases[i]['aid'] = EXPERIMENT_PROFILE.titleList[aidPoped]['aid'];
         // EXPERIMENT_PROFILE.cases[i]['cover'] = EXPERIMENT_PROFILE.titleList[aidPoped]['cover'];
         EXPERIMENT_PROFILE.cases[i]['title'] = EXPERIMENT_PROFILE.titleList[aidPoped]['title'];
@@ -444,7 +479,7 @@ function ResetUserProfile() {
     USER_PROFILE.timeRecording.startQuestionaire = 0;
     USER_PROFILE.timeRecording.startSurvey = 0;
     USER_PROFILE.timeRecording.startSubscribing = 0;
-    USER_PROFILE.timeRecording.startThank = 0;
+    USER_PROFILE.timeRecording.startThanks = 0;
     USER_PROFILE.questionaire.gender = 'na';
     USER_PROFILE.questionaire.age = 'na';
     USER_PROFILE.questionaire.education = 'na';
@@ -496,10 +531,10 @@ function saveQuestionaire() {
     var msg = 'success';
     $.each(USER_PROFILE.questionaire, function(i, v) {
         var check_value = [];
-        console.log( i );
+        // console.log( i );
         if (i == ('gender' || 'charityWilling')) {
             tmp = $("#questionaire-" + i + " input[type='radio']:checked").val();
-            console.log( tmp );
+            // console.log( tmp );
             if (!tmp || tmp == null) {
                 msg = i;
                 return false;
@@ -538,14 +573,20 @@ function saveQuestionaire() {
 }
 
 function saveSubscribe() {
-    var subscribe = getFormData('subscribing-frequency');
-    var email = $('#email').val();
-    if (!subscribe.length || !$('#subscribing-frequency')[0].checkValidity()) {
-        return false;
-    } else {
-        USER_PROFILE.subscribe = parseInt(subscribe[0]);
-        USER_PROFILE.email = email;
+    var subscribe_freq = !$("#subscribing-frequency input[type='checkbox']:checked").val()? 0 : 1;
+    if( subscribe_freq == 0 ){
+        USER_PROFILE.subscribe = parseInt(subscribe_freq);
         return true;
+    }else{
+        var subscribe = getFormData('subscribing-frequency');
+        var email = $('#email').val();
+        if (!subscribe.length || !$('#subscribing-frequency')[0].checkValidity()) {
+            return false;
+        } else {
+            USER_PROFILE.subscribe = parseInt(subscribe[0]);
+            USER_PROFILE.email = email;
+            return true;
+        }
     }
 }
 
@@ -560,7 +601,8 @@ function getFormData(form) {
 
 function SetSubscribe() {
     setTimeout(function() {
-        $.getJSON('www-data/libfm_objects/' + USER_PROFILE.fbId + '_libfm.json', function(json) {
+        $.getJSON('www-data/libfm_objects/' + USER_PROFILE.fbId + '_libfm.json?nocache=' + (new Date()).getTime(), function(json) {
+            // console.log(json);
             USER_PROFILE.subscribe = json['SUBSCRIBING'];
             USER_PROFILE.email = json['EMAIL'];
         });

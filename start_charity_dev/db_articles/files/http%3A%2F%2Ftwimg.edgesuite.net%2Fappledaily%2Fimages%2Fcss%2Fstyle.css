@@ -1,0 +1,702 @@
+﻿/*
+    This is the Global CSS file for every page in this site use, which contains
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary,
+fieldset, form, label, legend, input, button,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+	display: block;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+blockquote, q {
+	quotes: none;
+}
+
+legend, hr {
+	display: none;
+}
+
+a {
+	cursor: pointer;
+	text-decoration: none;
+	outline: none; /* for Firefox */
+}
+
+/* remember to define focus styles! */
+
+:focus {
+	outline: 0;
+}
+
+div.lower_field .search_txt:focus {
+	outline: 5px auto -webkit-focus-ring-color;
+}
+
+/* Bug Fixers */
+
+button {
+	position: relative;
+	padding: 0;
+	border: 0 none;
+	cursor: pointer;
+	overflow: visible;
+}
+
+button span {
+	position: relative;
+	display: block;
+	white-space: nowrap;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	button span {
+		margin-top: -1px;
+		margin-left: -3px;
+	}
+}
+
+button::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner {
+	padding: 0;
+	border: 0 none;
+}
+
+button:focus::-moz-focus-inner,
+input[type="reset"]:focus::-moz-focus-inner,
+input[type="button"]:focus::-moz-focus-inner,
+input[type="submit"]:focus::-moz-focus-inner,
+input[type="file"] > input[type="button"]:focus::-moz-focus-inner {
+	padding: 0;
+	border: 0 none;
+}
+
+/* remember to highlight inserts somehow! */
+
+ins {
+	text-decoration: none;
+}
+
+del {
+	text-decoration: line-through;
+}
+
+/* tables still need cellspacing in the markup */
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Misc */
+
+.radius_bd {
+	zoom: 1;
+	border-radius: 4px;
+	-webkit-border-radius: 4px 4px;
+	-moz-border-radius: 4px 4px;
+}
+
+/* Change objects highlight colour  */
+
+*::selection {
+	background-color: #000000;
+	color: #ffffff;
+}
+
+*::-moz-selection {
+	background-color: #000000;
+	color: #ffffff;
+}
+
+/* To hide any not in use element*/
+
+.vanisher {
+	display: none !important;
+}
+
+.hide {
+	visibility: hidden !important;
+}
+
+/* To clear the floats */
+
+.clearman {
+	clear: both;
+	height: 1px;
+	text-align: left;
+	display: block;
+	overflow: hidden;
+	text-indent: -999em;
+	white-space: nowrap;
+}
+
+hr.clearman {
+	visibility: hidden;
+}
+
+/* To make any element clear the floats */
+
+.clearmen {
+	clear: both;
+	display: block;
+}
+
+/* :after method */
+
+.fillup:after {
+	clear: both;
+	content: "";
+	display: block;
+}
+
+/* Put the texts away in a specified element */
+
+.overcooked {
+	text-align: left;
+	display: block;
+	overflow: hidden;
+	text-indent: -999em;
+	white-space: nowrap;
+}
+
+/* Level */
+
+.slvl {
+	margin-bottom: 20px;
+}
+
+.lvl {
+	margin-bottom: 40px;
+}
+
+/* Main Structure */
+
+body {
+	background: transparent url(/appledaily/images/core/bg.png) top left repeat;
+	font: 16px/100% "Helvetica", Verdana, Arial, sans-serif;
+}
+
+.soil {
+	padding-top: 46px;
+}
+
+/* Crossover Header */
+
+#globehead {
+	background: white url(/appledaily/images/core/ad_headerbg.png) 0 45px repeat-x;
+	height: 90px;
+	font-size: 0.6875em;
+	font-family:"PMingLiU";
+}
+
+#globehead .sqzer {
+	position: relative;
+	width: 970px;
+	margin: 0 auto;
+}
+
+.nlogo {
+	display: none;
+}
+
+.clogo {
+	background: white url(/appledaily/images/core/ad_logo.jpg) top left no-repeat;
+	display: block;
+	width: 195px;
+	height: 90px;
+}
+
+/*.animation .clogo {background: white url(/appledaily/images/core/ad_logo.jpg) top left no-repeat;}*/
+.charity .clogo {background: white url(/appledaily/images/core/ch_logo.png) top left no-repeat;}
+.enews .clogo {background: white url(/appledaily/images/core/ad_enews_logo.jpg) top left no-repeat;}
+
+.clogo a {
+	display: block;
+	width: 195px;
+	height: 90px;
+}
+
+#corpnav {
+	position: absolute;
+	top: 56px;
+	left: 210px;
+	overflow: hidden;
+}
+
+#corpnav a {
+	background: transparent url(/appledaily/images/core/cosspll.png) center right no-repeat;
+	float: left;
+	height: 30px;
+	padding: 0 14px 0 13px;
+}
+
+#corpnav a img {
+	vertical-align: middle;
+}
+
+#corpnav a.last {
+	background: none;
+}
+
+#worldwide {
+	position: absolute;
+	top: 17px;
+	right: 5px;
+}
+
+#worldwide a {
+	display: block;
+	float: left;
+	color: #5a5a5a;
+	font-size: 1.0909em;
+	line-height: 1.2em;
+	padding: 2px 5px 2px 8px;
+}
+
+#worldwide a:hover {
+	background-color: #ededed;
+	color: black;
+}
+
+#worldwide .on {color: #999;}
+.tw {background: transparent url(/appledaily/images/core/wwsp.png) center right no-repeat;}
+
+#corpgs a,.nh {
+	background-image: url(/images/NextDigital/iconset.png);
+	background-repeat: no-repeat;
+	background-color: transparent;
+	position: absolute;
+	display: block;	
+	color: #055b94;
+	font-size: 12px;
+}
+#corpgs a{top: 19px;}
+.nh {top:0;}
+#corpgs a:hover {
+	text-decoration: underline;
+}
+
+#corpgs a.sh {
+	background-position: 0 0;
+	left: 222px;
+	float: none;
+	line-height: 20px;
+	padding-left: 20px;
+}
+
+a.mc {
+	background-position: 0 -41px;
+	left: 660px;
+	line-height: 1.4em;
+	padding-left: 14px;
+}
+
+span.nh {
+	background-position: 9px -118px;
+	left: 790px;
+	width: 95px;
+	height:19px;
+}
+
+/* Site Nav */
+
+#sitenav {
+	background: #3f3f3f url(/appledaily/images/core/gnvbg.png) top left repeat-x;
+	position: absolute;
+	top: 90px;
+	left: 0;
+	width: 100%;
+}
+
+#sitenav .sqzer {
+	position: relative;
+	width: 970px;
+	margin: 0 auto;
+}
+
+.nbtn {
+	float: left;
+	border-right: 1px solid #4e4e4e;
+	position:relative;
+}
+
+.nbtn a {
+	display: block;
+	color: white;
+	padding: 10px 10px;
+}
+
+.nbtn a:hover {
+	background-color: #0076a4;
+}
+
+.spk a:hover {background-color: transparent; cursor: default;}
+
+.lr {
+	font-weight: bold;
+	border-right: none;
+	padding-right: 16px;
+}
+
+.search {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 225px;
+	line-height: 1em;
+	border-right: none;
+	vertical-align: middle;
+}
+
+.lr a {
+	background: transparent url(/appledaily/images/core/rssicon.png) 55px 8px no-repeat;
+	padding-right: 25px
+}
+
+.lr a:hover {
+	background: transparent url(/appledaily/images/core/rssicono.png) 55px 8px no-repeat;
+	color: #e2772b;
+}
+
+.sbox {
+	background: #616161 url(/appledaily/images/core/searchicon.png) center left no-repeat;
+	position: absolute;
+	top: 6px;
+	left: 0;
+	width: 140px;
+	color: #fefefe;
+	font-size: 16px;
+	padding: 2px 2px 2px 25px;
+	-webkit-appearance: none;
+	-webkit-border-radius: 0;
+}
+
+.sbtn {
+	position: absolute;
+	top: 6px;
+	left: 167px;
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#616161),to(#616161));
+	background-image: -webkit-linear-gradient(top,#616161,#616161);
+	-webkit-appearance: none;
+	-webkit-border-radius: 0;
+	-webkit-user-select: none;
+	background-color: #616161;
+	background-image: linear-gradient(top,whiteSmoke,#F1F1F1);
+	background-image: -o-linear-gradient(top,whiteSmoke,#F1F1F1);
+	border: none;
+	height: 23px;
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 22px;
+	width: 54px;
+	padding: 0 8px;
+	text-align: center;
+}
+
+.sbtn:hover {
+	background-color: black;
+	color: white;
+}
+
+.search a {
+	position: absolute;
+	top: 8px;
+	left: 225px;
+	color: #ffffff;
+	font-size: 15px;
+}
+
+.search a:hover {
+	text-decoration: underline;
+}
+
+.tdns {
+	padding-right: 30px;
+}
+
+a.ddme {
+	background: transparent url(/appledaily/images/core/drop_btn_dlike.png) 0 -38px no-repeat;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 30px;
+	height: 36px;
+	padding: 0;
+	margin: 0;
+}
+
+.submenu {
+	background-color: black;
+	position: absolute;
+	display: none;
+	width: 138px;
+	height: 38px;
+	box-shadow: 0 6px 12px #333;
+	z-index: 999999;	
+}
+
+.submenu li,
+.submenu a,
+.submenu a img {
+	display: block;
+	height: 38px;
+	padding: 0;
+	margin: 0;
+}
+
+.submenu li {
+	float: left;
+}
+
+.tdns .submenu {
+	background-image: -webkit-gradient(linear,left top,left bottom,from(#232324),to(#3F3F41));
+	background-image: -webkit-linear-gradient(top,#232324,#3F3F41);
+	background-color: #3F3F41;
+	width: 970px;
+	padding: 0 1px;
+}
+
+.tdns .submenu li {
+	float: left;
+	width: 95px;
+	height: 38px;
+	line-height: 1em;
+	text-align: center;
+}
+
+.tdns .submenu li a {
+	height: 16px;
+	padding: 11px 0;
+}
+
+.spk .submenu li {
+	width: 138px;
+}
+
+/*
+.nbtn:hover .submenu {display: block;}
+*/
+
+.nbtn:hover a.ddme {
+	background: transparent url(/appledaily/images/core/drop_btn_dlike.png) 0 0px no-repeat;
+}
+
+.submenu .nan:hover {background-color: #ecb527;}
+.submenu .ntn:hover {background-color: #3371c2;}
+.submenu .nhn:hover {background-color: #3dab4b;}
+.submenu .nen:hover {background-color: #e48316;}
+.submenu .nin:hover {background-color: #3371c2;}
+.submenu .nsn:hover {background-color: #a31313;}                         
+.submenu .nbn:hover {background-color: #582a97;}
+.submenu .nfn:hover {background-color: #1f3e6e;}
+.submenu .nrn:hover {background-color: #5699a8;}       
+.submenu .nmn:hover {background-color: #86a84a;}
+
+/* Extras */
+
+.abkct {
+	width: 970px;
+	margin: 0 auto;
+}
+
+.abktp {
+	background-color: #565656;
+	display: block;
+	width: 80px;
+	color: #fbffff;
+	padding: 8px 28px;
+	margin-left: 835px;
+}
+
+.fexbr {
+	background: #4b4b4b url(/appledaily/images/core/pftbg.png) top left repeat-x;
+	padding: 15px 5px 24px;
+	border-bottom: 1px solid #bcbcbc;
+}
+
+.fexbr .sqzer {
+	width: 970px;
+	margin: 0 auto;
+}
+
+.fexbr a {
+	background-position: top center;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	display: block;
+	float: left;
+	width: 120px;
+	color: #fbffff;
+	padding-top: 70px;
+	text-align: center;
+	opacity: 0.8;
+}
+
+.fexbr a:hover {
+	opacity: 1;
+	text-decoration: underline;
+}
+
+.dyw {background-image: url(/appledaily/images/core/dyw.png);}
+.lnr {background-image: url(/appledaily/images/core/lnr.png);}
+.oneg {background-image: url(/appledaily/images/core/oneg.png);}
+.wkw {background-image: url(/appledaily/images/core/wkw.png);}
+.rpter {background-image: url(/appledaily/images/core/rpter.png);}
+.itul {background-image: url(/appledaily/images/core/itul.png);}
+.pguss {background-image: url(/appledaily/images/core/pguss.png);}
+.wmvs {background-image: url(/appledaily/images/core/wmvs.png);}
+
+
+/* Crossover Footer */
+
+#corpfoot {
+	background: #f2f2f2 url(/appledaily/images/core/footerbg.png) top left repeat-x;
+	padding: 26px 0 5em 14px;
+	clear: both;
+}
+
+#corpfoot .sqzer {
+	position: relative;
+	width: 970px;
+	margin: 0 auto;
+}
+
+#corpfoot figure {
+	display: block;
+	width: 143px;
+	height: 19px;
+}
+
+#corpcompanies {
+	margin-top: 10px;
+}
+
+#corpcompanies:after {
+	content: "";
+	clear: both;
+	display: block;
+}
+
+#corpcompanies a {
+	float: left;
+	height: 30px;
+	padding: 0 14px;
+	border-left: 1px solid #fff;
+	border-right: 1px solid #a5a5a5;
+}
+
+#corpcompanies a.first {
+	border-left: none;
+	padding-left: 0;
+}
+
+#corpcompanies a.last,
+#corpinfo a.last {
+	background: none;
+	border-right: none;
+}
+
+#corpinfo {
+	clear: both;
+	display: block;
+	margin: 20px 0 0.75em;
+}
+
+#corpinfo a {
+	background: transparent url(/appledaily/images/core/infodots.png) top right repeat-y;
+	display: inline;
+	color: #4d4d4d;
+	font-size: 0.75em;
+	padding: 0 0.65em 0 0.3em;
+}
+
+#corpinfo a:hover {
+	text-decoration: underline;
+}
+
+#copyright {
+	color: #696969;
+	font-size: 0.75em;
+}
+
+/* Page Structure */
+
+.soil {
+	width: 970px;
+	margin: 0 auto;
+}
+
+.vertebrae {
+	float: left;
+	width: 650px;
+}
+
+.hsv {
+	background: transparent url(/appledaily/images/core/vicon.png) center right no-repeat;
+}
+
+
+/* Globe ADs*/
+
+.ads {
+	/* overflow: hidden; */
+}
+
+#leaderboard {
+	width: 970px;
+	margin: 0 auto 10px;
+}
+
+.rtf {
+	margin-bottom: 10px;
+}
+
+.rtb {
+	width: 300px;
+}
+.fb-comments, .fb-comments iframe[style] {width: 100% !important;}
+
+/* webkit Aniamtions */
+
+@-webkit-keyframes FadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-animation-timing-function: ease-out;
+    }
+}
+
+ /* new ad 300x100*/
+#div-ad-mini1,#div-ad-mini2{width:320px;float:left;margin:0 0 15px;}
+#div-ad-mini2{float:right;}
+
+#articlelast {
+  margin: 0.5em;
+}
+				
+				

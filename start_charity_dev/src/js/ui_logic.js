@@ -10,8 +10,8 @@ function ClickLoginBtn() {
 }
 
 function ClickAfterSubscribingBtn() {
-
-    if (!saveSubscribe()) {
+    
+    if ( !saveSubscribe() ) {
         Materialize.toast('欄位有錯或是空的', 3000);
         return false;
     }
@@ -23,7 +23,7 @@ function ClickAfterQuestionaireBtn() {
     var msg = saveQuestionaire();
     if (!BOOL_VARS.isTesting) {
         if (msg != 'success') {
-            console.log(msg);
+            // console.log(msg);
             Materialize.toast('欄位是空的 請完成', 3000);
             $('html, body').animate({
                 scrollTop: $("#questionaire-" + msg).offset().top - 120
@@ -108,7 +108,7 @@ function BeforeRoundStart() {
     // ROUND_PROFILE.caseCover = EXPERIMENT_PROFILE.cases[currentIdx]['cover'];
     ROUND_PROFILE.caseStart = GetCurrentTimeMilli();
     ROUND_PROFILE.caseRound = currentIdx + 1;
-
+    // console.log(ROUND_PROFILE.caseStart, ROUND_PROFILE.caseEnd);
     // $('#round-text').text('第 ' + String(ROUND_PROFILE.caseRound) + ' 回合 (共 ' + String(EXPERIMENT_PROFILE.numCases) + ' 回合)');
     $('#case-title-text').text(ROUND_PROFILE.caseTitle);
     $('#article-iframe').attr('src', ROUND_PROFILE.caseArticle);
@@ -116,6 +116,9 @@ function BeforeRoundStart() {
 
 function AfterRoundEnd() {
     ROUND_PROFILE.caseEnd = GetCurrentTimeMilli();
+    // console.log(ROUND_PROFILE.caseStart, ROUND_PROFILE.caseEnd, ROUND_PROFILE.caseId, ROUND_PROFILE.caseRound );
+    // var profile = ROUND_PROFILE;
+    RecordArticleTime(ROUND_PROFILE.caseStart, ROUND_PROFILE.caseEnd, ROUND_PROFILE.caseId, ROUND_PROFILE.caseRound );
 }
 
 function SliderOnSlide() {
@@ -153,15 +156,6 @@ function ClickNavigateBefore() {
     EnableNaviationBtn();
 }
 
-function promptSurveyOver() {
-    $('#modal1').openModal({
-        dismissible: true,
-        opacity: .6,
-        in_duration: 300,
-        out_duration: 500
-    });
-}
-
 function ClickNavigateNext() {
     if (!BOOL_VARS.isTesting) {
         if ($('#navigate-next').hasClass('disabled')) {
@@ -170,7 +164,7 @@ function ClickNavigateNext() {
     }
     var currentIdx = ROUND_PROFILE.caseIndex;
     if (currentIdx == EXPERIMENT_PROFILE.numCases - 1) {
-        promptSurveyOver();
+        promptMaterial('modal1');
     }
     if (currentIdx < (EXPERIMENT_PROFILE.numCases - 1)) {
         ROUND_PROFILE.caseIndex = ROUND_PROFILE.caseIndex + 1;
@@ -183,18 +177,26 @@ function ClickNavigateNext() {
     EnableNaviationBtn();
 }
 
+function promptMaterial(id) {
+    $('#'+ id).openModal({
+        dismissible: true,
+        opacity: .6,
+        in_duration: 300,
+        out_duration: 500
+    });
+}
 
 
 function CheckLoginState() {
     FB.getLoginStatus(function(response) {
-        console.log('checklogin');
+        // console.log('checklogin');
         StatusChangeCallback(response);
     });
 }
 
 function checkMemberStatus() {
     var req = new XMLHttpRequest();
-    var url = 'www-data/libfm_objects/' + USER_PROFILE.fbId + '_libfm.json';
+    var url = 'www-data/libfm_objects/' + USER_PROFILE.fbId + '_libfm.json?nocache=' + (new Date()).getTime();
     req.open('GET', url, false);
     req.send();
 
@@ -222,10 +224,11 @@ function showLoginButton() {
 
 function StatusChangeCallback(response) {
     if (response.status === 'connected') {
-        console.log('[success] fb connected');
+        // console.log('[success] fb connected');
 
         USER_PROFILE.fbToken = response.authResponse.accessToken;
         USER_PROFILE.fbId = response.authResponse.userID;
+        SetSubscribe();
 
         FB.api('/me/permissions', function(response) {
             var str_response = JSON.stringify(response);
@@ -233,9 +236,7 @@ function StatusChangeCallback(response) {
             if (str_response.indexOf('declined') == -1) {
                 RecordFbInfo();
                 showStartButton();
-                SetSubscribe();
             } else if (str_response.indexOf('error') > -1) {
-
                 EXPERIMENT_PROFILE.exceptionMsg = 'fail in FB connect: ' + str_response;
                 RecordException();
                 showLoginButton();

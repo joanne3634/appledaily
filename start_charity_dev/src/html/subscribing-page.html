@@ -2,53 +2,61 @@
     <div class="container">
         <br>
         <h2 class="header center teal-text">
-            文章訂閱
+            文章推薦
         </h2>
         <div class="section no-pad-top tabs-wrapper">
             <div class='wrapper-form'>
                 <form id="subscribing-frequency">
-                    <h5 class="header">
-                        訂閱信箱
-                    </h5>
-                    <input id="email" type="email" class="validate" required>
-                    <label for="email"></label>
-                    <h5 class="header">
-                        訂閱頻率
-                    </h5>
-                    <select name="subscribing-frequency">
-                        <option value="0" disabled selected></option>
-                        <optgroup label="每天">
-                            <option value="1">每天一次</option>
-                        </optgroup>
-                        <optgroup label="每週">
-                            <option value="2">每週一次</option>
-                            <option value="3">每週二次</option>
-                            <option value="4">每週三次</option>
-                            <option value="5">每週四次</option>
-                            <option value="6">每週五次</option>
-                            <option value="7">每週六次</option>
-                        </optgroup>
-                        <optgroup label="每月">
-                            <option value="8">每月一次</option>
-                            <option value="9">每月二次</option>
-                            <option value="10">每月三次</option>
-                            <option value="11">每月四次</option>
-                        </optgroup>
-                        <optgroup label="每年">
-                            <option value="12">每年一次</option>
-                            <option value="13">每年二次</option>
-                            <option value="14">每年三次</option>
-                            <option value="15">每年四次</option>
-                            <option value="16">每年五次</option>
-                            <option value="17">每年六次</option>
-                            <option value="18">每年七次</option>
-                            <option value="19">每年八次</option>
-                            <option value="20">每年九次</option>
-                            <option value="21">每年十次</option>
-                            <option value="22">每年十一次</option>
-                            <option value="23">每年十二次</option>
-                        </optgroup>
-                    </select>
+                    <div class="subscribe-check-container">
+                        <input type="checkbox" id="subscribing-tendency" />
+                        <label for="subscribing-tendency">我願意收到蘋果暖流版文章推薦。
+                            <span>請您提供您的信箱，我們將依您想要的收信頻率，寄送適合您的暖流版文章給您，期能幫助到急需幫助的弱勢者。未來如您希望修改您的信箱或收信頻率，隨時可由首頁進入修改。</span>
+                        </label>
+                    </div>
+                    <div class="subscribe-info-container" style="display: none;">
+                        <h5 class="header">
+                            郵件信箱
+                        </h5>
+                        <input id="email" type="email" class="validate" required>
+                        <label for="email"></label>
+                        <h5 class="header">
+                            收信頻率
+                        </h5>
+                        <select name="subscribing-frequency">
+                            <option value="0" disabled selected></option>
+                            <optgroup label="每天">
+                                <option value="1">每天一次</option>
+                            </optgroup>
+                            <optgroup label="每週">
+                                <option value="2">每週一次</option>
+                                <option value="3">每週二次</option>
+                                <option value="4">每週三次</option>
+                                <option value="5">每週四次</option>
+                                <option value="6">每週五次</option>
+                                <option value="7">每週六次</option>
+                            </optgroup>
+                            <optgroup label="每月">
+                                <option value="8">每月一次</option>
+                                <option value="9">每月二次</option>
+                                <option value="10">每月三次</option>
+                                <option value="11">每月四次</option>
+                            </optgroup>
+                            <optgroup label="每年">
+                                <option value="12">每年一次</option>
+                                <option value="13">每年二次</option>
+                                <option value="14">每年三次</option>
+                                <option value="15">每年四次</option>
+                                <option value="16">每年五次</option>
+                                <option value="17">每年六次</option>
+                                <option value="18">每年七次</option>
+                                <option value="19">每年八次</option>
+                                <option value="20">每年九次</option>
+                                <option value="21">每年十次</option>
+                                <option value="22">每年十一次</option>
+                                <option value="23">每年十二次</option>
+                            </optgroup>
+                        </select>
+                    </div>
                 </form>
             </div>
         </div>
@@ -67,5 +75,13 @@ $(document).ready(function() {
 
     IniSelect();
     $('#after-subscribing-button').click(ClickAfterSubscribingBtn);
+
+    $("#subscribing-frequency").change(function() {
+        if ($("#subscribing-frequency input[type='checkbox']:checked").val()) {
+            $('.subscribe-info-container').show();
+        } else {
+            $('.subscribe-info-container').hide();
+        }
+    });
 });
 </script>

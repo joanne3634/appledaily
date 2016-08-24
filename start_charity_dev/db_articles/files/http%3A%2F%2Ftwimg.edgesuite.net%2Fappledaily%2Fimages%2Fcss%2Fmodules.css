@@ -1,0 +1,455 @@
+/* Blcok Arrows */
+
+.bw {
+	background-image: url(/appledaily/images/core/iconset.png);
+	background-color: #484848;
+	position: absolute;
+	top: 205px;
+	display: block;
+	width: 42px;
+	height: 42px;
+    z-index: 99;
+    cursor: pointer;
+    box-shadow: 0 0 2px black;
+}
+
+/* Facebook Box */
+
+.fbbx {
+	position: relative;
+	margin-top: 20px;
+
+}
+
+.fbbx header {
+	background: #616d95 url(/appledaily/images/core/fbhd.png) top right no-repeat;
+	position: relative;
+	color: white;
+	padding: 9px 0 9px 46px;
+}
+
+.fbbx h1 {
+	display: none;
+}
+
+.fbbx header a {
+	color: #8f98b4;
+	padding: 0 22px;
+	line-height: 1em;
+}
+
+.fbbx header a.on,
+.fbbx header a:hover {
+	color: white;
+}
+
+.fbbx header a.last {
+	border-right: 0;
+}
+
+#changeFBactivity {
+	display: none;
+}
+
+/* More Apple */
+
+.map {
+	position: relative;
+}
+
+.map header {
+	position: relative;
+	color: #bf4500;
+	padding: 5px 0;
+	border-bottom: 4px solid #bf4500;
+	zoom: 1;
+}
+
+.map header h1 {
+	font-size: 1.5em;
+	line-height: 24px;
+}
+
+.map article {
+	background-color: white;
+	border-bottom: 4px solid #bf4500;
+}
+
+.map .sqzer {
+	width: 514px;
+	height: 128px;
+	padding: 20px 0 20px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.tuls {
+	width: 20000em;
+}
+
+.ecs{ width:516px;height:120px; float:left;}
+.ecs a{display:block;float:left;width:145px;padding:0 12px;margin-left:1px;color: #3f3f41;}
+
+.ecs h1, .ecs h3{
+	color: #787e84;
+	font-size: 16px;
+	margin-bottom: 5px;
+}
+
+.ecs img {
+	display: block;
+	width: 144px;
+	height: 90px;
+	margin-bottom: 10px;
+}
+
+.map .bw {
+	top: 107px;
+}
+
+.map .lf {background-position: 0 -151px; left: 10px;}
+.map .lf:hover {background-position: 0 -193px; left: 10px;}
+.map .rh {background-position: -42px -151px; right: 10px;}
+.map .rh:hover {background-position: -42px -193px; right: 10px;}
+
+/* Realtime News Box aSide */
+
+.srtb {
+	position: relative;
+	margin-top: 20px;
+
+}
+
+.srtb header {
+	position: relative;
+	color: #bf4500;
+	padding: 5px 0;
+	border-bottom: 4px solid #c5c5c5;
+	zoom: 1;
+}
+
+.srtb header h1 {
+	color: #373737;
+	font-size: 1.5em;
+	line-height: 1em;
+}
+
+.srtb header a {
+	position: absolute;
+	top: 9px;
+	right: 0;
+	color: #373737;
+	line-height: 1em;
+}
+
+.srtb li {
+	display: table;
+	font-size: 1em;
+	padding: 0.625em 44px 0.625em 0;
+	border-bottom: 1px solid #9c9ea6;
+	zoom: 1;
+}
+
+.srtb time,
+.srtb li h2 {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.srtb time {
+	width: 60px;
+	color: #999999;
+	font-size: 0.875em;
+}
+
+.srtb li h2 {
+	width: 240px;
+	font-size: 1em;
+	line-height: 1.3em;
+}
+
+.srtb li a {
+	color: #444446;
+}
+
+.srtb li a:hover {
+	color: #696e70;
+	text-decoration: underline;
+}
+
+/* Random Section Hot News Box aSide */
+
+.shsb {
+	position: relative;
+	margin-top: 20px;
+
+}
+
+.shsb header {
+	position: relative;
+	padding: 5px 0;
+	zoom: 1;
+}
+
+.shsb header h1 {
+	font-size: 1.5em;
+	line-height: 1em;
+}
+
+.shsb header span {
+	position: absolute;
+	top: 0.75em;
+	right: 0;
+	font-size: 1em;
+	line-height: 1em;
+}
+
+.shsb li {
+	position: relative;
+	font-size: 1em;
+	padding: 0.625em 60px 0.625em 0;
+	border-bottom: 1px solid #9c9ea6;
+	zoom: 1;
+}
+
+.shsb li h2 {
+	width: 240px;
+	font-size: 1em;
+	line-height: 1.3em;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.shsb li a {
+	color: #444446;
+}
+
+.shsb li span {
+	position: absolute;
+	top: 30%;
+	right: 0;
+	color: #7f7f7f;
+}
+
+.shsb li a:hover {
+	color: #696e70;
+	text-decoration: underline;
+}
+
+.shsbheadline h1 {color: #3371c2;}
+.shsbheadline header {color: #3371c2; border-bottom: 4px solid #3371c2;}
+
+.shsbentertainment h1 {color: #e48316;}
+.shsbentertainment header {color: #e48316; border-bottom: 4px solid #e48316;}
+.shsbentertainment span a {color: #e48316;}
+
+
+.shsbinternational h1 {color: #3371c2;}
+.shsbinternational header {color: #3371c2; border-bottom: 4px solid #3371c2;}
+
+.shsbfinance h1 {color: #1f3e6e;}
+.shsbfinance header {color: #1f3e6e; border-bottom: 4px solid #1f3e6e;}
+
+.shsbsports h1 {color: #a31313;}
+.shsbsports header {color: #a31313; border-bottom: 4px solid #a31313;}
+
+.shsbrealest h1 {color: #5699a8;}
+.shsbrealest header {color: #5699a8; border-bottom: 4px solid #5699a8;}
+
+.shsbsupplement h1 {color: #582a97;}
+.shsbsupplement header {color: #582a97; border-bottom: 4px solid #582a97;}
+
+.shsbforum h1 {color: #86a84a;}
+.shsbforum header {color: #86a84a; border-bottom: 4px solid #86a84a;}
+
+/* Random Section Hot News Box aSide */
+
+.fmsb {
+	position: relative;
+	margin-top: 20px;
+	zoom: 1;
+}
+
+/* User Commands */
+
+.sbhh {
+	position: relative;
+	padding: 5px 0;
+	border-bottom: 4px solid #2b2c2b;
+	zoom: 1;
+}
+
+.sbhh h1 {
+	color: #2b2c2b;
+	font-size: 1.5em;
+	line-height: 1em;
+}
+
+.ecfn {
+	padding: 0.625em 0 0.625em 0.25em;
+	border-bottom: 1px dashed #7a7a7a;
+}
+
+.ecfn header {
+	margin-bottom: 0.25em;
+}
+
+.ecfn header h2 {
+	font-size: 0.9375em;
+	line-height: 1.3em;
+	font-weight: lighter;
+}
+
+.ecfn header a {
+	float: left;
+	color: #95948b;
+}
+
+.ecfn header a:hover {
+	color: #696e70;
+	text-decoration: underline;
+}
+
+.nsfc {
+/*	width: 80px; Marked by Ghost 0328 */
+}
+
+.ntfc {
+	width: 200px;
+}
+
+.ecfn p {
+	color: #3f3f41;
+	clear: both;
+}
+
+/* Also Read */
+
+.asob {
+	position: relative;
+	margin-top: 20px;
+}
+
+.asob header {
+	padding: 5px 0;
+	border-bottom: 4px solid #d7d7d7;
+	zoom: 1;
+}
+
+.asob h1 {
+	color: #373737;
+	font-size: 1.5em;
+	line-height: 1em;
+}
+
+.asob li {
+	padding: 0.85em 0;
+	line-height: 1.3em;
+	border-bottom: 1px solid #ceccce;
+}
+
+.asob a {
+	color: #515151;
+}
+
+.asob a:hover {
+	color: #696e70;
+	text-decoration: underline;
+}
+
+/* Join Appledaily community */
+
+.jac {
+	position: relative;
+	margin-top: 20px;
+}
+
+.jac header {
+	padding: 5px 0;
+	border-bottom: 4px solid #d7d7d7;
+	zoom: 1;
+}
+
+.jac h1 {
+	color: #373737;
+	font-size: 1.5em;
+	line-height: 1em;
+}
+
+.jac article {
+	background: white url(/appledaily/images/core/jacbg.png) left bottom no-repeat;
+	height: 112px;
+}
+
+.jacfbb {
+	background: white url(/appledaily/images/core/jacfb.png) left center no-repeat;
+	margin-left: 64px;
+	padding: 8px 0 0 46px;
+	height: 48px;
+	clear: both;
+}
+
+.jacfbb a,
+.jacfbb iframe,
+.jacfbb p {
+	display: inline;
+	color: #465a98;
+	margin-right: 0.5em;
+	vertical-align: middle;
+}
+
+.adplk,
+.adgpls {
+	position: relative;
+	display: block;
+	float: left;
+	width: 319px;
+	height: 55px;
+	color: #343434;
+	font-size: 13px;
+}
+
+.adplk span {
+	position: absolute;
+	top: 13px;
+	left: 127px;
+}
+.adgpls span {
+	position: absolute;
+	top: 15px;
+	left: 102px;
+}
+
+/* Entertainment News Hot Movies */
+
+.hmbx {
+	position: relative;
+	margin-top: 20px;
+	padding: 0;
+	zoom: 1;
+}
+.hmbx header {
+	background:url(../core/hmbx.png) no-repeat;
+	height:50px;
+}
+
+
+.hmbx article ul li {
+	background:#303138;
+	padding:10px; margin:0 0 10px 0;
+}
+.hmbx article ul li img {
+	position:relative; margin:0 auto;
+	border:none; outline:none;
+}
+.hmbx article ul li h2 {
+	position:relative; padding:10px;
+	font-size:1em; line-height:1.3em; color:#fff;
+	font-weight:normal;
+}
+.hmbx article ul li h2 a {color:#fff; text-decoration:none;}
+.hmbx article ul li h2 a:hover {color:#fff; text-decoration:underline;}
+
+
+
+

@@ -39,12 +39,12 @@ if ($__INIT__ || $__ALL__) {
 	createSubscribeTable($dba);
 	createFbGenderTable($dba);
 	createUserTable($dba, $QUESTIONAIRE_DATASET);
-	createArticleTable($dba);
+	createArticleTable($dba, $W2V_FILEPATH, '../../db_lists/titles_done.json');
+	createArticleTable($dba, $W2V_FILEPATH, '../../db_lists/titles_pending.json');
 }
 if ($__UPDATE__ || $__ALL__) {
 	echo "update\n";
 	$fb_id_array = findMember($createMember = true, $DIR_LOGS_ROOT . '/libfm_objects', $dba);
-	// print_r($fb_id_array);
 	foreach ($fb_id_array as $fb_id) {
 		createFbRelateTable($fav = true, $like = true, $cat = true, $catlist = true, $DIR_LOGS_ROOT . '/facebook_objects', $fb_id, $dba);
 	}
@@ -58,37 +58,64 @@ function createFbRelateTable($CREATE_FB_FAVORITE_STATUS = false, $CREATE_FB_LIKE
 
 			/*==============  create fb_like table ==============*/
 			if ($CREATE_FB_LIKE_STATUS) {
-				$dba->_execute(
-					'INSERT INTO fb_like VALUE (0,:like_id,:like_name)',
-					array(
-						':like_id' => $value['id'],
-						':like_name' => str_replace(' ', '_', $value['name']),
-					)
-				);
+				$query = $dba->_query(
+							'SELECT * FROM `fb_like` WHERE `like_id`= :like_id and `like_name`= :like_name ',
+							array(
+								':like_id' => $value['id'],
+								':like_name' => str_replace(' ', '_', $value['name'])
+							)
+						);
+
+				if( $query->rowCount() == 0 ){
+					$dba->_execute(
+						'INSERT INTO fb_like VALUE (0,:like_id,:like_name)',
+						array(
+							':like_id' => $value['id'],
+							':like_name' => str_replace(' ', '_', $value['name'])
+						)
+					);
+				}
 			}
 
 			/*==============  create fb_category table ==============*/
 			if ($CREATE_FB_CAT_STATUS) {
-				$dba->_execute(
-					'INSERT INTO fb_category VALUE (0,:c_name)',
-					array(
-						':c_name' => str_replace(' ', '_', $value['category']),
-					)
-				);
+				$query = $dba->_query(
+							'SELECT * FROM `fb_category` WHERE `c_name`= :c_name',
+							array(
+								':c_name' => str_replace(' ', '_', $value['category'])
+							)
+						);
+				if( $query->rowCount() == 0 ){
+					$dba->_execute(
+						'INSERT INTO fb_category VALUE (0,:c_name)',
+						array(
+							':c_name' => str_replace(' ', '_', $value['category'])
+						)
+					);
+				}
 			}
 
 			/*==============  create fb_category_list table ==============*/
 			if ($CREATE_FB_CATLIST_STATUS) {
 				if (isset($value['category_list'])) {
 					foreach ($value['category_list'] as $key_cl => $val_cl) {
-						$dba->_execute(
-							'INSERT INTO fb_category_list VALUE (0,:cl_name,:cl_id,:c_name)',
-							array(
-								':cl_name' => str_replace(' ', '_', $val_cl['name']),
-								':cl_id' => $val_cl['id'],
-								':c_name' => str_replace(' ', '_', $value['category']),
-							)
-						);
+						$query = $dba->_query('SELECT * FROM `fb_category_list` WHERE `cl_name`= :cl_name and `cl_id`= :cl_id and `c_name`= :c_name',
+								array(
+									':cl_name' => str_replace(' ', '_', $val_cl['name']),
+									':cl_id' => $val_cl['id'],
+									':c_name' => str_replace(' ', '_', $value['category'])
+								)
+							);
+						if( $query->rowCount() == 0 ){
+							$dba->_execute(
+								'INSERT INTO fb_category_list VALUE (0,:cl_name,:cl_id,:c_name)',
+								array(
+									':cl_name' => str_replace(' ', '_', $val_cl['name']),
+									':cl_id' => $val_cl['id'],
+									':c_name' => str_replace(' ', '_', $value['category'])
+								)
+							);
+						}
 					}
 				}
 			}
@@ -102,14 +129,23 @@ function createFbRelateTable($CREATE_FB_FAVORITE_STATUS = false, $CREATE_FB_LIKE
 		foreach ($facebook_me_objects as $column_name => $fb_item) {
 			foreach ($fb_item as $index => $value) {
 				if (isset($value['id']) && isset($value['name'])) {
-					$dba->_execute(
-						'INSERT INTO fb_favorite VALUE (0,:fav_id,:fav_name,:fav_type)',
-						array(
-							':fav_id' => $value['id'],
-							':fav_name' => str_replace(' ', '_', $value['name']),
-							':fav_type' => $column_name,
-						)
-					);
+					$query = $dba->_query('SELECT * FROM `fb_favorite` WHERE `fav_id`= :fav_id and `fav_name`= :fav_name and `fav_type`= :fav_type',
+							array(
+								':fav_id' => $value['id'],
+								':fav_name' => str_replace(' ', '_', $value['name']),
+								':fav_type' => $column_name
+							)
+						);
+					if( $query->rowCount() == 0 ){
+						$dba->_execute(
+							'INSERT INTO fb_favorite VALUE (0,:fav_id,:fav_name,:fav_type)',
+							array(
+								':fav_id' => $value['id'],
+								':fav_name' => str_replace(' ', '_', $value['name']),
+								':fav_type' => $column_name,
+							)
+						);
+					}
 				} else {
 					break;
 				}
@@ -118,40 +154,46 @@ function createFbRelateTable($CREATE_FB_FAVORITE_STATUS = false, $CREATE_FB_LIKE
 	}
 }
 
-function createArticleTable($dba) {
-	$article_filename = '../../db_lists/titles.json';
+function createArticleTable($dba, $W2V_FILEPATH, $article_filename) {
 	$article_objects = json_decode(file_get_contents($article_filename), true);
-
+	$w2v_objects = json_decode(file_get_contents($W2V_FILEPATH), true);
 	foreach ($article_objects as $index => $value) {
-		$dba->_execute(
-			'INSERT INTO article VALUE (0,:aid,:article,:title,:url)',
-			array(
-				':aid' => $value['aid'],
-				':article' => $value['article'],
-				':title' => str_replace(' ', '_', $value['title']),
-				':url' => $value['url'],
-			)
-		);
+		$query = $dba->_query('SELECT * FROM `article` WHERE `aid`= :aid', array( ':aid' => $value['aid'] ));
+		if( $query->rowCount() == 0 ){
+			$dba->_execute(
+				'INSERT INTO article VALUE (0,:aid,:article,:title,:url,:count,:w2v)',
+				array(
+					':aid' => $value['aid'],
+					':article' => $value['article'],
+					':title' => str_replace(' ', '_', $value['title']),
+					':url' => $value['url'],
+					':count' => -1,
+					':w2v' => ( isset($w2v_objects[ $value['aid'] ][0]) ? json_encode( $w2v_objects[ $value['aid'] ][0] ): null )
+	 			)
+			);
+		}
 	}
 }
 
 function createSubscribeTable($dba) {
-	$dba->_execute("INSERT INTO `subscribe` (`id`, `subscribe_value`, `subscribe_name`) VALUES (1, 1, '每天一次'),(2, 2, '每週一次'),(3, 3, '每週二次'),(4, 4, '每週三次'),(5, 5, '每週四次'),(6, 6, '每週五次'),(7, 7, '每週六次'),(8, 8, '每月一次'),(9, 9, '每月二次'),(10, 10, '每月三次'),(11, 11, '每月四次'),(12, 12, '每年一次'),(13, 13, '每年二次'),(14, 14, '每年三次'),(15, 15, '每年四次'),(16, 16, '每年五次'),(17, 17, '每年六次'),(18, 18, '每年七次'),(19, 19, '每年八次'),(20, 20, '每年九次'),(21, 21, '每年十次'),(22, 22, '每年十一次'),(23, 23, '每年十二次');");
+	$dba->_execute('TRUNCATE TABLE `subscribe`');
+	$dba->_execute("INSERT INTO `subscribe` (`id`, `subscribe_value`, `subscribe_name`) VALUES (1, 365, '每天一次'),(2, 52, '每週一次'),(3, 104, '每週二次'),(4, 12, '每月一次'),(5, 24, '每月二次'),(6, 1, '每年一次'),(7, 2, '每年二次'),(8, 3, '每年三次'),(9, 4, '每年四次');");
 }
 
 function createFbGenderTable($dba) {
+	$dba->_execute('TRUNCATE TABLE `fb_gender`');
 	$dba->_execute("INSERT INTO `fb_gender` (`id`, `gender_id`, `gender_name`) VALUES (1, 0, '男'),(2, 1, '女'),(3, 2, '其他');");
 }
 
 function createUserTable($dba, $QUESTIONAIRE_DATASET) {
-
+	$dba->_execute('TRUNCATE TABLE `user`');
 	foreach ($QUESTIONAIRE_DATASET as $key => $value) {
 		foreach ($value as $index => $question_item) {
 			$dba->_execute(
 				'INSERT INTO user VALUE (0,:user_key,:user_definition)',
 				array(
 					':user_key' => $key . '-' . $index,
-					':user_definition' => $question_item,
+					':user_definition' => $question_item
 				)
 			);
 		}
@@ -160,7 +202,7 @@ function createUserTable($dba, $QUESTIONAIRE_DATASET) {
 		'INSERT INTO user VALUE (0,:user_key,:user_definition)',
 		array(
 			':user_key' => "charityWilling",
-			':user_definition' => "分享公益募款文章給朋友",
+			':user_definition' => "分享公益募款文章給朋友"
 		)
 	);
 }
@@ -169,8 +211,7 @@ function findMember($CREATE_MEMBER_STATUS = false, $libfm_filename, $dba) {
 	$fb_id_array = array();
 	if ($handle = opendir($libfm_filename)) {
 		while (false !== ($entry = readdir($handle))) {
-			if ($entry != "." && $entry != "..") {
-				// echo "$entry\n";
+			if ($entry != "." && $entry != ".." && substr( $entry, -10 ) == 'libfm.json' ) {
 				$libfm_objects = json_decode(file_get_contents($libfm_filename . '/' . $entry), true);
 				$fb_id = $libfm_objects['FB_ID'];
 				$email = $libfm_objects['EMAIL'];
@@ -190,22 +231,29 @@ function findMember($CREATE_MEMBER_STATUS = false, $libfm_filename, $dba) {
 }
 
 function createMemberTable($dba, $data, $fb_id, $email, $subscribe) {
-	$dba->_execute(
-		'INSERT INTO fb_id VALUE (0,:fbId,:email,:subscribe)',
-		array(
-			':fbId' => $fb_id,
-			':email' => $email,
-			':subscribe' => $subscribe,
-		)
-	);
-	foreach ($data as $uniqId => $item) {
+	$query = $dba->_query('SELECT * FROM `fb_id` WHERE `fb_id`= :fbId', array(':fbId' => $fb_id ));
+	if( $query->rowCount() == 0 ){
 		$dba->_execute(
-			'INSERT INTO uniq_id VALUE (0,:uniqId,:fbId)',
+			'INSERT INTO fb_id VALUE (0,:fbId,:email,:subscribe)',
 			array(
-				':uniqId' => $uniqId,
 				':fbId' => $fb_id,
+				':email' => $email,
+				':subscribe' => $subscribe
 			)
 		);
+	}
+
+	foreach ($data as $uniqId => $item) {
+		$query = $dba->_query('SELECT * FROM `uniq_id` WHERE `uniq_id`= :uniqId', array(':uniqId' => $uniqId ));
+		if( $query->rowCount() == 0 ){
+			$dba->_execute(
+				'INSERT INTO uniq_id VALUE (0,:uniqId,:fbId)',
+				array(
+					':uniqId' => $uniqId,
+					':fbId' => $fb_id
+				)
+			);
+		}
 	}
 }
 ?>

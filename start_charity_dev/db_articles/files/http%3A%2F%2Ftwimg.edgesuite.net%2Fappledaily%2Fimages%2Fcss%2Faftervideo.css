@@ -1,0 +1,62 @@
+﻿.aftervideo {
+  display: block;
+  width: 640px;
+  height: 360px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent url(/appledaily/images/animation/aftervideo_bg.png);
+  z-index: 1;
+  display: none;
+}
+.aftervideo .wrapper {
+  margin: 16px 50px 16px 50px;
+}
+.aftervideo .item {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
+  width: 230px;
+  height: 144px;
+  float: left;
+  margin: 10px 20px 10px 20px;
+}
+.aftervideo .item a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: transparent url(/appledaily/images/animation/aftervideo_vbg.png);
+  position: relative;
+}
+.aftervideo .item a:hover {
+  background: none;
+}
+.aftervideo .item a:after {
+  content: " ";
+  display: block;
+  width: 100%;
+  height: 80%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: transparent url(/appledaily/images/animation/aftervideo_play.png) center center no-repeat;
+}
+
+.aftervideo .item span {
+        display:block;
+        position:absolute;
+        width:100%;
+        height:30px;
+        font-size:16px;
+        color:white;
+        background:black;
+        opacity:0.8;
+        filter:alpha(opacity=80);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        bottom: 0px;
+        line-height:30px;
+        text-indent:5px;
+}
