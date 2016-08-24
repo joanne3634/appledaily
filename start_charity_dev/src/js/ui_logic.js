@@ -22,8 +22,9 @@ function ClickAfterQuestionaireBtn() {
     var msg = saveQuestionaire();
     if (!BOOL_VARS.isTesting) {
         if (msg != 'success') {
-            console.log(QUESTIONAIRE_FORM_TEXTS[msg + 'Title']);
+            //console.log(QUESTIONAIRE_FORM_TEXTS[msg + 'Title']);
             Materialize.toast('請完成欄位: ' + QUESTIONAIRE_FORM_TEXTS[msg + 'Title'], 3000);
+
             $('html, body').animate({
                 scrollTop: $("#questionaire-" + msg).offset().top - 120
             }, 1000);
@@ -228,26 +229,23 @@ function showLoginButton() {
 
 function StatusChangeCallback(response) {
     if (response.status === 'connected') {
-        // console.log('[success] fb connected');
-        FB.api('/me', function(res) {
-            USER_PROFILE.fbToken = response.authResponse.accessToken;
-            USER_PROFILE.fbId = res.id;
-            console.log(res.id);
-            SetUserData();
-            FB.api('/me/permissions', function(response) {
-                var str_response = JSON.stringify(response);
-                // console.log( response );
-                if (str_response.indexOf('declined') == -1) {
-                    RecordFbInfo();
-                    showStartButton();
-                } else if (str_response.indexOf('error') > -1) {
-                    EXPERIMENT_PROFILE.exceptionMsg = 'fail in FB connect: ' + str_response;
-                    RecordException();
-                    showLoginButton();
-                } else {
-                    showLoginButton();
-                }
-            });
+        USER_PROFILE.fbToken = response.authResponse.accessToken;
+        USER_PROFILE.fbId = response.authResponse.userID;
+        SetSubscribe();
+
+        FB.api('/me/permissions', function(response) {
+            var str_response = JSON.stringify(response);
+
+            if (str_response.indexOf('declined') == -1) {
+                RecordFbInfo();
+                showStartButton();
+            } else if (str_response.indexOf('error') > -1) {
+                EXPERIMENT_PROFILE.exceptionMsg = 'fail in FB connect: ' + str_response;
+                RecordException();
+                showLoginButton();
+            } else {
+                showLoginButton();
+            }
         });
         // console.log( response );
 

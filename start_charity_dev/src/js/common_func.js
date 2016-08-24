@@ -69,7 +69,7 @@ function LoadSubscribingPage() {
             $('#subscribingPage').html(data);
             hideAllPage();
             if (USER_PROFILE.subscribe != 0) {
-                $("#subscribing-frequency input[type='checkbox']").attr('checked', true);
+                $("#subscribing-frequency input[type='checkbox']").attr('checked',true);
                 $('.subscribe-info-container').show();
                 $('#email').val(USER_PROFILE.email);
                 $("#subscribing-frequency select option[value='0']").attr('selected', false);
@@ -407,7 +407,8 @@ function RecordTimeStart() {
     }, 10);
 }
 
-function RecordArticleTime(start, end, id, round) {
+
+function RecordArticleTime(start,end,id,round) {
     setTimeout(function() {
         $.ajax({
             url: MY_URLS.recordArticleTime,
@@ -564,7 +565,7 @@ function saveQuestionaire() {
     $.each(USER_PROFILE.questionaire, function(i, v) {
         var check_value = [];
         // console.log( i );
-        if (i == 'gender' || i =='charityWilling') {
+        if (i == ('gender' || 'charityWilling')) {
             tmp = $("#questionaire-" + i + " input[type='radio']:checked").val();
             // console.log( tmp );
             if (!tmp || tmp == null) {
@@ -606,12 +607,12 @@ function saveQuestionaire() {
 }
 
 function saveSubscribe() {
-    var subscribe_freq = !$("#subscribing-frequency input[type='checkbox']:checked").val() ? 0 : 1;
 
-    if (subscribe_freq == 0) {
+    var subscribe_freq = !$("#subscribing-frequency input[type='checkbox']:checked").val()? 0 : 1;
+    if( subscribe_freq == 0 ){
         USER_PROFILE.subscribe = parseInt(subscribe_freq);
         return true;
-    } else {
+    }else{
         var subscribe = getFormData('subscribing-frequency');
         var email = $('#email').val();
         if (!subscribe.length || !$('#subscribing-frequency')[0].checkValidity()) {
