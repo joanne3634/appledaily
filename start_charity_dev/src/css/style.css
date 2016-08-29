@@ -13,6 +13,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    font-family: 'Noto Sans', Ubuntu, 黑體-繁, "Heiti TC", 微軟正黑體, "Microsoft JhengHei", sans-serif;
 }
 
 main {
@@ -23,6 +24,10 @@ main {
 nav ul a,
 nav .brand-logo {
     color: #444;
+}
+
+a#fb-status {
+    height: 52px;
 }
 
 form p {
@@ -42,6 +47,7 @@ h5 {
     line-height: 0;
     height: auto;
     color: rgba(255, 255, 255, .9);
+    z-index: 0;
 }
 
 .parallax-container .section {

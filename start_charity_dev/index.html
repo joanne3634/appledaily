@@ -20,6 +20,7 @@
     <!-- CSS  -->
     <link rel="shortcut icon" type="image/x-icon" sizes="16x16" href="src/img/ico/favicon.ico?v=3">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
     <link href="src/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="src/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="src/css/nouislider.css" type="text/css" rel="stylesheet" media="screen,projection" />
@@ -33,14 +34,17 @@
     <meta name="theme-color" content="#ffffff">
 </head>
 <!-- <body oncontextmenu="return false;">   -->
-<body >
+
+<body>
     <nav class="white" role="navigation">
         <div class="nav-wrapper container">
-            <a id="logo-container" href="" class="brand-logo">曙光再現計劃</a>
-            <!-- <ul class="right hide-on-med-and-down">
-                <li><a href="#">Navbar Link</a></li>
+            <a id="logo-container" class="brand-logo">曙光再現計劃</a>
+            <ul class="right">
+                <li>
+                    <a href="#" id="fb-status"></a>
+                </li>
             </ul>
-            <ul id="nav-mobile" class="side-nav">
+            <!-- <ul id="nav-mobile" class="side-nav">
                 <li><a href="#">Navbar Link</a></li>
             </ul> -->
             <!-- <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a> -->
@@ -51,348 +55,35 @@
         <div id="questionairePage" style="display:none;"></div>
         <div id="surveyPage" style="display:none;"></div>
         <div id="thankPage" style="display:none;"></div>
+        <div id="landingPage" style="display:none;"></div>
     </main>
-    <div id="landingPage">
-        <div id="index-banner" class="parallax-container">
-            <div class="section no-pad-bot">
-                <div class="container">
-                    <br>
-                    <br>
-                    <h1 class="header center amber-text text-lighten-2">急難家庭曙光再現計劃</h1>
-                    <div class="row center">
-                        <h5 class="header col s12 light">幫您找出您的捐款偏好</h5>
-                    </div>
-                    <div class="row center">
-                        <div id="old-member" class="row center" style="display:none;">
-                            <div class="col s12 m12 l4">
-                                <a id="re-ques-button" class="btn-large waves-effect waves-light teal">重填問卷及測驗</a>
-                            </div>
-                            <div class="col s12 m12 l4">
-                                <a id="update-subscribe-button" class="btn-large waves-effect waves-light teal">更新推薦頻率</a>
-                            </div>
-                            <div class="col s12 m12 l4">
-                                <a id="replay-button" class="btn-large waves-effect waves-light teal">多評一回文章<i class="right material-icons">replay</i></a>
-                            </div>
-                        </div>
-                        <div id="new-member" class="row center" style="display:none;">
-                            <a id="start-button" class="btn-large waves-effect waves-light teal">開始填基本資料</a>
-                        </div>
-                        <div id="before-login" class="row center" style="display:none;">
-                            <a id="before-login-button" class="btn-large waves-effect waves-light teal">請登入才能開始測驗</a>
-                        </div>
-                        <div id="check-login" class="row center">
-                            <a id="check-login-button" class="btn-large disabled">檢查登入狀態...
-                                <div id="preloader" class="preloader-wrapper small active">
-                                    <div class="spinner-layer spinner-blue-only">
-                                        <div class="circle-clipper left">
-                                            <div class="circle"></div>
-                                        </div>
-                                        <div class="gap-patch">
-                                            <div class="circle"></div>
-                                        </div>
-                                        <div class="circle-clipper right">
-                                            <div class="circle"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <br>
-                    <br>
-                </div>
-            </div>
-            <div class="parallax">
-                <!-- particles.js container -->
-                <div id="particles-js"></div>
+    <footer class="page-footer teal">
+        <div class="footer-copyright">
+            <div class="center-align container">
+                © 2016 曙光再現計劃
             </div>
         </div>
-        <section id="why">
-            <div class="container">
-                <div class="section">
-                    <!-- <h2 class="center">WHY?</h2> -->
-                    <blockquote>那些遭逢巨變且急需幫助的家庭，不僅需要您的愛心，也需要更多人共同建構社會的這張保護網。我們希望，為每個捐款人找到最適合且最需要捐助的弱勢家庭，除了能為他們帶來一場及時雨，也藉由這個平台，讓我們更了解捐款者的意願及關注的議題。</blockquote>
-                    <div class="row center">
-                        <div class="col s12 m12 l4">
-                            <a href="http://www.appledaily.com.tw/appledaily/bloglist/headline/4331" target="_blank" class="btn-large waves-effect waves-light white">查看暖流新聞<i class="right material-icons">loyalty</i></a></div>
-                        <div class="col s12 m12 l4">
-                            <a href="http://search.appledaily.com.tw/charity/projlist/" target="_blank" class="btn-large waves-effect waves-light white">查看捐款進度報告<i class="right material-icons">loyalty</i></a></div>
-                        <div class="col s12 m12 l4">
-                            <a href="http://search.appledaily.com.tw/charity/guest/step/step1/" target="_blank" class="btn-large waves-effect waves-light white">前往捐款<i class="right material-icons">loyalty</i></a></div>
-                        <div class="col s12 m12 l4"></div>
-                    </div>
-                </div>
-        </section>
-        <section id="how">
-            <div class="container">
-                <h2 class="header">How it works?</h2>
-                <hr align="center" width="80px">
-                <div class="section">
-                    <div class="step first">
-                        <a class="step-button left center">1</a>
-                        <h5>填寫問卷</h5>
-                        <div class="content">
-                            詢問您的個人屬性和平時參與的公益行為，透過資料分析的方式，幫助我們更了解捐款人的特質和關注的議題。
-                        </div>
-                    </div>
-                    <div class="step second">
-                        <a class="step-button left center">2</a>
-                        <h5>評估捐款意願</h5>
-                        <div class="content">
-                            閱讀蘋果日報暖流版文章，告訴我們對於這篇文章所報導亟待幫助的弱勢家庭，您的捐款意願高低（0～100分）。每回合閱讀 10 篇，若您有意貢獻更多，可多做幾個回合，提供我們更豐富的資訊。
-                        </div>
-                        <!-- <div class="img-container">
-                            <img src="src/img/2.png" height="auto" width="40%">
-                        </div> -->
-                    </div>
-                    <div class="step third">
-                        <a class="step-button left center">3</a>
-                        <h5>推薦未來的暖流版文章</h5>
-                        <div class="content">
-                            邀請您一同加入關心台灣各個角落的弱勢家庭，我們將依您選擇的收信頻率，定期將您可能較有意願捐款的報導發送給您；若您有意幫助，請您回覆對該篇文章的捐款意願，或直接按下「前往捐款」按鈕，透過蘋果日報慈善基金會捐助急難家庭。
-                        </div>
-                        <!--  <div class="img-container">
-                            <img src="src/img/3.png" height="auto" width="40%">
-                        </div> -->
-                    </div>
-                </div>
-                <div class="row center how-login-container">
-                    <div id="old-member-in-how" class="row center" style="display:none;">
-                        <div class="col s12 m12 l4">
-                            <a id="re-ques-button-in-how" class="btn-large waves-effect waves-light teal">重填問卷及測驗</a>
-                        </div>
-                        <div class="col s12 m12 l4">
-                            <a id="update-subscribe-button-in-how" class="btn-large waves-effect waves-light teal">更新推薦頻率</a>
-                        </div>
-                        <div class="col s12 m12 l4">
-                            <a id="replay-button-in-how" class="btn-large waves-effect waves-light teal">多評一回文章<i class="right material-icons">replay</i></a>
-                        </div>
-                    </div>
-                    <div id="new-member-in-how" class="row center" style="display:none;">
-                        <a id="start-button-in-how" class="btn-large waves-effect waves-light teal">開始填基本資料</a>
-                    </div>
-                    <div id="before-login-in-how" class="row center" style="display:none;">
-                        <a id="before-login-button-in-how" class="btn-large waves-effect waves-light teal">請登入才能開始測驗</a>
-                    </div>
-                    <div id="check-login-in-how" class="row center">
-                        <a id="check-login-button-in-how" class="btn-large disabled">檢查登入狀態...
-                            <div id="preloader" class="preloader-wrapper small active">
-                                <div class="spinner-layer spinner-blue-only">
-                                    <div class="circle-clipper left">
-                                        <div class="circle"></div>
-                                    </div>
-                                    <div class="gap-patch">
-                                        <div class="circle"></div>
-                                    </div>
-                                    <div class="circle-clipper right">
-                                        <div class="circle"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="famous">
-            <div class="container testimonials">
-                <h2 class="header">Celebrity devotion</h2>
-                <hr align="center" width="80px">
-                <div class="row">
-                    <div class="col l6 testimionals-testimional">
-                        <div class="col m3 l3 face"><img src="src/img/phpt6QVMc.jpg" class="testimionals-avatar"></div>
-                        <div class="col m9 l9">
-                            <div class="testimionals-content">被網友發現一天一口氣在蘋果基金會捐了40萬行善。捐款明細一曝光，蕭敬騰被網友大讚「好有愛心」。</div>
-                            <div class="testimionals-author">蕭敬騰, 金曲歌王</div>
-                        </div>
-                    </div>
-                    <div class="col l6 testimionals-testimional">
-                        <div class="col m3 l3 face"><img src="src/img/12744164_1091317007567040_1501664492463348771_n.jpg" class="testimionals-avatar"></div>
-                        <div class="col m9 l9">
-                            <div class="testimionals-content">蘋果基金會是我最放心的捐款機構。他尋訪需要幫助的家庭，你針對該家庭捐的錢，全數都轉到該家庭手上。</div>
-                            <div class="testimionals-author">網路名人486, 台灣團購傳奇人物</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="who">
-            <div class="container">
-                <h2 class="header">Who we are?</h2>
-                <hr align="center" width="80px">
-                <div class="row">
-                    <!-- <img class="col s12 m4 l4" src="src/img/dsc_2016_logo.png"> -->
-                    <div class="who-content">
-                        台灣資料科學協會由一群愛好資料科學的同好們共同創辦，旨在推廣資料科學的認知、技術及應用，議題包含資料科學的各個層面，例如數理統計、資料視覺化、資料處理及計算、資料儲存以及各領域裡的資料分析應用等，期待能透過學術研討講座、資料分析上手教程、資料交流與心得分享等各種形式，將我們對於資料科學的熱情傳達給大眾，幫助瞭解資料科學的魅力，進而一起探索與開發資料科學的潛力，更重要是能促使將資料科學引入每個人的專業領域之中，帶來創新及價值。
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="partner">
-            <div class="container">
-                <h2 class="header">Our partners</h2>
-                <hr align="center" width="80px">
-                <div id="partner-container">
-                    <a href="http://npost.tw/" target="_blank">
-                        <img src="src/img/partner/NPOst.png">
-                    </a>
-                    <a href="http://ocf.tw/" target="_blank">
-                        <img src="src/img/partner/ocf.png">
-                    </a>
-                    <a href="http://www.appledaily.com.tw/charity" target="_blank">
-                        <img src="src/img/partner/applecharity.jpg">
-                    </a>
-                    <a href="http://www.twnpos.org.tw/" target="_blank">
-                        <img src="src/img/partner/npo-self-reg.jpg">
-                    </a>
-                    <a href="http://www.apa-tw.org/" target="_blank">
-                        <img src="src/img/partner/apa.jpg">
-                    </a>
-                </div>
-            </div>
-        </section>
-        <section id="FQ">
-            <div class="container">
-                <h2 class="header">FAQ</h2>
-                <hr align="center" width="80px">
-                <ul class="collapsible" data-collapsible="accordion">
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">add</i>
-                            <!-- Q1 : -->如何透過蘋果日報慈善基金會捐款？</div>
-                        <div class="collapsible-body">
-                            <p>
-                                <!-- A1 :  -->連結至《蘋果日報慈善基金會》首頁， 您可以下載捐款表格，進行信用卡或郵政劃撥、現金及支票……等任何形式的捐款。若要指定捐助對象，請填上「捐款編號」，即每篇個案報導最後所附的號碼。或致電 - (02) 6601-6999 - (02) 6601-6999、0809-008585、0809-008585 或電郵至 hope85@appledaily.com.tw 與蘋果日報慈善基金聯絡。
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">add</i>
-                            <!--  Q2 :  -->蘋果基金會會開立發票嗎？</div>
-                        <div class="collapsible-body">
-                            <p>
-                                <!-- A2 :  -->對於捐款人的支持皆製發收據，每次捐款立開收據者，在您捐款入帳後15日內寄發；採「年度合開一張」者，基金會統一於每年2-3月間寄發，以利報稅扣繳列舉憑証。
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">add</i>
-                            <!-- Q3 : -->若指定捐款個案，錢會全數轉交給個案嗎？</div>
-                        <div class="collapsible-body">
-                            <p>
-                                <!--  A3 :  -->是的，基金會均全數轉交指定對象。
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">add</i>
-                            <!-- Q4 :  -->若不指定捐款對象，透過基金會轉贈的捐款將會作為何種用途？</div>
-                        <div class="collapsible-body">
-                            <p>
-                                <!-- A4 :  -->如蒙您「不指定」捐款，即共同匯入「急難救助金」，支持本會服務個案第一時間紓困及弱勢社福團體服務計畫。所有相關捐助手續費皆由《蘋果日報》支付。
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">add</i>
-                            <!-- Q5 :  -->請問如何查看基金會的帳務或是財報？</div>
-                        <div class="collapsible-body">
-                            <p>
-                                <!-- A5 :  -->基金會每年由會計師進行查帳，並將財報暨會務報告公告於《蘋果日報》，及基金會網頁之<a href="http://www.appledaily.com.tw/charity/finreport/" target="_blank">「財務報告」</a>，基金會免付費電話是0809008585。
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">add</i>
-                            <!-- Q6 :  -->基金會董事成員組成</div>
-                        <div class="collapsible-body">
-                            <p>
-                                <!--    A6 :  -->蘋果日報慈善基金會的董事成員包括了社福界及財會法律背景之專業人士。
-                            </p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">add</i>
-                            <!--  Q7 :  -->若捐款會全數捐出，如何支付工作人員薪水與行政支出？</div>
-                        <div class="collapsible-body">
-                            <p>
-                                <!--     A7 :  -->基金會工作人員及行政支出皆由蘋果日報支付，大眾捐助皆全數用於弱勢服務。
-                            </p>
-                    </li>
-                </ul>
-            </div>
-        </section>
-        <section id="contact">
-            <div class="container">
-                <h2 class="header">Contact Us</h2>
-                <hr align="center" width="80px">
-                <div class="wrap"></div>
-                <div class="info-badge"></div>
-            <form id="contactForm" method="post" action="contact-us/"> <!-- src/php/lib/PHPMailer/send_mail.php -->
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="contact_name" name="contact_name" type="text" class="validate" value="">
-                        <label for="contact_name">Your name</label>
-                    </div>
-
-                    <div class="input-field col s12">
-                        <input id="contact_email" name="contact_email" type="email" class="validate" value="">
-                        <label for="contact_email">Your email</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <select id="contact_category" name="contact_category" class="validate">
-                            <option value="" disabled selected>Choose a category ...</option>
-                            <option value="1">問題回報</option>
-                            <option value="2">合作洽談</option> 
-                        </select>
-                        <label>Category</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <input id="contact_subject" name="contact_subject" type="text" class="validate" value="">
-                        <label for="contact_subject">Subject</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <textarea id="contact_message" name="contact_message" class="materialize-textarea"></textarea>
-                        <label for="contact_message">Message</label>
-                    </div>
-                </div>
-
-                <div class="row no-margin">
-                    <div class="col s12">
-                        <button class="btn-large waves-effect waves-light teal right" type="submit">Send<i class="material-icons right">send</i></button>
-                    </div>
-                </div>  
-            </form>
-            </div>
-        </section>
-        </div>
-        <footer class="page-footer teal">
-            <div class="footer-copyright">
-                <div class="center-align container">
-                    © 2016 曙光再現計劃
-                </div>
-            </div>
-           <!--  <div class="container">
+        <!--  <div class="container">
                 <div class="row">
                     <div class="col s12 copyright">
                         <p>© 2016 曙光再現計劃. All rights reserved. <a href="info/terms-of-service">Terms of Service</a> | <a href="info/privacy-policy">Privacy Policy</a></p>
                     </div>
                 </div>
             </div> -->
-        </footer>
-        <a href="#0" class="cd-top">Top</a>
-        
-        <!-- Modal Structure -->
-        <div id="promptLogin" class="modal">
-            <div class="modal-content" style="padding: 24px 24px 0 24px">
-                <h4 class="center">登入提示</h4>
-                <p>我們需要您的識別資料，但不會將您的資料散佈或做其他用途、或任意貼文。 往後可以以您的 FB 帳號登入檢視或修改您的資料。</p>
-            </div>
-            <div class="modal-footer">
-                <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">取消</a>
-                <a href="#!" id="agree-login" class="modal-action modal-close waves-effect waves-green btn-flat">確認</a>
-            </div>
+    </footer>
+    <a href="#0" class="cd-top">Top</a>
+    <!-- Modal Structure -->
+    <div id="promptLogin" class="modal">
+        <div class="modal-content" style="padding: 24px 24px 0 24px">
+            <h4 class="center">登入提示</h4>
+            <p>我們需要您的識別資料，但不會將您的資料散佈或做其他用途、或任意貼文。 往後可以以您的 FB 帳號登入檢視或修改您的資料。</p>
         </div>
-<!--         <div id="promptQuestion" class="modal">
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">取消</a>
+            <a href="#!" id="agree-login" class="modal-action modal-close waves-effect waves-green btn-flat">確認</a>
+        </div>
+    </div>
+    <!--         <div id="promptQuestion" class="modal">
             <div class="modal-content" style="padding: 24px 24px 0 24px">
                 <h4 class="center">問卷提示</h4>
                 <p>您的個人屬性和平時參與的公益行為，可以讓我們更了解捐款人的特質和關注的議題。</p>
@@ -402,116 +93,91 @@
                 <a href="#!" id="agree-question" class="modal-action modal-close waves-effect waves-green btn-flat">確認</a>
             </div>
         </div> -->
-
-        <div id="promptSurvey" class="modal">
-            <div class="modal-content center" style="padding: 24px 24px 0 24px">
-                <h4 class="center">評分提示</h4>
-                <p>看了這篇文章，若您有能力捐款，請問您的捐款意願如何？<br>每回合共閱讀 10 篇文章，我們將據此推薦未來的暖流版報導給您。</p>
-            </div>
-            <div class="modal-footer">
-                <a href="#!" id="agree-survey" class="modal-action modal-close waves-effect waves-green btn-flat">確認</a>
-            </div>
+    <div id="promptSurvey" class="modal">
+        <div class="modal-content center" style="padding: 24px 24px 0 24px">
+            <h4 class="center">評分提示</h4>
+            <p>看了這篇文章，若您有能力捐款，請問您的捐款意願如何？
+                <br>每回合共閱讀 10 篇文章，我們將據此推薦未來的暖流版報導給您。</p>
         </div>
-        
-        <div class="preloader"> 
-            <div class="preloader_image"></div>             
-        </div>         
-
-        <!--  Scripts-->
-        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script src="src/js/materialize.js"></script>
-        <script src="src/js/init.js"></script>
-        <script src="src/js/nouislider.min.js"></script>
-        <script src="src/js/hashids.min.js"></script>
-        <script src="src/js/backtotop.js"></script>
-        <script src="src/js/ui_texts.js"></script>
-        <script src="src/js/ui_logic.js"></script>
-        <script src="src/js/common_var.js"></script>
-        <script src="src/js/common_func.js"></script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/1.1.0/jssocials.min.js"></script>
-        <!-- particles.js lib - https://github.com/VincentGarreau/particles.js -->
-        <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-        <script src="src/js/particle_style.js"></script>
-        <!-- my script -->
-        <script type="text/javascript">
-        $(document).ready(function() {
-            
-            BeforeLoadLanding();
-            $('#landingPage').show();
-            AfterLoadLanding();
-            IniSelect();
-            $('.collapsible').collapsible({
-                accordion: false
-            });
-            $("a[id^='before-login-button']").click( function(){ 
-                promptMaterial('promptLogin');
-            });
-            $('#agree-login').click(ClickLoginBtn);
-
-            $("a[id^='start-button'],a[id^='re-ques-button']").click(ClickStartBtn);
-            
-            $("a[id^='replay-button']").click(LoadSurveyPage);
-
-            $("a[id^='update-subscribe-button']").click(LoadSubscribingPage);
-
-            $('#contactForm').on('submit', function(e) {
-                e.preventDefault(); //Prevents default submit
-                var form = $(this); 
-                var post_url = form.attr('action'); 
-                var post_data = form.serialize(); //Serialized the form data for process.php
-                // $('.wrap').html('<div class="loading"><div class="bounceball"></div><div class="text">NOW LOADING</div></div>');
-                $.ajax({
-                    type: 'POST',
-                    url: 'contact-us/', // Your form script
-                    data: post_data,
-                    success: function(result) {
-                        // $('.wrap').fadeOut();
-                        result = $.parseJSON(result);
-                        // console.log( result.status );
-                        if( result.status != 'success'){
-                            $('.info-badge').removeClass('green').addClass('red').html('<i class="material-icons left">error</i>'+ result.msg).fadeIn();
-                        }else{
-                            $('.info-badge').removeClass('red').addClass('green').html('<i class="material-icons left">done</i>Thank you for contacting us. We will answer you back as soon as possible.').fadeIn();
-                        }
-                        
-                        
-                        // $(form).fadeOut(500, function(){
-                        //     form.html(msg).fadeIn();
-                        // });
-                    }
-                });
-            });
-
-            //preloader
-            $(".preloaderimg").fadeOut();
-            $(".preloader").delay(200).fadeOut("slow").delay(200, function() {
-                $(this).remove();
-            });
-
-            window.fbAsyncInit = function() {
-                FB.init({
-                    appId: '342086465999475',
-                    cookie: true,
-                    xfbml: true,
-                    version: 'v2.2'
-                });
-                FB.getLoginStatus(function(response) {
-                    StatusChangeCallback(response);
-                });
-            };
-
-            (function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s);
-                js.id = id;
-                js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.2&appId=342086465999475";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-
-
+        <div class="modal-footer">
+            <a href="#!" id="agree-survey" class="modal-action modal-close waves-effect waves-green btn-flat">確認</a>
+        </div>
+    </div>
+    <div class="preloader">
+        <div class="preloader_image"></div>
+    </div>
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="src/js/materialize.js"></script>
+    <script src="src/js/init.js"></script>
+    <script src="src/js/nouislider.min.js"></script>
+    <script src="src/js/hashids.min.js"></script>
+    <script src="src/js/backtotop.js"></script>
+    <script src="src/js/ui_texts.js"></script>
+    <script src="src/js/ui_logic.js"></script>
+    <script src="src/js/common_var.js"></script>
+    <script src="src/js/common_func.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/1.1.0/jssocials.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.5.1/jquery.nicescroll.min.js"></script>
+    <!-- my script -->
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("html").niceScroll({
+            cursorcolor: '#f9c003',
+            cursorwidth: '8px',
+            cursorborder: 0,
+            cursorborderradius: 0,
+            autohidemode: false,
+            background: 'rgba(0, 0, 0, 0.15)',
+            cursorminheight: 30
         });
-        </script>
+        $('#logo-container').click(LoadLandPage);
+        
+        $('#fb-status').click(ClickFBStatusBtn);
+        $('#agree-login').click(ClickLoginBtn);
+
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: '342086465999475',
+                cookie: true,
+                xfbml: true,
+                version: 'v2.2'
+            });
+            LoadLandPage();
+
+            // FB.getLoginStatus(function(response) {
+            //     StatusChangeCallback(response);
+            // });
+        };
+
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.2&appId=342086465999475";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+
+    });
+    </script>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+    var Tawk_API = Tawk_API || {},
+        Tawk_LoadStart = new Date();
+    (function() {
+        var s1 = document.createElement("script"),
+            s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = 'https://embed.tawk.to/57bff569b6fbb95fad802339/default';
+        s1.charset = 'UTF-8';
+        s1.setAttribute('crossorigin', '*');
+        s0.parentNode.insertBefore(s1, s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
 </body>
 
 </html>

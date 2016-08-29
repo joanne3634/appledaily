@@ -30,6 +30,11 @@ if( !$_POST['contact_email'] ){
 	return false; 
 }
 
+$fb_info = $_POST['contact_fb_name'] == '' ? '': ('登入帳號名稱: '.$_POST['contact_fb_name'].'<br>');
+$fb_info .= $_POST['contact_fb_link'] == '' ? '': ('登入帳號連結: '.$_POST['contact_fb_link'].'<br>');
+
+// echo $fb_info;
+
 $mail = new PHPMailer;
 $mail->CharSet = 'utf-8';
 ini_set('default_charset', 'UTF-8');
@@ -62,8 +67,8 @@ $mail->Body = '
 問題分類: '. category($_POST['contact_category']) .'<br>
 訊息主旨: '. $_POST['contact_subject'] .'<br>
 訊息內容: '. $_POST['contact_message'].'<br>
-</div>
-';
+'. $fb_info .'<br>
+</div>';
 
 
 // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';

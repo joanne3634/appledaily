@@ -9,6 +9,22 @@ function ClickLoginBtn() {
     });
 }
 
+function ClickFBStatusBtn() {
+
+    FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+            FB.logout(function(response) {
+                // this part just clears the $_SESSION var
+                // replace with your own code
+                LoadLandPage();
+            });
+        } else {
+            promptMaterial('promptLogin');
+            // ClickLoginBtn();
+        }
+    });
+}
+
 function ClickAfterSubscribingBtn() {
     if (!saveSubscribe()) {
         Materialize.toast('欄位有錯或是空的', 3000);
@@ -42,11 +58,14 @@ function ClickAfterSurveyBtn() {
             return false;
         }
     }
-    if (checkMemberStatus()) {
-        LoadThankPage();
-    } else {
-        LoadSubscribingPage();
-    }
+    checkMemberStatus(function(isMember) {
+        if (isMember) {
+            LoadThankPage();
+        } else {
+            LoadSubscribingPage();
+        }
+    })
+
     RecordLibfm();
 }
 
@@ -58,6 +77,7 @@ function ClickReRound() {
 }
 
 function BeforeLoadLanding() {
+    console.log('BeforeLoadLanding');
     GetIp();
     SetShortcuts();
     TitleListLoading();
@@ -66,6 +86,7 @@ function BeforeLoadLanding() {
 }
 
 function AfterLoadLanding() {
+    Particle();
     USER_PROFILE.timeRecording.timingType = 0;
     USER_PROFILE.timeRecording.startLanding = GetCurrentTimeMilli();
     RecordTimeStart();
@@ -100,6 +121,7 @@ function AfterLoadThank() {
 }
 
 function BeforeRoundStart() {
+    $('.preloader_image').css('display', 'block');
     var currentIdx = ROUND_PROFILE.caseIndex;
 
     ROUND_PROFILE.caseAction = [];
@@ -113,10 +135,11 @@ function BeforeRoundStart() {
     // $('#round-text').text('第 ' + String(ROUND_PROFILE.caseRound) + ' 回合 (共 ' + String(EXPERIMENT_PROFILE.numCases) + ' 回合)');
     $('#case-title-text').text(ROUND_PROFILE.caseTitle);
     $('#article-iframe').attr('src', ROUND_PROFILE.caseArticle)
-        .css({ width: $('body').width() > 768 ? $('body').width() * 0.7 : $('body').width(), height: 0 })
+        .css({ width: $('body').width() > 768 ? ($('.slider-row').width() + 20 + "px") : $('body').width(), height: 0 })
         .load(function() {
-            $(this).contents().find('.mpatc').css("padding", $('.fix-slider').height() + 60 + "px 20px");
+            $(this).contents().find('.mpatc').css("padding", $('.fix-slider').height() + 60 + "px .8em");
             $(this).css("height", $(this).contents().find('.mpatc').height() + 260 + 'px');
+            $('.preloader_image').css('display', 'none');
         });
 }
 
@@ -199,25 +222,39 @@ function CheckLoginState() {
     });
 }
 
-function checkMemberStatus() {
-    var req = new XMLHttpRequest();
-    var url = 'www-data/libfm_objects/' + USER_PROFILE.fbId + '_libfm.json?nocache=' + (new Date()).getTime();
-    req.open('GET', url, false);
-    req.send();
-
-    return req.status == 200;
+function checkMemberStatus(result) {
+    $.ajax({
+        type: 'GET',
+        url: 'www-data/libfm_objects/' + USER_PROFILE.fbId + '_libfm.json?nocache=' + (new Date()).getTime(), // Your form script
+        success: function(response, textS, xhr) {
+            console.log("ok");
+            result(true);
+        },
+        error: function(xmlHttpRequest, textStatus, errorThrown) {
+            console.log("not ok " + errorThrown);
+            if (textStatus === 'timeout')
+                console.log("request timed out");
+            result(false);
+        }
+    });
+    // var req = new XMLHttpRequest();
+    // var url = 'www-data/libfm_objects/' + USER_PROFILE.fbId + '_libfm.json?nocache=' + (new Date()).getTime();
+    // req.open('GET', url, false);
+    // req.send();
 }
 
 function showStartButton() {
-    if (checkMemberStatus()) {
-        $("div[id^='old-member']").show();
-        $("div[id^='new-member']").hide();
-    } else {
-        $("div[id^='old-member']").hide();
-        $("div[id^='new-member']").show();
-    }
-    $("div[id^='before-login']").hide();
-    $("div[id^='check-login']").hide();
+    checkMemberStatus(function(isMember) {
+        if (isMember) {
+            $("div[id^='old-member']").show();
+            $("div[id^='new-member']").hide();
+        } else {
+            $("div[id^='old-member']").hide();
+            $("div[id^='new-member']").show();
+        }
+        $("div[id^='before-login']").hide();
+        $("div[id^='check-login']").hide();
+    })
 }
 
 function showLoginButton() {
@@ -225,34 +262,36 @@ function showLoginButton() {
     $("div[id^='before-login']").show();
     $("div[id^='new-member']").hide();
     $("div[id^='check-login']").hide();
+    $('#fb-status').text('登入');
 }
 
 function StatusChangeCallback(response) {
+    console.log('fb_check');
     if (response.status === 'connected') {
-        USER_PROFILE.fbToken = response.authResponse.accessToken;
-        USER_PROFILE.fbId = response.authResponse.userID;
-        SetSubscribe();
 
-        FB.api('/me/permissions', function(response) {
-            var str_response = JSON.stringify(response);
-
-            if (str_response.indexOf('declined') == -1) {
-                RecordFbInfo();
-                showStartButton();
-            } else if (str_response.indexOf('error') > -1) {
-                EXPERIMENT_PROFILE.exceptionMsg = 'fail in FB connect: ' + str_response;
-                RecordException();
-                showLoginButton();
-            } else {
-                showLoginButton();
-            }
+        FB.api('/me', function(res) {
+            USER_PROFILE.fbToken = response.authResponse.accessToken;
+            USER_PROFILE.fbId = res.id;
+            $('#contact_fb_name').val(res.name);
+            $('#contact_fb_link').val(res.link);
+            // console.log(res.id);
+            SetUserData();
+            FB.api('/me/permissions', function(response) {
+                var str_response = JSON.stringify(response);
+                // console.log( response );
+                if (str_response.indexOf('declined') == -1) {
+                    showStartButton();
+                    $('#fb-status').text('登出');
+                    RecordFbInfo();
+                } else if (str_response.indexOf('error') > -1) {
+                    EXPERIMENT_PROFILE.exceptionMsg = 'fail in FB connect: ' + str_response;
+                    RecordException();
+                    showLoginButton();
+                } else {
+                    showLoginButton();
+                }
+            });
         });
-        // console.log( response );
-
-        // USER_PROFILE.fbToken = response.authResponse.accessToken;
-        // USER_PROFILE.fbId = response.authResponse.userID;
-        // SetUserData();
-
 
     } else if (response.status === 'not_authorized') {
         showLoginButton();

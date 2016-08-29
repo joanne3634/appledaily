@@ -3,10 +3,10 @@ function LoadQuestionairePage() {
         $.get(MY_PAGES.questionairePage, function(data) {
             $('#questionairePage').html(data);
             hideAllPage();
-            if( USER_PROFILE.questionaire.gender != 'na'){
+            if (USER_PROFILE.questionaire.gender != 'na') {
                 $.each(USER_PROFILE.questionaire, function(i, v) {
-                    if (i == 'gender' || i =='charityWilling') {
-                        $("#questionaire-"+ i + " input[value='"+ USER_PROFILE.questionaire[i][0]+"'] ").prop("checked", true); 
+                    if (i == 'gender' || i == 'charityWilling') {
+                        $("#questionaire-" + i + " input[value='" + USER_PROFILE.questionaire[i][0] + "'] ").prop("checked", true);
                     } else {
                         if (i == 'charityTendency') {
                             var otherCheck = USER_PROFILE.questionaire['charityTendency'];
@@ -17,13 +17,13 @@ function LoadQuestionairePage() {
                             })
                             if ($.inArray(otherIndex + '', otherCheck) != -1) { // 資料裡有其他 
                                 $('#other-input').show();
-                                $('#charityTendencyOther').val( USER_PROFILE.charityTendencyOther );
+                                $('#charityTendencyOther').val(USER_PROFILE.charityTendencyOther);
                             } else {
                                 $('#other-input').hide();
                             }
                         }
                         $.each(v, function(v_index, v_value) {
-                            $("#questionaire-"+i+" select option[value='"+ v_value +"']").attr('selected', true);
+                            $("#questionaire-" + i + " select option[value='" + v_value + "']").attr('selected', true);
                         })
                     }
                 });
@@ -48,6 +48,18 @@ function LoadSurveyPage() {
     });
 }
 
+function LoadLandPage() {
+    console.log('loadland');
+    $.get(MY_PAGES.landingPage, function(data) {
+        BeforeLoadLanding();
+        $('#landingPage').html(data);
+        hideAllPage();
+        $('#landingPage').show();
+        $(document).scrollTop(0);
+        AfterLoadLanding();
+    });
+}
+
 function LoadThankPage() {
     $(document).ready(function() {
         $.get(MY_PAGES.thankPage, function(data) {
@@ -56,7 +68,6 @@ function LoadThankPage() {
             hideAllPage();
             $('#thankPage').show();
             $(document).scrollTop(0);
-
             AfterLoadThank();
         });
     });
@@ -69,7 +80,7 @@ function LoadSubscribingPage() {
             $('#subscribingPage').html(data);
             hideAllPage();
             if (USER_PROFILE.subscribe != 0) {
-                $("#subscribing-frequency input[type='checkbox']").attr('checked',true);
+                $("#subscribing-frequency input[type='checkbox']").attr('checked', true);
                 $('.subscribe-info-container').show();
                 $('#email').val(USER_PROFILE.email);
                 $("#subscribing-frequency select option[value='0']").attr('selected', false);
@@ -107,6 +118,11 @@ function IniSelect() {
     $(document).ready(function() {
         $('select').material_select();
     });
+}
+
+function Particle() {
+    console.log('particles')
+    particlesJS("particles-js", { "particles": { "number": { "value": 128, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#ffffff" }, "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 5 }, "image": { "src": "img/github.svg", "width": 100, "height": 100 } }, "opacity": { "value": 1, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0, "sync": false } }, "size": { "value": 3, "random": true, "anim": { "enable": false, "speed": 4, "size_min": 0.3, "sync": false } }, "line_linked": { "enable": false, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 1, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 600 } } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "bubble" }, "onclick": { "enable": true, "mode": "bubble" }, "resize": true }, "modes": { "grab": { "distance": 400, "line_linked": { "opacity": 1 } }, "bubble": { "distance": 250, "size": 0, "duration": 2, "opacity": 0, "speed": 3 }, "repulse": { "distance": 400, "duration": 0.4 }, "push": { "particles_nb": 4 }, "remove": { "particles_nb": 2 } } }, "retina_detect": true });
 }
 
 function ArticleIframeCss(selector, css) {
@@ -296,6 +312,7 @@ function SetShortcuts() {
 }
 
 function TitleListLoading() {
+    console.log('TitleListLoading');
     $.get(MY_URLS.titleList, function(data) {
         EXPERIMENT_PROFILE.titleList = data;
         EXPERIMENT_PROFILE.aidList = Object.keys(data).sort().reverse().splice(10, EXPERIMENT_PROFILE.totalArticles);
@@ -408,7 +425,7 @@ function RecordTimeStart() {
 }
 
 
-function RecordArticleTime(start,end,id,round) {
+function RecordArticleTime(start, end, id, round) {
     setTimeout(function() {
         $.ajax({
             url: MY_URLS.recordArticleTime,
@@ -608,11 +625,11 @@ function saveQuestionaire() {
 
 function saveSubscribe() {
 
-    var subscribe_freq = !$("#subscribing-frequency input[type='checkbox']:checked").val()? 0 : 1;
-    if( subscribe_freq == 0 ){
+    var subscribe_freq = !$("#subscribing-frequency input[type='checkbox']:checked").val() ? 0 : 1;
+    if (subscribe_freq == 0) {
         USER_PROFILE.subscribe = parseInt(subscribe_freq);
         return true;
-    }else{
+    } else {
         var subscribe = getFormData('subscribing-frequency');
         var email = $('#email').val();
         if (!subscribe.length || !$('#subscribing-frequency')[0].checkValidity()) {
@@ -641,12 +658,22 @@ function SetUserData() {
             USER_PROFILE.subscribe = json['SUBSCRIBING'];
             USER_PROFILE.email = json['EMAIL'];
             USER_PROFILE.questionaire = json['USER_RAW'];
-            if( json['USER_CharityTendencyOther'] != '' ){
+            if (json['USER_CharityTendencyOther'] != '') {
                 USER_PROFILE.charityTendencyOther = json['USER_CharityTendencyOther'];
             }
         });
     }, 10);
 }
+
+// function SetSubscribe() {
+//     setTimeout(function() {
+//         $.getJSON('www-data/libfm_objects/' + USER_PROFILE.fbId + '_libfm.json?nocache=' + (new Date()).getTime(), function(json) {
+//             // console.log(json);
+//             USER_PROFILE.subscribe = json['SUBSCRIBING'];
+//             USER_PROFILE.email = json['EMAIL'];
+//         });
+//     }, 10);
+// }
 
 function SaveOther(name, value) {
     setTimeout(function() {

@@ -10,19 +10,19 @@
             </a>
             <a href="http://search.appledaily.com.tw/charity/projlist/" target="_blank" class="collection-item">        查看捐款進度報告<i class="right material-icons">loyalty</i>
             </a>
-            <a href="" class="collection-item">
+            <a class="collection-item" id="re-land">
                 返回首頁<i class="right material-icons">store</i>
             </a>
             <a class="collection-item" id="re-survey">
                 多評一回文章<i class="right material-icons">replay</i>
             </a>
         </div>
-        <div id="share" class="blue-grey lighten-3 center hoverable share-panel"></div>
+        <div id="share" class="box center hoverable share-panel"></div>
     </div>
 </div>
 <script type="text/javascript">
 $(document).ready(function() {
-    $('#after-thank-button').click();
+    $('#re-land').click(LoadLandPage);
     $('#re-survey').click(ClickReRound);
 });
 $("#share").jsSocials({
