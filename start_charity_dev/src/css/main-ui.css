@@ -161,12 +161,13 @@ section#how h5 {
     font-size: 25px;
 }
 
-section h2.header {
+h2.header {
     text-align: center;
     font-size: 40px;
     font-weight: 300;
     padding-top: 10px;
     margin-bottom: 0px;
+    color: #292929;
 }
 
 section#how .section {
@@ -529,4 +530,10 @@ nav.white {
     top: 50%;
     background: url(../img/preloader.svg) no-repeat 50% 50% transparent;
     margin: -40px 0 0 -40px;
+}
+.select-wrapper{
+    margin-bottom: 15px;
+}
+.btn-large{
+    padding: 0 1rem;
 }

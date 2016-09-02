@@ -69,7 +69,7 @@ var ROUND_PROFILE = {
 
 var MY_URLS = {
     'getIp': 'src/php/get_ip.php',
-    'titleList': 'db_lists/titles.json',
+    'titleList': 'db_lists/titles_done.json',
     // 'aidList': 'db_lists/aids.csv',
     // 'aidListHighOrder': 'db_lists/aids_high_order.csv', //需要優先出現在實驗中的 ID 列表
     'recordTimeStart': 'src/php/record_time_start.php',

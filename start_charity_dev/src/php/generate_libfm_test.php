@@ -12,10 +12,26 @@ $__FB_FAV_LIKE_STATUS__ = isset($_GET['fb_fav_like']) ? true : false;
 $__FB_CAT_STATUS__ = isset($_GET['fb_cat']) ? true : false;
 $__FB_CATLIST_STATUS__ = isset($_GET['fb_catlist']) ? true : false;
 
-$fb_id = isset($_GET['FB_ID']) ? $_GET['FB_ID'] : $_POST['FB_ID'];  
-$uniqId = isset($_GET['UNIQ_ID']) ? $_GET['UNIQ_ID'] : $_POST['UNIQ_ID'];
+$fbid = isset($_GET['fbid'])?$_GET['fbid']:'';  
+$uniqId = isset($_GET['uid'])?$_GET['uid']:''; 
 
 $dba = new MYSQL\Accessor('localhost', 'appledaily', 'joanne3634', '369369');
+
+if( $fbid && $uniqId ){
+	$query = $dba->_query('SELECT * FROM `uniq_id` WHERE `uniq_id`= :uid', array(':uid' => $uniqId ));
+	if( $result = $query->fetch(PDO::FETCH_ASSOC) ){
+		if( $fbid != $result['fb_id'] ){
+			echo json_encode(array('status'=>'fail','msg'=>"generate test.libfm fail, fbid: ".$fbid." cannot find." ));
+			die();
+		}
+	}else{
+		echo json_encode(array('status'=>'fail','msg'=>"generate test.libfm fail, uid: ".$uniqId." cannot find." ));
+		die();
+	}
+}else{
+	echo json_encode(array('status'=>'fail','msg'=>"generate test.libfm fail, fbid or uid missing." ));
+	die();
+}
 
 $new_dir_logs = '../../db_libfm/'. $uniqId;
 if (!file_exists($new_dir_logs)) {
@@ -31,7 +47,7 @@ $rating = '';
 
 $pending_filename = '../../db_lists/titles_pending.json';
 $libfm_source_path = $DIR_LOGS_ROOT . '/libfm_objects';
-$libfm_source_filename = $fb_id . '_libfm.json';
+$libfm_source_filename = $fbid . '_libfm.json';
 $libfm_objects = array();
 $libfm_objects = json_decode(file_get_contents($libfm_source_path . '/' . $libfm_source_filename),true);
 $item = $libfm_objects['DATA'][$uniqId];
@@ -132,9 +148,9 @@ foreach ( $pending_objects as $index => $value) {
 	// print( $sub_rating );
 	$rating .= addChangeLine( $sub_rating );
 }
-file_put_contents( $rating_filename, $rating);
-print( $rating );
-
+file_put_contents( $rating_filename, $rating );
+echo json_encode(array('status'=>'success','msg'=>'generate ( fbid: '.$fbid. ',uid: '.$uniqId.' ) test.libfm success'));
+	// print( $rating );
 function queryIDbyColumn( $value, $column, $type, $dba) {
 	$user_profile = $dba->_query(
 		'SELECT `id` FROM `libfm_serial` WHERE `type`= :type and `'. $column .'`= :value ',

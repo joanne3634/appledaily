@@ -123,17 +123,17 @@
     <!-- my script -->
     <script type="text/javascript">
     $(document).ready(function() {
-        $("html").niceScroll({
-            cursorcolor: '#f9c003',
-            cursorwidth: '8px',
-            cursorborder: 0,
-            cursorborderradius: 0,
-            autohidemode: false,
-            background: 'rgba(0, 0, 0, 0.15)',
-            cursorminheight: 30
-        });
+        // $("html").niceScroll({
+        //     cursorcolor: '#f9c003',
+        //     cursorwidth: '8px',
+        //     cursorborder: 0,
+        //     cursorborderradius: 0,
+        //     autohidemode: false,
+        //     background: 'rgba(0, 0, 0, 0.15)',
+        //     cursorminheight: 30
+        // });
         $('#logo-container').click(LoadLandPage);
-        
+
         $('#fb-status').click(ClickFBStatusBtn);
         $('#agree-login').click(ClickLoginBtn);
 
@@ -171,7 +171,11 @@
         var s1 = document.createElement("script"),
             s0 = document.getElementsByTagName("script")[0];
         s1.async = true;
-        s1.src = 'https://embed.tawk.to/57bff569b6fbb95fad802339/default';
+        if(BOOL_VARS.isTesting){
+            s1.src = 'https://embed.tawk.to/57bff569b6fbb95fad802339/default';
+        }else{
+            s1.src = 'https://embed.tawk.to/57c3c0bab6fbb95fad82f832/default';
+        }
         s1.charset = 'UTF-8';
         s1.setAttribute('crossorigin', '*');
         s0.parentNode.insertBefore(s1, s0);

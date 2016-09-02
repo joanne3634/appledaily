@@ -49,7 +49,7 @@ function LoadSurveyPage() {
 }
 
 function LoadLandPage() {
-    console.log('loadland');
+    // console.log('loadland');
     $.get(MY_PAGES.landingPage, function(data) {
         BeforeLoadLanding();
         $('#landingPage').html(data);
@@ -121,7 +121,7 @@ function IniSelect() {
 }
 
 function Particle() {
-    console.log('particles')
+    // console.log('particles')
     particlesJS("particles-js", { "particles": { "number": { "value": 128, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#ffffff" }, "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 5 }, "image": { "src": "img/github.svg", "width": 100, "height": 100 } }, "opacity": { "value": 1, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0, "sync": false } }, "size": { "value": 3, "random": true, "anim": { "enable": false, "speed": 4, "size_min": 0.3, "sync": false } }, "line_linked": { "enable": false, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 }, "move": { "enable": true, "speed": 1, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 600 } } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "bubble" }, "onclick": { "enable": true, "mode": "bubble" }, "resize": true }, "modes": { "grab": { "distance": 400, "line_linked": { "opacity": 1 } }, "bubble": { "distance": 250, "size": 0, "duration": 2, "opacity": 0, "speed": 3 }, "repulse": { "distance": 400, "duration": 0.4 }, "push": { "particles_nb": 4 }, "remove": { "particles_nb": 2 } } }, "retina_detect": true });
 }
 
@@ -312,7 +312,7 @@ function SetShortcuts() {
 }
 
 function TitleListLoading() {
-    console.log('TitleListLoading');
+    // console.log('TitleListLoading');
     $.get(MY_URLS.titleList, function(data) {
         EXPERIMENT_PROFILE.titleList = data;
         EXPERIMENT_PROFILE.aidList = Object.keys(data).sort().reverse().splice(10, EXPERIMENT_PROFILE.totalArticles);
@@ -540,6 +540,8 @@ function ResetUserProfile() {
     USER_PROFILE.questionaire.charityTendency = 'na';
     USER_PROFILE.questionaire.charityActivity = 'na';
     USER_PROFILE.questionaire.charityWilling = 'na';
+    USER_PROFILE.questionaire.career = 'na';
+    USER_PROFILE.questionaire.careerUsed = 'na';
 }
 
 function setProgress() {
@@ -657,10 +659,13 @@ function SetUserData() {
             // console.log(json);
             USER_PROFILE.subscribe = json['SUBSCRIBING'];
             USER_PROFILE.email = json['EMAIL'];
-            USER_PROFILE.questionaire = json['USER_RAW'];
-            if (json['USER_CharityTendencyOther'] != '') {
-                USER_PROFILE.charityTendencyOther = json['USER_CharityTendencyOther'];
+            if( json['USER_RAW'] !== undefined ){
+                USER_PROFILE.questionaire = json['USER_RAW'];
+                if (json['USER_CharityTendencyOther'] != '') {
+                    USER_PROFILE.charityTendencyOther = json['USER_CharityTendencyOther'];
+                }
             }
+            
         });
     }, 10);
 }
@@ -745,7 +750,9 @@ function RecordLibfm() {
                 USER_QUESTIONAIRE: JSON.stringify(USER_PROFILE.questionaire),
                 ROUND_RESULT: JSON.stringify(EXPERIMENT_PROFILE.cases),
                 timeRecording: JSON.stringify(USER_PROFILE.timeRecording),
-                USER_CharityTendencyOther: USER_PROFILE.charityTendencyOther
+                USER_CharityTendencyOther: USER_PROFILE.charityTendencyOther,
+                SUBSCRIBING: USER_PROFILE.subscribe,
+                EMAIL: USER_PROFILE.email
             },
             success: function(data, textStatus, jqXHR) {
                 if (BOOL_VARS.isTesting) {

@@ -26,11 +26,13 @@
 		$filename = $_POST['uniqId'] . '_' . $my_ip . $expr_index . '_survey_time.csv';
 		$ret = 'na';
 		$ret = DATA_SUBMITTED_RECORDING($filename, $head, $body);
-		
+		// print( $ret );
 		if ($ret != 'success') {
 			$msg = $ret;
 			EXCEPTION_RECORDING($msg, $_POST['uniqId']);
 			echo json_encode(array('status'=>'fail', 'message'=>$msg));
+		}else{
+			echo json_encode(array('status'=>'success'));
 		} 
 	} else {
 		$msg = 'the variable uniqId not exist';

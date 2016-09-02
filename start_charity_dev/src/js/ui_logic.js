@@ -70,17 +70,19 @@ function ClickAfterSurveyBtn() {
 }
 
 function ClickReRound() {
-    ResetUserProfile();
+    // ResetUserProfile();
     ResetRoundTitle();
     SetupHash();
     LoadSurveyPage();
 }
 
 function BeforeLoadLanding() {
-    console.log('BeforeLoadLanding');
+    // console.log('BeforeLoadLanding');
     GetIp();
     SetShortcuts();
     TitleListLoading();
+    // ResetUserProfile();
+    ResetRoundTitle();
     SetupHash();
     SetupCases();
 }
@@ -227,13 +229,9 @@ function checkMemberStatus(result) {
         type: 'GET',
         url: 'www-data/libfm_objects/' + USER_PROFILE.fbId + '_libfm.json?nocache=' + (new Date()).getTime(), // Your form script
         success: function(response, textS, xhr) {
-            console.log("ok");
             result(true);
         },
         error: function(xmlHttpRequest, textStatus, errorThrown) {
-            console.log("not ok " + errorThrown);
-            if (textStatus === 'timeout')
-                console.log("request timed out");
             result(false);
         }
     });
@@ -266,7 +264,7 @@ function showLoginButton() {
 }
 
 function StatusChangeCallback(response) {
-    console.log('fb_check');
+    // console.log('fb_check');
     if (response.status === 'connected') {
 
         FB.api('/me', function(res) {

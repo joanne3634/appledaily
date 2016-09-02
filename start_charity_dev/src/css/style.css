@@ -127,6 +127,7 @@ footer.page-footer {
 
 .info-badge{
     padding: 1rem;
+    margin-bottom: 1rem;
     border-radius: 2px;
     color: #fff;
 }

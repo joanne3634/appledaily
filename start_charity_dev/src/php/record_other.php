@@ -21,5 +21,5 @@ $filename = 'other.csv';
 
 $log_file = new Log($new_dir_logs . '/' . $filename, $head);
 $log_file->write_csv($ret);
-
+echo json_encode(array('status'=>'success'));
 ?>

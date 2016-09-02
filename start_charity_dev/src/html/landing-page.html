@@ -5,7 +5,7 @@
             <br>
             <h1 class="header center white-text text-lighten-2">急難家庭曙光再現計劃</h1>
             <div class="row center">
-                <h5 class="header col s12 light">幫您找出您的捐款偏好</h5>
+                <h5 class="header col s12 light">幫您找出您會關心的捐助對象</h5>
             </div>
             <div class="row center">
                 <div id="old-member" class="row center" style="display:none;">
@@ -20,10 +20,10 @@
                     </div>
                 </div>
                 <div id="new-member" class="row center" style="display:none;">
-                    <a id="start-button" class="btn-large">開始填基本資料</a>
+                    <a id="start-button" class="btn-large">進入專案頁面</a>
                 </div>
                 <div id="before-login" class="row center" style="display:none;">
-                    <a id="before-login-button" class="btn-large">請登入才能開始測驗</a>
+                    <a id="before-login-button" class="btn-large">請登入以開始參與專案</a>
                 </div>
                 <div id="check-login" class="row center">
                     <div id="check-login-button">檢查登入狀態...
@@ -114,10 +114,10 @@
                 </div>
             </div>
             <div id="new-member-in-how" class="row center" style="display:none;">
-                <a id="start-button-in-how" class="btn-large waves-effect waves-light teal">開始填基本資料</a>
+                <a id="start-button-in-how" class="btn-large waves-effect waves-light teal">進入專案頁面</a>
             </div>
             <div id="before-login-in-how" class="row center" style="display:none;">
-                <a id="before-login-button-in-how" class="btn-large waves-effect waves-light teal">請登入才能開始測驗</a>
+                <a id="before-login-button-in-how" class="btn-large waves-effect waves-light teal">請登入以開始參與專案</a>
             </div>
             <div id="check-login-in-how" class="row center">
                 <div id="check-login-button">檢查登入狀態...
@@ -152,10 +152,10 @@
                 </div>
             </div>
             <div class="col l6 testimionals-testimional">
-                <div class="col m3 l3 face"><img src="src/img/12744164_1091317007567040_1501664492463348771_n.jpg" class="testimionals-avatar"></div>
+                <div class="col m3 l3 face"><img src="src/img/sw.jpg" class="testimionals-avatar"></div>
                 <div class="col m9 l9">
-                    <div class="testimionals-content">蘋果基金會是我最放心的捐款機構。他尋訪需要幫助的家庭，你針對該家庭捐的錢，全數都轉到該家庭手上。</div>
-                    <div class="testimionals-author">網路名人486, 台灣團購傳奇人物</div>
+                    <div class="testimionals-content">我們致力找出社會潛在的隱性捐款者，如何連結這些捐款者與眾多的募款對象，讓之後的募款可以更有效率，是資料分析最希望達成的目標。</div>
+                    <div class="testimionals-author">計畫發起人, 陳昇瑋</div>
                 </div>
             </div>
         </div>
@@ -264,14 +264,26 @@
                     </p>
             </li>
         </ul>
+        <br>
+        <br>
+        <h5 class="center">Any more questions? Welcome to Contact Us.
+            <a class="btn-large btn-floating teal modal-trigger" href="#modalContactUs" style="padding: 0;">
+                <i class="material-icons">email</i>
+            </a>
+        </h5>
         </div>
 </section>
-<section id="contact">
-    <div class="container">
+<!-- <section id="contact"> -->
+<div id="modalContactUs" class="modal container">
+    <!-- <ul class="collapsible" data-collapsible="accordion"> -->
+    <!-- <li> -->
+    <div class="modal-content">
         <h2 class="header">Contact Us</h2>
         <hr align="center" width="80px">
+        <!-- </div>
+                <div class="collapsible-body"> -->
         <div class="wrap"></div>
-        <div class="info-badge"></div>
+        <div class="info-badge" style="display:none;"></div>
         <form id="contactForm" method="post" action="contact-us/">
             <!-- src/php/lib/PHPMailer/send_mail.php -->
             <input id="contact_fb_name" name="contact_fb_name" type="hidden" class="validate" value="">
@@ -309,7 +321,10 @@
             </div>
         </form>
     </div>
-</section>
+    <!-- </li> -->
+    <!-- </ul> -->
+</div>
+<!-- </section> -->
 <!-- particles.js lib - https://github.com/VincentGarreau/particles.js -->
 <!-- <script src="./src/js/particle_style.js"></script> -->
 <script type="text/javascript">
@@ -326,6 +341,14 @@ $(document).ready(function() {
     $('.collapsible').collapsible({
         accordion: false
     });
+    $('.modal-trigger').leanModal({
+        in_duration: 400, // Transition in duration
+        out_duration: 400, // Transition out duration
+        complete: function() {
+            $('.info-badge').fadeOut();
+            document.getElementById("contactForm").reset();
+        }
+    });
     $("a[id^='before-login-button']").click(function() {
         promptMaterial('promptLogin');
     });
@@ -334,59 +357,50 @@ $(document).ready(function() {
 
     $("a[id^='start-button'],a[id^='re-ques-button']").click(ClickStartBtn);
 
-    $("a[id^='replay-button']").click(LoadSurveyPage);
+    $("a[id^='replay-button']").click(ClickReRound);
 
     $("a[id^='update-subscribe-button']").click(LoadSubscribingPage);
 
     $('#contactForm').on('submit', function(e) {
-        e.preventDefault(); //Prevents default submit
+        e.preventDefault();
         var form = $(this);
         var post_url = form.attr('action');
-        var post_data = form.serialize(); //Serialized the form data for process.php
-        // $('.wrap').html('<div class="loading"><div class="bounceball"></div><div class="text">NOW LOADING</div></div>');
+        var post_data = form.serialize();
         $.ajax({
             type: 'POST',
-            url: 'contact-us/', // Your form script
+            url: 'contact-us/',
             data: post_data,
             success: function(result) {
-                // $('.wrap').fadeOut();
                 result = $.parseJSON(result);
-                // console.log( result.status );
                 if (result.status != 'success') {
-                    $('.info-badge').removeClass('green').addClass('red').html('<i class="material-icons left">error</i>' + result.msg).fadeIn();
+                    $('.info-badge').removeClass('green').addClass('red').html('<i class="material-icons left">error</i>' + result.msg).fadeIn().delay(4000).fadeOut();
                 } else {
                     $('.info-badge').removeClass('red').addClass('green').html('<i class="material-icons left">done</i>Thank you for contacting us. We will answer you back as soon as possible.').fadeIn();
+                    $('#contactForm').hide();
+                    setTimeout(function myFunction() {
+                        $('#modalContactUs').closeModal({
+                            out_duration: 400,
+                            complete: function() {
+                                $('.info-badge').fadeOut();
+                                document.getElementById("contactForm").reset();
+                                $('#contactForm').show();
+                            }
+                        });
+                    }, 3000);
+                    // $('#modalContactUs').closeModal({
+                    //     ready: function() {
+                    //         $('.info-badge').fadeOut();
+                    //         document.getElementById("contactForm").reset();
+                    //         $('#contactForm').show();
+                    //     }
+                    // }).delay(3000);
                 }
 
-
-                // $(form).fadeOut(500, function(){
-                //     form.html(msg).fadeIn();
-                // });
             }
         });
     });
-  //   window.fbAsyncInit = function() {
-  //           FB.init({
-  //               appId: '342086465999475',
-  //               cookie: true,
-  //               xfbml: true,
-  //               version: 'v2.2'
-  //           });
 
-  //           FB.getLoginStatus(function(response) {
-  //               StatusChangeCallback(response);
-  //           });
-  //       };
-  // (function(d, s, id) {
-  //           var js, fjs = d.getElementsByTagName(s)[0];
-  //           if (d.getElementById(id)) return;
-  //           js = d.createElement(s);
-  //           js.id = id;
-  //           js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.2&appId=342086465999475";
-  //           fjs.parentNode.insertBefore(js, fjs);
-  //       }(document, 'script', 'facebook-jssdk'));
     FB.getLoginStatus(function(response) {
-        // if(response)
         StatusChangeCallback(response);
     });
 

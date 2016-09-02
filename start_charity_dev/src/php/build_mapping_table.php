@@ -2,9 +2,14 @@
 session_start();
 /* ============================
 
+/{:method}/{:fbId} 
+method: {update} 單一 {fb} 資料 
+
+?clear&init&update&all 
+
 clear 清空資料表
-init 基本資料表 不會隨使用者
-update 隨使用者更新
+init 更新基本資料表包含 article
+update 更新所有使用者fb資料
 all 先清空再全部更新一遍
 
 ============================ */
@@ -17,11 +22,14 @@ $__CLEAR__ = isset($_GET['clear']) ? true : false;
 $__INIT__ = isset($_GET['init']) ? true : false;
 $__UPDATE__ = isset($_GET['update']) ? true : false;
 $__ALL__ = isset($_GET['all']) ? true : false;
+$request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
+$method = array_shift($request);
+$key = array_shift($request);
 
 $dba = new MYSQL\Accessor('localhost', 'appledaily', 'joanne3634', '369369');
 
 if ($__CLEAR__ || $__ALL__) {
-	echo "clear\n";
+	echo json_encode(array('status'=>'success','msg'=>'clear mapping table success!'));
 	$dba->_execute('TRUNCATE TABLE `article`');
 	$dba->_execute('TRUNCATE TABLE `fb_category`');
 	$dba->_execute('TRUNCATE TABLE `fb_category_list`');
@@ -35,7 +43,7 @@ if ($__CLEAR__ || $__ALL__) {
 }
 
 if ($__INIT__ || $__ALL__) {
-	echo "init\n";
+	echo json_encode(array('status'=>'success','msg'=>'init mapping table success!'));
 	createSubscribeTable($dba);
 	createFbGenderTable($dba);
 	createUserTable($dba, $QUESTIONAIRE_DATASET);
@@ -43,12 +51,25 @@ if ($__INIT__ || $__ALL__) {
 	createArticleTable($dba, $W2V_FILEPATH, '../../db_lists/titles_pending.json');
 }
 if ($__UPDATE__ || $__ALL__) {
-	echo "update\n";
+	echo json_encode(array('status'=>'success','msg'=>'update mapping table success!'));
 	$fb_id_array = findMember($createMember = true, $DIR_LOGS_ROOT . '/libfm_objects', $dba);
 	foreach ($fb_id_array as $fb_id) {
 		createFbRelateTable($fav = true, $like = true, $cat = true, $catlist = true, $DIR_LOGS_ROOT . '/facebook_objects', $fb_id, $dba);
 	}
 }
+
+if( $method == 'update' ){
+	$filename = $DIR_LOGS_ROOT . '/libfm_objects/' . $key .'_libfm.json';
+	if( $key != '' || file_exists($filename) ){
+		$libfm_objects = json_decode(file_get_contents( ), true);
+		createMemberTable($dba, $libfm_objects['DATA'], $libfm_objects['FB_ID'], $libfm_objects['EMAIL'], $libfm_objects['SUBSCRIBING']);
+		createFbRelateTable($fav = true, $like = true, $cat = true, $catlist = true, $DIR_LOGS_ROOT . '/facebook_objects', $key, $dba);
+		echo json_encode(array('status'=>'success','msg'=>'fbid: '.$key.' update mapping table success!'));
+	}else{
+		echo json_encode(array('status'=>'fail','msg'=>'fbid libfm not found, cannot update mapping table!'));
+	}
+	
+} 
 
 function createFbRelateTable($CREATE_FB_FAVORITE_STATUS = false, $CREATE_FB_LIKE_STATUS = false, $CREATE_FB_CAT_STATUS = false, $CREATE_FB_CATLIST_STATUS = false, $fb_dir_logs, $fb_id, $dba) {
 	if ($CREATE_FB_LIKE_STATUS || $CREATE_FB_CAT_STATUS || $CREATE_FB_CATLIST_STATUS) {

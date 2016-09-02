@@ -14,6 +14,7 @@
 		if(!file_exists($new_dir_logs)) mkdir($new_dir_logs, 0777, true);
 		$filename = $_POST['FB_ID'] . '_libfm.json';
 
+		if(!file_exists($new_dir_logs . '/' . $filename)) file_put_contents($new_dir_logs . '/' . $filename, '');
 		$libfm = array();
 		$libfm = json_decode(file_get_contents($new_dir_logs . '/' . $filename),true);
 
@@ -49,9 +50,11 @@
 			    )
 			);
 			$dba->_execute(
-			    'INSERT INTO fb_id VALUE (0,:fbId)',
+			    'INSERT INTO fb_id VALUE (0,:fbId,:email,:subscribe)',
 			    array(
-			        ':fbId' => $_POST['FB_ID']
+			        ':fbId' => $_POST['FB_ID'],
+			        ':email' => $_POST['EMAIL'],
+			        ':subscribe' => $_POST['SUBSCRIBING']
 			    )
 			);
 
@@ -167,11 +170,13 @@
 	function store_fb_id_by_column( $fb_object ){
 		$save = array();
 		foreach ( $fb_object as $column_name => $fb_item ){
-			foreach( $fb_item as $value ){
-				if( isset($value['id']) && isset($value['name']) ){
-					$save['#'.$value['id']] = 1;
-				}else{
-					break;
+			if( is_array( $fb_item )){
+				foreach( $fb_item as $value ){
+					if( isset($value['id']) && isset($value['name']) ){
+						$save['#'.$value['id']] = 1;
+					}else{
+						break;
+					}
 				}
 			}
 		}
