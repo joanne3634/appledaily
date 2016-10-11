@@ -26,17 +26,21 @@ $request = explode('/', trim($_SERVER['PATH_INFO'],'/'));
 $method = array_shift($request);
 $key = array_shift($request);
 
-$dba = new MYSQL\Accessor('localhost', 'appledaily', 'joanne3634', '369369');
+$dba = new MYSQL\Accessor();
 
 if ($__CLEAR__ || $__ALL__) {
 	echo json_encode(array('status'=>'success','msg'=>'clear mapping table success!'));
 	$dba->_execute('TRUNCATE TABLE `article`');
+	$dba->_execute('TRUNCATE TABLE `bounty_worker`');
 	$dba->_execute('TRUNCATE TABLE `fb_category`');
 	$dba->_execute('TRUNCATE TABLE `fb_category_list`');
 	$dba->_execute('TRUNCATE TABLE `fb_favorite`');
 	$dba->_execute('TRUNCATE TABLE `fb_gender`');
 	$dba->_execute('TRUNCATE TABLE `fb_id`');
 	$dba->_execute('TRUNCATE TABLE `fb_like`');
+	$dba->_execute('TRUNCATE TABLE `libfm_history`');
+	$dba->_execute('TRUNCATE TABLE `libfm_serial`');
+	$dba->_execute('TRUNCATE TABLE `prediction`');
 	$dba->_execute('TRUNCATE TABLE `subscribe`');
 	$dba->_execute('TRUNCATE TABLE `uniq_id`');
 	$dba->_execute('TRUNCATE TABLE `user`');
@@ -47,8 +51,8 @@ if ($__INIT__ || $__ALL__) {
 	createSubscribeTable($dba);
 	createFbGenderTable($dba);
 	createUserTable($dba, $QUESTIONAIRE_DATASET);
-	createArticleTable($dba, $W2V_FILEPATH, '../../db_lists/titles_done.json');
-	createArticleTable($dba, $W2V_FILEPATH, '../../db_lists/titles_pending.json');
+	createArticleTable($dba, $W2V_FILEPATH, '../../db_lists/titles_done.json', false );
+	createArticleTable($dba, $W2V_FILEPATH, '../../db_lists/titles_pending.json', true );
 }
 if ($__UPDATE__ || $__ALL__) {
 	echo json_encode(array('status'=>'success','msg'=>'update mapping table success!'));
@@ -60,8 +64,8 @@ if ($__UPDATE__ || $__ALL__) {
 
 if( $method == 'update' ){
 	$filename = $DIR_LOGS_ROOT . '/libfm_objects/' . $key .'_libfm.json';
-	if( $key != '' || file_exists($filename) ){
-		$libfm_objects = json_decode(file_get_contents( ), true);
+	if( $key != '' && file_exists($filename) ){
+		$libfm_objects = json_decode(file_get_contents($filename), true);
 		createMemberTable($dba, $libfm_objects['DATA'], $libfm_objects['FB_ID'], $libfm_objects['EMAIL'], $libfm_objects['SUBSCRIBING']);
 		createFbRelateTable($fav = true, $like = true, $cat = true, $catlist = true, $DIR_LOGS_ROOT . '/facebook_objects', $key, $dba);
 		echo json_encode(array('status'=>'success','msg'=>'fbid: '.$key.' update mapping table success!'));
@@ -175,23 +179,28 @@ function createFbRelateTable($CREATE_FB_FAVORITE_STATUS = false, $CREATE_FB_LIKE
 	}
 }
 
-function createArticleTable($dba, $W2V_FILEPATH, $article_filename) {
+
+function createArticleTable($dba, $W2V_FILEPATH, $article_filename, $pending = true) {
 	$article_objects = json_decode(file_get_contents($article_filename), true);
 	$w2v_objects = json_decode(file_get_contents($W2V_FILEPATH), true);
 	foreach ($article_objects as $index => $value) {
 		$query = $dba->_query('SELECT * FROM `article` WHERE `aid`= :aid', array( ':aid' => $value['aid'] ));
 		if( $query->rowCount() == 0 ){
 			$dba->_execute(
-				'INSERT INTO article VALUE (0,:aid,:article,:title,:url,:count,:w2v)',
+				'INSERT INTO article VALUE (0,:aid,:article,:title,:url,:count,:pending,:w2v)',
 				array(
 					':aid' => $value['aid'],
 					':article' => $value['article'],
 					':title' => str_replace(' ', '_', $value['title']),
 					':url' => $value['url'],
 					':count' => -1,
+					':pending' => $pending,
 					':w2v' => ( isset($w2v_objects[ $value['aid'] ][0]) ? json_encode( $w2v_objects[ $value['aid'] ][0] ): null )
 	 			)
 			);
+		}else{
+			$aid = $value['aid'];
+			$dba->_execute("UPDATE `article` SET `pending`= ". ($pending?1:0) ." WHERE `aid`='{$aid}'");
 		}
 	}
 }
@@ -255,7 +264,7 @@ function createMemberTable($dba, $data, $fb_id, $email, $subscribe) {
 	$query = $dba->_query('SELECT * FROM `fb_id` WHERE `fb_id`= :fbId', array(':fbId' => $fb_id ));
 	if( $query->rowCount() == 0 ){
 		$dba->_execute(
-			'INSERT INTO fb_id VALUE (0,:fbId,:email,:subscribe)',
+			'INSERT INTO fb_id VALUE (0,:fbId,:email,:subscribe, 0,0,0,0,0,0)',
 			array(
 				':fbId' => $fb_id,
 				':email' => $email,

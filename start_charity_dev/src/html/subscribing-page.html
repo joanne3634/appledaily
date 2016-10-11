@@ -1,29 +1,65 @@
 <div class="section no-pad-bot">
     <div class="container">
-        <br>
-        <h2 class="header center teal-text">
-            文章推薦
-        </h2>
-        <div class="section no-pad-top tabs-wrapper">
+        <div id="modalArticle" class="modal container">
+            <article>
+                <div class="modal-header container fix-slider">
+                    <div class="center">
+                        <div>
+                            <h5 class="center" id="case-title-text">
+                            </h5>
+                        </div>
+                        <div class="row valign-wrapper no-margin-bot">
+                            <div class="col s1 slider-left-label">
+                                毫無意願
+                            </div>
+                            <div class="col s10">
+                                <form>
+                                    <div id="slider-scoring-recommend">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col s1 slider-right-label">
+                                強烈意願
+                            </div>
+                        </div>
+                    </div>
+                    <div class="center-align" id="slider-score-text"><span>拖曳上方按紐，往<span class="text-underline">左</span>表示捐款<span class="text-underline">意願低</span>，往<span class="text-underline">右</span>表示<span class="text-underline">意願高</span></span>
+                    </div>
+                </div>
+                <div class="modal-content">
+                    <div class="preloader_image"></div>
+                    <iframe style="" src="" frameBorder=0 scrolling=no class="iframe-style" id="article-iframe"></iframe>
+                </div>
+            </article>
+        </div>
+        <div id="subscribing-freq-container" class="box hoverable section no-pad-top tabs-wrapper">
+            <div class="header">
+                訂閱暖流
+            </div>
+            <span class="tip">
+                <ul>
+                    <li>請您提供您的信箱，我們將依您想要的收信頻率，寄送適合您的暖流版文章給您，期能幫助到急需幫助的弱勢者。</li>
+                    <li>未來如您希望修改您的信箱或收信頻率，隨時可由首頁進入修改。</li>
+                    <li>隨時由首頁進入此推薦頁面，我們都會依照最新的資料更新推薦給您的文章。</li>
+                </ul>
+            </span>
             <div class='wrapper-form'>
                 <form id="subscribing-frequency">
                     <div class="subscribe-check-container">
                         <input type="checkbox" id="subscribing-tendency" />
                         <label for="subscribing-tendency">我願意收到蘋果暖流版文章推薦。
-                            <span>請您提供您的信箱，我們將依您想要的收信頻率，寄送適合您的暖流版文章給您，期能幫助到急需幫助的弱勢者。未來如您希望修改您的信箱或收信頻率，隨時可由首頁進入修改。</span>
                         </label>
                     </div>
-                    <div class="subscribe-info-container" style="display: none;">
-                        <h5 class="header">
+                    <div class="subscribe-info-container" display="none">
+                        <div>
                             郵件信箱
-                        </h5>
-                        <input id="email" type="email" class="validate" required pattern="[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*" >
-
+                        </div>
+                        <input id="email" type="email" class="validate" required pattern="[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*">
                         <label for="email"></label>
-                        <h5 class="header">
+                        <div>
                             收信頻率
-                        </h5>
-                        <select name="subscribing-frequency">
+                        </div>
+                        <select id="subscribe-frequency" name="subscribing-frequency">
                             <option value="0" disabled selected></option>
                             <optgroup label="每天">
                                 <option value="1">每天一次</option>
@@ -41,12 +77,30 @@
                                 <option value="7">每年二次</option>
                                 <option value="8">每年三次</option>
                                 <option value="9">每年四次</option>
-
                             </optgroup>
                         </select>
                     </div>
                 </form>
             </div>
+        </div>
+        <div class="box hoverable section no-pad-top tabs-wrapper">
+            <div class="header">
+                文章推薦<span class="article">
+            歡迎點開文章閱讀並回覆您對該篇文章的捐款意願。
+            <!-- 若您有意幫助，也歡迎按下「前往捐款」按鈕，透過蘋果日報慈善基金會捐助急難家庭。 --></span></div>
+            <!--  <a href="http://search.appledaily.com.tw/charity/guest/step/step1/" target="_blank" class="btn waves-effect waves-light">前往捐款<i class="right material-icons">loyalty</i></a> -->
+            <table id="recommend-container" class="highlight">
+                <thead>
+                    <tr>
+                        <th data-field="num">#</th>
+                        <th data-field="id">文章編號</th>
+                        <th data-field="title">文章標題</th>
+                        <th data-field="score">捐款意願</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
         </div>
         <br>
         <div class="section no-pad-top">
@@ -60,7 +114,14 @@
 </div>
 <script type="text/javascript">
 $(document).ready(function() {
-
+    $('.modal-trigger').leanModal({
+        in_duration: 400, // Transition in duration
+        out_duration: 400, // Transition out duration
+        complete: function() {
+            $('#article-iframe').attr('src', '');
+            console.log('trigger complete');
+        }
+    });
     IniSelect();
     $('#after-subscribing-button').click(ClickAfterSubscribingBtn);
 
@@ -68,6 +129,7 @@ $(document).ready(function() {
         if ($("#subscribing-frequency input[type='checkbox']:checked").val()) {
             $('.subscribe-info-container').show();
         } else {
+            $("#subscribing-frequency input[type='checkbox']").attr('checked', false);
             $('.subscribe-info-container').hide();
         }
     });

@@ -11,11 +11,12 @@ if (!isset($_SESSION)) {
 $__FB_FAV_LIKE_STATUS__ = isset($_GET['fb_fav_like']) ? true : false; 
 $__FB_CAT_STATUS__ = isset($_GET['fb_cat']) ? true : false;
 $__FB_CATLIST_STATUS__ = isset($_GET['fb_catlist']) ? true : false;
+$_W2V_STATUS_ = isset($_GET['w2v']) ? true : false;
 
 $fbid = isset($_GET['fbid'])?$_GET['fbid']:'';  
 $uniqId = isset($_GET['uid'])?$_GET['uid']:''; 
 
-$dba = new MYSQL\Accessor('localhost', 'appledaily', 'joanne3634', '369369');
+$dba = new MYSQL\Accessor();
 
 if( $fbid && $uniqId ){
 	$query = $dba->_query('SELECT * FROM `uniq_id` WHERE `uniq_id`= :uid', array(':uid' => $uniqId ));
@@ -123,12 +124,14 @@ foreach ( $pending_objects as $index => $value) {
 	$aid = $value['aid'];
 	$score = addSpace('0');
 	$word2vec = '';					
-	$query_w2v = $dba->_query('SELECT `w2v` FROM `article` WHERE `aid`= :aid', array( ':aid' => $aid ));
-	$w2v_data = $query_w2v->fetch(PDO::FETCH_ASSOC);
-	$w2v = json_decode( $w2v_data['w2v'],true );
-	foreach( $w2v as $w2v_i => $w2v_v ){
-		$serial_id = queryIDbyColumn( $w2v_i, 'name', 'word2vec', $dba);
-		$word2vec .= addSpace( $serial_id.':'.$w2v_v );
+	if( $_W2V_STATUS_ ){
+		$query_w2v = $dba->_query('SELECT `w2v` FROM `article` WHERE `aid`= :aid', array( ':aid' => $aid ));
+		$w2v_data = $query_w2v->fetch(PDO::FETCH_ASSOC);
+		$w2v = json_decode( $w2v_data['w2v'],true );
+		foreach( $w2v as $w2v_i => $w2v_v ){
+			$serial_id = queryIDbyColumn( $w2v_i, 'name', 'word2vec', $dba);
+			$word2vec .= addSpace( $serial_id.':'.$w2v_v );
+		}
 	}
 	// print( $word2vec );
 	$sub_rating = '';
@@ -148,7 +151,10 @@ foreach ( $pending_objects as $index => $value) {
 	// print( $sub_rating );
 	$rating .= addChangeLine( $sub_rating );
 }
+
+
 file_put_contents( $rating_filename, $rating );
+// echo json_encode(array('status'=>'success','msg'=>'generate ( fbid: '.$fbid. ',uid: '.$uniqId.' ) test.libfm success','data'=>$rating));
 echo json_encode(array('status'=>'success','msg'=>'generate ( fbid: '.$fbid. ',uid: '.$uniqId.' ) test.libfm success'));
 	// print( $rating );
 function queryIDbyColumn( $value, $column, $type, $dba) {

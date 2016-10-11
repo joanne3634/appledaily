@@ -9,7 +9,8 @@
  */
 
 body {
-    background: #fff; /*048E81*/
+    background: #fff;
+    /*048E81*/
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -19,15 +20,6 @@ body {
 main {
     flex: 1 0 auto;
     background-color: #fff;
-}
-
-nav ul a,
-nav .brand-logo {
-    color: #444;
-}
-
-a#fb-status {
-    height: 52px;
 }
 
 form p {
@@ -85,21 +77,24 @@ footer.page-footer {
 }
 
 .subscribe-check-container {
-    padding: 25px 0px;
+    padding-bottom: 25px;
 }
 
 .subscribe-check-container label {
-    font-size: 1.64rem;
+    font-size: 1.4rem;
     color: rgba(0, 0, 0, 0.87);
 }
 
 .subscribe-check-container label span,
 .header span {
     display: block;
-    font-size: 16px;
+    font-size: 14px;
     padding: 10px 0px;
     color: rgba(0, 0, 0, 0.87);
     line-height: 1.2em;
+}
+.subscribe-info-container {
+    font-size: 1.4em;
 }
 
 #questionairePage .section {
@@ -125,82 +120,145 @@ footer.page-footer {
     min-height: 30px;
 }
 
-.info-badge{
+.info-badge {
     padding: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 2px;
+/*    margin-bottom: 1rem;
+    border-radius: 2px;*/
     color: #fff;
 }
 
 .wrap {
-  position: absolute;
-  /*top: 50%;*/
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+    position: absolute;
+    /*top: 50%;*/
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .text {
-  color: #fbae17;
-  display: inline-block;
-  margin-left: 5px;
+    color: #fbae17;
+    display: inline-block;
+    margin-left: 5px;
 }
 
 .bounceball {
-  position: relative;
-  display: inline-block;
-  height: 37px;
-  width: 15px;
+    position: relative;
+    display: inline-block;
+    height: 37px;
+    width: 15px;
 }
+
 .bounceball:before {
-  position: absolute;
-  content: '';
-  display: block;
-  top: 0;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background-color: #fbae17;
-  -webkit-transform-origin: 50%;
-          transform-origin: 50%;
-  -webkit-animation: bounce 500ms alternate infinite ease;
-          animation: bounce 500ms alternate infinite ease;
+    position: absolute;
+    content: '';
+    display: block;
+    top: 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #fbae17;
+    -webkit-transform-origin: 50%;
+    transform-origin: 50%;
+    -webkit-animation: bounce 500ms alternate infinite ease;
+    animation: bounce 500ms alternate infinite ease;
 }
 
 @-webkit-keyframes bounce {
-  0% {
-    top: 30px;
-    height: 5px;
-    border-radius: 60px 60px 20px 20px;
-    -webkit-transform: scaleX(2);
-            transform: scaleX(2);
-  }
-  35% {
-    height: 15px;
-    border-radius: 50%;
-    -webkit-transform: scaleX(1);
-            transform: scaleX(1);
-  }
-  100% {
-    top: 0;
-  }
+    0% {
+        top: 30px;
+        height: 5px;
+        border-radius: 60px 60px 20px 20px;
+        -webkit-transform: scaleX(2);
+        transform: scaleX(2);
+    }
+    35% {
+        height: 15px;
+        border-radius: 50%;
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+    100% {
+        top: 0;
+    }
 }
 
 @keyframes bounce {
-  0% {
-    top: 30px;
-    height: 5px;
-    border-radius: 60px 60px 20px 20px;
-    -webkit-transform: scaleX(2);
-            transform: scaleX(2);
-  }
-  35% {
-    height: 15px;
-    border-radius: 50%;
-    -webkit-transform: scaleX(1);
-            transform: scaleX(1);
-  }
-  100% {
-    top: 0;
-  }
+    0% {
+        top: 30px;
+        height: 5px;
+        border-radius: 60px 60px 20px 20px;
+        -webkit-transform: scaleX(2);
+        transform: scaleX(2);
+    }
+    35% {
+        height: 15px;
+        border-radius: 50%;
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+    }
+    100% {
+        top: 0;
+    }
+}
+
+#old-member .btn-large {
+    padding: 0 1rem;
+}
+
+table#recommend-container {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+table#recommend-container td,
+table#recommend-container th {
+    padding: .5em .5em;
+}
+
+table#recommend-container tr {
+    cursor: pointer;
+}
+
+input#bounty_name {
+    width: 77%;
+}
+label[for=bounty_name] {
+    width: 77%;
+    font-size: .8rem;
+    left: 0;
+}
+form#bountyForm .btn-large {
+    height: 45px;
+    line-height: 45px;
+    width: 21%;
+    padding: 0px 12px;
+}
+
+.form-container {
+    padding: 10px 25px;
+}
+
+#subscribingPage .box {
+    padding: 1em;
+}
+#subscribingPage .header {
+    font-size: 2em;
+}
+#subscribingPage .header {
+    font-size: 2em;
+}
+#subscribingPage .tip ul{
+    padding-left: 40px;
+}
+
+#subscribingPage .tip ul li {
+    list-style-type: decimal-leading-zero;
+}
+#subscribingPage span.article {
+    display: inline;
+    padding: 0px 10px;
+}
+
+#case-title-text {
+    font-size: 1.5em;
 }

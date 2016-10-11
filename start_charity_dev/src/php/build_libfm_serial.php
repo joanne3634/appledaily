@@ -26,7 +26,7 @@ $_FB_STATUS['fb_cat'] = isset($_GET['fb_cat']) ? true : false;
 $_FB_STATUS['fb_catlist'] = isset($_GET['fb_catlist']) ? true : false;
 // print_r( $_FB_STATUS );
 
-$dba = new MYSQL\Accessor('localhost', 'appledaily', 'joanne3634', '369369');
+$dba = new MYSQL\Accessor();
 
 if( $method ){
 	switch ( $method ) {
@@ -36,7 +36,7 @@ if( $method ){
  				$fbId = $result['fb_id'];
  				UpdateLibfmTalbe( $dba, "uid", $key );
  				$libfm_objects = json_decode(file_get_contents( $DIR_LOGS_ROOT . '/libfm_objects/' . $fbId .'_libfm.json'), true);
-				createFB( $_FB_STATUS['fb_fav_like'], $$_FB_STATUS['fb_cat'], $_FB_STATUS['fb_catlist'], $libfm_objects['FB'], $dba );
+				createFB( $_FB_STATUS['fb_fav_like'], $_FB_STATUS['fb_cat'], $_FB_STATUS['fb_catlist'], $libfm_objects['FB'], $dba );
 				echo json_encode(array('status'=>'success','msg'=>'uid: '.$key.' update libfm serial success.'));
  			}else{
  				echo json_encode(array('status'=>'fail','msg'=>'uid: '.$key.' not found.'));
@@ -104,6 +104,9 @@ function createFB( $FB_FAVORITE_LIKE_STATUS = false, $FB_CAT_STATUS = false, $FB
 	}
 	if ($FB_CAT_STATUS) {
 		foreach ($data['like_category'] as $fb_id => $fb_name) {
+			// print( $fb_id );
+			// print( $fb_name );
+			// print( "\n");
 			UpdateLibfmTalbe( $dba, "fb_category", str_replace(' ', '_', substr( $fb_id,1 ) ), "fb_category");
 		}
 	}

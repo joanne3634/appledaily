@@ -2,7 +2,8 @@
 	require_once 'lib/mysql.php';
 	require_once 'lib/common.php';
   	require_once 'lib/log.php';
-
+	$dba = new MYSQL\Accessor();
+	
 	if (!isset($_SESSION)) START_SESSION($SESSION_TIME);
 
 	if (isset($_POST['FB_ID'])) {
@@ -32,16 +33,28 @@
 		// RecordSubscribeInLibfm
 		if( isset( $_POST['SUBSCRIBING'] )){ $libfm['SUBSCRIBING'] = intval($_POST['SUBSCRIBING']); }
 		if( isset( $_POST['EMAIL'] )){ $libfm['EMAIL'] = $_POST['EMAIL']; }
-
+		if( query_fb_exits( $_POST['FB_ID'], $dba ) > 0 ){
+			$dba->_execute("UPDATE `fb_id` SET `email` = '". $libfm['EMAIL'] ."',`subscribe` = '". $libfm['SUBSCRIBING'] ."' WHERE `fb_id`='{$_POST['FB_ID']}'");
+		}else{
+			$dba->_execute(
+			    'INSERT INTO fb_id VALUE (0,:fbId,:email,:subscribe, 0,0,0,0,0,0)',
+			    array(
+			        ':fbId' => $_POST['FB_ID'],
+			        ':email' => $_POST['EMAIL'],
+			        ':subscribe' => $_POST['SUBSCRIBING']
+			    )
+			);
+		}
 		// RecordLibfm 有更新問卷或是重新做測驗
 		if( isset($_POST['UNIQ_ID']) && !isset( $libfm['DATA'][$_POST['UNIQ_ID']] ) ){
 
 			$data = array();
 			$data['UNIQ_ID'] = $_POST['UNIQ_ID'];
+			$data['SUBSCRIBING'] = $libfm['SUBSCRIBING'];
 			$data['TIME_RECORD'] = json_decode($_POST['timeRecording'], true);
 
 			// Update UNIQ_ID, FB_ID in DATABASE
-			$dba = new MYSQL\Accessor('localhost','appledaily','joanne3634','369369');
+			
 	 		$dba->_execute(
 			    'INSERT INTO uniq_id VALUE (0,:uniqId,:fbId)',
 			    array(
@@ -49,15 +62,7 @@
 			        ':fbId' => $_POST['FB_ID']
 			    )
 			);
-			$dba->_execute(
-			    'INSERT INTO fb_id VALUE (0,:fbId,:email,:subscribe)',
-			    array(
-			        ':fbId' => $_POST['FB_ID'],
-			        ':email' => $_POST['EMAIL'],
-			        ':subscribe' => $_POST['SUBSCRIBING']
-			    )
-			);
-
+			
 			/*==========  questionaire saving  ==========*/
 
 			$data['USER'] = array();
@@ -148,15 +153,18 @@
 			/*==========  round saving  ==========*/
 
 			$data['ROUND'] = array();
+			$fb_id = $_POST['FB_ID'];
 			$ROUND_RESULT = json_decode($_POST['ROUND_RESULT'],true);
-
+			$article = query_article_done( $fb_id , $dba );	
 			foreach ( $ROUND_RESULT as $key => $value ) {
-				$data['ROUND']['#'.$value['aid']]['score'] = $value['score'];
-				$data['ROUND']['#'.$value['aid']]['time'] = $value['change'];
+				$aid = $value['aid'];
+			 	$article[ $aid ] = true;
+			 	$dba->_execute("UPDATE `article` SET `count` = `count`+1 WHERE `aid`='{$aid}' ");
+				$data['ROUND']['#'.$aid]['score'] = $value['score'];
+				$data['ROUND']['#'.$aid]['time'] = $value['change'];
 			}
-
+			$dba->_execute("UPDATE `fb_id` SET `Article_done` = '". json_encode($article) ."' WHERE `fb_id`='{$fb_id}'");
 			$libfm['DATA'][$_POST['UNIQ_ID']] = $data;
-
 		}
 
 		file_put_contents($new_dir_logs . '/' . $filename, json_encode($libfm));
@@ -182,4 +190,16 @@
 		}
 		return $save;
 	}
+	function query_article_done( $fb_id, $dba ){
+		$query = $dba->_query('SELECT `Article_done` FROM `fb_id` WHERE `fb_id`= :fb_id', array( ':fb_id' => $fb_id ));
+		$article_data = $query->fetch(PDO::FETCH_ASSOC);
+		$article = json_decode( $article_data['Article_done'],true );
+		if( $article == null ){ $article = array(); } 
+		return $article;
+	}
+	function query_fb_exits( $fb_id, $dba ){
+		$query = $dba->_query('SELECT `fb_id` FROM `fb_id` WHERE `fb_id`= '. $fb_id );
+		return $query->rowCount();
+	}
+
 ?>

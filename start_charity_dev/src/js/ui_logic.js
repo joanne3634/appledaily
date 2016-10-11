@@ -26,14 +26,29 @@ function ClickFBStatusBtn() {
 }
 
 function ClickAfterSubscribingBtn() {
-    if (!saveSubscribe()) {
-        Materialize.toast('欄位有錯或是空的', 3000);
+    var msg = saveSubscribe();
+    if (msg != 'success') {
+        if (msg == 'subscribe-frequency') {
+            Materialize.toast('收信頻率未選', 3000);
+        }
+        if (msg == 'email') {
+            Materialize.toast('信箱有誤', 3000);
+        }
+        // Materialize.toast(msg, 3000);
+        $('html, body').animate({
+            scrollTop: $("#" + msg).offset().top - 120
+        }, 1000);
         return false;
+    }else{
+        Feedback( function(result) {});
+        LoadThankPage();
     }
     // RecordSubscribeInLibfm();
-    LoadThankPage();
 }
-
+function ClickAfterFeedback(){
+    Feedback( function(result) {});
+    window.location.assign(window.location.pathname);
+}
 function ClickAfterQuestionaireBtn() {
     var msg = saveQuestionaire();
     if (!BOOL_VARS.isTesting) {
@@ -47,7 +62,7 @@ function ClickAfterQuestionaireBtn() {
             return false;
         }
     }
-    LoadSurveyPage();
+    ClickReRound();
 }
 
 function ClickAfterSurveyBtn() {
@@ -66,21 +81,37 @@ function ClickAfterSurveyBtn() {
         }
     })
 
-    RecordLibfm();
+    RecordLibfm(function(Done) {
+        // if (Done) {
+        //     RecommendSet(function($result) {
+        //         if ($result['status'] == 'success') {
+        //             RECOMMEND_PROFILE.aidList = $result['msg'];
+        //             console.log(RECOMMEND_PROFILE.aidList[0]);
+        //         } else {
+        //             console.log('recommend error');
+        //         }
+        //     });
+        // }
+    })
 }
 
 function ClickReRound() {
     // ResetUserProfile();
-    ResetRoundTitle();
-    SetupHash();
-    LoadSurveyPage();
+    TitleListLoading(function(result) {
+        if (result) {
+            ResetRoundTitle();
+            SetupHash();
+            LoadSurveyPage();
+        }
+    });
+
 }
 
 function BeforeLoadLanding() {
     // console.log('BeforeLoadLanding');
     GetIp();
     SetShortcuts();
-    TitleListLoading();
+    TitleListLoading(function(result) {});
     // ResetUserProfile();
     ResetRoundTitle();
     SetupHash();
@@ -97,6 +128,9 @@ function AfterLoadLanding() {
 function AfterLoadSubscribing() {
     USER_PROFILE.timeRecording.startSubscribing = GetCurrentTimeMilli();
     RecordTimeStart();
+
+    BeforeRoundStart();
+    CreateSlider('slider-scoring-recommend');
 }
 
 function AfterLoadQuestionaire() {
@@ -111,7 +145,7 @@ function AfterLoadSurvey() {
 
     BeforeRoundStart();
 
-    CreateSlider();
+    CreateSlider('slider-scoring');
     setProgress();
 }
 
@@ -119,11 +153,13 @@ function AfterLoadThank() {
     USER_PROFILE.timeRecording.startThanks = GetCurrentTimeMilli();
     USER_PROFILE.timeRecording.timingType = 1;
     RecordTimeStart();
-    RecordSubscribeInLibfm();
+    if( USER_PROFILE.subscribe != -1 ){
+        RecordSubscribeInLibfm();
+    }
 }
 
 function BeforeRoundStart() {
-    $('.preloader_image').css('display', 'block');
+    $('#surveyPage .preloader_image').css('display', 'block');
     var currentIdx = ROUND_PROFILE.caseIndex;
 
     ROUND_PROFILE.caseAction = [];
@@ -135,13 +171,40 @@ function BeforeRoundStart() {
     ROUND_PROFILE.caseStart = GetCurrentTimeMilli();
     ROUND_PROFILE.caseRound = currentIdx + 1;
     // $('#round-text').text('第 ' + String(ROUND_PROFILE.caseRound) + ' 回合 (共 ' + String(EXPERIMENT_PROFILE.numCases) + ' 回合)');
+    $('#case-title-text-survey').text(ROUND_PROFILE.caseTitle);
+    $('#article-iframe-survey').attr('src', ROUND_PROFILE.caseArticle)
+        .css({ width: $('body').width() > 768 ? ($('#surveyPage .slider-row').width() + 20 + "px") : $('body').width(), height: 0 })
+        .load(function() {
+            $(this).contents().find('.mpatc').css("padding", $('#surveyPage .fix-slider').height() + "px .8em");
+            $(this).css("height", $(this).contents().find('.mpatc').height() + 200 + 'px');
+            $('#surveyPage .preloader_image').css('display', 'none');
+        });
+}
+
+function setRecommendRound(currentIdx) {
+    $('#modalArticle .preloader_image').css('display', 'block');
+
+    ROUND_PROFILE.caseIndex = currentIdx;
+    ROUND_PROFILE.caseAction = [];
+    ROUND_PROFILE.caseResult = RECOMMEND_PROFILE.cases[currentIdx]['score'];
+    ROUND_PROFILE.caseId = RECOMMEND_PROFILE.cases[currentIdx]['aid'];
+    ROUND_PROFILE.caseTitle = RECOMMEND_PROFILE.cases[currentIdx]['title'];
+    ROUND_PROFILE.caseArticle = RECOMMEND_PROFILE.cases[currentIdx]['article'];
+    // ROUND_PROFILE.caseCover = EXPERIMENT_PROFILE.cases[currentIdx]['cover'];
+    ROUND_PROFILE.caseStart = GetCurrentTimeMilli();
+    ROUND_PROFILE.caseRound = currentIdx + 1;
+    // $('#round-text').text('第 ' + String(ROUND_PROFILE.caseRound) + ' 回合 (共 ' + String(EXPERIMENT_PROFILE.numCases) + ' 回合)');
     $('#case-title-text').text(ROUND_PROFILE.caseTitle);
     $('#article-iframe').attr('src', ROUND_PROFILE.caseArticle)
-        .css({ width: $('body').width() > 768 ? ($('.slider-row').width() + 20 + "px") : $('body').width(), height: 0 })
+        .css({ width: $('.modal').width() - 20 + 'px', height: 0 })
         .load(function() {
-            $(this).contents().find('.mpatc').css("padding", $('.fix-slider').height() + 60 + "px .8em");
-            $(this).css("height", $(this).contents().find('.mpatc').height() + 260 + 'px');
-            $('.preloader_image').css('display', 'none');
+            var slider_height = $('#modalArticle .fix-slider').css('height');
+            $('#modalArticle article .modal-content').css('top', slider_height);
+            $(this).contents().find('.mpatc').css({ "padding": "0px 1.2em", "font-size": ".9em" });
+            $(this).contents().find('.trans').css("font-size", "1em");
+            $(this).css("height", $(this).contents().find('.mpatc').height() + 'px');
+            $(this).css("background-color", "white");
+            $('#modalArticle .preloader_image').css('display', 'none');
         });
 }
 
@@ -151,19 +214,25 @@ function AfterRoundEnd() {
 }
 
 function SliderOnSlide() {
-    $('#slider-scoring').removeClass('slider-initial-state');
-
-    var sliderValue = MY_FORMS.slider.noUiSlider.get();
+    sliderId = ROUND_PROFILE.caseType;
+    // console.log(sliderId + ':sliderchange');
+    $('#' + sliderId).removeClass('slider-initial-state');
+    var sliderValue = MY_FORMS[sliderId].noUiSlider.get();
     $('#slider-score-text').html(MY_TEXTS.textScoreHead + '<span class="slider-score">' + Math.floor(sliderValue) + MY_TEXTS.textScoreTail);
 }
 
 function SliderOnChange() {
-    var sliderValue = MY_FORMS.slider.noUiSlider.get();
+    sliderId = ROUND_PROFILE.caseType;
+    var sliderValue = MY_FORMS[sliderId].noUiSlider.get();
     ROUND_PROFILE.caseResult = sliderValue;
-
     var currentIdx = ROUND_PROFILE.caseIndex;
     EXPERIMENT_PROFILE.cases[currentIdx]['score'] = sliderValue;
     EXPERIMENT_PROFILE.cases[currentIdx]['change'] = GetCurrentTimeMilli();
+    RECOMMEND_PROFILE.cases[currentIdx]['score'] = sliderValue;
+    RECOMMEND_PROFILE.cases[currentIdx]['change'] = GetCurrentTimeMilli();
+
+    var slider_height = $('#modalArticle .fix-slider').css('height');
+    $('#modalArticle article .modal-content').css('top', slider_height);
 
     EnableNaviationBtn();
 }
@@ -181,7 +250,7 @@ function ClickNavigateBefore() {
 
     AfterRoundEnd();
     BeforeRoundStart();
-    ResetSlider();
+    ResetSlider('slider-scoring');
     setProgress();
     EnableNaviationBtn();
 }
@@ -202,7 +271,7 @@ function ClickNavigateNext() {
 
     AfterRoundEnd();
     BeforeRoundStart();
-    ResetSlider();
+    ResetSlider('slider-scoring');
     setProgress();
     EnableNaviationBtn();
 }
@@ -220,7 +289,9 @@ function promptMaterial(id) {
 function CheckLoginState() {
     FB.getLoginStatus(function(response) {
         // console.log('checklogin');
-        StatusChangeCallback(response);
+        StatusChangeCallback(response,function(fb){
+            console.log('fb: '+fb);
+        });
     });
 }
 
@@ -235,19 +306,17 @@ function checkMemberStatus(result) {
             result(false);
         }
     });
-    // var req = new XMLHttpRequest();
-    // var url = 'www-data/libfm_objects/' + USER_PROFILE.fbId + '_libfm.json?nocache=' + (new Date()).getTime();
-    // req.open('GET', url, false);
-    // req.send();
 }
 
 function showStartButton() {
     checkMemberStatus(function(isMember) {
         if (isMember) {
             $("div[id^='old-member']").show();
+            $("a[id^='update-subscribe-button']").show();
             $("div[id^='new-member']").hide();
         } else {
             $("div[id^='old-member']").hide();
+            $("a[id^='update-subscribe-button']").hide();
             $("div[id^='new-member']").show();
         }
         $("div[id^='before-login']").hide();
@@ -257,13 +326,14 @@ function showStartButton() {
 
 function showLoginButton() {
     $("div[id^='old-member']").hide();
+    $("a[id^='update-subscribe-button']").hide();
     $("div[id^='before-login']").show();
     $("div[id^='new-member']").hide();
     $("div[id^='check-login']").hide();
-    $('#fb-status').text('登入');
+    $("a[id^='fb-status']").text('登入');
 }
 
-function StatusChangeCallback(response) {
+function StatusChangeCallback(response,result) {
     // console.log('fb_check');
     if (response.status === 'connected') {
 
@@ -272,6 +342,7 @@ function StatusChangeCallback(response) {
             USER_PROFILE.fbId = res.id;
             $('#contact_fb_name').val(res.name);
             $('#contact_fb_link').val(res.link);
+            result('showStart');
             // console.log(res.id);
             SetUserData();
             FB.api('/me/permissions', function(response) {
@@ -279,7 +350,7 @@ function StatusChangeCallback(response) {
                 // console.log( response );
                 if (str_response.indexOf('declined') == -1) {
                     showStartButton();
-                    $('#fb-status').text('登出');
+                    $("a[id^='fb-status']").text('登出');
                     RecordFbInfo();
                 } else if (str_response.indexOf('error') > -1) {
                     EXPERIMENT_PROFILE.exceptionMsg = 'fail in FB connect: ' + str_response;
@@ -292,11 +363,13 @@ function StatusChangeCallback(response) {
         });
 
     } else if (response.status === 'not_authorized') {
+        result('showLogin');
         showLoginButton();
         if (BOOL_VARS.isTesting) {
             console.log('[fail] fb connected : fb not authorized');
         }
     } else {
+        result('showLogin');
         showLoginButton();
         if (BOOL_VARS.isTesting) {
             console.log('[fail] fb connected : fb not logged in');

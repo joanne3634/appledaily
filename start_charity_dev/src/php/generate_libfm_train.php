@@ -8,7 +8,7 @@ method:
 uid_single_train require: fbid, uid, aid, score, timestamp  @ db_libfm/{:uid}/train.libfm
 uid_set_train require: fbid, uid @ db_libfm/{:uid}/train.libfm   
 
-&fb_fav_like&fb_cat&fb_catlist  
+&fb_fav_like&fb_cat&fb_catlist&w2v  
  
 default 為更新共用版本 @ db_libfm/train.libfm
 
@@ -27,11 +27,11 @@ $method = array_shift($request);
 $__FB_FAV_LIKE_STATUS__ = isset($_GET['fb_fav_like']) ? true : false; 
 $__FB_CAT_STATUS__ = isset($_GET['fb_cat']) ? true : false;
 $__FB_CATLIST_STATUS__ = isset($_GET['fb_catlist']) ? true : false;
-
+$_W2V_STATUS_ = isset($_GET['w2v']) ? true : false;
+$_TIME_STATUS_ = isset($_GET['time_status']) ? true : false;
 $uid =  isset($_GET['uid'])? $_GET['uid'] : '';
 
-$dba = new MYSQL\Accessor('localhost', 'appledaily', 'joanne3634', '369369');
-
+$dba = new MYSQL\Accessor();
 
 $default_dir_path = '../../db_libfm/';
 if (!file_exists($default_dir_path)) mkdir($default_dir_path, 0777, true);
@@ -59,13 +59,12 @@ switch ( $method ) {
 		if( $fbid && $uid && $aid && $score && $timestamp ){
 			// print('required match!');
 			$libfm_objects = json_decode(file_get_contents( $DIR_LOGS_ROOT . '/libfm_objects/' . $fbid .'_libfm.json'), true);
-			$subscribe_frequency = str_subscribe($dba, $libfm_objects['SUBSCRIBING']);
 			if (file_exists($rating_filename)){
 				$rating = file_get_contents($rating_filename);
 			}else{
 				$rating = file_get_contents($default_train_filename);
 			}
-			$rating .= addChangeLine( user_train( $dba, $libfm_objects['DATA'][$uid], $subscribe_frequency, $fbid, $uid, $__FB_FAV_LIKE_STATUS__, $__FB_CAT_STATUS__, $__FB_CATLIST_STATUS__,'uid_single_train', $aid, addSpace($score), addSpace( queryIDbyColumn( 'time_stamp', 'type', 'time_stamp', $dba).':'.$timestamp ))); 
+			$rating .= addChangeLine( user_train( $dba, $libfm_objects['DATA'][$uid], $fbid, $uid, $__FB_FAV_LIKE_STATUS__, $__FB_CAT_STATUS__, $__FB_CATLIST_STATUS__,$_W2V_STATUS_,$_TIME_STATUS_,'uid_single_train', $aid, addSpace($score), addSpace( queryIDbyColumn( 'time_stamp', 'type', 'time_stamp', $dba).':'.$timestamp ))); 
 			file_put_contents( $rating_filename, $rating);
 			echo json_encode(array('status'=>'success','msg'=>'method: uid_single_train, '.$fbid. " ".$uid. " ".$aid. " ".$score. " ".$timestamp));
 		}else{
@@ -86,19 +85,20 @@ switch ( $method ) {
  			if( $result = $query->fetch(PDO::FETCH_ASSOC) ){
  				if( $fbid == $result['fb_id'] ){
  					$libfm_objects = json_decode(file_get_contents( $DIR_LOGS_ROOT . '/libfm_objects/' . $fbid .'_libfm.json'), true);
-					$subscribe_frequency = str_subscribe($dba, $libfm_objects['SUBSCRIBING']);
-					
+						
 					$rating = file_get_contents($default_train_filename);
-					$rating .= addChangeLine( user_train( $dba, $libfm_objects['DATA'][$uid], $subscribe_frequency, $fbid, $uid, $__FB_FAV_LIKE_STATUS__, $__FB_CAT_STATUS__, $__FB_CATLIST_STATUS__)); 
+					$rating .= user_train( $dba, $libfm_objects['DATA'][$uid], $fbid, $uid, $__FB_FAV_LIKE_STATUS__, $__FB_CAT_STATUS__, $__FB_CATLIST_STATUS__,$_W2V_STATUS_,$_TIME_STATUS_); 
 					if (file_exists($rating_filename)) unlink($rating_filename);
 					file_put_contents( $rating_filename, $rating);
+					file_put_contents( $default_train_filename, $rating);
+					// echo json_encode(array('status'=>'success','msg'=>'method: uid_set_train, '.$fbid. " ".$uid,'data'=>$rating));
 					echo json_encode(array('status'=>'success','msg'=>'method: uid_set_train, '.$fbid. " ".$uid));
 
  				}else{
- 					echo json_encode(array('status'=>'fail','msg'=>'method: uid_set_train, fbid cannot find.'));
+ 					echo json_encode(array('status'=>'fail','msg'=>'method: uid_set_train, fbid: '. $fbid .' cannot find.'));
  				}
  			}else{
-				echo json_encode(array('status'=>'fail','msg'=>'method: uid_set_train, uid cannot find.'));
+				echo json_encode(array('status'=>'fail','msg'=>'method: uid_set_train, uid: '. $uid .' cannot find.'));
 			}
 			
 		}else{
@@ -112,9 +112,8 @@ switch ( $method ) {
 			while (false !== ($entry = readdir($handle))) {
 				if ($entry != "." && $entry != ".." && substr( $entry, -10 ) == 'libfm.json' ) {
 					$libfm_objects = json_decode(file_get_contents($libfm_filename . '/' . $entry), true);
-					$subscribe_frequency = str_subscribe($dba, $libfm_objects['SUBSCRIBING']);
 					foreach ( $libfm_objects['DATA'] as $uniqId => $item ) {	
-						$rating .= user_train( $dba, $item, $subscribe_frequency, $libfm_objects['FB_ID'], $uniqId, $__FB_FAV_LIKE_STATUS__, $__FB_CAT_STATUS__, $__FB_CATLIST_STATUS__) ;					
+						$rating .= user_train( $dba, $item, $libfm_objects['FB_ID'], $uniqId, $__FB_FAV_LIKE_STATUS__, $__FB_CAT_STATUS__, $__FB_CATLIST_STATUS__,$_W2V_STATUS_,$_TIME_STATUS_) ;					
 					}
 				}
 			}
@@ -130,22 +129,28 @@ switch ( $method ) {
 // print_r(  $train_uid_list ); 
 
 
-function user_train( $dba, $item, $subscribe_frequency, $fbid, $uid, $__FB_FAV_LIKE_STATUS__=false, $__FB_CAT_STATUS__=false, $__FB_CATLIST_STATUS__ =false, $method ='', $aid='', $score='', $time_stamp='')
+function user_train( $dba, $item, $fbid, $uid, $__FB_FAV_LIKE_STATUS__=false, $__FB_CAT_STATUS__=false, $__FB_CATLIST_STATUS__ =false ,$_W2V_STATUS_ = false,$_TIME_STATUS_ = false, $method ='', $aid='', $score='', $time_stamp='')
 {
+	// print('w2v:'+ $_W2V_STATUS_ );
 	// print_r( $item);
 	$user_string = str_user( $dba, $item['USER'] );
+	$subscribe_frequency = str_subscribe($dba, $item['SUBSCRIBING']);
 	// print $user_string ."\n";
 	// list( $fb_fav_like, $fb_cat, $fb_cat_list ) 
 	list( $fb_fav_like, $fb_cat, $fb_cat_list ) = str_fb( $dba, $item['FB'], $__FB_FAV_LIKE_STATUS__, $__FB_CAT_STATUS__, $__FB_CATLIST_STATUS__);
 	$rating = '';
 
 	if( $method == 'uid_single_train'){
-		$rating = str_sub_rating($dba, $score,$user_string,$subscribe_frequency,$time_stamp,$aid,$uid, str_w2v( $dba, $aid ) ,$fb_fav_like,$fb_cat,$fb_cat_list );
+		$w2v = $_W2V_STATUS_ ? str_w2v( $dba, $aid ): '';
+		$time_stamp = $_TIME_STATUS_ ? $time_stamp : '';
+		$rating = str_sub_rating($dba, $score,$user_string,$subscribe_frequency,$time_stamp,$aid,$uid, $w2v ,$fb_fav_like,$fb_cat,$fb_cat_list );
 	}else{
 		foreach ( $item['ROUND'] as $aid => $article) {
 			$aid = substr( $aid, 1 );
-			list($score, $time_stamp) = str_score_time( $dba , $article );	
-			$sub_rating = str_sub_rating($dba, $score,$user_string,$subscribe_frequency,$time_stamp,$aid,$uid, str_w2v( $dba, $aid ) ,$fb_fav_like,$fb_cat,$fb_cat_list );
+			list($score, $time_stamp) = str_score_time( $dba , $article );
+			$time_stamp = $_TIME_STATUS_ ? $time_stamp : '';
+			$w2v = $_W2V_STATUS_ ? str_w2v( $dba, $aid ): '';	
+			$sub_rating = str_sub_rating($dba, $score,$user_string,$subscribe_frequency,$time_stamp,$aid,$uid, $w2v ,$fb_fav_like,$fb_cat,$fb_cat_list );
 			$rating .= addChangeLine( $sub_rating );
 		}
 	}

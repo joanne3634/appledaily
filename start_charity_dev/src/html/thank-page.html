@@ -4,6 +4,9 @@
         <h2 class="header center teal-text">
             感謝您的參與
         </h2>
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <!-- <div class="addthis_inline_share_toolbox"></div> -->
+        
         <div class="collection hoverable">
             <a href="http://www.appledaily.com.tw/appledaily/bloglist/headline/4331" target="_blank" class="collection-item">
                 查看暖流新聞<i class="right material-icons">loyalty</i>
@@ -17,17 +20,82 @@
                 多評一回文章<i class="right material-icons">replay</i>
             </a>
         </div>
-        <div id="share" class="box center hoverable share-panel"></div>
+        <form id="bountyForm" method="post" class="box hoverable">
+            <div class="info-badge" style="display:none;"></div>
+            <div class="form-container">
+                <input type="hidden" id="bounty_uid" name="bounty_uid" value="">
+                <input type="hidden" id="bounty_fbid" name="bounty_fbid" value="">
+                <div class="input-field col s12">
+                    <input id="bounty_name" name="bounty_name" type="text" class="validate" value="">
+                    <label for="bounty_name">請輸入 Bounty Workers 帳號以供審核</label>
+                    <button class="btn-large waves-effect waves-light teal right" type="submit"><i class="material-icons right">send</i>Send</button>
+                </div>
+                <!-- <div class="col s4 btn">
+                    
+                </div> -->
+            </div>
+        </form>
+        <!-- <div class="center box hoverable addthis_inline_share_toolbox"></div> -->
+        <!-- <div id="share" class="center box hoverable share-panel"></div> -->
+        
     </div>
 </div>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57ce72f29e93febf"></script> -->
 <script type="text/javascript">
 $(document).ready(function() {
     $('#re-land').click(LoadLandPage);
     $('#re-survey').click(ClickReRound);
+    $('#bountyForm').on('submit', function(e) {
+        e.preventDefault();
+        var form = $(this);
+        console.log(form);
+        var post_data = form.serialize();
+        console.log(post_data);
+
+        var msg = checkSurvey();
+        console.log(msg);
+
+        if (msg != 'success') {
+            $('.info-badge').removeClass('green').addClass('red').html('<i class="material-icons left">error</i>您尚未完成問卷，無法提供任務回報碼').fadeIn().delay(6000).fadeOut();
+            return false;
+        } else if( $('#bounty_name').val() == '' ){
+            $('.info-badge').removeClass('green').addClass('red').html('<i class="material-icons left">error</i>您未填入 Bounty Workers 帳號, 提醒您錯誤帳號會造成審核失敗!').fadeIn().delay(6000).fadeOut();
+            return false;
+        } else {
+
+            $.ajax({
+                type: 'POST',
+                url: 'src/php/bounty.php',
+                data: post_data,
+                success: function(result) {
+                    result = $.parseJSON(result);
+                    console.log(result.msg);
+                    // if (result.status != 'success') {
+
+                    // } 
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+
+
+                    console.log(jqXHR);
+
+                    RecordException();
+                }
+            });
+            $('#bounty-uid').show().html(USER_PROFILE.uniqId);
+            $('.info-badge').removeClass('red').addClass('green').html('<i class="material-icons left">done</i>' + $('#bounty_name').val() + ' 您已完成任務，請複製任務回報碼 ' + USER_PROFILE.uniqId + ' 進行回報。<br>提醒您，以正確的帳號取得之任務回報碼，任務審核才會通過').fadeIn();
+            // $('.form-container').hide();
+            // document.getElementById("bountyForm").reset();
+            return true;
+        }
+
+
+    });
 });
-$("#share").jsSocials({
-    showCount: true,
-    showLabel: false,
-    shares: ["facebook", "googleplus", "email", "twitter", "linkedin"]
-});
+// $("#share").jsSocials({
+//     showCount: true,
+//     showLabel: false,
+//     shares: ["facebook", "googleplus", "email", "twitter", "linkedin"]
+// });
 </script>

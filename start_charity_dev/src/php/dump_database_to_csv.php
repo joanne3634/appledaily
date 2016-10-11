@@ -4,7 +4,7 @@ require_once 'lib/mysql.php';
 require_once 'lib/common.php';
 require_once 'lib/log.php';
 
-$dba = new MYSQL\Accessor('localhost', 'appledaily', 'joanne3634', '369369');
+$dba = new MYSQL\Accessor();
 $database = array(
 	"user" => array('id', 'user_key', 'user_definition'),
 	"uniq_id" => array('id', 'uniq_id', 'fb_id'),
@@ -16,7 +16,10 @@ $database = array(
 	"fb_category_list" => array('id', 'cl_name', 'cl_id', 'c_name'),
 	"fb_category" => array('id', 'c_name'),
 	"article" => array('id', 'aid', 'article', 'title', 'url', 'count','w2v'),
-	"libfm_serial" => array('id','type','name')
+	"libfm_serial" => array('id','type','name'),
+	"prediction" => array('id','uid','aid','y','yp','lib_his_id','time_stamp'),
+	"libfm_history" => array('id','uid','train','test','uid_lists', 'pre','timestamp'),
+	"donate_log" => array('id','uid','aid','lib_his_id','source','time_stamp')
 );
 
 foreach ($database as $table => $column) {
@@ -41,7 +44,7 @@ foreach ($database as $table => $column) {
 		$count = 0;
 		foreach ($item as $value) {
 			if ($count < ($count_item - 1)) {
-				$out .= $value . ' ';
+				$out .= $value . ',';
 			} else {
 				$out .= $value;
 			}

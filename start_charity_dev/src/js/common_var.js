@@ -1,5 +1,5 @@
 var BOOL_VARS = {
-    'isTesting': false,
+    'isTesting': true,
     'turnOffLogin': true
 };
 
@@ -16,7 +16,7 @@ var USER_PROFILE = {
     'uniqId': 'na',
     'fbId': 'na',
     'fbToken': 'na',
-    'subscribe': 0,
+    'subscribe': -1,
     'email': 'na',
     'charityTendencyOther': 'na',
     'timeRecording': {
@@ -53,8 +53,22 @@ var EXPERIMENT_PROFILE = {
     'exceptionMsg': 'na',
     'numCases': 10,
     'totalArticles': 10,
-    'cases': null // charity common_var var TITLES 
+    'USER_THRESHOLD': 10,  // 一篇文章被做過的次數上限
+    'cases': null 
 };
+
+var RECOMMEND_PROFILE = {
+    'uid': 'na',
+    'titleList': null,
+    'aidList': null,
+    'numCases': 10,
+    'totalArticles': 10,
+    'cases': null,
+    'prList': null,
+    'history_id': 0,
+    'aid_score': null
+};
+
 
 var ROUND_PROFILE = {
     'caseIndex': 0,
@@ -64,12 +78,14 @@ var ROUND_PROFILE = {
     'caseId': 'na', // aid
     'caseTitle': 'na',
     'caseStart': 0,
-    'caseEnd': 0
+    'caseEnd': 0,
+    'caseType': null
 };
 
 var MY_URLS = {
     'getIp': 'src/php/get_ip.php',
     'titleList': 'db_lists/titles_done.json',
+    'titlePendingList': 'db_lists/titles_pending.json',
     // 'aidList': 'db_lists/aids.csv',
     // 'aidListHighOrder': 'db_lists/aids_high_order.csv', //需要優先出現在實驗中的 ID 列表
     'recordTimeStart': 'src/php/record_time_start.php',
@@ -77,9 +93,13 @@ var MY_URLS = {
     'recordException': 'src/php/record_exception.php',
     'recordFbObject': 'src/php/record_fb_objects.php',
     'recordLibfm': 'src/php/record_libfm_objects.php',
-    'recordOther': 'src/php/record_other.php' // 問卷紀錄其他使用者自填 
+    'recordOther': 'src/php/record_other.php', // 問卷紀錄其他使用者自填 
+    'recommendList': 'src/php/recommend_list.php',
+    'qryAidList': 'src/php/query_aid_list.php',
+    'feedback': 'src/php/record_recommend_feedback.php'
 };
 
 var MY_FORMS = {
-    'slider': null
+    'slider-scoring': null,
+    'slider-scoring-recommend': null
 }

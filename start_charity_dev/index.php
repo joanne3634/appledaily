@@ -4,19 +4,28 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
-    <title>曙光再現計劃</title>
+    <title>急難家庭曙光再現計畫</title>
     <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <![endif]-->
-    <meta content="急難家庭曙光再現計劃" property="og:title">
-    <meta content="website" property="og:type">
-    <meta content="那些遭逢巨變且急需幫助的家庭，不僅需要您的愛心，也需要更多人共同建構社會的這張保護網。我們希望，為每個捐款人找到最適合且最需要捐助的弱勢家庭，除了能為他們帶來一場及時雨，也藉由這個平台，讓我們更了解捐款者的意願以及行為。" property="og:description">
+    <!-- Google -->
+    <meta name="description" content="那些遭逢巨變且急需幫助的家庭，不僅需要您的愛心，也需要更多人共同建構社會的這張保護網。我們希望，為每個捐款人找到最適合且最需要捐助的弱勢家庭，除了能為他們帶來一場及時雨，也藉由這個平台，讓我們更了解捐款者的意願以及行為。">
+    <meta name="keywords" content="急需幫助, 家庭, 急難, 保護網, 捐款人, 弱勢家庭, 及時雨">
+    <meta name="author" content="DIRL">
+    <meta name="copyright" content="急難家庭曙光再現計畫">
+    <meta name="application-name" content="急難家庭曙光再現計畫">
+    <!-- Facebook -->
+    <meta property="og:title" content="急難家庭曙光再現計畫">
+    <meta property="og:site_name" content="急難家庭曙光再現計畫">
+    <meta property="og:description" content="那些遭逢巨變且急需幫助的家庭，不僅需要您的愛心，也需要更多人共同建構社會的這張保護網。我們希望，為每個捐款人找到最適合且最需要捐助的弱勢家庭，除了能為他們帶來一場及時雨，也藉由這個平台，讓我們更了解捐款者的意願以及行為。">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:locale:alternate" content="en_US">
     <meta content="http://mmnet.iis.sinica.edu.tw/~joanne3634/start_charity_dev/" property="og:url">
     <meta content="http://mmnet.iis.sinica.edu.tw/~joanne3634/start_charity_dev/src/img/ico/favicon.ico" property="og:image">
     <meta content="image/png" property="og:image:type">
     <meta content="280" property="og:image:width">
     <meta content="280" property="og:image:height">
-    <meta content="急難家庭曙光再現計劃" property="og:site_name">
     <!-- CSS  -->
     <link rel="shortcut icon" type="image/x-icon" sizes="16x16" href="src/img/ico/favicon.ico?v=3">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -34,22 +43,35 @@
     <meta name="theme-color" content="#ffffff">
 </head>
 <!-- <body oncontextmenu="return false;">   -->
+<style type="text/css">
 
+</style>
 <body>
-    <nav class="white" role="navigation">
-        <div class="nav-wrapper container">
-            <a id="logo-container" class="brand-logo">曙光再現計劃</a>
-            <ul class="right">
-                <li>
-                    <a href="#" id="fb-status"></a>
-                </li>
-            </ul>
-            <!-- <ul id="nav-mobile" class="side-nav">
-                <li><a href="#">Navbar Link</a></li>
-            </ul> -->
-            <!-- <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a> -->
-        </div>
-    </nav>
+    <div class="navbar-fixed">
+        <nav class="white" role="navigation">
+            <div class="nav-wrapper container">
+                <a id="logo-container" class="brand-logo">
+                    <span class="brand-logo-text">急難家庭曙光再現計畫</span>
+                </a>
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <a id="update-subscribe-button-mainside" style="display: none;">更新推薦頻率</a></li>
+                    <li>
+                        <a id="fb-status"></a>
+                    </li>
+                </ul>
+                <ul id="nav-mobile" class="side-nav">
+                    <li>
+                        <a id="update-subscribe-button-mobileside" style="display: none;">更新推薦頻率</a>
+                    </li>
+                    <li>
+                        <a id="fb-status-side"></a>
+                    </li>
+                </ul>
+                <a data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+    </div>
     <main>
         <div id="subscribingPage" style="display:none;"></div>
         <div id="questionairePage" style="display:none;"></div>
@@ -60,7 +82,7 @@
     <footer class="page-footer teal">
         <div class="footer-copyright">
             <div class="center-align container">
-                © 2016 曙光再現計劃
+                © 2016 急難家庭曙光再現計畫
             </div>
         </div>
         <!--  <div class="container">
@@ -71,7 +93,7 @@
                 </div>
             </div> -->
     </footer>
-    <a href="#0" class="cd-top">Top</a>
+    <a class="cd-top">Top</a>
     <!-- Modal Structure -->
     <div id="promptLogin" class="modal">
         <div class="modal-content" style="padding: 24px 24px 0 24px">
@@ -79,8 +101,8 @@
             <p>我們需要您的識別資料，但不會將您的資料散佈或做其他用途、或任意貼文。 往後可以以您的 FB 帳號登入檢視或修改您的資料。</p>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">取消</a>
-            <a href="#!" id="agree-login" class="modal-action modal-close waves-effect waves-green btn-flat">確認</a>
+            <a class="modal-action modal-close waves-effect waves-red btn-flat">取消</a>
+            <a id="agree-login" class="modal-action modal-close waves-effect waves-green btn-flat">確認</a>
         </div>
     </div>
     <!--         <div id="promptQuestion" class="modal">
@@ -100,7 +122,7 @@
                 <br>每回合共閱讀 10 篇文章，我們將據此推薦未來的暖流版報導給您。</p>
         </div>
         <div class="modal-footer">
-            <a href="#!" id="agree-survey" class="modal-action modal-close waves-effect waves-green btn-flat">確認</a>
+            <a id="agree-survey" class="modal-action modal-close waves-effect waves-green btn-flat">確認</a>
         </div>
     </div>
     <div class="preloader">
@@ -117,12 +139,20 @@
     <script src="src/js/ui_logic.js"></script>
     <script src="src/js/common_var.js"></script>
     <script src="src/js/common_func.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/1.1.0/jssocials.min.js"></script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57ce72f29e93febf"></script>
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery.jssocials/1.1.0/jssocials.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.5.1/jquery.nicescroll.min.js"></script>
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.5.1/jquery.nicescroll.min.js"></script> -->
     <!-- my script -->
     <script type="text/javascript">
     $(document).ready(function() {
+
+        // $('input').on('focus', function() {
+        //     $('body').css('position','fixed');
+        // });
+        // $('input').on('blur', function() {
+        //     $('body').css('position','static');
+        // });
         // $("html").niceScroll({
         //     cursorcolor: '#f9c003',
         //     cursorwidth: '8px',
@@ -133,8 +163,7 @@
         //     cursorminheight: 30
         // });
         $('#logo-container').click(LoadLandPage);
-
-        $('#fb-status').click(ClickFBStatusBtn);
+        $("a[id^='fb-status']").click(ClickFBStatusBtn);
         $('#agree-login').click(ClickLoginBtn);
 
         window.fbAsyncInit = function() {
@@ -144,7 +173,26 @@
                 xfbml: true,
                 version: 'v2.2'
             });
-            LoadLandPage();
+            <?php       
+                if( isset($_GET['history_id']) ){
+                    echo "    
+                        // subscribe_email
+                        $('nav .button-collapse').css('display','none');
+                        $('#logo-container').click(function(){
+                           window.location.assign(window.location.pathname);
+                        });
+
+                        RECOMMEND_PROFILE.history_id = '".$_GET['history_id']."';
+                        USER_PROFILE.fbId = '".$_GET['fb_id']."';
+                        console.log('".$_GET['fb_id']."'); 
+                        BeforeLoadLanding();
+                        LoadSubscribingPage('subscribe_email');
+                    ";
+                }else{
+                    echo 'LoadLandPage();';
+                }
+            ?>
+           
 
             // FB.getLoginStatus(function(response) {
             //     StatusChangeCallback(response);
@@ -171,9 +219,9 @@
         var s1 = document.createElement("script"),
             s0 = document.getElementsByTagName("script")[0];
         s1.async = true;
-        if(BOOL_VARS.isTesting){
+        if (BOOL_VARS.isTesting) {
             s1.src = 'https://embed.tawk.to/57bff569b6fbb95fad802339/default';
-        }else{
+        } else {
             s1.src = 'https://embed.tawk.to/57c3c0bab6fbb95fad82f832/default';
         }
         s1.charset = 'UTF-8';
