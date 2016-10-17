@@ -16,13 +16,19 @@ namespace MYSQL {
 -      執行 SQL 語法，並回傳最後修改的 ID
 -      有錯誤時不會有回傳值
 \*------------------------------------------------------------*/
+	define( 'DB_SERVER', 'localhost' );
+	define( 'DB_USERNAME', 'joanne3634' );
+	define( 'DB_PASSWORD', '369369' );
+	define( 'DB_DATABASE', 'appledaily' );
+	define( 'DB_ENCODING', 'utf8' );
+
 	class Accessor {
 		private $pdo = null;
 		public $RECORD_SESSION = false;
 
-		function __construct($server, $database, $username, $password) {
-			$options = array(\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
-			$this->pdo = new \PDO('mysql:host=' . $server . ';dbname=' . $database, $username, $password, $options);
+		function __construct() {
+			$options = array(\PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES '.DB_ENCODING);
+			$this->pdo = new \PDO('mysql:host='.DB_SERVER.';dbname='.DB_DATABASE,DB_USERNAME,DB_PASSWORD,$options);
 			if (!$this->pdo) {$this->writeLogFile('Create PDO fail.');}
 		}
 
@@ -44,6 +50,7 @@ namespace MYSQL {
 		}
 
 		public function _query($sql, $args = null) {
+			// print( $sql );
 			$result = null;
 			if ($args != null) {
 				$stmt = $this->pdo->prepare($sql);
@@ -76,5 +83,6 @@ namespace MYSQL {
 				$this->writeLogFile('DATA: ' . print_r($args, true));
 			}
 		}
+
 	}
 }

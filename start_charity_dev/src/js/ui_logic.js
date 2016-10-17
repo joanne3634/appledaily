@@ -62,17 +62,10 @@ function ClickAfterQuestionaireBtn() {
             return false;
         }
     }
-    ClickReRound();
+    promptMaterial('modalQuestion');
 }
 
 function ClickAfterSurveyBtn() {
-    var msg = checkSurvey();
-    if (!BOOL_VARS.isTesting) {
-        if (msg != 'success') {
-            Materialize.toast('第' + (parseInt(msg) + 1) + '回還沒完成 請完成', 3000);
-            return false;
-        }
-    }
     checkMemberStatus(function(isMember) {
         if (isMember) {
             LoadThankPage();
@@ -80,19 +73,7 @@ function ClickAfterSurveyBtn() {
             LoadSubscribingPage();
         }
     })
-
-    RecordLibfm(function(Done) {
-        // if (Done) {
-        //     RecommendSet(function($result) {
-        //         if ($result['status'] == 'success') {
-        //             RECOMMEND_PROFILE.aidList = $result['msg'];
-        //             console.log(RECOMMEND_PROFILE.aidList[0]);
-        //         } else {
-        //             console.log('recommend error');
-        //         }
-        //     });
-        // }
-    })
+    RecordLibfm(function(Done) {});
 }
 
 function ClickReRound() {
@@ -263,7 +244,15 @@ function ClickNavigateNext() {
     }
     var currentIdx = ROUND_PROFILE.caseIndex;
     if (currentIdx == EXPERIMENT_PROFILE.numCases - 1) {
-        promptMaterial('modal1');
+        var msg = checkSurvey();
+        if (!BOOL_VARS.isTesting) {
+            if (msg != 'success') {
+                Materialize.toast('第' + (parseInt(msg) + 1) + '回還沒完成 請完成', 3000);
+                return false;
+            }else{
+                promptMaterial('modal1');
+            }
+        }
     }
     if (currentIdx < (EXPERIMENT_PROFILE.numCases - 1)) {
         ROUND_PROFILE.caseIndex = ROUND_PROFILE.caseIndex + 1;

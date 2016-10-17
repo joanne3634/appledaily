@@ -1,5 +1,5 @@
 var BOOL_VARS = {
-    'isTesting': true,
+    'isTesting': false,
     'turnOffLogin': true
 };
 

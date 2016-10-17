@@ -159,10 +159,8 @@ $(document).ready(function() {
     CreateMultiSelect(QUESTIONAIRE_FORM_TEXTS.charityActivityOpts, 'questionaire-charityActivity');
     CreateScaleForm('非常不樂意', '非常樂意', 10, 'charityWilling', 'questionaire-charityWilling');
 
-    $('#after-questionaire-button').click( function(){
-        promptMaterial('modalQuestion');
-    });
-    $('#agree-question-submit').click(ClickAfterQuestionaireBtn);
+    $('#after-questionaire-button').click(ClickAfterQuestionaireBtn);
+    $('#agree-question-submit').click(ClickReRound);
 
     $("#questionaire-charityTendency").change(function() {
         var otherCheck = getFormData('questionaire-charityTendency');
