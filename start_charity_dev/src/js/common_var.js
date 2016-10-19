@@ -19,6 +19,7 @@ var USER_PROFILE = {
     'subscribe': -1,
     'email': 'na',
     'charityTendencyOther': 'na',
+    'charityJobTitle': 'na',
     'timeRecording': {
         'timingType': 0, // 0->start, 1->end
         'startLanding': 0,

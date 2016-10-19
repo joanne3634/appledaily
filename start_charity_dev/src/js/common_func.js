@@ -6,7 +6,7 @@ function LoadQuestionairePage() {
             $('#questionairePage').html(data);
             hideAllPage();
             if (USER_PROFILE.questionaire.gender != 'na') {
-                $.each(USER_PROFILE.questionaire, function(i, v) {
+                $.each(USER_PROFILE.questionaire, function(i, v) {           
                     if (i == 'gender' || i == 'charityWilling') {
                         $("#questionaire-" + i + " input[value='" + USER_PROFILE.questionaire[i][0] + "'] ").prop("checked", true);
                     } else {
@@ -29,6 +29,9 @@ function LoadQuestionairePage() {
                         })
                     }
                 });
+                if( USER_PROFILE.charityJobTitle != 'na' ){
+                    $('#charityJobTitle').val(USER_PROFILE.charityJobTitle);
+                }
                 $('select').material_select();
             }
             sharePlugin(false);
@@ -144,16 +147,6 @@ function LoadSubscribingPage(method = 'uid_from_last') {
 
         sharePlugin(true);
 
-
-        // var msg = checkSurvey();
-        // if (msg != 'success') {
-
-        // }
-
-        // RandomRecommendCases();
-
-
-
     });
 }
 
@@ -265,7 +258,7 @@ function CreateMultiSelect(myOptions, myContianer) {
     for (var i = 0; i < myOptions.length; i++) {
         var myLabel = myOptions[i].label;
         var myIndex = myOptions[i].index;
-
+        console.log( myLabel + myIndex );
         if (i == 0) {
             $('<option />', { text: myLabel }).attr({
                 disabled: 'disabled',
@@ -273,7 +266,7 @@ function CreateMultiSelect(myOptions, myContianer) {
             }).appendTo(myElement);
         } else {
             $('<option />', {
-                text: myLabel,
+                text: (myIndex+1)+'. '+myLabel,
                 value: myIndex
             }).appendTo(myElement);
         }
@@ -740,6 +733,11 @@ function checkSurvey() {
 
 function saveQuestionaire() {
     var msg = 'success';
+    if( $('#charityJobTitle').val() != '' ){
+        SaveOther('charityJobTitle', $('#charityJobTitle').val());
+    }
+    USER_PROFILE.charityJobTitle = $('#charityJobTitle').val();
+
     $.each(USER_PROFILE.questionaire, function(i, v) {
         var check_value = [];
         // console.log( i );
@@ -828,6 +826,9 @@ function SetUserData() {
                 USER_PROFILE.questionaire = json['USER_RAW'];
                 if (json['USER_CharityTendencyOther'] != '') {
                     USER_PROFILE.charityTendencyOther = json['USER_CharityTendencyOther'];
+                }
+                if (json['USER_CharityJobTitle'] != '') {
+                    USER_PROFILE.charityJobTitle = json['USER_CharityJobTitle'];
                 }
             }
 
@@ -1018,6 +1019,7 @@ function RecordLibfm(result) {
                 ROUND_RESULT: JSON.stringify(EXPERIMENT_PROFILE.cases),
                 timeRecording: JSON.stringify(USER_PROFILE.timeRecording),
                 USER_CharityTendencyOther: USER_PROFILE.charityTendencyOther,
+                USER_CharityJobTitle: USER_PROFILE.charityJobTitle,
                 SUBSCRIBING: USER_PROFILE.subscribe,
                 EMAIL: USER_PROFILE.email
             },

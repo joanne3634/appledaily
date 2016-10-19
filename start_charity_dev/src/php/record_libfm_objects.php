@@ -27,6 +27,7 @@
 
 		if( !isset($libfm['USER_RAW'] )){ $libfm['USER_RAW'] = array(); }
 		if( !isset($libfm['USER_CharityTendencyOther'] )){ $libfm['USER_CharityTendencyOther'] = ''; }
+		if( !isset($libfm['USER_CharityJobTitle'] )){ $libfm['USER_CharityJobTitle'] = ''; }
 
 		if( !isset($libfm['FB'] )){ $libfm['FB'] = array(); }
 
@@ -96,6 +97,9 @@
 				}
 			if( $_POST['USER_CharityTendencyOther'] != 'na' && $data['USER']['charityTendency-6'] == 1 ){  // 其他
 				$libfm['USER_CharityTendencyOther'] = $_POST['USER_CharityTendencyOther']; 
+			}
+			if( $_POST['USER_CharityJobTitle'] != 'na' ){  // 選填職稱
+				$libfm['USER_CharityJobTitle'] = $_POST['USER_CharityJobTitle']; 
 			}
 			$libfm['USER'] = $data['USER'];
 			$libfm['USER_RAW'] = $USER_QUESTIONAIRE;

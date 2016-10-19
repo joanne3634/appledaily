@@ -3381,11 +3381,11 @@ $(document).ready(function(){
 
     function setValueToInput(entriesArray, select) {
       var value = '';
-
+      console.log(entriesArray);
       for (var i = 0, count = entriesArray.length; i < count; i++) {
         var text = select.find('option').eq(entriesArray[i]).text();
 
-        i === 0 ? value += text : value += ', ' + text;
+        i === 0 ? value += entriesArray[i] : value += ', ' + entriesArray[i];
       }
 
       if (value === '') {

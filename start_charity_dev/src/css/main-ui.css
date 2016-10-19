@@ -453,13 +453,18 @@ div#before-login a {
 }
 
 [type="checkbox"]:checked + label:before {
-    border-right: 2px solid #FBD465;
-    border-bottom: 2px solid #FBD465;
+    border-right: 3px solid #D06545;
+    border-bottom: 3px solid #D06545;
 }
 
 [type="radio"]:checked + label:after {
-    border: 2px solid #FBD465;
-    background-color: #FBD465;
+    border: 3px solid #D06545;
+    background-color: #D06545;
+}
+
+input[type=text]:focus:not([readonly]) {
+    border-bottom: 1px solid #D06545;
+    box-shadow: 0 1px 0 0 #D06545;
 }
 
 .btn-floating {
