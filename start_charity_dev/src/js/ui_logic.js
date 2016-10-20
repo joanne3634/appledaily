@@ -91,7 +91,7 @@ function ClickReRound() {
 function BeforeLoadLanding() {
     // console.log('BeforeLoadLanding');
     GetIp();
-    SetShortcuts();
+    // SetShortcuts();
     TitleListLoading(function(result) {});
     // ResetUserProfile();
     ResetRoundTitle();
@@ -301,11 +301,11 @@ function showStartButton() {
     checkMemberStatus(function(isMember) {
         if (isMember) {
             $("div[id^='old-member']").show();
-            $("a[id^='update-subscribe-button']").show();
+            $("a[id^='re-ques-button']").show();
             $("div[id^='new-member']").hide();
         } else {
             $("div[id^='old-member']").hide();
-            $("a[id^='update-subscribe-button']").hide();
+            $("a[id^='re-ques-button']").hide();
             $("div[id^='new-member']").show();
         }
         $("div[id^='before-login']").hide();
@@ -315,7 +315,7 @@ function showStartButton() {
 
 function showLoginButton() {
     $("div[id^='old-member']").hide();
-    $("a[id^='update-subscribe-button']").hide();
+    $("a[id^='re-ques-button']").hide();
     $("div[id^='before-login']").show();
     $("div[id^='new-member']").hide();
     $("div[id^='check-login']").hide();

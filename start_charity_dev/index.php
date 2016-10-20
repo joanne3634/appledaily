@@ -55,14 +55,14 @@
                 </a>
                 <ul class="right hide-on-med-and-down">
                     <li>
-                        <a id="update-subscribe-button-mainside" style="display: none;">更新推薦頻率</a></li>
+                        <a id="re-ques-button-main" style="display: none;">修改我的資料</a></li>
                     <li>
                         <a id="fb-status"></a>
                     </li>
                 </ul>
                 <ul id="nav-mobile" class="side-nav">
                     <li>
-                        <a id="update-subscribe-button-mobileside" style="display: none;">更新推薦頻率</a>
+                        <a id="re-ques-button-mobile" style="display: none;">修改我的資料</a>
                     </li>
                     <li>
                         <a id="fb-status-side"></a>

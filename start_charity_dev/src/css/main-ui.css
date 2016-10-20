@@ -645,4 +645,9 @@ input[type=text]:focus:not([readonly]) {
         width: 100%;
     }
 }
-
+#FQ .collapsible-header{
+    padding: 0 2rem;
+}
+#FQ .collapsible-header i{
+    width: 0;
+}
