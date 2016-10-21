@@ -651,21 +651,3 @@ input[type=text]:focus:not([readonly]) {
 #FQ .collapsible-header i{
     width: 0;
 }
-
-.close-cross {
-    color: #666;
-    font: 1.5rem arial, sans-serif;
-    position: absolute;
-    right: 1rem;
-    text-decoration: none;
-    top: 1rem;
-    z-index: 20;
-}
-.close-cross:after{
-    content: 'X';
-}
-#modalArticle .close-cross{
-    font: 1rem;
-    right: 20px;
-    top: 15px;
-}
